@@ -10,6 +10,10 @@ SET08101-Web Technologies Group 8 Repository
    # Zube.io - issue board
    https://zube.io/set08101-web-tech/web-tech-group-8/w/workspace-1/kanban
 
+   # Google docs - notes from meetings
+   https://docs.google.com/document/d/1-6B8qMqHFXjbeFASaLDZ5ZBo7xNCl5e7Is4lEeR7A_w/edit?usp=sharing
+   
+
 
 # Working environment:
 - Visual Studio Code - Aswin
