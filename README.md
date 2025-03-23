@@ -12,7 +12,10 @@ SET08101-Web Technologies Group 8 Repository
 
    # Google docs - notes from meetings
    https://docs.google.com/document/d/1-6B8qMqHFXjbeFASaLDZ5ZBo7xNCl5e7Is4lEeR7A_w/edit?usp=sharing
-   
+
+
+   # Essential Documents for the coursework
+   [SET08101 Web Technologies Assessment Specification_Moderated.pdf](https://github.com/user-attachments/files/19408921/SET08101.Web.Technologies.Assessment.Specification_Moderated.pdf)
 
 
 # Working environment:
