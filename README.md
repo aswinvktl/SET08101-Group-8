@@ -20,16 +20,3 @@ SET08101-Web Technologies Group 8 Repository
 
 # Working environment:
 - Visual Studio Code - Aswin
-
-
-# TEST
-
-Sun 23/03/2025 - 13:14 GMT
--- This is just me trying to push to master, let us see if this works 
-**update 13:20 GMT
-(that didnt work, i was able to push without any problems 🤦‍♂️🤦‍♂️)
-
-Try number 2
-
-Sun 23/03/2025 - 13:21 GMT
--- Added more restrictions in the GitHub GUI and let us now see if this works
