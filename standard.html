@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>The Peasant and The Dragon</title>
+    <title>The Peasant and The Dragon</title><!-- !!Change this excuse for a title at some point!! -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Make the nav menu slide out */
         body {
         transition: margin-left 0.3s;
         }
@@ -71,14 +72,6 @@
         text-align: left;
         margin-top: 10px;
         }
-
-        .placeholder-image {
-        width: 100%;
-        max-height: 300px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin: 20px 0;
-        }
     </style>
 </head>
 <body>
@@ -92,15 +85,14 @@
     <div id="mySidebar">
         <a href="index.html">Main Menu</a>
         <a href="#">Settings</a>
-        <a href="#">Credits</a>
     </div>
 
     <!-- Main Story Display Area -->
     <div id="main">
         <h1>The Peasant and The Dragon</h1>
-        <img src="your-image.jpg" alt="img" class="placeholder-image">
         <div id="story" class="story-box my-4"></div>
         <div id="choices" class="choice-box"></div>
+        <!-- Temporary karma display until I decide on a better method -->
         <div id="karmaDisplay" class="mt-4"><strong>Karma:</strong> <span id="karma">0</span></div>
     </div>
 
@@ -116,50 +108,44 @@
             start: {
                 text: "Skuba had been pretty content with living his life. Even the dragon moving in under the castle wasn't particularly threatening to his wellbeing as long as it wasn't especially hungry. Due to the initial number of livestock and foolhardy challengers, the dragon was rarely especially hungry.",
                 options: [
-                { text: "Go check if the dragon is asleep", next: "check", karma: -1 },
-                { text: "Go inform the king of your idea", next: "king", karma: 0 },
+                { text: "Go check if the dragon is asleep", next: "check", karma: 0 },
+                { text: "Go inform the king of your idea", next: "king", karma: +2 },
                 { text: "Make a plan before acting", next: "plan", karma: 0 }
                 ]
             },
             check: {
                 text: "The dragon was not in fact asleep...",
                 options: [
-                { text: "What did you expect?", next: "dead", karma: 0 }
-                ]
-            },
-            dead: {
-                text: "Someway, somehow, Skuba failed. For most people the cause of his failure doesn't matter, whether his courage, will or strength failed him, the outcome for the people of the land remains the same.",
-                options: [
-                { text: "Return to the start", next: "start", karma: 0 }
+                { text: "What did you expect?", next: "start", karma: 0 }
                 ]
             },
             king: {
-            text: "Rather than beg for coin or fame, Skuba thought to warn the king directly. If the dragon ever left the cave, agitated, the palace itself would be in danger. The court mostly mocked the peasant’s resolve, but the king listened. A few guards were moved, a few windows reinforced. It may not have mattered. But it might have. Skuba left, empty-handed — but not unacknowledged.",
+            text: "As a measure of caution, Skuba thought to warn the king directly. If the dragon ever left the cave, agitated, the palace itself would be in danger. The court mostly mocked the peasant’s seemingly foolish idea, but the king listened. A few guards were moved, a few windows reinforced. It may not have mattered. But it might have. Skuba left, empty-handed — but not unacknowledged.",
             options: [
-                { text: "Return home to think things through", next: "plan", karma: +2 }
+                { text: "Return home to think things through", next: "plan", karma: 0 }
                 ]
             },
             plan: {
-                text: "Skuba was not particularly brave, nor was he eager to die. But he was methodical. If legends were anything to go by, dragons were gluttonous, arrogant, and above all, predictable. He jotted notes on a dry patch of dirt with a stick. A trap might work. If it didn’t, well — it was better than charging into a furnace.",
+                text: "Skuba was not particularly brave, nor was he eager to visit his ancestors. But he was methodical. If legends were anything to go by, dragons were gluttonous, arrogant, and above all, predictable. He consulted a local alchemist regarding his idea. If it didn’t work, well — it was better than charging into an angry furnace.",
                 options: [
                     { text: "Recruit help and gather materials", next: "organise", karma: 0 }
                 ]
             },
             organise: {
-                text: "Few people had any fight left in them, but the promise of coin or glory still held sway over a few local lads. With some persuasion, bluffing, and strategic invoking of royal support, Skuba managed to scrape together enough hands and materials to give his plan a shot.",
+                text: "The fighting spirit of the first few weeks had long died down, but the promise of coin or glory still held sway over a few remaining locals. A little bit of persuasion, bluffing, and strategic invoking of royal support, and Skuba managed to scrape together enough hands and materials to give his scheme an honest shot.",
                 options: [
                     { text: "Use bait to lure the dragon into a trap", next: "lure", karma: 0 }
                 ]
             },
             lure: {
-                text: "The plan was simple. A sheep carcass, stuffed with sulfur and pitch, sewn shut like a grotesque feast. It was the kind of scheme you wouldn't want your name attached to if it failed. But someone needed to place it close to the cave, close enough to tempt the beast.",
+                text: "The plan was simple. A sheep carcass, stuffed with sulfur and pitch, hopefully enough to fool the gluttonous moster. Not particularily honourable but honour went both ways and the dragon had proven to not be acquainted with the concept. But someone needed to place the lure near to the cave, close enough to tempt the beast.",
                 options: [
                     { text: "Have someone else deliver the bait", next: "friend", karma: -1 },
                     { text: "Do it yourself", next: "self", karma: +1 }
                 ]
             },
             friend: {
-                text: "The lad who took the bait didn't come back. The dragon did. Groggy, but not dead. It fled the cave the next day, wings half-burned, still alive. The town was saved — technically — but there were no celebrations. Just silence, and the guilt no gold could cover.",
+                text: "",
                 options: [
                     { text: "Try again. Maybe better this time.", next: "start", karma: 0 }
                 ]
@@ -175,7 +161,7 @@
         let currentScene = "intro";
         let karma = 0;
         
-        // 
+        // Dynamic webpage
         function renderScene(sceneId) {
             const sidebar = document.getElementById("mySidebar");
             if (sidebar.style.width === "") sidebar.style.width = "0";
@@ -187,13 +173,13 @@
             // Endings based on karma, this is going to get unmaintanable.
             let displayText = scene.text;
             if (sceneId === "self" && karma >= 2) {
-                displayText = "The sulfur nearly gagged Skuba on the walk. He placed the carcass at the cave mouth and retreated. The dragon fell for it completely. The explosion tore through the mountain and silence followed. The people called him not a fool, but a savior. For once, the songs might be true.";
+                displayText = "The smell of sulfur nearly gagged Skuba on the walk. He placed the lure at the cave mouth and retreated. The dragon fell for it completely. The explosion tore through the mountain and silence followed. The people called him not a fool, but a savior. For once, the songs might be true.";
             } else if (sceneId === "self") {
-                displayText = "The dragon exploded, yes. But so did the nearby aqueduct and half the lower market. Nobody blamed Skuba to his face — but there was no parade. Just the quiet knowledge that sometimes, winning doesn't feel like it.";
+                displayText = "The dragon exploded, yes. But so did the entire lower market. Nobody blamed Skuba to his face, the dragon was gone after all, but there was little celebration for the one who arguably caused more damage than the beast had. Just the quiet knowledge that sometimes, winning doesn't feel like it.";
             } else if (sceneId === "friend" && karma >= 1) {
-                displayText = "Your companion braved the drop-off and set the bait perfectly. The dragon took it, and though the blast shook the hills, he returned — burned, limping, but alive. You carried him back together. It wasn’t a perfect win, but it was enough. Maybe that’s all heroes ever get.";
+                displayText = "Skuba's friend braved the drop-off and set the bait perfectly. The dragon took it, and though the blast shook the hills, the brave volunteer returned — burned, limping, but alive. Skuba and the rest of the conspirators carried him back together. It wasn’t a perfect win, but it was enough. It was never really about the glory.";
             } else if (sceneId === "friend") {
-                displayText = "The lad who took the bait didn’t come back. The dragon did. Groggy, but not dead. It fled the cave the next day, wings half-burned, still alive. The town was saved — technically — but there were no celebrations. Just silence, and the guilt no gold could cover.";
+                displayText = "The poor soul who took the bait didn't come back. The dragon did, not dead, but notably less threatening than before. It fled the cave the next day, wings half-burned. The town was saved and the expected celebrations ensued, it did little to soothe the guilt.";
             }
 
             document.getElementById("story").innerHTML = displayText
@@ -214,7 +200,7 @@
                     } else {
                     karma += option.karma;
                     }
-                    // Temporary karma counter display
+                    // Update the temporary karma field
                     document.getElementById("karma").innerText = karma;
                     // Go again
                     renderScene(option.next);
@@ -240,7 +226,7 @@
             sidebarOpen = !sidebarOpen;
         };
         
-        // Load the game
+        // Load the first scene
         window.onload = () => {
             renderScene(currentScene);
         };
