@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Peasant and The Dragon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+        transition: margin-left 0.3s;
+        }
+
+        /* Top margin bar */
+        #topbar {
+        height: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        }
+
+        /* Sidebar layout */
+        #mySidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        z-index: 998;
+        top: 50px;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+        transition: 0.3s;
+        }
+
+        #mySidebar a {
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #f1f1f1;
+        display: block;
+        }
+
+        #mySidebar a:hover {
+        background-color: #575757;
+        }
+
+        /* Main content area */
+        #main {
+        margin-left: 0;
+        margin-top: 70px;
+        padding: 20px;
+        transition: margin-left 0.3s;
+        }
+
+        .story-box {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .choice-box a {
+        display: block;
+        text-align: left;
+        margin-top: 10px;
+        }
+
+        .placeholder-image {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner and menu toggle -->
+    <div id="topbar">
+        <button id="menuToggle" class="btn btn-dark me-3">☰</button>
+        <span class="text-muted">Adventure Menu</span>
+    </div>
+
+    <!-- Slide-out Sidebar Navigation -->
+    <div id="mySidebar">
+        <a href="index.html">Main Menu</a>
+        <a href="#">Settings</a>
+        <a href="#">Credits</a>
+    </div>
+
+    <!-- Main Story Display Area -->
+    <div id="main">
+        <h1>The Peasant and The Dragon</h1>
+        <img src="your-image.jpg" alt="img" class="placeholder-image">
+        <div id="story" class="story-box my-4"></div>
+        <div id="choices" class="choice-box"></div>
+        <div id="karmaDisplay" class="mt-4"><strong>Karma:</strong> <span id="karma">0</span></div>
+    </div>
+
+    <!-- The Story -->
+    <script>
+        const storyData = {
+            intro: {
+                text: "The crown jewel of the kingdom, positioned on several important trade routes with fertile land stretching for miles in every direction, few cities could compare. That was until the dragon came. It had been months now, hundreds of knights and self-proclaimed 'brave men' had perished in their attempts to rid the cave under the city of the dragon that had taken up nesting there. There had been many in the first weeks, but the majority of the fools were gone now and most of those who attempted to slay the beast were of the desperate kind, indebted gamblers or brigands with little to lose. At a glance, Skuba fit none of these archetypes, inheriting a small farmstead from his late father this close to the capital provided him with the sort of sustainability most farmers and peasants could only dream of. Nor was he particularly troubled by the now defunct trade route; his farms annual output easily covered by the increasing demand for grain now that most of the livestock in the surrounding area was long gone. Perhaps this made him yet another simple fool, throwing his life away for nothing, was he hoping to claim the opportunity to climb the feudal ladder? To show that he was made for bigger things than sowing and reaping grain every year? Nobody knew, perhaps not even him.",
+                options: [
+                { text: "Regardless of his motivation, there were immediate decisions he had to make.", next: "start", karma: 0 }
+                ]
+            },
+            start: {
+                text: "Skuba had been pretty content with living his life. Even the dragon moving in under the castle wasn't particularly threatening to his wellbeing as long as it wasn't especially hungry. Due to the initial number of livestock and foolhardy challengers, the dragon was rarely especially hungry.",
+                options: [
+                { text: "Go check if the dragon is asleep", next: "check", karma: -1 },
+                { text: "Go inform the king of your idea", next: "king", karma: 0 },
+                { text: "Make a plan before acting", next: "plan", karma: 0 }
+                ]
+            },
+            check: {
+                text: "The dragon was not in fact asleep...",
+                options: [
+                { text: "What did you expect?", next: "dead", karma: 0 }
+                ]
+            },
+            dead: {
+                text: "Someway, somehow, Skuba failed. For most people the cause of his failure doesn't matter, whether his courage, will or strength failed him, the outcome for the people of the land remains the same.",
+                options: [
+                { text: "Return to the start", next: "start", karma: 0 }
+                ]
+            },
+            king: {
+            text: "Rather than beg for coin or fame, Skuba thought to warn the king directly. If the dragon ever left the cave, agitated, the palace itself would be in danger. The court mostly mocked the peasant’s resolve, but the king listened. A few guards were moved, a few windows reinforced. It may not have mattered. But it might have. Skuba left, empty-handed — but not unacknowledged.",
+            options: [
+                { text: "Return home to think things through", next: "plan", karma: +2 }
+                ]
+            },
+            plan: {
+                text: "Skuba was not particularly brave, nor was he eager to die. But he was methodical. If legends were anything to go by, dragons were gluttonous, arrogant, and above all, predictable. He jotted notes on a dry patch of dirt with a stick. A trap might work. If it didn’t, well — it was better than charging into a furnace.",
+                options: [
+                    { text: "Recruit help and gather materials", next: "organise", karma: 0 }
+                ]
+            },
+            organise: {
+                text: "Few people had any fight left in them, but the promise of coin or glory still held sway over a few local lads. With some persuasion, bluffing, and strategic invoking of royal support, Skuba managed to scrape together enough hands and materials to give his plan a shot.",
+                options: [
+                    { text: "Use bait to lure the dragon into a trap", next: "lure", karma: 0 }
+                ]
+            },
+            lure: {
+                text: "The plan was simple. A sheep carcass, stuffed with sulfur and pitch, sewn shut like a grotesque feast. It was the kind of scheme you wouldn't want your name attached to if it failed. But someone needed to place it close to the cave, close enough to tempt the beast.",
+                options: [
+                    { text: "Have someone else deliver the bait", next: "friend", karma: -1 },
+                    { text: "Do it yourself", next: "self", karma: +1 }
+                ]
+            },
+            friend: {
+                text: "The lad who took the bait didn't come back. The dragon did. Groggy, but not dead. It fled the cave the next day, wings half-burned, still alive. The town was saved — technically — but there were no celebrations. Just silence, and the guilt no gold could cover.",
+                options: [
+                    { text: "Try again. Maybe better this time.", next: "start", karma: 0 }
+                ]
+            },
+            self: {
+            text: "",
+            options: [
+                { text: "Restart the story", next: "start", karma: 0 }
+                ]
+            }
+        };
+
+        let currentScene = "intro";
+        let karma = 0;
+        
+        // 
+        function renderScene(sceneId) {
+            const sidebar = document.getElementById("mySidebar");
+            if (sidebar.style.width === "") sidebar.style.width = "0";
+
+            // Find current scene
+            const scene = storyData[sceneId];
+            currentScene = sceneId;
+
+            // Endings based on karma, this is going to get unmaintanable.
+            let displayText = scene.text;
+            if (sceneId === "self" && karma >= 2) {
+                displayText = "The sulfur nearly gagged Skuba on the walk. He placed the carcass at the cave mouth and retreated. The dragon fell for it completely. The explosion tore through the mountain and silence followed. The people called him not a fool, but a savior. For once, the songs might be true.";
+            } else if (sceneId === "self") {
+                displayText = "The dragon exploded, yes. But so did the nearby aqueduct and half the lower market. Nobody blamed Skuba to his face — but there was no parade. Just the quiet knowledge that sometimes, winning doesn't feel like it.";
+            } else if (sceneId === "friend" && karma >= 1) {
+                displayText = "Your companion braved the drop-off and set the bait perfectly. The dragon took it, and though the blast shook the hills, he returned — burned, limping, but alive. You carried him back together. It wasn’t a perfect win, but it was enough. Maybe that’s all heroes ever get.";
+            } else if (sceneId === "friend") {
+                displayText = "The lad who took the bait didn’t come back. The dragon did. Groggy, but not dead. It fled the cave the next day, wings half-burned, still alive. The town was saved — technically — but there were no celebrations. Just silence, and the guilt no gold could cover.";
+            }
+
+            document.getElementById("story").innerHTML = displayText
+            document.getElementById("choices").innerHTML = "";
+
+            // Loop through each option
+            scene.options.forEach(option => {
+                // Create the button for each option
+                const a = document.createElement("a");
+                // Shrodringers hyperlink
+                a.href = "#";
+                a.className = "btn btn-outline-primary";
+                a.innerText = option.text;
+                // Make the buttons work with karma
+                a.onclick = () => {
+                    if (option.next === "intro" || option.next === "start") {
+                    karma = 0; // Reset karma on new attempt (start & restart)
+                    } else {
+                    karma += option.karma;
+                    }
+                    // Temporary karma counter display
+                    document.getElementById("karma").innerText = karma;
+                    // Go again
+                    renderScene(option.next);
+                };
+                // Add the button to the choice box
+                document.getElementById("choices").append(a);
+            });
+        }
+            
+        // Sidebar toggle
+        let sidebarOpen = false;
+        document.getElementById("menuToggle").onclick = function () {
+            const sidebar = document.getElementById("mySidebar");
+            const main = document.getElementById("main");
+
+            if (sidebarOpen) {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0";
+            } else {
+                sidebar.style.width = "250px";
+                main.style.marginLeft = "250px";
+            }
+            sidebarOpen = !sidebarOpen;
+        };
+        
+        // Load the game
+        window.onload = () => {
+            renderScene(currentScene);
+        };
+
+    </script>
+
+</body>
+</html>
