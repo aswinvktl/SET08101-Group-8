@@ -1,0 +1,41 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Cardo', serif;
+    colour: #E0D6B9
+}
+
+.background{
+    background-image: url(../SET01/images/Bruhaven.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    filter: brightness(0.7);
+    transition: background-image 1s ease-in-out;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rbga(0, 0, 0, 0.3);
+}
+
+.text-box {
+    max-width: 800px;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
