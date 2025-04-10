@@ -8,7 +8,7 @@ body, html {
 }
 
 .background{
-    background-image: url(../SET01/images/Bruhaven.jpg);
+    background-image: url(../images/Bruhaven.jpg);
     background-size: cover;
     background-position: center;
     position: absolute;
