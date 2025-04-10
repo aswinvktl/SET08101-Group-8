@@ -1,7 +1,6 @@
 const lines = ["Long ago, cradled in the misty mountains and ancient glens, there lay the hidden valley of Bruhaven (Gleann Bhru in Gaelic). A place sung of in old tales, where the wind carried magic, and the hills held secrets older than memory."];
 
-const images = [
-    "../images/Bruhaven.jpg"]
+const images = ["../images/Bruhaven.jpg"];
 
     let currentLine = 0;
 
