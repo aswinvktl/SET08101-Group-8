@@ -23,7 +23,7 @@ const images = ["../images/Bruhaven.jpg"];
             showLine(currentLine);
         }
         else {
-            window.location.href = "..\premise\premise2.html"; // Redirect to the main page
+            window.location.href = ""; // Redirect to the next chapter
         }
     });
 
