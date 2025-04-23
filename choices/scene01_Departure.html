@@ -6,18 +6,17 @@
 
   <!-- Link to the shared CSS -->
   <link rel="stylesheet" href="../css/choice-style.css">
-  <!-- Link to JS file for word-by-word reveal -->
-  <script defer src="../js/choice.js"></script>
+<!-- ✅ FIRST: define your storyLines before JS runs -->
+<script>
+  const storyLines = [
+    "Bruhaven woke up to smoke and sorrow.",
+    "You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.",
+    "Around you stood your people, quiet, hollow-eyed. As you turned to leave, the village elders came forth, carrying a great leather bag. 'You'll need this,' they said. 'It has something — some hers, some ours. All of it matters.'"
+  ];
+</script>
 
-  <!-- Inline script defining story for this scene -->
-  <script>
-    const storyLines = [
-      "Bruhaven woke up to smoke and sorrow.",
-      "You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.",
-      "Around you stood your people, quiet, hollow-eyed. As you turned to leave, the village elders came forth, carrying a great leather bag. 'You'll need this,' they said. 'It has something — some hers, some ours. All of it matters.'"
-    ];
-  </script>
-</head>
+<!-- ✅ THEN load the JS logic AFTER storyLines is ready -->
+<script defer src="../js/choice.js"></script>
 
 <body>
   <!-- Background image (change filename if needed) -->
