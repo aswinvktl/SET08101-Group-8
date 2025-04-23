@@ -4,22 +4,24 @@
   <meta charset="UTF-8">
   <title>Scene 1: The Gift</title>
 
-  <!-- Link to the shared CSS -->
+  <!-- ✅ Link to the shared CSS -->
   <link rel="stylesheet" href="../css/choice-style.css">
-<!-- ✅ FIRST: define your storyLines before JS runs -->
-<script>
-  const storyLines = [
-    "Bruhaven woke up to smoke and sorrow.",
-    "You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.",
-    "Around you stood your people, quiet, hollow-eyed. As you turned to leave, the village elders came forth, carrying a great leather bag. 'You'll need this,' they said. 'It has something — some hers, some ours. All of it matters.'"
-  ];
-</script>
 
-<!-- ✅ THEN load the JS logic AFTER storyLines is ready -->
-<script defer src="../js/choice.js"></script>
+  <!-- ✅ Define scene text before loading the script -->
+  <script>
+    const storyLines = [
+      "Bruhaven woke up to smoke and sorrow.",
+      "You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.",
+      "Around you stood your people, quiet, hollow-eyed. As you turned to leave, the village elders came forth, carrying a great leather bag. 'You'll need this,' they said. 'It has something — some hers, some ours. All of it matters.'"
+    ];
+  </script>
+
+  <!-- ✅ Load the JavaScript AFTER defining storyLines -->
+  <script defer src="../js/choice.js"></script>
+</head>
 
 <body>
-  <!-- Background image (change filename if needed) -->
+  <!-- Background image (you can change the path as needed) -->
   <div class="background" style="background-image: url('../images/king leavingg.jpg');"></div>
 
   <div class="overlay">
@@ -28,7 +30,7 @@
       <p id="typewriter"></p>
     </div>
 
-    <!-- Choices are hidden until final reveal -->
+    <!-- Choices appear after all story is revealed -->
     <div class="choices" id="choices">
       <a href="scene01a.html"><button class="choice-button">a. Take the bag</button></a>
       <a href="scene01b.html"><button class="choice-button">b. Leave it behind</button></a>
