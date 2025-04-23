@@ -1,35 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Scene 1: The Gift</title>
-    <h2>The Departure</h2>
+  <meta charset="UTF-8">
+  <title>Scene 1: The Gift</title>
+
+  <!-- This links to your shared CSS file that styles background, text, and buttons -->
+  <link rel="stylesheet" href="../css/choice-style.css">
 </head>
 
 <body>
-    
-    <p class="first">Bruhaven woke up to smoke and sorrow. 
+  <!-- Fullscreen background image (change the file name to match your scene image) -->
+  <div class="background" style="background-image: url('../images/king\ leavingg.jpg');"></div>
 
+  <!-- This overlay adds a slight dark tint and centers all content -->
+  <div class="overlay">
+
+    <!-- Scene Text -->
+    <div class="text-box">
+      <h2>The Departure</h2>
+      <p>
+        Bruhaven woke up to smoke and sorrow.
+        <br><br>
         You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.
-        
-        Around you stood your people, quiet, hollow-eyed. 
-        
-        Your soldiers offered company, but you knew you had to do it alone, the path only you could walk. 
-        
+        <br><br>
+        Around you stood your people, quiet, hollow-eyed.
+        <br><br>
+        Your soldiers offered company, but you knew you had to do it alone — the path only you could walk.
+        <br><br>
         As you turned to leave, the village elders came forth, carrying a great leather bag. Heavy with contents, stitched with care.
-        
-        “You'll need this” said them softly. “It has something, some hers, some ours. All of it matters”
-        
+        <br><br>
+        “You'll need this,” said them softly. “It has something, some hers, some ours. All of it matters.”
+        <br><br>
         You gripped the strap, feeling its weight. It would slow you. But it might save you.
-    </p>
+      </p>
+    </div>
 
-    <h2>Choice 1</h2>
-    <a href="../choices/scene01a.html"><p>a. Take the bag</p></a>
-    <a href="../choices/scene01b.html"><p>b. Leave it behind</p></a>
+    <!-- Choice Buttons -->
+    <div class="choices">
+      <!-- Each button links to another HTML page depending on the player's choice -->
+      <a href="scene01a.html"><button class="choice-button">a. Take the bag</button></a>
+      <a href="scene01b.html"><button class="choice-button">b. Leave it behind</button></a>
+    </div>
 
-    <style type = "text/css">
-        body{background-color: lightgray;}
-        h2{color: darkgreen;}
-        .first{background-color: orange;}
-    </style>
+  </div>
 </body>
+
 </html>
