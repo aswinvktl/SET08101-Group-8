@@ -1,0 +1,82 @@
+/* === PAGE BASE STYLES === */
+
+/* Reset default browser styles and ensure full height layout */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Georgia', serif;  /* Celtic-ish, elegant serif font that is native */
+    background-color: #1a1a1a;      /* Dark fallback background */
+    color: #E0D6B9;                 /* Parchment-style text color */
+  }
+  
+  /* === BACKGROUND IMAGE CONTAINER === */
+  
+  /* Fullscreen background container */
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    z-index: 0;
+    filter: brightness(0.65); /* Slightly darken to improve text readability */
+    transition: background-image 1s ease-in-out;
+  }
+  
+  /* === TEXT OVERLAY === */
+  
+  /* Transparent dark overlay layer for better contrast */
+  .overlay {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);  /* semi-transparent dark tint */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    box-sizing: border-box;
+  }
+  
+  /* Main scene text */
+  .text-box {
+    max-width: 800px;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(30, 30, 30, 0.5); /* slight background behind text for clarity */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  }
+  
+  /* === CHOICE BUTTONS === */
+  
+  /* Common style for all choice buttons */
+  .choice-button {
+    background-color: #A78A4A;       /* Gold accent */
+    color: #1a1a1a;
+    padding: 0.8rem 1.6rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Button hover effect */
+  .choice-button:hover {
+    background-color: #E0D6B9;
+    color: #000;
+    transform: translateY(-2px); /* Subtle lift on hover */
+  }
+  
