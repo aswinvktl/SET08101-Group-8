@@ -1,49 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Scene 1: The Gift</title>
 
-  <!-- This links to your shared CSS file that styles background, text, and buttons -->
+  <!-- Link to the shared CSS -->
   <link rel="stylesheet" href="../css/choice-style.css">
+  <!-- Link to JS file for word-by-word reveal -->
+  <script defer src="../js/choice.js"></script>
+
+  <!-- Inline script defining story for this scene -->
+  <script>
+    const storyLines = [
+      "Bruhaven woke up to smoke and sorrow.",
+      "You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.",
+      "Around you stood your people, quiet, hollow-eyed. As you turned to leave, the village elders came forth, carrying a great leather bag. 'You'll need this,' they said. 'It has something — some hers, some ours. All of it matters.'"
+    ];
+  </script>
 </head>
 
 <body>
-  <!-- Fullscreen background image (change the file name to match your scene image) -->
-  <div class="background" style="background-image: url('../images/king\ leavingg.jpg');"></div>
+  <!-- Background image (change filename if needed) -->
+  <div class="background" style="background-image: url('../images/king leavingg.jpg');"></div>
 
-  <!-- This overlay adds a slight dark tint and centers all content -->
   <div class="overlay">
-
-    <!-- Scene Text -->
     <div class="text-box">
       <h2>The Departure</h2>
-      <p>
-        Bruhaven woke up to smoke and sorrow.
-        <br><br>
-        You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.
-        <br><br>
-        Around you stood your people, quiet, hollow-eyed.
-        <br><br>
-        Your soldiers offered company, but you knew you had to do it alone — the path only you could walk.
-        <br><br>
-        As you turned to leave, the village elders came forth, carrying a great leather bag. Heavy with contents, stitched with care.
-        <br><br>
-        “You'll need this,” said them softly. “It has something, some hers, some ours. All of it matters.”
-        <br><br>
-        You gripped the strap, feeling its weight. It would slow you. But it might save you.
-      </p>
+      <p id="typewriter"></p>
     </div>
 
-    <!-- Choice Buttons -->
-    <div class="choices">
-      <!-- Each button links to another HTML page depending on the player's choice -->
+    <!-- Choices are hidden until final reveal -->
+    <div class="choices" id="choices">
       <a href="scene01a.html"><button class="choice-button">a. Take the bag</button></a>
       <a href="scene01b.html"><button class="choice-button">b. Leave it behind</button></a>
     </div>
-
   </div>
 </body>
-
 </html>
