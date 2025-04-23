@@ -1,6 +1,9 @@
 // choice.js — Handles interactive story with 3 click stages:
 // click 1 = line 1, click 2 = line 2, click 3 = line 3 + choices fade in
 
+console.log("✅ choice.js is running");
+console.log("Loaded storyLines:", storyLines);
+
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.getElementById("choices");
 
