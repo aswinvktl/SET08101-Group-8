@@ -1,0 +1,59 @@
+{
+    "intro": {
+        "text": "The crown jewel of the kingdom, positioned on several important trade routes with fertile land stretching for miles in every direction, few cities could compare. That was until the dragon came. It had been months now, hundreds of knights and self-proclaimed 'brave men' had perished in their attempts to rid the cave under the city of the dragon that had taken up nesting there. There had been many in the first weeks, but the majority of the fools were gone now and most of those who attempted to slay the beast were of the desperate kind, indebted gamblers or brigands with little to lose. At a glance, Skuba fit none of these archetypes, inheriting a small farmstead from his late father this close to the capital provided him with the sort of sustainability most farmers and peasants could only dream of. Nor was he particularly troubled by the now defunct trade route; his farms annual output easily covered by the increasing demand for grain now that most of the livestock in the surrounding area was long gone. Perhaps this made him yet another simple fool, throwing his life away for nothing, was he hoping to claim the opportunity to climb the feudal ladder? To show that he was made for bigger things than sowing and reaping grain every year? Nobody knew, perhaps not even him.",
+        "choices": [
+            { "text": "Regardless of his motivation, there were immediate decisions he had to make.", "next": "start", "karma": 0 }
+        ]
+    },
+    "start": {
+        "text": "Skuba had been pretty content with living his life. Even the dragon moving in under the castle wasn't particularly threatening to his wellbeing as long as it wasn't especially hungry. Due to the initial number of livestock and foolhardy challengers, the dragon was rarely especially hungry.",
+        "choices": [
+            { "text": "Go check if the dragon is asleep", "next": "check", "karma": 0 },
+            { "text": "Go inform the king of your idea", "next": "king", "karma": 2 },
+            { "text": "Make a plan before acting", "next": "plan", "karma": 0 }
+        ]
+    },
+    "check": {
+        "text": "The dragon was not in fact asleep...",
+        "choices": [
+            { "text": "What did you expect?", "next": "start", "karma": 0 }
+        ]
+    },
+    "king": {
+        "text": "As a measure of caution, Skuba thought to warn the king directly. If the dragon ever left the cave, agitated, the palace itself would be in danger. The court mostly mocked the peasant’s seemingly foolish idea, but the king listened. A few guards were moved, a few windows reinforced. It may not have mattered. But it might have. Skuba left, empty-handed — but not unacknowledged.",
+        "choices": [
+            { "text": "Return home to think things through", "next": "plan", "karma": 0 }
+        ]
+    },
+    "plan": {
+        "text": "Skuba was not particularly brave, nor was he eager to visit his ancestors. But he was methodical. If legends were anything to go by, dragons were gluttonous, arrogant, and above all, predictable. He consulted a local alchemist regarding his idea. If it didn’t work, well — it was better than charging into an angry furnace.",
+        "choices": [
+            { "text": "Recruit help and gather materials", "next": "organise", "karma": 0 }
+        ]
+    },
+    "organise": {
+        "text": "The fighting spirit of the first few weeks had long died down, but the promise of coin or glory still held sway over a few remaining locals. A little bit of persuasion, bluffing, and strategic invoking of royal support, and Skuba managed to scrape together enough hands and materials to give his scheme an honest shot.",
+        "choices": [
+            { "text": "Use bait to lure the dragon into a trap", "next": "lure", "karma": 0 }
+        ]
+    },
+    "lure": {
+        "text": "The plan was simple. A sheep carcass, stuffed with sulfur and pitch, hopefully enough to fool the gluttonous monster. Not particularily honourable but honour went both ways and the dragon had proven to not be acquainted with the concept. But someone needed to place the lure near to the cave, close enough to tempt the beast.",
+        "choices": [
+            { "text": "Have someone else deliver the bait", "next": "friend", "karma": -1 },
+            { "text": "Do it yourself", "next": "self", "karma": 1 }
+        ]
+    },
+    "friend": {
+        "text": "",
+        "choices": [
+            { "text": "Try again. Maybe better this time.", "next": "start", "karma": 0 }
+        ]
+    },
+    "self": {
+        "text": "",
+        "choices": [
+            { "text": "Restart the story", "next": "start", "karma": 0 }
+        ]
+    }
+}

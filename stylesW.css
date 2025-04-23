@@ -1,0 +1,67 @@
+/* Make the nav menu slide out */
+body {
+transition: margin-left 0.3s;
+}
+
+/* Top margin bar */
+#topbar {
+height: 50px;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+background-color: #f8f9fa;
+border-bottom: 1px solid #ddd;
+z-index: 999;
+display: flex;
+align-items: center;
+padding: 0 1rem;
+}
+
+/* Sidebar layout */
+#mySidebar {
+width: 0;
+height: 100%;
+position: fixed;
+z-index: 998;
+top: 50px;
+left: 0;
+background-color: #111;
+overflow-x: hidden;
+padding-top: 20px;
+transition: 0.3s;
+}
+
+#mySidebar a {
+padding: 10px 20px;
+text-decoration: none;
+font-size: 18px;
+color: #f1f1f1;
+display: block;
+}
+
+#mySidebar a:hover {
+background-color: #575757;
+}
+
+/* Main content area */
+#main {
+margin-left: 0;
+margin-top: 70px;
+padding: 20px;
+transition: margin-left 0.3s;
+}
+
+.story-box {
+background: #f8f9fa;
+padding: 20px;
+border-radius: 10px;
+text-align: left;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scene-choices a {
+display: block;
+text-align: left;
+margin-top: 10px;
+}
