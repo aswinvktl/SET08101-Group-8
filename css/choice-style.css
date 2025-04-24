@@ -62,19 +62,18 @@ html, body {
 /* === STORY TEXT CONTAINER === */
 .typewriter-container p {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1.8s ease, transform 1.8s ease;
+  transition: opacity 2s ease;
   font-size: 1.3rem;
   line-height: 1.8;
   color: #f5e9d2;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   text-align: justify;
   text-align-last: center;
+  margin: 0;
 }
 
 .typewriter-container p.show {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* === CONTROL AREA TRANSPARENCY FIX === */
