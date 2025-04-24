@@ -9,17 +9,22 @@ let renderedLines = [];
 
 // === ADD NEW LINE ===
 function appendLine(index) {
-  if (!storyLines || index < 0 || index >= storyLines.length) return;
-  const lineEl = document.createElement("p");
-  lineEl.textContent = storyLines[index];
-  lineEl.classList.add("show");
-  lineEl.style.opacity = 0;
-  typewriterEl.appendChild(lineEl);
-  renderedLines.push(lineEl);
-  setTimeout(() => {
-    lineEl.style.opacity = 1;
-  }, 50);
-}
+    if (!storyLines || index < 0 || index >= storyLines.length) return;
+  
+    const lineEl = document.createElement("p");
+    lineEl.textContent = storyLines[index];
+    lineEl.classList.add("fade-in"); // prepare fade-in style
+    lineEl.style.opacity = 0;
+  
+    typewriterEl.appendChild(lineEl);
+    renderedLines.push(lineEl);
+  
+    // Give the browser time to register the new DOM element before fading
+    requestAnimationFrame(() => {
+      lineEl.classList.add("show");
+    });
+  }
+  
 
 function removeLastLine() {
   if (renderedLines.length > 0) {
