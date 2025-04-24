@@ -66,21 +66,9 @@ html, body {
   font-size: 1.2rem;
   line-height: 1.7;
   color: #f5e9d2; /* solid readable color */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* clean sharp edge glow */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* crisp shadow for readability */
 }
 
-
-/* === STORY LINES === */
-.typewriter-container p {
-  opacity: 0;
-  transition: opacity 1.5s ease; /* Slow fade-in for drama */
-  font-size: 1.2rem;
-  line-height: 1.7;
-
-  /* Glowing fantasy-style text */
-  color: transparent;
-  text-shadow: 0 0 4px rgba(245, 233, 210, 0.85);
-}
 
 .typewriter-container p.show {
   opacity: 1;
@@ -93,6 +81,7 @@ html, body {
   background: none !important;
   box-shadow: none !important;
 }
+
 
 /* === NAVIGATION ARROW BUTTONS === */
 .nav-buttons {
