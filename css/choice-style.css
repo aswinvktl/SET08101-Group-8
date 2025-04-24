@@ -1,4 +1,4 @@
-/* === PAGE BASE STYLES === */
+/* === BASE PAGE STYLES === */
 html, body {
   margin: 0;
   padding: 0;
@@ -9,6 +9,7 @@ html, body {
   overflow: hidden;
 }
 
+/* === BACKGROUND IMAGE === */
 .background {
   position: absolute;
   top: 0;
@@ -18,16 +19,17 @@ html, body {
   background-position: center;
   background-size: cover;
   z-index: 0;
-  filter: brightness(0.65);
+  filter: brightness(0.65); /* Dim background for text readability */
   transition: background-image 1s ease-in-out;
 }
 
+/* === OVERLAY CONTENT AREA === */
 .overlay {
   position: relative;
   z-index: 1;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3); /* Slight tint for readability */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,27 +38,53 @@ html, body {
   box-sizing: border-box;
 }
 
-.text-box h2 {
-  position: absolute;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  margin: 0;
+/* === TEXT BOX AND TITLE === */
+.text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Title centered at the top */
+.text-box h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 0 2rem 0;
+  color: #E0D6B9;
+}
+
+/* === STORY LINES CONTAINER === */
 #typewriter {
   white-space: pre-line;
-  display: inline-block;
-  opacity: 1;
-  transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 800px;
+  text-align: center;
 }
 
+/* Each line of story */
+.typewriter-container p {
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* When line is visible */
+.typewriter-container p.show {
+  opacity: 1;
+}
+
+/* === CHOICE BUTTONS === */
 .choices {
   opacity: 0;
   transition: opacity 1s ease;
   text-align: center;
   display: none;
+  margin-top: 2rem;
 }
 
 .choices.show {
@@ -110,13 +138,4 @@ html, body {
 .nav-btn:hover {
   background-color: #A78A4A;
   color: #1a1a1a;
-}
-
-.typewriter-container p {
-  margin: 0 0 1rem 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.typewriter-container p.show {
-  opacity: 1;
 }
