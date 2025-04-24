@@ -5,13 +5,18 @@
   box-sizing: border-box;
 }
 
+/* Load a fantasy-style font and apply it globally */
 html, body {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'EB Garamond', Georgia, serif;
+  background-color: #1a1a1a;
+  color: #f5e9d2;
 }
 
+/* Background image overlay */
 .background {
   position: fixed;
   top: 0;
@@ -25,9 +30,7 @@ html, body {
   filter: brightness(0.6);
 }
 
-
 /* === SCENE WRAPPER === */
-/* Full height flex container centered vertically */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
@@ -44,6 +47,7 @@ html, body {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* === TYPEWRITER STORY AREA === */
@@ -56,12 +60,14 @@ html, body {
   max-width: 60ch;
 }
 
-/* Each story line */
+/* Each story line (fade-in now slower + color/shadow updates) */
 .typewriter-container p {
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 1.5s ease;
   font-size: 1.2rem;
   line-height: 1.7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  color: #f5e9d2;
 }
 
 /* When shown */
@@ -121,7 +127,6 @@ html, body {
 
 .choice-button:hover {
   background-color: #E0D6B9;
-  color: #E0D6B9;
+  color: #000;
   transform: translateY(-2px);
 }
-
