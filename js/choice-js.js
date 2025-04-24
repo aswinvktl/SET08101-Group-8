@@ -7,13 +7,13 @@ const prevBtn = document.getElementById("prev");
 let currentLine = 0;
 let renderedLines = [];
 
-// === ADD NEW LINE (Simple fade-in, no transform) ===
+// === ADD NEW LINE (simple fade-in) ===
 function appendLine(index) {
   if (!storyLines || index < 0 || index >= storyLines.length) return;
 
   const lineEl = document.createElement("p");
   lineEl.textContent = storyLines[index];
-  lineEl.classList.add("show"); // Just add this, no transitions in JS
+  lineEl.classList.add("show"); // Let CSS handle fade-in
   typewriterEl.appendChild(lineEl);
   renderedLines.push(lineEl);
 }
