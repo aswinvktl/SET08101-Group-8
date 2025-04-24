@@ -9,15 +9,22 @@ let renderedLines = [];
 
 // === ADD NEW LINE (simple fade-in) ===
 function appendLine(index) {
-  if (!storyLines || index < 0 || index >= storyLines.length) return;
-
-  const lineEl = document.createElement("p");
-  lineEl.textContent = storyLines[index];
-  lineEl.classList.add("show"); // Let CSS handle fade-in
-  typewriterEl.appendChild(lineEl);
-  renderedLines.push(lineEl);
-}
-
+    if (!storyLines || index < 0 || index >= storyLines.length) return;
+  
+    const lineEl = document.createElement("p");
+    lineEl.textContent = storyLines[index];
+    
+    // Apply base styles first
+    lineEl.classList.add("line"); // <- base state (opacity: 0)
+    typewriterEl.appendChild(lineEl);
+    renderedLines.push(lineEl);
+  
+    // Force browser to recognize the element and then add the "show" class
+    setTimeout(() => {
+      lineEl.classList.add("show");
+    }, 10); // Short delay ensures transition is triggered
+  }
+  
 function removeLastLine() {
   if (renderedLines.length > 0) {
     const last = renderedLines.pop();
