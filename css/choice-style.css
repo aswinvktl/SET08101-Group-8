@@ -60,11 +60,10 @@ html, body {
 }
 
 /* === STORY TEXT CONTAINER === */
-/* === STORY LINES === */
 .typewriter-container p {
   opacity: 0;
-  transform: translateY(1rem); /* slide up slightly */
-  transition: opacity 2s ease, transform 2s ease;
+  transform: translateY(20px);
+  transition: opacity 1.8s ease, transform 1.8s ease;
   font-size: 1.3rem;
   line-height: 1.8;
   color: #f5e9d2;
@@ -73,8 +72,7 @@ html, body {
   text-align-last: center;
 }
 
-/* When fade-in activates */
-.typewriter-container p.fade-in.show {
+.typewriter-container p.show {
   opacity: 1;
   transform: translateY(0);
 }
