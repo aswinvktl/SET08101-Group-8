@@ -1,17 +1,13 @@
 /* === PAGE BASE STYLES === */
-
-/* Reset browser defaults and ensure fullscreen layout */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Georgia', serif;  /* Celtic-style serif */
-  background-color: #1a1a1a;      /* Fallback if no image */
-  color: #E0D6B9;                 /* Parchment-tone text */
-  overflow: hidden;              /* Prevent scrolling */
+  font-family: 'Georgia', serif;
+  background-color: #1a1a1a;
+  color: #E0D6B9;
+  overflow: hidden;
 }
-
-/* === BACKGROUND IMAGE === */
 
 .background {
   position: absolute;
@@ -26,14 +22,12 @@ html, body {
   transition: background-image 1s ease-in-out;
 }
 
-/* === OVERLAY CONTAINER === */
-
 .overlay {
   position: relative;
   z-index: 1;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);  /* Slight dark overlay */
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,21 +36,18 @@ html, body {
   box-sizing: border-box;
 }
 
-/* === TEXT === */
-
 .text-box {
   background: none;
   box-shadow: none;
   padding: 0;
 }
 
-/* Element where JS types text */
 #typewriter {
   white-space: pre-line;
   display: inline-block;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
-
-/* === CHOICE BUTTONS === */
 
 .choices {
   opacity: 0;
@@ -90,3 +81,30 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* === ARROW NAVIGATION === */
+.nav-buttons {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #E0D6B9;
+  border: 2px solid #A78A4A;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #A78A4A;
+  color: #1a1a1a;
+}

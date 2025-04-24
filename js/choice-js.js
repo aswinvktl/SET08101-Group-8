@@ -1,47 +1,46 @@
-// choice.js — Handles interactive story with 3 click stages:
-// click 1 = line 1, click 2 = line 2, click 3 = line 3 + choices fade in
-
-console.log("✅ choice.js is running");
-console.log("Loaded storyLines:", storyLines);
+// choice-js.js — Updated for line-by-line FADE IN (no typing)
 
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.getElementById("choices");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
 
 let currentLine = 0;
-let inProgress = false;
 
-// Function to type a line word-by-word
-function typeLine(line, callback) {
-  typewriterEl.innerHTML = ""; // Clear previous text
-  const words = line.split(" ");
-  let i = 0;
+function showLine(index) {
+  if (!storyLines || index < 0 || index >= storyLines.length) return;
 
-  const interval = setInterval(() => {
-    if (i < words.length) {
-      typewriterEl.innerHTML += words[i] + " ";
-      i++;
-    } else {
-      clearInterval(interval);
-      inProgress = false;
-      if (callback) callback();
-    }
-  }, 80); // Speed: 80ms per word
+  typewriterEl.style.opacity = 0;
+
+  setTimeout(() => {
+    typewriterEl.textContent = storyLines[index];
+    typewriterEl.style.opacity = 1;
+  }, 200);
 }
 
-// Handle user clicks
-document.body.addEventListener("click", () => {
-  if (inProgress) return;
-
-  if (currentLine < storyLines.length) {
-    inProgress = true;
-    typeLine(storyLines[currentLine]);
+nextBtn.addEventListener("click", () => {
+  if (currentLine < storyLines.length - 1) {
     currentLine++;
+    showLine(currentLine);
   } else {
-    // Show choices with fade-in
     choicesEl.style.display = "block";
     setTimeout(() => {
       choicesEl.classList.add("show");
     }, 10);
+    nextBtn.style.display = "none";
   }
 });
 
+prevBtn.addEventListener("click", () => {
+  if (currentLine > 0) {
+    currentLine--;
+    showLine(currentLine);
+    choicesEl.classList.remove("show");
+    choicesEl.style.display = "none";
+    nextBtn.style.display = "inline-block";
+  }
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  showLine(currentLine);
+});
