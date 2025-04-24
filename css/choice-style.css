@@ -74,7 +74,8 @@ html, body {
 /* Regular paragraph text */
 .typewriter-container p {
   opacity: 0;
-  transition: opacity 1.5s ease;
+  transform: translateY(10px); /* adds subtle downward starting point */
+  transition: opacity 1.5s ease, transform 1.5s ease;
   font-size: 1.3rem;
   line-height: 1.8;
   color: #f5e9d2;
@@ -84,9 +85,10 @@ html, body {
   margin: 0;
 }
 
-/* When line is added */
+/* When JS adds "show" class */
 .typewriter-container p.show {
   opacity: 1;
+  transform: translateY(0); /* slide into position */
 }
 
 /* === CONTROL AREA TRANSPARENCY FIX === */
