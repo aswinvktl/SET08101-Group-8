@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scene 1: The Gift</title>
 
-  <!-- Link to your shared CSS file -->
-  <link rel="stylesheet" href="../css/choice-style.css">
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 
-  <!-- Define this scene's story text -->
+  <!-- Define the story lines -->
   <script>
     const storyLines = [
       "Bruhaven woke up to smoke and sorrow.",
@@ -16,33 +17,33 @@
     ];
   </script>
 
-  <!-- Load the updated JavaScript logic with arrow buttons -->
-  <script defer src="../js/choice-js.js"></script>
+  <!-- Load the interactivity logic -->
+  <script defer src="script.js"></script>
 </head>
-
 <body>
 
-  <!-- Background image for the scene -->
-  <div class="background" style="background-image: url('../images/king leavingg.jpg');"></div>
+  <!-- Main container for everything -->
+  <div class="scene-wrapper">
 
-  <!-- Navigation arrows for story progression -->
-  <div class="nav-buttons">
-    <button id="prev" class="nav-btn">←</button>
-    <button id="next" class="nav-btn">→</button>
-  </div>
+    <!-- Title centered at the top -->
+    <h1 class="scene-title">The Departure</h1>
 
-  <!-- Content overlay: holds the title, story, and choices -->
-  <div class="overlay">
-    <div class="text-box">
-      <h2>The Departure</h2>
-      <div id="typewriter" class="typewriter-container"></div>
+    <!-- Container for all story lines -->
+    <div id="typewriter" class="typewriter-container"></div>
+
+    <!-- Navigation and choices go here -->
+    <div class="controls">
+      <div class="nav-buttons">
+        <button id="prev" class="nav-btn">←</button>
+        <button id="next" class="nav-btn">→</button>
+      </div>
+
+      <div class="choices" id="choices">
+        <a href="scene01a.html"><button class="choice-button">a. Take the bag</button></a>
+        <a href="scene01b.html"><button class="choice-button">b. Leave it behind</button></a>
+      </div>
     </div>
 
-    <!-- Choices appear after all story lines are revealed -->
-    <div class="choices" id="choices">
-      <a href="scene01a.html"><button class="choice-button">a. Take the bag</button></a>
-      <a href="scene01b.html"><button class="choice-button">b. Leave it behind</button></a>
-    </div>
   </div>
 
 </body>
