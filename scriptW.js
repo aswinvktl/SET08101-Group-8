@@ -1,3 +1,33 @@
+// Map sound and images to not have to have multiple copies of MP3/JPG files
+const sceneImageMap = {
+    intro: "placeholder.jpg",
+    start: "placeholder.jpg",
+    king: "placeholder.jpg",
+    plan: "placeholder.jpg",
+    organise: "placeholder.jpg",
+    lure: "placeholder.jpg",
+    friend: "placeholder.jpg",
+    self: "placeholder.jpg"
+};
+
+const sceneImageAltMap = {
+    intro: "placeholder",
+    start: "placeholder",
+    king: "placeholder",
+    plan: "placeholder",
+    organise: "placeholder",
+    lure: "placeholder",
+    friend: "placeholder",
+    self: "placeholder"
+};
+
+const karmaAudioMap = {
+    low: "sad-theme.mp3",
+    neutral: "calm-theme.mp3",
+    high: "high-theme.mp3"
+};
+
+
 let scenes = {};
 let currentScene = "intro";
 let karma = 0;
@@ -15,9 +45,6 @@ async function loadScenes() {
 
 // Dynamic webpage rendering function
 function renderScene(sceneId) {
-    const sidebar = document.getElementById("mySidebar");
-    if (sidebar.style.width === "") sidebar.style.width = "0";
-
     // Find current scene
     const scene = scenes[sceneId];
     currentScene = sceneId;
@@ -45,6 +72,26 @@ function renderScene(sceneId) {
     const sceneChoices = document.getElementById("sceneChoices");
     sceneChoices.innerHTML = "";  
 
+    // Load scene image
+    const img = document.getElementById("sceneImage");
+    const imageFile = sceneImageMap[sceneId];
+    const altText = sceneImageAltMap[sceneId] || "Scene illustration";
+    if (imageFile) {
+        img.src = `images/${imageFile}`;
+        img.alt = altText;
+        img.style.display = "block";
+    } else {
+        img.style.display = "none";
+    }
+
+    // Load scene audio
+    const audio = document.getElementById("sceneAudio");
+    let mood = "neutral";
+    if (karma > 0) mood = "high";
+    else if (karma < 0) mood = "low";
+    audio.src = `audio/${karmaAudioMap[mood]}`;
+    audio.load();
+
     // Loop through each option
     scene.choices.forEach(option => {
         // Create the button for each option
@@ -60,25 +107,29 @@ function renderScene(sceneId) {
             // Go again
             renderScene(option.next);
         };
+
         // Add the button to the choice box from the constant
         sceneChoices.append(btn);
+
+        
     });
 }
     
-// Sidebar toggle
-let sidebarOpen = false;
+// Sidebar
 document.getElementById("menuToggle").onclick = function () {
     const sidebar = document.getElementById("mySidebar");
     const main = document.getElementById("main");
-    // Statement folds sidebar out when button is clicked
-    if (sidebarOpen) {
-        sidebar.style.width = "0";
-        main.style.marginLeft = "0";
-    } else {
-        sidebar.style.width = "250px";
-        main.style.marginLeft = "250px";
-    }
-    sidebarOpen = !sidebarOpen;
+    const isOpen = sidebar.style.width === "250px";
+    sidebar.style.width = isOpen ? "0" : "250px";
+    main.style.marginLeft = isOpen ? "0" : "250px";
+};
+// Credits
+document.getElementById("musicToggle").onclick = function () {
+    audioMuted = !audioMuted;
+    const audio = document.getElementById("sceneAudio");
+    audio.muted = audioMuted;
+    const credits = document.getElementById("musicCredits");
+    credits.style.display = credits.style.display === "block" ? "none" : "block";
 };
 
 // Run the function to fetch scenes from JSON

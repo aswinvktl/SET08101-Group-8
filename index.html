@@ -17,11 +17,24 @@
     <div id="mySidebar">
         <a href="index.html">Main Menu</a>
         <a href="#">Settings</a>
+        <a href="#" id="musicToggle" title="Toggle Music 🎵">🎵 Music</a>
+        <div id="musicCredits" style="display:none; padding: 10px; color: #ccc;">
+            <p><strong>Music by:</strong> <a href="https://www.fesliyanstudios.com" target="_blank" rel="noopener">Fesliyan Studios</a></p>
+            <ul style="padding-left: 1rem;">
+                <li>https://www.fesliyanstudios.com/royalty-free-music/download/elven-forest/376</li>
+                <li>https://www.fesliyanstudios.com/royalty-free-music/download/beautiful-village/210</li>
+                <li>https://www.fesliyanstudios.com/royalty-free-music/download/broken-village/170</li>
+            </ul>
+        </div>
+
     </div>
 
     <!-- Main Story Display Area -->
     <div id="main">
         <h1>The Peasant and The Dragon</h1>
+        <div id="sceneVisual" class="mb-3 text-center">
+            <img id="sceneImage" class="img-fluid rounded shadow" />
+        </div>
         <div id="story" class="story-box my-4"></div>
         <div id="sceneChoices" class="scene-choices"></div>
         <!-- Temporary karma display until I decide on a better method -->

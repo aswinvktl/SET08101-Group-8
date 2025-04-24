@@ -1,67 +1,102 @@
-/* Make the nav menu slide out */
+/* ===================== */
+/*       Page Layout     */
+
 body {
-transition: margin-left 0.3s;
+    transition: margin-left 0.3s;
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
 }
 
-/* Top margin bar */
+/* ===================== */
+/*       Topbar ID       */
 #topbar {
-height: 50px;
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-background-color: #f8f9fa;
-border-bottom: 1px solid #ddd;
-z-index: 999;
-display: flex;
-align-items: center;
-padding: 0 1rem;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
 }
 
-/* Sidebar layout */
+/* ===================== */
+/*      Sidebar ID       */
 #mySidebar {
-width: 0;
-height: 100%;
-position: fixed;
-z-index: 998;
-top: 50px;
-left: 0;
-background-color: #111;
-overflow-x: hidden;
-padding-top: 20px;
-transition: 0.3s;
+    width: 0;
+    height: 100%;
+    position: fixed;
+    z-index: 998;
+    top: 50px;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: 0.3s;
 }
 
+/* Sidebar Links */
 #mySidebar a {
-padding: 10px 20px;
-text-decoration: none;
-font-size: 18px;
-color: #f1f1f1;
-display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #f1f1f1;
+    display: block;
 }
 
 #mySidebar a:hover {
-background-color: #575757;
+    background-color: #575757;
 }
 
-/* Main content area */
+/* Sidebar Music Credits Box */
+#musicCredits {
+    background-color: #222;
+    color: #ccc;
+    border: 1px solid #555;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    padding: 10px;
+}
+
+/* ===================== */
+/*       Main ID         */
 #main {
-margin-left: 0;
-margin-top: 70px;
-padding: 20px;
-transition: margin-left 0.3s;
+    margin-left: 0;
+    margin-top: 70px;
+    padding: 20px;
+    transition: margin-left 0.3s;
 }
 
+/* ===================== */
+/*     Class: Story Box  */
 .story-box {
-background: #f8f9fa;
-padding: 20px;
-border-radius: 10px;
-text-align: left;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* ===================== */
+/*   Class: Scene Choices */
 .scene-choices a {
-display: block;
-text-align: left;
-margin-top: 10px;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ===================== */
+/*       Image ID        */
+#sceneImage {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
