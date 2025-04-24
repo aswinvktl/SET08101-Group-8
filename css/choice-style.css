@@ -36,10 +36,13 @@ html, body {
   box-sizing: border-box;
 }
 
-.text-box {
-  background: none;
-  box-shadow: none;
-  padding: 0;
+.text-box h2 {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  margin: 0;
 }
 
 #typewriter {
@@ -107,4 +110,13 @@ html, body {
 .nav-btn:hover {
   background-color: #A78A4A;
   color: #1a1a1a;
+}
+
+.typewriter-container p {
+  margin: 0 0 1rem 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.typewriter-container p.show {
+  opacity: 1;
 }
