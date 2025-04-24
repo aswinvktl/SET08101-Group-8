@@ -13,18 +13,20 @@ function appendLine(index) {
   
     const lineEl = document.createElement("p");
     lineEl.textContent = storyLines[index];
+    lineEl.classList.add("new-line");
   
-    // Set initial style for transition
+    // Set initial invisible state (optional: could be in CSS)
     lineEl.style.opacity = 0;
-    lineEl.style.transform = 'translateY(20px)';
+    lineEl.style.transform = "translateY(20px)";
   
     typewriterEl.appendChild(lineEl);
     renderedLines.push(lineEl);
   
-    // Trigger transition AFTER the browser registers the element
-    setTimeout(() => {
-      lineEl.classList.add("show");
-    }, 50); // slight delay to allow CSS to apply initial state
+    // FORCE reflow
+    void lineEl.offsetHeight;
+  
+    // Now apply class that will trigger transition
+    lineEl.classList.add("show");
   }
   
 
