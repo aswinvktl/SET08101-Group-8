@@ -121,6 +121,7 @@ html, body {
 
 .choice-button:hover {
   background-color: #E0D6B9;
-  color: #000;
+  color: #E0D6B9;
   transform: translateY(-2px);
 }
+
