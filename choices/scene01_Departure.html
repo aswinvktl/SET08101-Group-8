@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>Scene 1: The Gift</title>
 
-  <!-- ✅ Link to the shared CSS -->
+  <!-- Link to your shared CSS file -->
   <link rel="stylesheet" href="../css/choice-style.css">
 
-  <!-- ✅ Define scene text before loading the script -->
+  <!-- Define this scene's story text -->
   <script>
     const storyLines = [
       "Bruhaven woke up to smoke and sorrow.",
@@ -16,28 +16,29 @@
     ];
   </script>
 
-  <!-- ✅ Load the JavaScript AFTER defining storyLines -->
+  <!-- Load the updated JavaScript logic with arrow buttons -->
   <script defer src="../js/choice-js.js"></script>
 </head>
 
 <body>
-  <!-- Background image (you can change the path as needed) -->
+
+  <!-- Background image for the scene -->
   <div class="background" style="background-image: url('../images/king leavingg.jpg');"></div>
 
-
+  <!-- Navigation arrows for story progression -->
   <div class="nav-buttons">
     <button id="prev" class="nav-btn">←</button>
     <button id="next" class="nav-btn">→</button>
   </div>
-  
 
+  <!-- Content overlay: holds the title, story, and choices -->
   <div class="overlay">
     <div class="text-box">
       <h2>The Departure</h2>
       <p id="typewriter"></p>
     </div>
 
-    <!-- Choices appear after all story is revealed -->
+    <!-- Choices appear after all story lines are revealed -->
     <div class="choices" id="choices">
       <a href="scene01a.html"><button class="choice-button">a. Take the bag</button></a>
       <a href="scene01b.html"><button class="choice-button">b. Leave it behind</button></a>
