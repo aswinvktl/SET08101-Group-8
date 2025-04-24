@@ -148,6 +148,7 @@ html, body {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+  font-family: 'EB-garamond', Georgia, serif;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
