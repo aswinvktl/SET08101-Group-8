@@ -139,18 +139,22 @@ html, body {
 }
 
 .choice-button {
+  font-family: 'EB Garamond', Georgia, serif; /* Match story font */
+  font-size: 1.2rem; /* Slightly more elegant */
+  font-weight: normal; /* Less bold for a softer feel */
+  letter-spacing: 0.5px; /* Optional: adds subtle spacing for fantasy tone */
+  
+  /* Existing styles — keep these */
   background-color: transparent;
   border: 2px solid #A78A4A;
   color: #f5e9d2;
   padding: 0.8rem 1.6rem;
   margin: 0.5rem;
   border-radius: 10px;
-  font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
-  font-family: 'EB-garamond', Georgia, serif;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 
 .choice-button:hover {
   background-color: rgba(167, 138, 74, 0.2); /* Hover glow */
