@@ -72,9 +72,9 @@ html, body {
 }
 
 /* Regular paragraph text */
-.typewriter-container p {
+.typewriter-container p.line {
   opacity: 0;
-  transform: translateY(10px); /* adds subtle downward starting point */
+  transform: translateY(10px);
   transition: opacity 1.5s ease, transform 1.5s ease;
   font-size: 1.3rem;
   line-height: 1.8;
@@ -85,11 +85,12 @@ html, body {
   margin: 0;
 }
 
-/* When JS adds "show" class */
-.typewriter-container p.show {
+/* Fade & slide in when JS adds "show" */
+.typewriter-container p.line.show {
   opacity: 1;
-  transform: translateY(0); /* slide into position */
+  transform: translateY(0);
 }
+
 
 /* === CONTROL AREA TRANSPARENCY FIX === */
 .controls,
