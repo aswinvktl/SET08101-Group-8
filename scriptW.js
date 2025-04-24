@@ -32,14 +32,15 @@ let scenes = {};
 let currentScene = "intro";
 let karma = 0;
 
-// Error handling function for fetching JSON
+// Error handling function for fetching JSON because it breaks regularly
 async function loadScenes() {
     try {
-      const response = await fetch("scenesW.json");
-      scenes = await response.json();
-      renderScene(currentScene);
+        const response = await fetch("scenesW.json");
+        scenes = await response.json();
+        renderScene(currentScene);
     } catch (error) {
-      document.getElementById("story").innerText = "Failed to load story.";
+        console.error("Scene load failed:", error);
+        document.getElementById("story").innerText = "Failed to load story.";
     }
 }
 
