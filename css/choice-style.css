@@ -5,12 +5,26 @@
   box-sizing: border-box;
 }
 
-body, html {
+html, body {
   height: 100%;
-  font-family: 'Georgia', serif;
-  background-color: #1a1a1a;
-  color: #E0D6B9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/king leavingg.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: brightness(0.6);
+}
+
 
 /* === SCENE WRAPPER === */
 /* Full height flex container centered vertically */
