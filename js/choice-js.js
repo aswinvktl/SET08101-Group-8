@@ -7,28 +7,16 @@ const prevBtn = document.getElementById("prev");
 let currentLine = 0;
 let renderedLines = [];
 
-// === ADD NEW LINE ===
+// === ADD NEW LINE (Simple fade-in, no transform) ===
 function appendLine(index) {
-    if (!storyLines || index < 0 || index >= storyLines.length) return;
-  
-    const lineEl = document.createElement("p");
-    lineEl.textContent = storyLines[index];
-    lineEl.classList.add("new-line");
-  
-    // Set initial invisible state (optional: could be in CSS)
-    lineEl.style.opacity = 0;
-    lineEl.style.transform = "translateY(20px)";
-  
-    typewriterEl.appendChild(lineEl);
-    renderedLines.push(lineEl);
-  
-    // FORCE reflow
-    void lineEl.offsetHeight;
-  
-    // Now apply class that will trigger transition
-    lineEl.classList.add("show");
-  }
-  
+  if (!storyLines || index < 0 || index >= storyLines.length) return;
+
+  const lineEl = document.createElement("p");
+  lineEl.textContent = storyLines[index];
+  lineEl.classList.add("show"); // Just add this, no transitions in JS
+  typewriterEl.appendChild(lineEl);
+  renderedLines.push(lineEl);
+}
 
 function removeLastLine() {
   if (renderedLines.length > 0) {
