@@ -62,13 +62,14 @@ html, body {
 /* === STORY TEXT CONTAINER === */
 .typewriter-container p {
   opacity: 0;
-  transition: opacity 1.5s ease;
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: #f5e9d2; /* solid readable color */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* crisp shadow for readability */
+  gap: 1.5rem;
+  transition: opacity 2s ease; /* Slower fade-in */
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #f5e9d2;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
-
 
 .typewriter-container p.show {
   opacity: 1;
