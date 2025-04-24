@@ -1,22 +1,26 @@
-/* === GENERAL PAGE RESET === */
+/* === GLOBAL RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Apply fantasy-style font globally */
+/* === PAGE FONT & GLOBAL SETTINGS === */
 html, body {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'EB Garamond', Georgia, serif;
-  background-color: #1a1a1a;
+
+  /* Transparent background: removes gray behind content */
+  background-color: transparent;
+
+  /* Base text color fallback (still overridden below) */
   color: #f5e9d2;
 }
 
-/* === BACKGROUND IMAGE === */
+/* === BACKGROUND IMAGE STYLING === */
 .background {
   position: fixed;
   top: 0;
@@ -27,10 +31,10 @@ html, body {
   background-size: cover;
   background-position: center;
   z-index: -1;
-  filter: brightness(0.6);
+  filter: brightness(0.6); /* Slight darkening for readability */
 }
 
-/* === MAIN SCENE CONTAINER === */
+/* === SCENE CONTENT CONTAINER === */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
@@ -40,19 +44,24 @@ html, body {
   height: 100%;
   max-width: 900px;
   margin: 0 auto;
-  background: none;         /* Transparent background */
-  box-shadow: none;
+
+  /* Full transparency — removes panel effect */
+  background: none !important;
+  box-shadow: none !important;
 }
 
-/* === TITLE === */
+/* === TITLE TEXT === */
 .scene-title {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);  /* Helps title stand out */
+
+  /* Transparent text with glowing effect */
+  color: transparent;
+  text-shadow: 0 0 6px rgba(245, 233, 210, 0.95);
 }
 
-/* === STORY TEXT === */
+/* === STORY TEXT CONTAINER === */
 .typewriter-container {
   display: flex;
   flex-direction: column;
@@ -60,30 +69,34 @@ html, body {
   text-align: center;
   gap: 2rem;
   max-width: 60ch;
-  background: none;
+  background: none !important;
 }
 
+/* === STORY LINES === */
 .typewriter-container p {
   opacity: 0;
-  transition: opacity 1.5s ease; /* Slower fade-in */
+  transition: opacity 1.5s ease; /* Slow fade-in for drama */
   font-size: 1.2rem;
   line-height: 1.7;
-  color: #f5e9d2;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);  /* Keeps it readable */
+
+  /* Glowing fantasy-style text */
+  color: transparent;
+  text-shadow: 0 0 4px rgba(245, 233, 210, 0.85);
 }
 
 .typewriter-container p.show {
   opacity: 1;
 }
 
-/* === CONTROLS & BUTTON WRAPPERS === */
+/* === CONTROL AREA TRANSPARENCY FIX === */
 .controls,
 .nav-buttons,
 .choices {
-  background: none; /* Fully transparent */
+  background: none !important;
+  box-shadow: none !important;
 }
 
-/* === NAVIGATION BUTTONS === */
+/* === NAVIGATION ARROW BUTTONS === */
 .nav-buttons {
   display: flex;
   justify-content: center;
@@ -103,7 +116,7 @@ html, body {
 }
 
 .nav-btn:hover {
-  background-color: rgba(167, 138, 74, 0.2);
+  background-color: rgba(167, 138, 74, 0.2); /* Slight glow on hover */
   color: #fff;
 }
 
@@ -134,7 +147,7 @@ html, body {
 }
 
 .choice-button:hover {
-  background-color: rgba(167, 138, 74, 0.2);
+  background-color: rgba(167, 138, 74, 0.2); /* Hover glow */
   color: #fff;
   transform: translateY(-2px);
 }
