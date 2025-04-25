@@ -10,41 +10,67 @@
 
   <!-- Link to your shared stylesheet for layout + consistency -->
   <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!--Define the story lines-->
+    <script>
+        const storyLines = [
+        "You choose to not take the bag as it is very heavy",
+        "But you might have missed out on a lot,",
+        "but you don't have to carry that weight with you",
+        ];
+    </script>
+
+    <!-- Load the interactivity logic -->
+    <script defer src="../js/choice-js.js"></script>
 </head>
+
 <body>
-  <!-- Add background image for immersive look -->
-  <div class="background" style="background-image: url('../images/kingWithBag.jpg');"></div>
+    <!--Background image-->
+    <div class = "background" style="background-image: url('../images/king\ journey\'.jpg');"></div>
+    <div class="overlay"></div>
 
-  <div class="scene-wrapper">
-    <!-- Page title -->
-    <h1 class="scene-title">Take the Bag</h1>
+    <!-- Main container for everything -->
 
-    <!-- Main text block -->
-    <div class="typewriter-container">
-        <p style="font-size: 1.4rem; font-weight: bold;">You chose to take the bag.</p>
-        <p style="font-size: 1.4rem; font-weight: bold;">You take the bag. It holds:</p>
-        <p style="font-size: 1.4rem; font-weight: bold;">Bottles of iron brew to quench your thirst and sharpen your mind</p>
-        <p style="font-size: 1.4rem; font-weight: bold;">Warm shortbreads, Candles for light and warmth</p>
-        <p style="font-size: 1.4rem; font-weight: bold;">Old stock-and-horn for signaling</p>
-        <p style="font-size: 1.4rem; font-weight: bold;">The queen's cloaks, for the cold</p>
-        <p style="font-size: 1.4rem; font-weight: bold;">And perhaps most importantly — her journal, bound in runes and whispers</p>
-      </div>
-      
-    <!-- Navigation to the next scene -->
-    <div class="controls">
-      <div class="choices show">
-        <a href="../choices/scene02_Dwarves.html">
-          <button class="choice-button">Next Page</button>
-        </a>
-      </div>
+    <div class = "scene-wrapper">
+
+        <h1 class="scene-title">Leave The Bag</h1>
+
+        <!--Story lines-->
+        <div id="typewriter" class="typewriter-container"></div>
+
+        <!--Navigation and choices go here-->
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn">⬅️</button>
+                <button id="next" class="nav-btn">➡️</button>
+            </div>
+
+            <div class="choices" id="choices">
+                <a href="../choices/scene02_Dwarves.html"><button class="choice-button">Next Page</button></a>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <!-- Fade-in script for smooth page load -->
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
-    });
-  </script>
 </body>
+
+<!-- Fade-in script for smooth page load -->
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        document.body.classList.add("fade-in");
+    });
+</script>
+
+<!-- AI disclaimer bottom-right -->
+<div style="
+  position: fixed;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color:white;
+  opacity: 0.6;
+  font-style: italic;
+  pointer-events: none;
+  z-index: 10;
+">
+  All images are AI generated.
+</div>
 </html>
