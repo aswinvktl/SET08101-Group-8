@@ -1,14 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leave the bag</title>
-    <h4>Leave the bag</h4>
-    <p>You leave the bag</p>
-    <p>You choose not to take the bag as it is very heavy. But you might have missed out on a lot, 
-    but you don't have to carry that weight with you</p>
+    <!--fantasy font-->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <!-- Link to your shared stylesheet for layout + consistency -->
+    <link rel="stylesheet" href="../css/choice-style.css">
+</head>
+<body>
+    <!-- Add background image for immersive look -->
+    <div class="background" style="background-image: url('../images/.jpg');"></div>
 
-    <p><a href="../choices/scene02_Dwarves.html">Next page</a></p>
-    <p><a href="scene01_Departure.html">Back</a></p>
-    <p><a href="scene01a.html">Home</a></p>
+    <div class="scene-wrapper">
+        <!-- Page title -->
+        <h1 class="scene-title">Leave the bag</h1>
+
+        <!-- Main text block -->
+        <div class="typewriter-container">
+            <p>You chose to leave the bag.</p>
+            <p>You leave the bag. It holds:</p>
+            <p>You choose not to take the bag as it is very heavy. But you might have missed out on a lot, 
+                but you don't have to carry that weight with you
+            </p>
+        </div>            
     
+        <!-- Navigation to the next scene -->
+        <div class="controls">
+            <div class="choices show">
+                <a href="../choices/scene02_Dwarves.html">
+                    <button class="choice-button">Next Page</button>
+                </a>
+            </div>
+        </div>
+    </div>
+  <!-- Fade-in script for smooth page load -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
+  </script>
+</body>
 </html>
