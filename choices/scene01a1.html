@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scene 2 – Dungeons of Dwarves</title>
+
+  <!-- Font & styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story lines -->
+  <script>
+    const storyLines = [
+      "You thanked everyone and started your expedition.",
+      "By evening, the ship had left the valley behind. Mist moved like ghosts across the water. The day was coming to an end. The sails creaked softly.",
+      "The sails stretched above him as the loch shimmered with fading light. Bruhaven disappeared behind mist and memory.",
+      "Below deck, the ship creaked with quiet familiarity. The King stepped into the small cabin, the air still carrying the scent of her cloak.",
+      "Something caught his eye — a glimpse of brown leather beneath a folded blanket.",
+      "He reached down slowly…",
+      "The bag.",
+      "The same one he’d left behind.",
+      "He stared at it. Frowned.",
+      "“Impossible,” he whispered. “I said no.”",
+      "A soft shuffle. A low, casual bark.",
+      "Haggis sat nearby, tail wagging, tongue out, eyes full of innocent mischief.",
+      "The King blinked… then smiled.",
+      "“Of course. Of course it was you, you naughty boy.”",
+      "He knelt, ruffled Haggis’s ears, and opened the bag. Iron Brew, shortbread, candles, her cloak, her book. All of it.",
+      "“You never really leave anything behind, do you?”",
+      "He stood, slung the bag over his shoulder, and looked toward the prow of the ship.",
+      "The journey had only just begun - but he’s not empty handed.",
+      "Suddenly, a split in the water appeared two diverging paths. Your map glowed faintly, but offered no clarity.",
+      "To the left lay the realm of the dwarves, whispered of in old tales.",
+      "To the right, nothing but shadow and uncertainty."
+    ];
+  </script>
+
+  <!-- Logic for scene progression -->
+  <script defer src="../js/choice-js.js"></script>
+</head>
+<body>
+  <div class="background" style="background-image: url('../images/ship-deck.jpg');"></div>
+  <div class="overlay"></div>
+
+  <div class="scene-wrapper">
+    <h1 class="scene-title">Scene 2 – Dungeons of Dwarves</h1>
+
+    <div id="typewriter" class="typewriter-container"></div>
+
+    <div class="controls">
+      <div class="nav-buttons">
+        <button id="prev" class="nav-btn">⬅️</button>
+        <button id="next" class="nav-btn">➡️</button>
+      </div>
+
+      <div class="choices" id="choices">
+        <a href="scene02a_dwarves.html"><button class="choice-button">a. Turn left, toward the dwarves</button></a>
+        <a href="scene02b_unknown.html"><button class="choice-button">b. Turn right, toward the unknown</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fade-in effect -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
+  </script>
+
+  <!-- AI image disclaimer -->
+  <div style="
+    position: fixed;
+    bottom: 0.5rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    color: #d0c8b0;
+    opacity: 0.6;
+    font-style: italic;
+    pointer-events: none;
+    z-index: 10;
+  ">
+    All images are AI generated.
+  </div>
+</body>
+</html>
