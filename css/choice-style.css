@@ -32,7 +32,7 @@ html, body {
   background-size: cover;
   background-position: center;
   z-index: -1;
-  filter: brightness(0.6); /* Slight darkening for readability */
+  filter: brightness(1.0); /* Slight darkening for readability */
 }
 
 /* === SCENE CONTENT CONTAINER === */
