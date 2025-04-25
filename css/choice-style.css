@@ -32,7 +32,7 @@ html, body {
   background-size: cover;
   background-position: center;
   z-index: -1;
-  filter: brightness(0.3); /* Slight darkening for readability */
+  filter: brightness(0.5); /* Slight darkening for readability */
 }
 /* === DARK OVERLAY FOR TEXT READABILITY === */
 .overlay {
