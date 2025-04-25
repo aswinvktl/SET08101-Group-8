@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 /* === GLOBAL RESET === */
 * {
   margin: 0;
@@ -160,4 +161,14 @@ html, body {
   background-color: rgba(167, 138, 74, 0.2); /* Hover glow */
   color: #fff;
   transform: translateY(-2px);
+}
+
+/* Page fade transition */
+body {
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
+}
+
+body.fade-in {
+  opacity: 1;
 }

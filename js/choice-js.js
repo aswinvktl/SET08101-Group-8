@@ -13,16 +13,14 @@ function appendLine(index) {
   
     const lineEl = document.createElement("p");
     lineEl.textContent = storyLines[index];
-    
-    // Apply base styles first
-    lineEl.classList.add("line"); // <- base state (opacity: 0)
+    lineEl.classList.add("line");
     typewriterEl.appendChild(lineEl);
     renderedLines.push(lineEl);
   
-    // Force browser to recognize the element and then add the "show" class
     setTimeout(() => {
       lineEl.classList.add("show");
-    }, 10); // Short delay ensures transition is triggered
+      lineEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 10);
   }
   
 function removeLastLine() {
