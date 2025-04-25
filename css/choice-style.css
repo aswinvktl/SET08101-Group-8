@@ -34,6 +34,16 @@ html, body {
   z-index: -1;
   filter: brightness(0.3); /* Slight darkening for readability */
 }
+/* === DARK OVERLAY FOR TEXT READABILITY === */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* 0.4 = 40% black overlay */
+  z-index: 0; /* Just above background, but behind all text */
+}
 
 /* === SCENE CONTENT CONTAINER === */
 .scene-wrapper {
