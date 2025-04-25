@@ -1,72 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave the bag</title>
-    <!--fantasy font-->
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave the Bag</title>
 
+  <!-- Font & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/choice-style.css">
 
-    <!-- Link to your shared stylesheet for layout + consistency -->
-    <link rel="stylesheet" href="../css/choice-style.css">
+  <!-- Define the story lines -->
+  <script>
+    const storyLines = [
+      "You choose to leave the bag as it is very heavy.",
+      "You might have missed out on a lot,",
+      "But you don't have to carry that weight with you."
+    ];
+  </script>
 
-    <!-- Define the story lines -->
-     <script>
-        const storyLines = [
-        "you choose to leave the bag as it is very heavy",
-        "you might have missed out on a lot,",
-        "but you don't have to carry that weight with you",
-        ];
-     </script>
-
-     <script defer src="../js/choice-js.js"></script>
+  <!-- JS for scene logic -->
+  <script defer src="../js/choice-js.js"></script>
 </head>
-
 <body>
-    <!-- Background image -->
-    <div class="background" style="background-image: url('../images/king\ journey\'.jpg');"></div>
+  <!-- Background image -->
+  <div class="background" style="background-image: url('../images/king%20journey.jpg');"></div>
 
-    <!-- Main container for everything -->
-     <div class="scene-title">Leave The Bag</div>
-     <div id="typewriter" class="typewriter-container"></div>
+  <!-- Optional overlay -->
+  <div class="overlay"></div>
 
-    <!-- Navigation and choices go here -->
-     <div class="controls">
-        <div class="nav-buttons">
-            <button id="prev" class="nav-btn">⬅️</button>
-            <button id="next" class="nav-btn">➡️</button>
-        </div>
+  <!-- Main container for alignment -->
+  <div class="scene-wrapper">
 
-        <div class="choices" id="choices">
-            <a href="../choices/scene02_Dwarves.html"><button class="choice-button">Next Page</button></a>
-        </div>
-     </div>
-</body>
-  <!-- Fade-in script for smooth page load -->
+    <!-- Title -->
+    <h1 class="scene-title">Leave the Bag</h1>
+
+    <!-- Story text -->
+    <div id="typewriter" class="typewriter-container"></div>
+
+    <!-- Navigation buttons + choices -->
+    <div class="controls">
+      <div class="nav-buttons">
+        <button id="prev" class="nav-btn">⬅️</button>
+        <button id="next" class="nav-btn">➡️</button>
+      </div>
+
+      <div class="choices" id="choices">
+        <a href="../choices/scene02_Dwarves.html"><button class="choice-button">Next Page</button></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fade-in page script -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("fade-in");
     });
   </script>
-</body>
 
-
-
-
-<!-- AI disclaimer bottom-right -->
-<div style="
-  position: fixed;
-  bottom: 0.5rem;
-  right: 1rem;
-  font-size: 0.75rem;
-  color: #d0c8b0;
-  opacity: 0.6;
-  font-style: italic;
-  pointer-events: none;
-  z-index: 10;
-">
-  All images are AI generated.
-</div>
+  <!-- AI image disclaimer -->
+  <div style="
+    position: fixed;
+    bottom: 0.5rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    color: #d0c8b0;
+    opacity: 0.6;
+    font-style: italic;
+    pointer-events: none;
+    z-index: 10;
+  ">
+    All images are AI generated.
+  </div>
 </body>
 </html>
