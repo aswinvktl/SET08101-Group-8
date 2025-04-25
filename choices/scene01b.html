@@ -6,40 +6,67 @@
     <title>Leave the bag</title>
     <!--fantasy font-->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+
     <!-- Link to your shared stylesheet for layout + consistency -->
     <link rel="stylesheet" href="../css/choice-style.css">
+
+    <!-- Define the story lines -->
+     <script>
+        const storyLines = [
+        "you choose to leave the bag as it is very heavy",
+        "you might have missed out on a lot,",
+        "but you don't have to carry that weight with you",
+        ];
+     </script>
+
+     <script defer src="../js/choice-js.js"></script>
 </head>
+
 <body>
-    <!-- Add background image for immersive look -->
-    <div class="background" style="background-image: url('../images/king\ journey\'.jpg');"></div>
+    <!-- Background image -->
+    <div class="background" style="background-image: url('../images/king journey.jpg');"></div>
 
-    <div class="scene-wrapper">
-        <!-- Page title -->
-        <h1 class="scene-title">Leave the bag</h1>
+    <!-- Main container for everything -->
+     <div class="scene-title">Leave The Bag</div>
+     <div id="typewriter" class="typewriter-container"></div>
 
-        <!-- Main text block -->
-        <div class="typewriter-container">
-            <p style="font-size: 1.4rem; font-weight: bold;">You chose to leave the bag</p>
-            <p style="font-size: 1.4rem; font-weight: bold;">You leave the bag</p>
-            <p style="font-size: 1.4rem; font-weight: bold;">You choose not to take the bag as it is very heavy</p>
-            <p style="font-size: 1.4rem; font-weight: bold;">But you might have missed out on a lot,</p>
-            <p style="font-size: 1.4rem; font-weight: bold;">but you don't have to carry that weight with you</p>
-        </div>            
-    
-        <!-- Navigation to the next scene -->
-        <div class="controls">
-            <div class="choices show">
-                <a href="../choices/scene02_Dwarves.html">
-                    <button class="choice-button">Next Page</button>
-                </a>
-            </div>
+    <!-- Navigation and choices go here -->
+     <div class="controls">
+        <div class="nav-buttons">
+            <button id="prev" class="nav-btn">⬅️</button>
+            <button id="next" class="nav-btn">➡️</button>
         </div>
-    </div>
+
+        <div class="choices" id="choices">
+            <a href="../choices/scene02_Dwarves.html"><button class="choice-button">Next Page</button></a>
+        </div>
+     </div>
+</body>
   <!-- Fade-in script for smooth page load -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("fade-in");
     });
   </script>
+</body>
+
+
+
+
+<!-- AI disclaimer bottom-right -->
+<div style="
+  position: fixed;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: #d0c8b0;
+  opacity: 0.6;
+  font-style: italic;
+  pointer-events: none;
+  z-index: 10;
+">
+  All images are AI generated.
+</div>
 </body>
 </html>
