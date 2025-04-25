@@ -113,13 +113,18 @@ html, body {
 
 
 /* === UNIVERSAL NAVIGATION BAR === */
-.top-bar {
+
+/* === TOP NAV BUTTONS === */
+.top-nav {
   position: fixed;
   top: 1rem;
-  left: 1rem;
+  left: 0;
+  width: 100%;
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  padding: 0 1rem;
   z-index: 20;
+  pointer-events: none; /* let buttons decide interaction */
 }
 
 .nav-button {
@@ -132,6 +137,7 @@ html, body {
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  pointer-events: auto; /* allow interaction */
 }
 
 .nav-button:hover {
