@@ -1,14 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Home</title>
-    <h2>Take the bag</h2>
-    <h4>You chose the take the bag</h4>
-    <p>You take the bag</p>
-    <p>The bag has supplies. Bottles of iron brew to quinch your thirst and provide you with knowledge.
-        Some warm shortbreads, freshly baked to satisfy your hunger. Candles to bring you light and warmth.
-        An old stock-and-horn for him to signal.The queens warm cloaks for the weather.
-        And perhaps, the most important her journal, words of magic.
-    </p>
-    <p><a href="../choices/scene02_Dwarves.html">Next page</a></p>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You took the Bag</title>
+
+  <!-- Use your fantasy font -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+  <!-- Link to your shared stylesheet for layout + consistency -->
+  <link rel="stylesheet" href="../css/choice-style.css" />
+</head>
+<body>
+  <!-- Add background image for immersive look -->
+  <div class="background" style="background-image: url('../images/');"></div>
+
+  <div class="scene-wrapper">
+    <!-- Page title -->
+    <h1 class="scene-title">Take the Bag</h1>
+
+    <!-- Main text block -->
+    <div class="typewriter-container">
+      <p>You chose to take the bag.</p>
+      <p>You take the bag. It holds:</p>
+      <p>
+        Bottles of Irn-Bru to quench your thirst and sharpen your mind.<br>
+        Warm shortbreads, fresh from the hearth.<br>
+        Candles for light and warmth.<br>
+        An old stock-and-horn for signaling.<br>
+        The queen's cloaks, for the cold.<br>
+        And perhaps most importantly — her journal, bound in runes and whispers.
+      </p>
+    </div>
+
+    <!-- Navigation to the next scene -->
+    <div class="controls">
+      <div class="choices show">
+        <a href="../choices/scene02_Dwarves.html">
+          <button class="choice-button">Next Page</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fade-in script for smooth page load -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
+  </script>
+</body>
 </html>
