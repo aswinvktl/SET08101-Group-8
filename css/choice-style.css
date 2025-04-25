@@ -110,15 +110,19 @@ html, body {
   background: none !important;
   box-shadow: none !important;
 }
-/* === UNIVERSAL TOP NAV / BACK BUTTON === */
+
+
+/* === UNIVERSAL NAVIGATION BAR === */
 .top-bar {
   position: fixed;
   top: 1rem;
   left: 1rem;
+  display: flex;
+  gap: 1rem;
   z-index: 20;
 }
 
-.back-button {
+.nav-button {
   font-family: 'EB Garamond', Georgia, serif;
   background-color: transparent;
   color: #f5e9d2;
@@ -130,7 +134,7 @@ html, body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.back-button:hover {
+.nav-button:hover {
   background-color: rgba(167, 138, 74, 0.2);
   color: #fff;
 }
