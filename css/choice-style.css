@@ -112,40 +112,6 @@ html, body {
 }
 
 
-/* === UNIVERSAL NAVIGATION BAR === */
-
-/* === TOP NAV BUTTONS === */
-.top-nav {
-  position: fixed;
-  top: 1rem;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
-  z-index: 20;
-  pointer-events: none; /* let buttons decide interaction */
-}
-
-.nav-button {
-  font-family: 'EB Garamond', Georgia, serif;
-  background-color: transparent;
-  color: #f5e9d2;
-  font-size: 1.1rem;
-  text-decoration: none;
-  border: 2px solid #A78A4A;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  pointer-events: auto; /* allow interaction */
-}
-
-.nav-button:hover {
-  background-color: rgba(167, 138, 74, 0.2);
-  color: #fff;
-}
-
-
 /* === NAVIGATION ARROW BUTTONS === */
 .nav-buttons {
   display: flex;
