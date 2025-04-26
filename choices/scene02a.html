@@ -1,27 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>The Dwarf Village</title>
-    <h4>The Dwarves</h4>
-    <div class="background" style="background-image: url('../images/kingAndDwarves.jpg');"></div>
-    <p> You decide to go left.
-        You raise the horn the Stock and horn, made by ebony and cow horns and blow it gently - saying you mean no harm, like a coded message.
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dwarf Village</title>
 
-        The torches light up and the stone door grind open
-        
-        The Dwarves appear. You offer them the shortbread (if choice 1a) and they offer you shelter. (if not they still offer you shelter).
-        
-        They feed you and give you a place to rest your head. 
-        
-        The old granny dwarf sits beside the fire and recites riddles, you vaguely listen, but your eyelids are heavy. 
-        
-        “I am so simple that i can only point yet i guide men all over the world”
-        
-        You sleep well. In the morning, they offer you a present: A basket-hilted sword, forged runes that glow near cursed creatures. 
-        
-        “This shall help, or at least, give you a choice!!!” said the dwarf king as he waved goodbye to you
-    </p>
-    <p><a href="../choices/scene03_DruidsGlen.html">Next Page</a></p>
-    <p><a href="../index.html">Home</a></p>
+  <!-- Fantasy font -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 
+  <!-- Link to shared CSS -->
+  <link rel="stylesheet" href="../css/choice-style.css">
+</head>
+
+<body>
+  <!-- Background image -->
+  <div class="background" style="background-image: url('../images/kingAndDwarves.jpg');"></div>
+
+  <div class="scene-wrapper">
+    <!-- Scene title -->
+    <h1 class="scene-title">The Dwarves</h1>
+
+    <!-- Story text -->
+    <div class="typewriter-container">
+      <p>You decide to go left. You raise the Stock and Horn, made by ebony and cow horns, and blow it gently — saying you mean no harm, like a coded message.</p>
+
+      <p>The torches light up and the stone door grinds open. The Dwarves appear. You offer them the shortbread (if choice 1a) and they offer you shelter. (If not, they still offer you shelter.)</p>
+
+      <p>They feed you and give you a place to rest your head. The old granny dwarf sits beside the fire and recites riddles. You vaguely listen, but your eyelids are heavy.</p>
+
+      <p>“I am so simple that I can only point, yet I guide men all over the world.”</p>
+
+      <p>You sleep well. In the morning, they offer you a present: A basket-hilted sword, forged with runes that glow near cursed creatures.</p>
+
+      <p>“This shall help — or at least, give you a choice!” said the dwarf king as he waved goodbye to you.</p>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="controls">
+      <div class="choices show">
+        <a href="../choices/scene03_DruidsGlen.html">
+          <button class="choice-button">Next Page</button>
+        </a>
+        <a href="../index.html">
+          <button class="choice-button">Home</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fade-in page script -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
+  </script>
+
+  <!-- AI image disclaimer -->
+  <div style="
+    position: fixed;
+    bottom: 0.5rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    color: #d0c8b0;
+    opacity: 0.6;
+    font-style: italic;
+    pointer-events: none;
+    z-index: 10;
+  ">
+    All images are AI generated.
+  </div>
+</body>
 </html>
