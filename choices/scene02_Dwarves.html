@@ -6,52 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dungeons of Dwarves</title>
 
-    <!--fantasy font from google-->
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <!-- Fantasy font from Google -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
 
-    <!--CSS PAGE-->
+    <!-- CSS PAGE -->
     <link rel="stylesheet" href="../css/choice-style.css" />
 
-
-    <!--Story Lines Defined-->
+    <!-- Story Lines Defined -->
     <script>
         const storyLines = [
-            "You thanked everyone and started your expedition",
-            "By evening, the ship had left the valley behind. Mist moved like ghosts across the water",
-            "The day was coming to an end. The sails creaked softly. Suddenly, there appeared two diverging paths",
-            "To the left lay the realm of the dwarves, whispered of in old tales",
-            "To the right, nothing but shadow and uncertainty",
+            "You thanked everyone and started your expedition.",
+            "By evening, the ship had left the valley behind. Mist moved like ghosts across the water.",
+            "The day was coming to an end. The sails creaked softly. Suddenly, there appeared two diverging paths.",
+            "To the left lay the realm of the dwarves, whispered of in old tales.",
+            "To the right, nothing but shadow and uncertainty."
         ];
     </script>
 
-    <!--Load Interactivity loogic using JS-->
+    <!-- Load Interactivity Logic Using JS -->
     <script defer src="../js/choice-js.js"></script>
 </head>
 
-<body>
+<body class="fade-in">
 
-    <!--Background Image-->
+    <!-- Background Image -->
     <div class="background" style="background-image: url('../images/divergingPath.jpg');"></div>
 
-    <!--Main container for everything-->
+    <!-- Main container for everything -->
+    <main class="scene-wrapper">
 
-    <div class="scene-wrapper">
-        <h1 class="scene-title">Dungeons Of Dwarves</h1>
+        <!-- Title -->
+        <h1 class="scene-title">Dungeons of Dwarves</h1>
 
-        <!--Story Lines-->
-        <div id="typewriter" class="typewriter-container"></div>
+        <!-- Story Lines -->
+        <section id="typewriter" class="typewriter-container">
+            <!-- Story lines will be injected here -->
+        </section>
 
-        <!--Navigation buttons-->
+        <!-- Navigation buttons + choices -->
         <div class="controls">
             <div class="nav-buttons">
-                <button id="prev" class="nav-btn">⬅️</button>
-                <button id="next" class="nav-btn">➡️</button>
+                <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
             </div>
 
-            <div class <p>Do you want to go left or right?</p>
-                <p>Choice 2</p>
-                <p><a href="../choices/scene02a.html">Turn left, toward the dwarves</a></p>
-                <p><a href="../choices/scene02b.html">Turn right, toward the unknown</a></p>
-                <p><a href="../index.html">Home</a></p>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene02a.html" class="choice-button">a. Enter the realm of the dwarves</a>
+                <a href="../choices/scene02b.html" class="choice-button">b. Take the path to the right</a>
+            </nav>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+
+    <!-- Fade-in page effect -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+
+</body>
 
 </html>
