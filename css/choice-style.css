@@ -34,7 +34,6 @@ body.fade-in {
   filter: brightness(0.5);
   backdrop-filter: blur(2px);
 }
-
 /* === SCENE CONTENT CONTAINER === */
 .scene-wrapper {
   display: flex;
