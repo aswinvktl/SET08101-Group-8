@@ -14,8 +14,7 @@ html, body {
   font-family: 'EB Garamond', Georgia, serif;
   background-color: transparent;
   color: #f5e9d2;
-  opacity: 0;
-  transition: opacity 0.8s ease-in;
+  opacity: 1; 
 }
 
 
