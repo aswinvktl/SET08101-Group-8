@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,52 +22,48 @@
   <!-- JS for scene logic -->
   <script defer src="../js/choice-js.js"></script>
 </head>
-<body>
+
+<body class="fade-in">
+
   <!-- Background image -->
-  <div class="background" style="background-image: url('../images/king\ journey\'.jpg');"></div>
+  <div class="background" style="background-image: url('../images/king_journey.jpg');"></div>
 
   <!-- Main container for alignment -->
-  <div class="scene-wrapper">
+  <main class="scene-wrapper">
 
     <!-- Title -->
     <h1 class="scene-title">Leave the Bag</h1>
 
     <!-- Story text -->
-    <div id="typewriter" class="typewriter-container"></div>
+    <section id="typewriter" class="typewriter-container">
+      <!-- Story lines will be injected here -->
+    </section>
 
     <!-- Navigation buttons + choices -->
     <div class="controls">
       <div class="nav-buttons">
-        <button id="prev" class="nav-btn">⬅️</button>
-        <button id="next" class="nav-btn">➡️</button>
+        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
       </div>
 
-      <div class="choices" id="choices">
-        <a href="../choices/scene01a1.html"><button class="choice-button">Next Page</button></a>
-      </div>
+      <nav id="choices" class="choices" aria-label="Choice navigation">
+        <a href="../choices/scene01a1.html" class="choice-button">Next Page</a>
+      </nav>
     </div>
-  </div>
 
-  <!-- Fade-in page script -->
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-in page effect -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("fade-in");
     });
   </script>
 
-  <!-- AI image disclaimer -->
-  <div style="
-    position: fixed;
-    bottom: 0.5rem;
-    right: 1rem;
-    font-size: 0.75rem;
-    color: #d0c8b0;
-    opacity: 0.6;
-    font-style: italic;
-    pointer-events: none;
-    z-index: 10;
-  ">
-    All images are AI generated.
-  </div>
 </body>
+
 </html>

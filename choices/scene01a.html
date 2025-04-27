@@ -14,7 +14,7 @@
 
 
 
-    <!--Define the story lines-->
+    <!--story lines-->
     <script>
         const storyLines = [
             "you took the huge leather bag, it is quite heavy. you decided to take a look inside.",
@@ -30,53 +30,40 @@
     <script defer src="../js/choice-js.js"></script>
 </head>
 
-<body>
-    <!--Background image-->
-    <div class="background" style="background-image: url('../images/kingWithBag.jpg');"></div>
+<body class="fade-in">
+    <div class="background" style="background-image: url('../images/kingFoundBag.jpg');"></div>
 
-    <!-- Main container for everything -->
+    <main class="scene-wrapper">
 
-    <div class="scene-wrapper">
+        <h1 class="scene-title">The Bag</h1>
 
-        <h1 class="scene-title">Take The Bag</h1>
+        <section id="typewriter" class="typewriter-container"> </section>
 
-        <!--Story lines-->
-        <div id="typewriter" class="typewriter-container"></div>
-
-        <!--Navigation and choices go here-->
         <div class="controls">
             <div class="nav-buttons">
-                <button id="prev" class="nav-btn">⬅️</button>
-                <button id="next" class="nav-btn">➡️</button>
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="prev" class="nav-btn" aria-label="Next Line">➡️</button>
             </div>
 
-            <div class="choices" id="choices">
-                <a href="../choices/scene02_Dwarves.html"><button class="choice-button">Next Page</button></a>
-            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene02_Dwarves.html" class="choice-button">Next Page</a>
+            </nav>
         </div>
-    </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <small>All images are AI generated</small>
+    </footer>
+
+    <!--Page fade in effect-->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+
+    </script>
+
 </body>
-
-<!-- Fade-in script for smooth page load -->
-<script>
-    window.addEventListener("DOMContentLoaded", () => {
-        document.body.classList.add("fade-in");
-    });
-</script>
-
-<!-- AI disclaimer bottom-right -->
-<div style="
-  position: fixed;
-  bottom: 0.5rem;
-  right: 1rem;
-  font-size: 0.75rem;
-  color:white;
-  opacity: 0.6;
-  font-style: italic;
-  pointer-events: none;
-  z-index: 10;
-">
-    All images are AI generated.
-</div>
 
 </html>
