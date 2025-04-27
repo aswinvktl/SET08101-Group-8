@@ -14,9 +14,8 @@ html, body {
   font-family: 'EB Garamond', Georgia, serif;
   background-color: transparent;
   color: #f5e9d2;
-  opacity: 1; 
+  opacity: 1;
 }
-
 
 body.fade-in {
   opacity: 1;
