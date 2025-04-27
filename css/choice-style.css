@@ -10,15 +10,13 @@
 /* === PAGE FONT & GLOBAL SETTINGS === */
 html, body {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: 'EB Garamond', Georgia, serif;
   background-color: transparent;
   color: #f5e9d2;
   opacity: 0;
   transition: opacity 0.8s ease-in;
 }
+
 
 body.fade-in {
   opacity: 1;
