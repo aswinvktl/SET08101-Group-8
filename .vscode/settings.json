@@ -1,4 +1,18 @@
 {
     "typescript.tsserver.web.projectWideIntellisense.enabled": false,
-    "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": true
+    "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": true,
+    "editor.quickSuggestions": {
+        "other": "off"
+    },
+    "editor.parameterHints.enabled": false,
+    "editor.snippetSuggestions": "none",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingComments": "never",
+    "editor.autoClosingQuotes": "never",
+    "html.autoClosingTags": false,
+    "javascript.autoClosingTags": false,
+    "typescript.autoClosingTags": false,
+    "editor.wordBasedSuggestions": "off",
+    "terminal.integrated.suggest.suggestOnTriggerCharacters": false,
+    "editor.suggestOnTriggerCharacters": false
 }
