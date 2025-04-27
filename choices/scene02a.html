@@ -2,72 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!--Help make the page mobile friendly!-->
   <title>The Dwarf Village</title>
 
-  <!-- Fantasy font -->
+  <!-- Google Fonts: EB Garamond for fantasy feel -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 
-  <!-- Link to shared CSS -->
+  <!-- External CSS -->
   <link rel="stylesheet" href="../css/choice-style.css">
+
 </head>
 
 <body>
-  <!-- Background image -->
-  <div class="background" style="background-image: url('../images/kingAndDwarves.jpg');"></div>
 
-  <div class="scene-wrapper">
-    <!-- Scene title -->
+  <header class="site-header">
     <h1 class="scene-title">The Dwarves</h1>
+  </header>
 
-    <!-- Story text -->
-    <div class="typewriter-container">
-      <p>You decide to go left. You raise the Stock and Horn, made by ebony and cow horns, and blow it gently — saying you mean no harm, like a coded message.</p>
-
-      <p>The torches light up and the stone door grinds open. The Dwarves appear. You offer them the shortbread (if choice 1a) and they offer you shelter. (If not, they still offer you shelter.)</p>
-
-      <p>They feed you and give you a place to rest your head. The old granny dwarf sits beside the fire and recites riddles. You vaguely listen, but your eyelids are heavy.</p>
-
-      <p>“I am so simple that I can only point, yet I guide men all over the world.”</p>
-
-      <p>You sleep well. In the morning, they offer you a present: A basket-hilted sword, forged with runes that glow near cursed creatures.</p>
-
-      <p>“This shall help — or at least, give you a choice!” said the dwarf king as he waved goodbye to you.</p>
-    </div>
-
-    <!-- Navigation buttons -->
-    <div class="controls">
-      <div class="choices show">
-        <a href="../choices/scene03_DruidsGlen.html">
-          <button class="choice-button">Next Page</button>
-        </a>
-        <a href="../index.html">
-          <button class="choice-button">Home</button>
-        </a>
-      </div>
-    </div>
+  <div class="background-image" role="img" aria-label="A king and dwarves standing in front of a stone door." style="background-image: url('../images/kingAndDwarves.jpg');">
+    <!-- Background purely decorative, marked properly for screen readers, the text is there for accesibility later -->
   </div>
 
-  <!-- Fade-in page script -->
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
-    });
-  </script>
+  <main class="scene-wrapper">
+    
+    <section class="story typewriter-effect">
+      <p>You decide to go left. You raise the Stock and Horn, made of ebony and cow horns, and blow it gently — a coded message of peace.</p>
 
-  <!-- AI image disclaimer -->
-  <div style="
-    position: fixed;
-    bottom: 0.5rem;
-    right: 1rem;
-    font-size: 0.75rem;
-    color: #d0c8b0;
-    opacity: 0.6;
-    font-style: italic;
-    pointer-events: none;
-    z-index: 10;
-  ">
-    All images are AI generated.
-  </div>
+      <p>The torches flare and the stone door grinds open. Dwarves appear. You offer them the shortbread (if you had it), but they welcome you warmly either way.</p>
+
+      <p>They feed you, offering you shelter. An old granny dwarf sits beside the fire, reciting riddles. Your eyelids grow heavy.</p>
+
+      <blockquote>"I am so simple that I can only point, yet I guide men all over the world."</blockquote>
+
+      <p>You sleep soundly. In the morning, they gift you a basket-hilted sword, engraved with glowing runes to ward off cursed beings.</p>
+
+      <p>"This shall help — or at least, give you a choice!" says the dwarf king, waving goodbye.</p>
+    </section>
+
+    <nav class="scene-navigation" aria-label="Page navigation">
+      <ul class="navigation-buttons">
+        <li>
+          <a href="../choices/scene03_DruidsGlen.html" class="button-link">Next Page</a>
+        </li>
+        <li>
+          <a href="../index.html" class="button-link">Home</a>
+        </li>
+      </ul>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <script src="../js/page-effects.js"></script>
+  
 </body>
 </html>

@@ -1,58 +1,95 @@
 // === ELEMENT REFERENCES ===
-const typewriterEl = document.getElementById("typewriter");
-const choicesEl = document.getElementById("choices");
-const nextBtn = document.getElementById("next");
-const prevBtn = document.getElementById("prev");
+const typewriterContainer = document.getElementById("typewriter");
+const choicesContainer = document.getElementById("choices");
+const nextButton = document.getElementById("next");
+const prevButton = document.getElementById("prev");
 
-let currentLine = 0;
-let renderedLines = [];
+let currentLineIndex = 0;
+const renderedLines = [];
 
-// === ADD NEW LINE (simple fade-in) ===
-function appendLine(index) {
-    if (!storyLines || index < 0 || index >= storyLines.length) return;
-  
-    const lineEl = document.createElement("p");
-    lineEl.textContent = storyLines[index];
-    lineEl.classList.add("line");
-    typewriterEl.appendChild(lineEl);
-    renderedLines.push(lineEl);
-  
-    setTimeout(() => {
-      lineEl.classList.add("show");
-      lineEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }, 10);
-  }
-  
-function removeLastLine() {
+// === SAFETY CHECK ===
+if (!typewriterContainer || !choicesContainer || !nextButton || !prevButton) {
+  console.error("One or more required elements are missing. Cannot initialize story scene.");
+}
+
+// === FUNCTIONS ===
+
+// Add a new line (with fade-in effect)
+function showLine(index) {
+  if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent = storyLines[index];
+  paragraph.classList.add("line");
+  typewriterContainer.appendChild(paragraph);
+  renderedLines.push(paragraph);
+
+  // Trigger fade-in animation
+  requestAnimationFrame(() => {
+    paragraph.classList.add("show");
+    paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
+  });
+}
+
+// Remove the last shown line
+function hideLastLine() {
   if (renderedLines.length > 0) {
-    const last = renderedLines.pop();
-    last.remove();
+    const lastLine = renderedLines.pop();
+    lastLine.remove();
   }
 }
 
-nextBtn.addEventListener("click", () => {
-  if (currentLine < storyLines.length - 1) {
-    currentLine++;
-    appendLine(currentLine);
+// Handle clicking 'Next'
+function handleNext() {
+  if (currentLineIndex < storyLines.length - 1) {
+    currentLineIndex++;
+    showLine(currentLineIndex);
   } else {
-    choicesEl.style.display = "block";
-    setTimeout(() => {
-      choicesEl.classList.add("show");
-    }, 10);
-    nextBtn.style.display = "none";
+    revealChoices();
   }
-});
+}
 
-prevBtn.addEventListener("click", () => {
-  if (currentLine > 0) {
-    removeLastLine();
-    currentLine--;
-    choicesEl.classList.remove("show");
-    choicesEl.style.display = "none";
-    nextBtn.style.display = "inline-block";
+// Handle clicking 'Previous'
+function handlePrevious() {
+  if (currentLineIndex > 0) {
+    hideLastLine();
+    currentLineIndex--;
+    hideChoices();
   }
-});
+}
 
+// Show the choices buttons after story ends
+function revealChoices() {
+  choicesContainer.style.display = "block";
+  requestAnimationFrame(() => {
+    choicesContainer.classList.add("show");
+  });
+  nextButton.style.display = "none";
+}
+
+// Hide the choices when going back
+function hideChoices() {
+  choicesContainer.classList.remove("show");
+  setTimeout(() => {
+    choicesContainer.style.display = "none";
+  }, 300); // matches your CSS transition time
+  nextButton.style.display = "inline-block";
+}
+
+// === INITIALIZATION ===
 window.addEventListener("DOMContentLoaded", () => {
-  appendLine(currentLine);
+  showLine(currentLineIndex);
+
+  nextButton.addEventListener("click", handleNext);
+  prevButton.addEventListener("click", handlePrevious);
+
+  // Optional: Allow "Enter" and "Space" keypresses for accessibility
+  [nextButton, prevButton].forEach(button => {
+    button.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        button.click();
+      }
+    });
+  });
 });
