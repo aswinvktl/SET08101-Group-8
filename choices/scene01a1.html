@@ -15,12 +15,12 @@
       "You thanked everyone and started your expedition.",
       "By evening, the ship had left the valley behind. Mist moved like ghosts across the water. The day was coming to an end. The sails creaked softly.",
       "The sails stretched above you as the loch shimmered with fading light. Bruhaven disappeared behind mist and memory.",
-      "Below deck, the ship creaked with quiet familiarity.You stepped into the small cabin, the air still carrying the scent of her cloak.",
+      "Below deck, the ship creaked with quiet familiarity. You stepped into the small cabin, the air still carrying the scent of her cloak.",
       "Something caught your eye — a glimpse of brown leather beneath a folded blanket.",
       "You reached down slowly…",
       "The bag.",
       "The same one you'd left behind.",
-      "you stared at it. Frowned.",
+      "You stared at it. Frowned.",
       "“Impossible,” you whispered. “I said no.”",
       "A soft shuffle. A low, casual bark.",
       "Haggis sat nearby, tail wagging, tongue out, eyes full of innocent mischief.",
@@ -28,9 +28,9 @@
       "“Of course. Of course it was you, you naughty boy.”",
       "You knelt, ruffled Haggis's ears, and opened the bag. Iron Brew, shortbread, candles, her cloak, her book. All of it.",
       "\"You never really leave anything behind, do you?\"",
-      "You stood, slung the bag over his shoulder, and looked toward the prow of the ship.",
+      "You stood, slung the bag over your shoulder, and looked toward the prow of the ship.",
       "The journey had only just begun but you're not empty handed.",
-      "Suddenly, a split in the water appeared two diverging paths. Your map glowed faintly, but offered no clarity.",
+      "Suddenly, a split in the water appeared: two diverging paths. Your map glowed faintly, but offered no clarity.",
       "To the left lay the realm of the dwarves, whispered of in old tales.",
       "To the right, nothing but shadow and uncertainty."
     ];
@@ -39,47 +39,43 @@
   <!-- Logic for scene progression -->
   <script defer src="../js/choice-js.js"></script>
 </head>
-<body>
+
+<body class="fade-in">
+
   <div class="background" style="background-image: url('../images/kingFoundBag.jpg');"></div>
 
-  <div class="scene-wrapper">
+  <main class="scene-wrapper">
+
     <h1 class="scene-title">A Surprise</h1>
 
-    <div id="typewriter" class="typewriter-container"></div>
+    <section id="typewriter" class="typewriter-container">
+      <!-- Story lines will be injected here -->
+    </section>
 
     <div class="controls">
       <div class="nav-buttons">
-        <button id="prev" class="nav-btn">⬅️</button>
-        <button id="next" class="nav-btn">➡️</button>
+        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
       </div>
 
-      <div class="choices" id="choices">
-        <a href="../choices/scene02a.html"><button class="choice-button">a. Turn left, toward the dwarves</button></a>
-        <a href="../choices/scene02b.html"><button class="choice-button">b. Turn right, toward the unknown</button></a>
-      </div>
+      <nav id="choices" class="choices" aria-label="Choice navigation">
+        <a href="../choices/scene02a.html" class="choice-button">a. Turn left, toward the dwarves</a>
+        <a href="../choices/scene02b.html" class="choice-button">b. Turn right, toward the unknown</a>
+      </nav>
     </div>
-  </div>
 
-  <!-- Fade-in effect -->
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-in page effect -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("fade-in");
     });
   </script>
 
-  <!-- AI image disclaimer -->
-  <div style="
-    position: fixed;
-    bottom: 0.5rem;
-    right: 1rem;
-    font-size: 0.75rem;
-    color: #d0c8b0;
-    opacity: 0.6;
-    font-style: italic;
-    pointer-events: none;
-    z-index: 10;
-  ">
-    All images are AI generated.
-  </div>
 </body>
 </html>
