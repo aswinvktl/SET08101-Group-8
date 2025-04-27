@@ -1,73 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scene 1: The Gift</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <title>The Gift</title>
 
-
-  <!-- Link to external stylesheet -->
+  <!-- Font & styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/choice-style.css" />
 
-  <!-- Define the story lines -->
+  <!-- Story lines -->
   <script>
-const storyLines = [
-  "You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.",
-  "Around you stood your people, quiet, hollow-eyed. As you turned to leave, the village elders came forth, carrying a great leather bag.\"You'll need this\", they said. \"It has something — some hers, some ours. All of it matters.\"",
-  "You gripped the strap, feeling its weight. It would slow you. But it might save you."
-  ];
-
+    const storyLines = [
+      "You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.",
+      "Around you stood your people, quiet, hollow-eyed. As you turned to leave, the village elders came forth, carrying a great leather bag.\"You'll need this\", they said. \"It has something — some hers, some ours. All of it matters.\"",
+      "You gripped the strap, feeling its weight. It would slow you. But it might save you."
+    ];
   </script>
 
-  <!-- Load the interactivity logic -->
+  <!-- Logic for scene progression -->
   <script defer src="../js/choice-js.js"></script>
 </head>
-<body>
+
+<body class="fade-in">
+
   <div class="background" style="background-image: url('../images/kingLeavingg.jpg');"></div>
-  <!-- Main container for everything -->
-  <div class="scene-wrapper">
 
-    <!-- Title centered at the top -->
-    <h1 class="scene-title">The Departure</h1>
+  <main class="scene-wrapper">
 
-    <!-- Container for all story lines -->
-    <div id="typewriter" class="typewriter-container"></div>
+    <h1 class="scene-title">The Gift</h1>
 
-    <!-- Navigation and choices go here -->
+    <section id="typewriter" class="typewriter-container">
+      <!-- Story lines will be injected here -->
+    </section>
+
     <div class="controls">
       <div class="nav-buttons">
-        <button id="prev" class="nav-btn">⬅️</button>
-        <button id="next" class="nav-btn">➡️</button>
+        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
       </div>
 
-      <div class="choices" id="choices">
-        <a href="scene01a.html"><button class="choice-button">a. Take the bag</button></a>
-        <a href="scene01b.html"><button class="choice-button">b. Leave it behind</button></a>
-      </div>
+      <nav id="choices" class="choices" aria-label="Choice navigation">
+        <a href="scene01a.html" class="choice-button">a. Take the bag</a>
+        <a href="scene01b.html" class="choice-button">b. Leave it behind</a>
+      </nav>
     </div>
 
-  </div>
+  </main>
 
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-in page effect -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("fade-in");
     });
   </script>
-  
-<!-- AI disclaimer bottom-right -->
-<div style="
-  position: fixed;
-  bottom: 0.5rem;
-  right: 1rem;
-  font-size: 0.75rem;
-  color: #d0c8b0;
-  opacity: 0.6;
-  font-style: italic;
-  pointer-events: none;
-  z-index: 10;
-">
-  All images are AI generated.
-</div>
+
 </body>
+
 </html>
