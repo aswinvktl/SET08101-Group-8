@@ -7,11 +7,6 @@ const prevButton = document.getElementById("prev");
 let currentLineIndex = 0;
 const renderedLines = [];
 
-// === SAFETY CHECK ===
-if (!typewriterContainer || !choicesContainer || !nextButton || !prevButton) {
-  console.error("One or more required elements are missing. Cannot initialize story scene.");
-}
-
 // === FUNCTIONS ===
 
 // Add a new line (with fade-in effect)
