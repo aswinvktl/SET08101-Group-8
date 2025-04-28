@@ -53,6 +53,7 @@ function handlePrevious() {
   }
 }
 
+
 // Show the choices buttons after story ends
 function revealChoices() {
   choicesContainer.style.display = "block";
