@@ -1,69 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Helps make the page mobile-friendly -->
-  <title>The Dwarf Village</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Dwarf Village</title>
 
-  <!-- Google Fonts: EB Garamond for fantasy feel -->
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <!-- Fantasy font -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="../css/choice-style.css">
+    <!-- CSS page link -->
+    <link rel="stylesheet" href="../css/choice-style.css" />
 
+    <!-- Story lines -->
+    <script>
+        const storyLines = [
+            "You decide to go left. You raise the Stock and Horn, made of ebony and cow horns, and blow it gently — a coded message of peace.",
+            "The torches flare and the stone door grinds open. Dwarves appear. You offer them the shortbread (if you had it), but they welcome you warmly either way.",
+            "They feed you, offering you shelter. An old granny dwarf sits beside the fire, reciting riddles. Your eyelids grow heavy.",
+            "\"I am so simple that I can only point, yet I guide men all over the world.\"",
+            "You sleep soundly. In the morning, they gift you a basket-hilted sword, engraved with glowing runes to ward off cursed beings.",
+            "\"This shall help — or at least, give you a choice!\" says the dwarf king, waving goodbye."
+        ];
+    </script>
+
+    <!-- Load the interactivity logic -->
+    <script defer src="../js/choice-js.js"></script>
 </head>
 
 <body class="fade-in">
+    <div class="background" style="background-image: url('../images/kingAndDwarves.jpg');"></div>
 
-  <header class="site-header">
-    <h1 class="scene-title">The Dwarves</h1>
-  </header>
+    <main class="scene-wrapper">
 
-  <div class="background-image" role="presentation" style="background-image: url('../images/kingAndDwarves.jpg');">
-    <!-- Background is decorative, no need for ARIA label unless meaningful -->
-  </div>
+        <h1 class="scene-title">The Dwarves</h1>
 
-  <main class="scene-wrapper">
+        <section id="typewriter" class="typewriter-container"></section>
 
-    <!-- === TYPEWRITER TEXT === -->
-    <section id="typewriter" class="typewriter-container">
-      <!-- JavaScript will inject story lines here dynamically! -->
-    </section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
 
-    <!-- === CONTROL BUTTONS === -->
-    <div class="controls">
-      <div class="nav-buttons">
-        <button id="prev" class="nav-btn">Previous</button>
-        <button id="next" class="nav-btn">Next</button>
-      </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene03_DruidsGlen.html" class="choice-button">Next Page</a>
+                <a href="../index.html" class="choice-button">Home</a>
+            </nav>
+        </div>
 
-      <!-- === CHOICES AFTER STORY === -->
-      <div id="choices" class="choices">
-        <a href="../choices/scene03_DruidsGlen.html" class="button-link">Next Page</a>
-        <a href="../index.html" class="button-link">Home</a>
-      </div>
-    </div>
+    </main>
 
-  </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
 
-  <footer class="site-footer">
-    <small>All images are AI generated.</small>
-  </footer>
-
-  <!-- External JS -->
-  <script src="../js/choice-js.js"></script>
-
-  <!-- === STORY LINES DATA === -->
-  <script>
-    const storyLines = [
-      "You decide to go left. You raise the Stock and Horn, made of ebony and cow horns, and blow it gently — a coded message of peace.",
-      "The torches flare and the stone door grinds open. Dwarves appear. You offer them the shortbread (if you had it), but they welcome you warmly either way.",
-      "They feed you, offering you shelter. An old granny dwarf sits beside the fire, reciting riddles. Your eyelids grow heavy.",
-      "\"I am so simple that I can only point, yet I guide men all over the world.\"",
-      "You sleep soundly. In the morning, they gift you a basket-hilted sword, engraved with glowing runes to ward off cursed beings.",
-      "\"This shall help — or at least, give you a choice!\" says the dwarf king, waving goodbye."
-    ];
-  </script>
+    <!-- Page fade-in effect -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
 
 </body>
+
 </html>
