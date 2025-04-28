@@ -1,14 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang ="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Throw something</title>
-    <h4>Throw something</h4>
-    <div class="background" style="background-image: url('../images/throwingBottle.jpg');"></div>
-    <p>You throw an empty flask at the figure, the water ripples and you see the truth- its a selkie. The selkie, a mythical creature that can shapeshift, that inhabits the lochs and glens. 
+    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 
-        Its good that you didn't jump. Haggis was correct. you pat him.
-        
-        You sail on, quiet, alert. 
-        
-        Haggis is beside you, with eyes on the water. </p>
-        <p><a href="../choices/scene05_puzzle.html">NEXT PAGE</a></p>
+    <link rel="stylesheet" href="../css/choice-style.css">
+
+    <script>
+        const storyLines = [
+            "You throw an empty bottle at the figure, the water ripples and you see the truth- its a selkie",
+            "The selkie, a creature that can shapeshift, that inhabits the lochs and glens",
+            "Its good that you didn't jump. Haggis was correct. you pat him",
+            "You sail on, quiet, alert",
+            "Haggis is beside you, with eyes on the water"
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+    <div class="background" style="background-image: url('../images/throwingBottle.jpg');"></div>
+    <main class="scene-wrapper">
+
+        <h1 class="scene-title">Is It Actually?</h1>
+
+        <section id="typewriter" class="typewriter-container"></section>
+
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene05_puzzle.html" class="choice-button">NEXT PAGE</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <small>All images are AI generated</small>
+    </footer>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

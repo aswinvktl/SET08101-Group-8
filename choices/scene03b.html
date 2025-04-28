@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-<html>
-    <title>you go sailing</title>
-    <h4>You chose to keep sailing</h4>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Sailing</title>
+
+    <!-- Fantasy font -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+    <!-- CSS page link -->
+    <link rel="stylesheet" href="../css/choice-style.css">
+
+    <!-- Story lines -->
+    <script>
+        const storyLines = [
+            "You chose to keep sailing as she is not there,",
+            "You chose not to waste time as finding your queen",
+            "and saving her is what you want to do. And she is certainly not here"
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/vastLoch.jpg');"></div>
-    <p>You chose to keep sailing as she is not there, 
-        You chose not to waste time as finding your queen 
-        and saving her is what you want to do. And she is certainly not here.
-    </p>
-    <p><a href="../choices/scene04_selkies.html">Next Page</a></p>
+
+    <main class="scene-wrapper">
+
+        <h1 class="scene-title">Keep Sailing</h1>
+
+        <section id="typewriter" class="typewriter-container"></section>
+
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene04_selkies.html" class="choice-button">Next Page</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+
+    <!-- Page fade-in effect -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html>
-    <title>your brain</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>your choice</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+    <script>
+        const storyLines = [
+            "You attempt the puzzle and then it fails, the whole things breaks and falls on you",
+            "it causes a violent tsunami, and you are washed away",
+            "you die, and she is eaten by the monster"
+        ];
+
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/debrisFallin.jpg');"></div>
-    <p>You attempt the puzzle and then it fails, the whole things breaks and falls on you 
-        it causes a violennt tsunami, and you are washed away.
-        <p> you die, and she is eaten</p>
-        p
-    </p>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">The Puzzle</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <div class="text" id="text">GAME OVER</div>
+                <a href="../index.html" class="choice-button">GO HOME</a>
+            </nav>
+        </div>
+    </main>
     <p><a href="../index.html">Game Over</a></p>
 </html>

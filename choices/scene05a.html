@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html>
-    <title>Read book</title>
-    <h4>Read book</h4>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+    <script>
+        const storyLines = [
+            "You decide to read her book, hoping to find the answer.",
+            "The symbols on the puzzle match some of the symbols in her book.",
+            "You remember her telling you about these symbols and their meanings.",
+            "You use your knowledge of her stories to solve the puzzle",
+            "The puzzle clicks into place, and the gates open",
+            "You feel a sense of accomplishment and connection to her",
+            "You sail through the gates, ready for the next adventure."
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/kingSolvePuzzle.jpg');"></div>
-    <p>he correct answer is to use her book, it's a test of  if you actually read her books or if you remember her conversations or if you actually know her. 
-        
-        this is when all it matters. You go to the section of love and see the same symbols, they represent emotions, you turn them accordingly. 
-        
-        AND BOOM!! The puzzle freezes and the gates open, a warm light flows through, haggis runs around you with joy, 
-        
-        you know her, you used her knowledge. You solved the puzzle with her memory, her magic and not just your intuition
-
-        The gates open and you keep sailing
-    </p>
-
-    <p><a href="../choices/scene06_BlueMen.html">NEXT PAGE</a></p>
-
+    <main class="scene-wrapper">
+        <h1 class="scene-title">Her Book</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene06_BlueMen.html" class="choice-button">Next Page</a>
+            </nav>
+        </div>
+    </main>
 </html>

@@ -1,27 +1,50 @@
 <!DOCTYPE html>
-<html>
-    <title>THE SELKIES</title>
-    <h4>The selkies</h4>
-    <div class="background" style="background-image: url('../images/kingAndSelkie.jpg');"></div>
-    <p>The sun is halfway through its daily journey, a journey the sun has to do everyday, till eternity. 
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
 
-        You are cruising in your ship, following the map - vague but useful. 
-        
-        As you move forward, you see something on the water, a reflection, perhaps someone swimming??
-        
-        Curious, you move your ship towards the sight. Haggis growls low, like he's uncertain. 
-        
-        You step to the edge to see what it is
-        
-        You see her - her blue eyes locked with yours, her brown hair wet, clinging to her face, her cloak torn. It’s her, your queen. 
-        
-        She opens her arms, asking you to rescue her. 
-        
-        You are ready to jump, haggis tugs your cloaks and tries to stop you….
-        
-        You don't know what to do.
-    </p>
-    <p>What do you do?</p>
-    <p><a href="../choices/scene04a.html">Jump into the water and save her</a></p>
-    <p><a href="../choices/scene04b.html">Throw something to test the illusion</a></p>
+    <script>
+        const storyLines = [
+            "The sun is halfway through its daily journey, a journey the sun has to do everyday, till eternity",
+            "You are cruising in your ship, following the map, vague but useful",
+            "As you move forward, you see something on the water, a reflection, perhaps someone swimming??",
+            "Curious, you move your ship towards the sight. Haggis growls low, like he's uncertain",
+            "You see her, her blue eyes locked with yourselfs, her cloak torn. It's her, your queen.",
+            "You are ready to jump, haggis tugs your cloaks and tries to stop you…",
+            "You don't know what to do"
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+    <div class="background" style="background-image: url('../images/kingAndSelkie.jpg');"></div>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">The Ripple</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene04a.html" class="choice-button">Jump into the water and save her</a>
+                <a href="../choices/scene04b.html" class="choice-button">Throw something to test the illusion</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+
+</body>
 </html>
