@@ -1,27 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Druid's glen</title>
-    <h4>THE DRUID'S GLEN</h4>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>A Mysterious Stop</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/choice-style.css"/>
+
+    <!-- Story lines -->
+     <script>
+        const stoyLines = [
+            "You glide the ship forward. The mist parts to reveal a secret forest, trees arched like a cathedral.",
+            "You look at your map, as it was glowing.",
+            "It's the Druid's glen",
+            "the Druids, you remember from the tales your mother said, the ancient priests with magic and power there might be clues here perhaps",
+            "the air smells odd. You see ancient ruins and rotten bones. Perhaps some rituals",
+            "you look at her books, you see them glowing:",
+            "“The glen listens and holds magic.",
+            "If I am ever lost, I might be somewhere mystical”",
+            "You have to make a choice"
+        ];
+    </script>
+
+    <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/InFrontOfDruid.jpg');"></div>
-    <p>The sun is barely looking up the horizon.
 
-        You glide the ship forward. The mist parts to reveal a secret forest, trees arched like a cathedral
-        
-        You look at your map, as it was glowing. 
-        
-        It's the Druid's glen. The Druids - you remember from the tales - the ancient priests with magic and power- there might be clues here perhaps. the air smells odd. You see ancient ruins and rotten bones. Perhaps some rituals.
-        
-        You look at her books, you see them glowing: 
-        
-        “The glen listens and holds magic. 
-        
-        If I am ever lost, I might be somewhere mystical”
-        
-        You have to make a choice
-    </p>
-    <p>Choice 3</p>
-    <p><a href="../choices/scene03a.html">Explore the Druid's glen</a></p>
-    <p><a href="../choices/scene03b.html">Keep sailing as you have no time to waste</a></p>
+    <main class="scene-wrapper">
+
+        <h1 class="scene-title">A Mysterious Stop</h1>
+
+        <section id="typewriter" class="typewriter-container"></section>
+
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene03a.html" class="choice-button">Explore</a>
+                <a href="../choices/scene03b.html" class="choice-button">Keep sailing</a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+
+    <!-- Page fade-in effect -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>
