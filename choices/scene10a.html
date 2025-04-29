@@ -1,34 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <h4>End the monster</h4>
-    <div class="background" style="background-image: url('../images/defeated\ monster.jpg');"></div>
-    <p>
 
-        *Raise the sword one last time — and drive it through the creature's skull.*
-        
-        *The loch erupts in a pillar of golden light.*
-        
-        *The curse shatters.*
-        
-        *The skies clear.*
-        
-        *It is finished.*
-        
-        *You turn to her — and she is already walking to you.*
-        
-        *She takes your hand.*
-        
-        > *“You did it,” she says.*
-        > 
-        > 
-        > *“But you didn't have to do it alone.”*
-        > 
-        
-        *Haggis, now a dog once more, trots toward you, tail wagging.*
-        
-        *You smile.*
-        
-        *Together, you sail home.*
-    </p>
-    <p><a href="../choices/EndScene.html">HAPPY ENDING</a></p>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+    <script>
+        const storyLines = [
+            "You raise the sword one last time",
+            "And drive it through the creature's skull",
+            "The loch erupts in a pillar of golden light",
+            "The curse shatters",
+            "You did it, she says",
+            "But you didn't have to do it alone",
+            "Haggis, now a dog once more, trots toward you, tail wagging",
+            "You smile",
+            "Together, you sail home"
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
+    <div class="background" style="background-image: url('../images/defeated\ monster.jpg');"></div>
+
+    <main class="scene-wrapper">
+        <h1 class="scene-title">End the monster</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <div class="text" id="text">HAPPY ENDING</div>
+                <a href="../index.html" class="choice-button">GO HOME</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

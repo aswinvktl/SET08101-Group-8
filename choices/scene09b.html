@@ -1,18 +1,48 @@
 <!DOCTYPE html> <!--MORE PICS-->
-<html>
-    <title>Attack the monster</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haggis</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+    <script>
+        const storyLines = [
+            "You kneel, you tilt the bottle towards the dog, as if it was asking for some. he drinks and then - light erupts",
+            "The dog's body lifts from the deck paws outstreched",
+            "His fur glows gold and red, and his body expands",
+            "Magic",
+            "He lands with a rumble and he's no longer a dog.",
+            "A Highland Bull. eyes glowing orange. Horns hold golden fire. The guarding of old magic, the guardian of the queen."
+        ];
+    </script>
+
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/dogDrinkin.jpg');"></div>
-    <title>Listen to the dog</title>
-    <h4>Listen to the dog</h4>
-    <p>You kneel, you tilt the bottle towards the dog, as if it was asking for some. he drinks
-        and then - light erupts
-        
-        The dog's body lifts from the deck - paws outstreched. 
-        His fur glows gold and red, and his body expands
-        Muscle. Bone. Magic. 
-        
-        He lands with a rumble and he's no longer a dog.
-        
-        A Highland Bull. eyes glowing orange. Horns hold golden fire. The guarding of old magic, the guardian of the queen.</p>
-        <p><a href="../choices/scene10_TheBattle.html">NEXT PAGE</a></p>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">a strong companion</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene10_TheBattle.html" class="choice-button">Next</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attack the monster</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+    <script>
+        const storyLines = [
+            "You ignore the dog, draw your sword and leap towards the monster.",
+            "The monster sees you, you raise yourselfr blade and you strike, but not fast enough, the monster dodges.",
+            "IT COILS AROUND YOU, IT CRUSHES YOU, THE QUEEN SCREAMS NOOO",
+            "THE DOG WHIMPERS. ITS OVER. YOURE DONE"
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/kingDefeat.jpg');"></div>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">Attack the monster</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <div class="text" id="text">GAME OVER</div>
+                <a href="../index.html" class="choice-button">GO HOME</a>
+            </nav>
+        </div>
+    </main>
 
-    <h4>Attack the monster</h4>
-    <p>ou ignore the dog, draw your sword and leap towards the monster. 
-        
-        The monster sees you, you raise your blade and you strike, but not fast enough, the monster dodges. 
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
 
-        IT COILS AROUND YOU, IT CRUSHES YOU, THE QUEEN SCREAMS NOOO
-        
-        THE DOG WHIMPERS. ITS OVER. YOURE DONE
-    </p>
-    <p><a href="../index.html">GAME OVER</a></p>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

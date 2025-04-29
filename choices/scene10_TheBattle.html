@@ -1,40 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <h4>The Battle</h4>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+
+    <script>
+        const storyLines = [
+            "You nod at each other, you jump onto him and you both launch yourself to the monsters head. The bulls hooves go deep down on the creatures head, the monster growls",
+            "You fight with the monster, not an easy one, You use the red bombs and the dwarf sword and deafeat the monster",
+            "After a ferocious fight, the monster's tired it is defeated, on its last breath. Its collapses onto the shore",
+            "The Queen begins to fall and you catch her in mid-air, pulling her to safety atop the bull's back.",
+            "She gasps Looks at you smiles",
+            "You land together on the shore the monster writhing behind you, defeated, but still alive.",
+            "The Queen's bindings fade.",
+            "She steps beside you.",
+            "And now…",
+            "One final choice."
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/theFight.jpg');"></div>
-    <p>You nod at each other, you jump onto him and you both launch yourself to the monsters head. The bulls hooves go deep down on the creatures head, the monster growls. 
+    <main class="scene-wrapper">
+        <h1 class="scene-title">The Battle</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene10a.html" class="choice-button">Kill the monsters</a>
+                <a href="../choices/scene10b.html" class="choice-button">Let her decide</a>
+            </nav>
+        </div>
+    </main>
 
-        You fight with the monster, not an easy one, You use the red bombs and the dwarf sword and deafeat the monster. not yet dead. 
-        
-        After a ferocious fight, the monster's tired it is defeated, on its last breath. Its collapses onto the shore. 
-        
-        The Queen begins to fall — and you catch her in mid-air, pulling her to safety atop the bull's back.
-        
-        She gasps.
-        
-        Looks at you.
-        
-        Smiles.
-        
-        You land together on the shore — the monster writhing behind you, defeated, but still alive.
-        
-        The Queen's bindings fade.
-        
-        She steps beside you.
-        
-        And now…
-        
-        One final choice.
-        
-        “I need to finish this, you say”
-        
-        “Maybe I can help you, You dont have to do this alone” says her
-        
-        You have a choice, the last choice, the hardest choice, perhaps
-    </p>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
 
-    <p>Choice 10</p>
-    <p><a href="../choices/scene10a.html">You can kill the monster, and end this once and for all</a></p>
-    <p><a href="../choices/scene10b.html">Listen to her and let her decide</a></p>
-    
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>
