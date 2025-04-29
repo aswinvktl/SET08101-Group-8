@@ -1,49 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Unicorn</title>
-    <h4>Unicorn</h4>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+    <script>
+        const storyLines = [
+            "You sailed the entire day. The sun never quite shone but it lingered behind the mist like a watchful eye.",
+            "The moon slowly starts to rise from the horizon, its not there yet, but it will be-soon.",
+            "And then something changed.",
+            "The air shimmered.",
+            "The loch stilled to glass.",
+            "And Haggis began to howl.",
+            "Not out of fear,out of something else.",
+            "You turned, and saw light. A beam, brighter than the moon, split the mist.",
+            "From it stepped a creature of dream:",
+            "A Unicorn.",
+            "They exist? You wonder. It watches you. Haggis looks happy.",
+            "You remember from queens journal.",
+            "“when the sky shines, and the loch reflects",
+            "you follow the signs, they lead to the rest”",
+            "The unicorn turns, and starts to move forward. Your map glows, In a different direction.",
+            "You have to make a choice"
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/unicornEntry.jpg');"></div>
-    <p>You sailed the entire day. The sun never quite shone — not truly — but it lingered behind the mist like a watchful eye.
-
-        The moon slowly starts to rise from the horizon, its not there yet, but it will be-soon. 
-        
-        And then — something changed.
-        
-        The air shimmered.
-        
-        The loch stilled to glass.
-        
-        And **Haggis** began to howl.
-        
-        Not out of fear.
-        
-        Out of something else.
-        
-        You turned — and saw **light**.
-        
-        A beam, brighter than the moon, split the mist.
-        
-        From it stepped a creature of dream:
-        
-        **A Unicorn.**
-        
-        They exist? You wonder. It watches you. Haggis looks happy.
-        
-        You remember from queens journal. 
-        
-        “when the sky shines
-        
-        and the loch reflects
-        
-        you follow the signs
-        
-        they lead to the rest”
-        
-        The unicorn turns, and starts to move forward. Your map glows, In a different direction.
-        
-        You have to make a choice</p>
-
-    <p>Choice 7</p>
-    <p><a href="../choices/scene07a.html">Follow the unicorn</a></p>
-    <p><a href="../choices/scene07b.html">Follow the map</a></p>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">The Unicorn</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene07a.html" class="choice-button">Follow the unicorn</a>
+                <a href="../choices/scene07b.html" class="choice-button">Follow the map</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

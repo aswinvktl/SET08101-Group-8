@@ -1,38 +1,47 @@
 <!DOCTYPE html> <!--MULTIPLE PICTURES HERE AS WELL-->
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Monster</title>
-    <h4>The Monster</h4>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+    <script>
+        const storyLines = [
+            "You arrive in silence.",
+            "The ship glides through the water, as if it is being pulled.",
+            "And now you see it, The monster, the loch nesss monster.",
+            "It coils through the shallows like a river come alive vast, dark, ancient. Its body glimmers faintly, scales like stones beneath moonlight. Its eyes are as old as the mountains.",
+            "Then you see your wife, tied in magical light, its not chains, its light. You see her, but she doesn’t see you.",
+            "you freeze",
+            "Haggis growls.",
+            "Not a warning, not a bark, A signal, a big signal.",
+            "He steps to the bag and paws at it, you open the bag, the iron brew is glowing - brighter than ever",
+            "You drink it",
+            "It floods your limbs with fire strength and clarity. The ache, the grief, the years they burn away.",
+            "Then haggis growls again",
+            "”what is it boy?”",
+            "you whisper.",
+            "He looks at you, then at the drink and then at himself, like he's trying to talk to you.",
+            "The moon is almost turning blue, you have to act quick.",
+            "You have to decide"
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/seeMonster.jpg');"></div>
-    <p>You arrive in silence.
-
-        The ship glides through the water, as if it is being pulled. 
-        
-        And now you see it, The monster, the loch ness monster.
-        It coils through the shallows like a river come alive vast, dark, ancient. Its body glimmers faintly, scales like stones beneath moonlight. Its eyes are as old as the mountains.
-        
-        Then you see your wife, tied in magical light, its not chains, its light. You see her, but she doesn’t see you. 
-        
-        you freeze
-        
-        Haggis growls. 
-        
-        Not a warning, not a bark, A signal, a big signal.
-        
-        He steps to the bag and paws at it, you open the bag, the iron brew is glowing - brighter than ever
-        
-        You drink it
-        It floods your limbs with fire strength and clarity. The ache, the grief, the years they burn away.
-        
-        Then haggis growls again
-        
-        ”what is it, boy?” you whisper.
-        
-        He looks at you, then at the drink and then at himself, like he's trying to talk to you. 
-        
-        The moon is almost turning blue, you have to act quick.
-        
-        You have to decide
-    </p>
-    <p><a href="../choices/scene09a.html">Confront the monster</a></p>
-    <p><a href="../choices/scene09b.html">Listen to the dog</a></p>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">The Monster</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene09a.html" class="choice-button">Listen to haggis</a>
+                <a href="../choices/scene09b.html" class="choice-button">Go fight the monster</a>
+            </nav>
+        </div>
 </html>

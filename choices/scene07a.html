@@ -1,21 +1,48 @@
 <!DOCTYPE html>
-<html>
-    <title>Follow the unicorn</title>
-    <h4>Follow the unicorn</h4>
-    <div class="background" style="background-image: url('../images/dreamValley.jpg');"></div>
-    <p>You follow it, you pass a valley of magic, a valley full or colour and light, something that is a rare sight. You witness herds of unicorns, playing jumping, highland coos enjoying their time, it looks surreal. 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The valley of Dreams</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
 
-        You keep following the unicorn, Haggis barks joyfully. You havent seen him this happy
-        
-        Unicorn leads you to two standing stones, onto the edge of loch ness.
-        
-        Your sword glows very much, you know the monster is nearby. You hear growls and the air smells of smoke, the same smoke from your village. 
-        
-        You look up, and the unicorn is gone, it got you where you wanted to be. 
-        
-        The night is slowly falling, but the moon is still not fully up. You have time.
-        
-        Then you move forward. 
-    </p>
-    <p><a href="../choices/scene08_TheVoice.html">NEXT PAGE</a></p>
+    <script>
+        const storyLines = [
+            "You follow it, you pass a valley of magic, a valley full or colour and light, something that is a rare sight. You witness herds of unicorns, playing jumping, highland coos enjoying their time, it looks surreal.",
+            "You keep following the unicorn, Haggis barks joyfully. You haven't seen him this happy",
+            "Unicorn leads you to two standing stones, onto the edge of loch ness.",
+            "Your sword glows very much, you know the monster is nearby. You hear growls and the air smells of smoke, the same smoke from your village.",
+            "You look up, and the unicorn is gone, it got you where you wanted to be.",
+            "The night is slowly falling, but the moon is still not fully up. You have time.",
+            "Then you move forward."
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
+    <div class="background" style="background-image: url('../images/dreamValley.jpg');"></div>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">The Valley of Dreams</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene08_TheVoice.html" class="choice-button">Next</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

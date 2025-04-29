@@ -1,30 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Voice</title>
-    <h4>The Voice</h4>
     <div class="background" style="background-image: url('../images/Music.jpg');"></div>
-    <p>You have arrived where you have to be. 
 
-        The loch is still, you steer towards the sound. 
-        
-        On your way, you hear something, 
-        
-        you ignore it,
-        
-        you hear it again
-        
-        Its a song, its her song, its her voice, its her.
-        
-        Soft. Singing. Echoing through the trees and the water and the wind.
-        
-        Closer now. Not a memory. Not a dream
-        
-        You feel like she's there. 
-        
-        you can either follow the song or the sound of the monster, you look at haggis, he’s confused
-    </p>
-    <p>Choice 8</p>
-    <p><a href="../choices/scene08a.html">Follow the song</a></p>
-    <p><a href="../choices/scene08b.html">Follow the monster</a></p>
-    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+
+    <script>
+        const storyLines = [
+            "You have arrived where you have to be.",
+            "The loch is still, you steer towards the sound.",
+            "On your way, you hear something,",
+            "you ignore it,",
+            "you hear it again, Its a song, its her song, its her voice, its her.",
+            "Soft. Singing. Echoing through the trees and the water and the wind.",
+            "you can either follow the song or the sound of the monster, you look at haggis, he's confused"
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
+    <main class="scene-wrapper">
+        <h1 class="scene-title">The Voice</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene08a.html" class="choice-button">Follow the song</a>
+                <a href="../choices/scene08b.html" class="choice-button">Follow the monster</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

@@ -1,25 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Follow the map</title>
-    <h4>Follow the map</h4>
-    <div class="background" style="background-image: url('../images/kingIsCooked.jpg');"></div>
-    <p>The map glows insistently. You trust it.
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
 
-        But it was never finished.
-        
-        It loops you in circles.
-        
-        The loch coils like a serpent.
-        A whirlpool forms.
-        The boat spins.
-        
-        The stars shift. The night passes.
-        
-        By the time you find land again — the moon has turned blue.
-        
-        You are too late.
-        
-        The Queen is gone.
-    </p>
-    <p><a href="../index.html">GAME OVER</a></p>
+    <script>
+        const storyLines = [
+            "You decide to follow the unfinished map.",
+            "The boat glides over the water",
+            "But the map is not what it seems",
+            "It leads you deeper into the loch, into the heart of darkness",
+            "The water churns and roils, a tempest in a teapot",
+            "You get lost in the maze of the loch",
+            "You wander there forever, lost in the depths",
+            "And your queen is eaten by the monster",
+        ];
+    </script>
+
+    <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+    <div class="background" style="background-image: url('../images/kingIsCooked.jpg');"></div>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">Follow the map</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <div class="text" id="text">GAME OVER</div>
+                <a href="../index.html" class="choice-button">GO HOME</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated</small>
+    </footer>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

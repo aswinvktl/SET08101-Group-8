@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fight them</title>
-    <h4>fight them</h4>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+
+    <script>
+        const storyLines = [
+            "You decide to fight them.",
+            "You draw your sword and prepare for battle.",
+            "The enemy is fierce, but you are determined.",
+            "You swing your sword with all your might.",
+            "But they are too strong, and you are outnumbered.",
+            "You fight bravely, but ultimately, you are defeated."
+        ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/dangerBlue.jpg');"></div>
-    <p>if YOU CHOSE B, Then after fighting, you try hard, you defeat them, but they use their bomb to blind you and then they sink your ship, none win, but you cant make it in time so youre done, 
-        You were brave — but not wise.
-        GAME OVER, never make a decision based on fear, always think.
-        </p>
-        <p><a href="../index.html">GAME OVER</a></p>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">Fight them</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <div class="text" id="text">GAME OVER</div>
+                <a href="../index.html" class="choice-button">GO HOME</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>

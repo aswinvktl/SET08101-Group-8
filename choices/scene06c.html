@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steer away</title>
-    <h4>Steer away</h4>
+
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/choice-style.css">
+    <script>
+        const storyLines = [
+            "You decide to keep going, ignoring them",
+            "You are not interested in their riddles",
+            "You have missed a lot of lore and information",
+            "But you have saved yourself from a lot of trouble",
+            "You move forward, but you are not sure if you made the right choice",
+    ];
+    </script>
+    <script defer src="../js/choice-js.js"></script>
+</head>
+<body class="fade-in">
     <div class="background" style="background-image: url('../images/noMess.jpg');"></div>
-    <p> nothing happens, you move forward, 
-        but miss lore and necessary things
-    </p>
-    <p><a href="../choices/scene07_Unicorn.html">NEXT PAGE</a></p>
+    <main class="scene-wrapper">
+        <h1 class="scene-title">Steer away</h1>
+        <section id="typewriter" class="typewriter-container"></section>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
+                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
+            </div>
+            <nav id="choices" class="choices" aria-label="Choice navigation">
+                <a href="../choices/scene07_Unicorn.html" class="choice-button">Next</a>
+            </nav>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <small>All images are AI generated.</small>
+    </footer>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("fade-in");
+        });
+    </script>
+</body>
 </html>
