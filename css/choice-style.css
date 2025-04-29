@@ -75,6 +75,7 @@ body.fade-in {
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 1.4rem;
   line-height: 1.9;
+  text-align: justify;
   color: #f5e9d2;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   margin: 0;
