@@ -1,42 +1,43 @@
 // Map sound and images to not have to have multiple copies of MP3/JPG files
-const sceneImageMap = {
-    intro: "placeholder.jpg",
-    start: "placeholder.jpg",
-    king: "placeholder.jpg",
-    plan: "placeholder.jpg",
-    organise: "placeholder.jpg",
-    lure: "placeholder.jpg",
-    friend: "placeholder.jpg",
-    self: "placeholder.jpg"
+const imgMap = {
+    intro: { file: "intro.png", alt: "A castle with a dragon looming far overhead." },
+    start: { file: "start.png", alt: "Burnt farmland, the shadow of the city is visable in the distance." },
+    check: { file: "check.png", alt: "A man with a torch face-to-face with a dragon." },
+    king: { file: "king.png", alt: "A peasant stood in front of a king, with the kings court behind him." },
+    plan: { file: "plan.png", alt: "A man at a table looking at old papers concerning dragons, on the table lie various herbs and chemicals." },
+    organise: { file: "organise.png", alt: "A group of men discussing something concerning a sheep stood between them, the same chemicals are nearby on the ground." },
+    lure: { file: "lure.png", alt: "The group of men carrying a sheep, they are talking as they walk." },
+    friend: { file: "friend.png", alt: "A man watching as another takes the sheep into the cave." },
+    self: { file: "self.png", alt: "A man carrying a sheep into a cave." }
 };
 
-const sceneImageAltMap = {
-    intro: "placeholder",
-    start: "placeholder",
-    king: "placeholder",
-    plan: "placeholder",
-    organise: "placeholder",
-    lure: "placeholder",
-    friend: "placeholder",
-    self: "placeholder"
+const audioMap = {
+    low: "low.mp3",
+    neutral: "mid.mp3",
+    high: "high.mp3"
 };
 
-const karmaAudioMap = {
-    low: "sad-theme.mp3",
-    neutral: "calm-theme.mp3",
-    high: "high-theme.mp3"
-};
-
-
+// Initialise some variables/constants/arrays
 let scenes = {};
 let currentScene = "intro";
 let karma = 0;
+let audioMuted = false;
 
-// Error handling function for fetching JSON because it breaks regularly
+// Preloads images  
+function cacheAllImages() {
+    Object.values(imgMap).forEach(({ file }) => {
+        const img = new Image();
+        img.src = `imagesW/${file}`;
+    });
+}
+
+// Error handling and logging function for fetching JSON because it breaks regularly
 async function loadScenes() {
     try {
+        console.log("Fetching scenesW.json...");
         const response = await fetch("scenesW.json");
         scenes = await response.json();
+        console.log("Scenes loaded:", scenes);
         renderScene(currentScene);
     } catch (error) {
         console.error("Scene load failed:", error);
@@ -67,73 +68,105 @@ function renderScene(sceneId) {
         // Restarting the game doesn't always lead to intro so to prevent karma staying between runs, OR function is an easy fix.
         return (next === "intro" || next === "start") ? 0 : karma + delta;
     }
+    // Change the karma/morality circle if needed
+    const karmaIndicator = document.getElementById("karmaIndicator");
+    if (karma > 0) {
+        karmaIndicator.style.backgroundColor = "limegreen"; // Positive
+    } else if (karma < 0) {
+        karmaIndicator.style.backgroundColor = "crimson";   // Negative
+    } else {
+        karmaIndicator.style.backgroundColor = "gold";       // Neutral
+    }
 
     // Fetch story content and choices, clear previous choice variable.
     document.getElementById("story").innerHTML = displayText;
     const sceneChoices = document.getElementById("sceneChoices");
     sceneChoices.innerHTML = "";  
 
-    // Load scene image
+    // Load scene image from map
     const img = document.getElementById("sceneImage");
-    const imageFile = sceneImageMap[sceneId];
-    const altText = sceneImageAltMap[sceneId] || "Scene illustration";
-    if (imageFile) {
-        img.src = `images/${imageFile}`;
-        img.alt = altText;
+    const imageData = imgMap[sceneId];
+    if (imageData) {
+        img.src = `imagesW/${imageData.file}`;
+        img.alt = imageData.alt;
         img.style.display = "block";
     } else {
         img.style.display = "none";
     }
+    
 
     // Load scene audio
-    const audio = document.getElementById("sceneAudio");
+    let audio = document.getElementById("sceneAudio");
     let mood = "neutral";
     if (karma > 0) mood = "high";
     else if (karma < 0) mood = "low";
-    audio.src = `audio/${karmaAudioMap[mood]}`;
-    audio.load();
+    // Only change audio on karma change instead of every scene
+    const desiredAudio = `soundsW/${audioMap[mood]}`;
+    if (audio.src.indexOf(desiredAudio) === -1) {
+        audio.src = desiredAudio;
+        audio.muted = audioMuted;
+        audio.load();
+    }
 
     // Loop through each option
     scene.choices.forEach(option => {
         // Create the button for each option
         const btn = document.createElement("a");
         btn.href = "#";
-        btn.className = "btn btn-outline-primary";
+        btn.className = "btn btn-outline-dark";
         btn.innerText = option.text;
         // Make the buttons work with karma
         btn.onclick = () => {
-            // Update the temporary karma field
+            // Check if music is playing with HTML5 API, if not, play on button press (browser security workaround)
+            const audio = document.getElementById("sceneAudio"); 
+            if (audio.paused) {
+                audio.play().catch(err => console.log("Audio play blocked:", err));
+            }
+            // Update karma
             karma = updateKarma(option.next, option.karma);
-            document.getElementById("karma").innerText = karma;
             // Go again
             renderScene(option.next);
         };
-
         // Add the button to the choice box from the constant
-        sceneChoices.append(btn);
-
-        
+        sceneChoices.append(btn);        
     });
 }
     
-// Sidebar
-document.getElementById("menuToggle").onclick = function () {
-    const sidebar = document.getElementById("mySidebar");
-    const main = document.getElementById("main");
-    const isOpen = sidebar.style.width === "250px";
-    sidebar.style.width = isOpen ? "0" : "250px";
-    main.style.marginLeft = isOpen ? "0" : "250px";
-};
-// Credits
-document.getElementById("musicToggle").onclick = function () {
-    audioMuted = !audioMuted;
-    const audio = document.getElementById("sceneAudio");
-    audio.muted = audioMuted;
-    const credits = document.getElementById("musicCredits");
-    credits.style.display = credits.style.display === "block" ? "none" : "block";
-};
 
-// Run the function to fetch scenes from JSON
+
+// Run the function to fetch scenes from JSON load certain menus and fetch images beforehand
 window.onload = () => {
+    cacheAllImages();
     loadScenes();
+
+    // Sidebar
+    document.getElementById("menuToggle").onclick = function () {
+        const sidebar = document.getElementById("mySidebar");
+        const main = document.getElementById("main");
+        const isOpen = sidebar.style.width === "250px";
+        sidebar.style.width = isOpen ? "0" : "250px";
+        main.style.marginLeft = isOpen ? "0" : "250px";
+    };
+    // Music
+    document.getElementById("musicMenuBtn").onclick = function (e) {
+        e.preventDefault();
+        const musicMenu  = document.getElementById("musicCredits");
+        musicMenu .style.display = musicMenu .style.display === "block" ? "none" : "block";
+    };
+    // Music button (now in bottom right)
+    document.getElementById("muteToggle").onclick = function () {
+        audioMuted = !audioMuted;
+        const audio = document.getElementById("sceneAudio");
+        audio.muted = audioMuted;
+        this.innerText = audioMuted ? "🔊" : "🔇";
+    };    
+    // Menu click-off
+    document.addEventListener("click", function (event) {
+        const musicMenu  = document.getElementById("musicCredits");
+        const toggleButton = document.getElementById("musicMenuBtn");
+    
+        if (!musicMenu.contains(event.target) && event.target !== toggleButton) {
+            musicMenu .style.display = "none";
+        }
+    });
 };

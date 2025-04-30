@@ -1,5 +1,5 @@
 /* ===================== */
-/*       Page Layout     */
+/*      Page Layout     */
 
 body {
     transition: margin-left 0.3s;
@@ -8,8 +8,8 @@ body {
     color: #222;
 }
 
-/* ===================== */
-/*       Topbar ID       */
+/* =================== */
+/*       Topbar       */
 #topbar {
     height: 50px;
     position: fixed;
@@ -21,11 +21,40 @@ body {
     z-index: 999;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 1rem;
 }
 
-/* ===================== */
-/*      Sidebar ID       */
+/*   Top-right Circles   */
+#topCircles {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mute-button {
+    width: 40px;
+    height: 40px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+#karmaIndicator {
+    width: 40px;
+    height: 40px;
+    background-color: gold;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* =================== */
+/*      Sidebar       */
 #mySidebar {
     width: 0;
     height: 100%;
@@ -54,47 +83,62 @@ body {
 
 /* Sidebar Music Credits Box */
 #musicCredits {
+    position: fixed;
+    top: 60px;
+    left: 260px;
+    width: 300px;
     background-color: #222;
     color: #ccc;
     border: 1px solid #555;
     border-radius: 8px;
-    margin-top: 10px;
+    padding: 10px 15px;
     font-size: 0.9rem;
-    padding: 10px;
+    z-index: 1000;
+    display: none;
 }
 
-/* ===================== */
-/*       Main ID         */
+/* =================== */
+/*       Main         */
 #main {
-    margin-left: 0;
-    margin-top: 70px;
+    margin-top: 60px;
     padding: 20px;
     transition: margin-left 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-/* ===================== */
-/*     Class: Story Box  */
+/*   Story Box  */
 .story-box {
+    max-width: 800px;
+    width: 100%;
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 10px;
     text-align: left;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-/* ===================== */
-/*   Class: Scene Choices */
+/*  Scene Choices  */
+.scene-choices {
+    max-width: 800px;
+    width: 100%;
+}
+
 .scene-choices a {
     display: block;
     width: 100%;
     margin-top: 10px;
+    text-align: center;
 }
 
-/* ===================== */
-/*       Image ID        */
+/*     Images     */
 #sceneImage {
     max-width: 100%;
     height: auto;
+    max-height: 550px;
     display: block;
     margin-bottom: 1rem;
     border-radius: 8px;

@@ -38,7 +38,7 @@
         ]
     },
     "lure": {
-        "text": "The plan was simple. A sheep carcass, stuffed with sulfur and pitch, hopefully enough to fool the gluttonous monster. Not particularily honourable but honour went both ways and the dragon had proven to not be acquainted with the concept. But someone needed to place the lure near to the cave, close enough to tempt the beast.",
+        "text": "The plan was simple. A sheep carcass, stuffed with sulfur and pitch, hopefully enough to fool the gluttonous monster. Not particularly honourable but honour went both ways and the dragon had proven to not be acquainted with the concept. But someone needed to place the lure near to the cave, close enough to tempt the beast.",
         "choices": [
             { "text": "Have someone else deliver the bait", "next": "friend", "karma": -1 },
             { "text": "Do it yourself", "next": "self", "karma": 1 }
