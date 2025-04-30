@@ -8,7 +8,6 @@ let currentLineIndex = 0;
 const renderedLines = [];
 
 // === OPTIONAL: Dynamic background switching logic ===
-// This function checks which image to show at the current line
 function updateBackground(index) {
   if (typeof backgroundMap === "undefined") return;
 
@@ -42,8 +41,7 @@ function showLine(index) {
   typewriterContainer.appendChild(paragraph);
   renderedLines.push(paragraph);
 
-  // Optional background update
-
+  // Optional: update background
   if (typeof backgroundMap !== "undefined") {
     updateBackground(index);
   }
@@ -69,6 +67,12 @@ function handleNext() {
     currentLineIndex++;
     showLine(currentLineIndex);
   } else {
+    // Final line reached — reveal final message if it exists
+    const endMessage = document.getElementById("end-message");
+    if (endMessage) {
+      endMessage.style.display = "block";
+    }
+
     revealChoices();
   }
 }
@@ -79,6 +83,12 @@ function handlePrevious() {
     hideLastLine();
     currentLineIndex--;
     hideChoices();
+
+    // Optional: hide final message again if going backward
+    const endMessage = document.getElementById("end-message");
+    if (endMessage) {
+      endMessage.style.display = "none";
+    }
   }
 }
 
@@ -96,7 +106,7 @@ function hideChoices() {
   choicesContainer.classList.remove("show");
   setTimeout(() => {
     choicesContainer.style.display = "none";
-  }, 300); // matches your CSS transition time
+  }, 300);
   nextButton.style.display = "inline-block";
 }
 
@@ -107,7 +117,6 @@ window.addEventListener("DOMContentLoaded", () => {
   nextButton.addEventListener("click", handleNext);
   prevButton.addEventListener("click", handlePrevious);
 
-  // Optional: Allow "Enter" and "Space" keypresses for accessibility
   [nextButton, prevButton].forEach(button => {
     button.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
