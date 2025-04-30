@@ -10,11 +10,9 @@ const renderedLines = [];
 // === OPTIONAL: Dynamic background switching logic ===
 // This function checks which image to show at the current line
 function updateBackground(index) {
-  if (typeof backgroundMap === "undefined") return; // skip if backgroundMap not defined
+  if (typeof backgroundMap === "undefined") return;
 
   let imageToUse = null;
-
-  // Get keys and sort from highest to lowest
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
 
   for (let key of keys) {
@@ -24,7 +22,6 @@ function updateBackground(index) {
     }
   }
 
-  // Update the background image only if needed
   if (imageToUse) {
     const bgDiv = document.querySelector('.background');
     if (bgDiv) {
@@ -32,6 +29,7 @@ function updateBackground(index) {
     }
   }
 }
+
 
 // === FUNCTIONS ===
 
@@ -46,7 +44,10 @@ function showLine(index) {
   renderedLines.push(paragraph);
 
   // Optional background update
-  updateBackground(index);
+
+  if (typeof backgroundMap !== "undefined") {
+    updateBackground(index);
+  }
 
   // Animate the new line
   requestAnimationFrame(() => {
