@@ -1,23 +1,64 @@
 <!DOCTYPE html>
-<html>
-    <h4>The End</h4>
-    <p>You return to Bruhaven.
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The End</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/choice-style.css">
 
-        The fires are long gone.
-        
-        The valley breathes again.
-        
-        You are no longer just a King.
-        
-        She is no longer just a Queen.
-        
-        You are legend.
-        
-        And the loch remembers.
-        
-        Forever.
-    </p>
-    <p>Congratulations! You have completed the game!</p>
-    <p>Thank you for playing!</p>
-    <p>Would you like to play again?</p>
+  <script>
+    const storyLines = [
+      "You return to Bruhaven.",
+      "The fires are long gone.",
+      "The valley breathes again.",
+      "You are no longer just a King.",
+      "She is no longer just a Queen.",
+      "You are legend.",
+      "And the loch remembers.",
+      "Forever."
+    ];
+  </script>
+
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/theKing.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The End</h1>
+
+    <section id="typewriter" class="typewriter-container"></section>
+
+    <div class="controls">
+      <div class="nav-buttons">
+        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
+      </div>
+
+      <nav id="choices" class="choices" aria-label="Choice navigation">
+        <a href="../index.html" class="choice-button">GO HOME</a>
+      </nav>
+    </div>
+
+    <!-- 🎉 Final congratulatory lines -->
+    <div class="end-message" style="margin-top: 3rem; text-align: center;">
+      <p>Congratulations! You have completed the game!</p>
+      <p>Thank you for playing!</p>
+      <p>Would you like to play again?</p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
+  </script>
+</body>
 </html>
