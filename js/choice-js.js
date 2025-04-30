@@ -7,6 +7,32 @@ const prevButton = document.getElementById("prev");
 let currentLineIndex = 0;
 const renderedLines = [];
 
+// === OPTIONAL: Dynamic background switching logic ===
+// This function checks which image to show at the current line
+function updateBackground(index) {
+  if (typeof backgroundMap === "undefined") return; // skip if backgroundMap not defined
+
+  let imageToUse = null;
+
+  // Get keys and sort from highest to lowest
+  const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
+
+  for (let key of keys) {
+    if (index >= key) {
+      imageToUse = backgroundMap[key];
+      break;
+    }
+  }
+
+  // Update the background image only if needed
+  if (imageToUse) {
+    const bgDiv = document.querySelector('.background');
+    if (bgDiv) {
+      bgDiv.style.backgroundImage = `url('${imageToUse}')`;
+    }
+  }
+}
+
 // === FUNCTIONS ===
 
 // Add a new line (with fade-in effect)
@@ -19,7 +45,10 @@ function showLine(index) {
   typewriterContainer.appendChild(paragraph);
   renderedLines.push(paragraph);
 
-  // Trigger fade-in animation
+  // Optional background update
+  updateBackground(index);
+
+  // Animate the new line
   requestAnimationFrame(() => {
     paragraph.classList.add("show");
     paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -52,7 +81,6 @@ function handlePrevious() {
     hideChoices();
   }
 }
-
 
 // Show the choices buttons after story ends
 function revealChoices() {

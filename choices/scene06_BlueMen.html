@@ -1,67 +1,75 @@
-<!DOCTYPE html> <!--NEED TO ADD 2 PICS HERE, DK HOW TO DO THAT YET-->
+<!DOCTYPE html> <!-- MULTIPLE PICTURES -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The blue men of the minch</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Blue Men of the Minch</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/choice-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
-    <script>
-        const storyLines = [
-            "The gate fades behind you",
-            "The ship moves forward and the sun decides to rest beside horizon",
-            "You camp. you have some food and find a fiddle(scottish violin) and start playing the songs",
-            "You look at moon, tomorrow is the night, when the moon turns full and blue",
-            "You go to sleep, ready for tomorrow",
-            "You start sailing early in the morning, even before the sun minds to show up",
-            "The ship moves forward. You pick up some pace. You are close",
-            "Suddenly, something happens in the water. Haggis growls and barks, not scared, but just….. a warning",
-            "You reach for your sword",
-            "Some figures rise, some blue, thin human like beings. Their eyes have a distinct glow to them",
-            "They look human, they could be. Who knows",
-            "Their leader steps up and speaks",
-            "Traveler bold, whose path is bent, The loch has judged your firmament",
-            "Answer true, or sink like stone Speak what's known, or sail alone",
-            "You remember the tales",
-            "The blue men of the minch - sea spirits who test those who pass. Tricksters, judges",
-            "Now they offer you riddles and knowledge",
-            "What do you want to do?"
+  <!-- Story lines -->
+  <script>
+    const storyLines = [
+      "The gate fades behind you",
+      "The ship moves forward and the sun decides to rest beside horizon",
+      "You camp. you have some food and find a fiddle(scottish violin) and start playing the songs",
+      "You look at moon, tomorrow is the night, when the moon turns full and blue",
+      "You go to sleep, ready for tomorrow",
+      "You start sailing early in the morning, even before the sun minds to show up",
+      "The ship moves forward. You pick up some pace. You are close",
+      "Suddenly, something happens in the water. Haggis growls and barks, not scared, but just….. a warning",
+      "You reach for your sword",
+      "Some figures rise, some blue, thin human like beings. Their eyes have a distinct glow to them",
+      "They look human, they could be. Who knows",
+      "Their leader steps up and speaks",
+      "Traveler bold, whose path is bent, The loch has judged your firmament",
+      "Answer true, or sink like stone Speak what's known, or sail alone",
+      "You remember the tales",
+      "The blue men of the minch - sea spirits who test those who pass. Tricksters, judges",
+      "Now they offer you riddles and knowledge",
+      "What do you want to do?"
     ];
-    </script>
 
-    <script defer src="../js/choice-js.js"></script>
+    // 🔄 Background image switch: camping scene → then blueMen when the water stirs
+    const backgroundMap = {
+      0: "../images/camping.jpg",     // lines 0–4
+      5: "../images/blueMen.jpg"      // lines 5+
+    };
+  </script>
+
+  <script defer src="../js/choice-js.js"></script>
 </head>
+
 <body class="fade-in">
-    <div class="background" style="background-image: url('../images/blueMen.jpg');"></div>
+  <div class="background" style="background-image: url('../images/blueMen.jpg');"></div>
 
-    <main class="scene-wrapper">
-        <h1 class="scene-title">The Blue Men of the minch</h1>
-        <section id="typewriter" class="typewriter-container"></section>
-        <div class="controls">
-            <div class="nav-buttons">
-                <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
-                <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
-            </div>
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Blue Men of the Minch</h1>
+    <section id="typewriter" class="typewriter-container"></section>
 
-            <nav id="choices" class="choices" aria-label="Choice navigation">
-                <a href="../choices/scene06a.html" class="choice-button">Solve their riddle</a>
-                <a href="../choices/scene06b.html" class="choice-button">Fight them</a>
-                <a href="../choices/scene06c.html" class="choice-button">Steer away</a>
-            </nav>
+    <div class="controls">
+      <div class="nav-buttons">
+        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
+      </div>
 
-        </div>
-    </main>
+      <nav id="choices" class="choices" aria-label="Choice navigation">
+        <a href="../choices/scene06a.html" class="choice-button">Solve their riddle</a>
+        <a href="../choices/scene06b.html" class="choice-button">Fight them</a>
+        <a href="../choices/scene06c.html" class="choice-button">Steer away</a>
+      </nav>
+    </div>
+  </main>
 
-    <footer class="site-footer">
-        <small>All images are AI generated.</small>
-    </footer>
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
 
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("fade-in");
-        });
-    </script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
+  </script>
 </body>
 </html>
