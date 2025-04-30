@@ -25,12 +25,19 @@ function updateBackground(index) {
   if (imageToUse) {
     const bgDiv = document.querySelector('.background');
     if (bgDiv) {
-      bgDiv.style.backgroundImage = `url('${imageToUse}')`;
+      // Fade out
+      bgDiv.style.opacity = 0;
+
+      setTimeout(() => {
+        // Change background image
+        bgDiv.style.backgroundImage = `url('${imageToUse}')`;
+
+        // Fade back in
+        bgDiv.style.opacity = 1;
+      }, 300); // Half the transition duration
     }
   }
 }
-
-
 // === FUNCTIONS ===
 
 // Add a new line (with fade-in effect)
