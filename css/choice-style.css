@@ -33,8 +33,6 @@ body.fade-in {
   z-index: -1;
   filter: brightness(0.5);
   backdrop-filter: blur(2px);
-  transition: opacity 0.8s ease-in-out;
-  opacity: 1;
 }
 
 /* === SCENE CONTENT CONTAINER === */

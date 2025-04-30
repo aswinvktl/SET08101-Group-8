@@ -22,19 +22,11 @@ function updateBackground(index) {
     }
   }
 
-  if (!imageToUse || imageToUse === currentBackgroundImage) return; // 🔒 skip if same image
+  if (!imageToUse) return;
 
   const bgDiv = document.querySelector('.background');
   if (bgDiv) {
-    // Fade out
-    bgDiv.style.opacity = 0;
-
-    setTimeout(() => {
-      // Switch background and fade in
-      bgDiv.style.backgroundImage = `url('${imageToUse}')`;
-      bgDiv.style.opacity = 1;
-      currentBackgroundImage = imageToUse; // ✅ update tracker
-    }, 300);
+    bgDiv.style.backgroundImage = `url('${imageToUse}')`;
   }
 }
 
