@@ -22,22 +22,22 @@ function updateBackground(index) {
     }
   }
 
-  if (imageToUse) {
-    const bgDiv = document.querySelector('.background');
-    if (bgDiv) {
-      // Fade out
-      bgDiv.style.opacity = 0;
+  if (!imageToUse || imageToUse === currentBackgroundImage) return; // 🔒 skip if same image
 
-      setTimeout(() => {
-        // Change background image
-        bgDiv.style.backgroundImage = `url('${imageToUse}')`;
+  const bgDiv = document.querySelector('.background');
+  if (bgDiv) {
+    // Fade out
+    bgDiv.style.opacity = 0;
 
-        // Fade back in
-        bgDiv.style.opacity = 1;
-      }, 300); // Half the transition duration
-    }
+    setTimeout(() => {
+      // Switch background and fade in
+      bgDiv.style.backgroundImage = `url('${imageToUse}')`;
+      bgDiv.style.opacity = 1;
+      currentBackgroundImage = imageToUse; // ✅ update tracker
+    }, 300);
   }
 }
+
 // === FUNCTIONS ===
 
 // Add a new line (with fade-in effect)
