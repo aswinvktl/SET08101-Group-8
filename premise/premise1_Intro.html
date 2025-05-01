@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bruhaven: The Beginning</title>
+
+  <!-- Font + Styles -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../premise/premise-style.css" />
 
-  <!-- Story lines for typewriter effect -->
+  <!-- Story and Backgrounds -->
   <script>
     const storyLines = [
       "Long ago, cradled in the misty mountains and ancient glens, there lay the hidden valley of Bruhaven.",
@@ -21,11 +23,11 @@
     ];
 
     const backgroundMap = {
-      0: "../images/Bruhaven.jpg",         // Wide valley
-      2: "../images/village.jpg",          // People living
-      3: "../images/starryNight.jpg",      // People stars
-      5: "../images/iron brew.jpg",        // Iron brew
-      6: "../images/iron brewing.jpg"      // Magical brew
+      0: "../images/Bruhaven.jpg",
+      2: "../images/village.jpg",
+      3: "../images/starryNight.jpg",
+      5: "../images/iron brew.jpg",
+      6: "../images/iron brewing.jpg"
     };
   </script>
 
@@ -33,25 +35,27 @@
 </head>
 
 <body class="fade-in">
-  <div class="background" style="background-image: url('../images/Bruhaven.jpg');"></div>
-  <button id="goBack">← Back</button>
 
+  <!-- Background -->
+  <div class="background" style="background-image: url('../images/Bruhaven.jpg');"></div>
+
+  <!-- Main Scene -->
   <main class="scene-wrapper">
     <h1 class="scene-title">Bruhaven: The Beginning</h1>
 
-    <!-- Narration lines will appear here -->
     <section id="typewriter" class="typewriter-container"></section>
 
-    <!-- Navigation to the next premise -->
-    <div class="controls">
-      <nav class="choices show">
-        <a href="premise2_Royalty.html" class="choice-button">Next</a>
-      </nav>
-    </div>
+    <button id="goBack" class="back-button" aria-label="Go back one line">← Back</button>
+    <button id="skip" class="skip-button" aria-label="Skip to end">Skip</button>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="premise2_Royalty.html" class="choice-button">Next</a>
+    </nav>
   </main>
 
   <footer class="site-footer">
     <small>All images are AI generated.</small>
   </footer>
+
 </body>
 </html>
