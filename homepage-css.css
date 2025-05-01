@@ -5,13 +5,9 @@ body {
     padding: 0;
     text-align: center;
   }
-  .background {
-  opacity: 0.8;
-  filter: blur(2px);
-}
-
 .scene-title {
-  color: darkslateblue;
+  color: white;
+  text-shadow: 2px 2px 4px black;
   text-align: center;
   padding-top: 100px;
   font-size: 48px;
