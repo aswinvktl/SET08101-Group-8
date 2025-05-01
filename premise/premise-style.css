@@ -7,15 +7,14 @@
 }
 
 html, body {
-  height: 100%;
-  width: 100%;
-  font-family: 'EB Garamond', serif;
-  color: #f5e9d2;
-  background-color: black;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
+    height: 100%;
+    width: 100%;
+    font-family: 'EB Garamond', serif;
+    color: #f5e9d2;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
 /* === BACKGROUND IMAGE === */
 .background {
     position: fixed;
