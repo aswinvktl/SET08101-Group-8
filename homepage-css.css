@@ -3,17 +3,56 @@ body {
     font-family: 'Verdana', sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  .background {
-    opacity: 0.8;
-    filter: blur(2px);
-  }
-  
-  .scene-title {
-    color: darkslateblue;
     text-align: center;
-    padding-top: 100px;
-    font-size: 48px;
-    letter-spacing: 3px;
   }
+  .background {
+  opacity: 0.8;
+  filter: blur(2px);
+}
+
+.scene-title {
+  color: darkslateblue;
+  text-align: center;
+  padding-top: 100px;
+  font-size: 48px;
+  letter-spacing: 3px;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/1272/cached.offlinehbpl.hbpl.co.uk/news/KMP/Napierwebsitecasestudy-01Cropped.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: brightness(0.5);
+}
+
+h1 {
+  margin-top: 50px;
+  font-size: 2.5rem;
+}
+
+.menu {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.menu a {
+  padding: 12px 24px;
+  background-color: #444;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.menu a:hover {
+  background-color: #666;
+}
