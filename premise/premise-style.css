@@ -27,6 +27,10 @@ html, body {
   background-position: center;
   filter: brightness(0.5);
   z-index: -1;
+  transition: opacity 0.5s ease;
+}
+.background.fade {
+  opacity: 0;
 }
 
 /* === MAIN WRAPPER === */
@@ -99,6 +103,24 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* === BACK BUTTON === */
+#goBack {
+  position: fixed;
+  bottom: 1rem;
+  left: 1.5rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #A78A4A;
+  color: #f5e9d2;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;
+}
+#goBack:hover {
+  background-color: rgba(167, 138, 74, 0.2);
+}
+
 /* === FOOTER === */
 .site-footer {
   position: fixed;
@@ -110,4 +132,3 @@ html, body {
   font-style: italic;
   z-index: 10;
 }
-
