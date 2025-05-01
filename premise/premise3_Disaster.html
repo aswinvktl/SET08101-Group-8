@@ -1,21 +1,58 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Premise 3: Disaster</title>
-        <h4>Part 1: The Village Burns</h4>
-        <p>That night unfolded like any other, calm and peaceful. 
-            The king and queen lay in quiet embrace, the hush of Bruhaven cradling them to sleep. But a sound stirred the king from slumber. 
-            Without waking her, he rose and stepped onto the balcony to see what had broken the silence and what he saw shocked him. 
-            Bruhaven was burning. He stood there, stunned, the fire reflected in his eyes, before resolve hardened within him. 
-            He rushed back to the bedroom to tell his queen he must descend to aid his people. However...</p>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premise 3: Disaster</title>
 
-        <h4>Part 2: The Queen is Gone</h4>
-        <p>What he saw upon re entering the room stole the breath from his chest and set his heart sinking like a stone in the loch.
-                The windows were shattered, curtains torn by the wind. The bed they had just shared lay in chaos.
-                Her books, once carefully stacked were scattered, pages ripped and drifting like fallen leaves. And she… she was gone. 
-                The queen of Bruhaven had been taken.</p>
+  <!-- Font + Style -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../premise/premise-style.css" />
 
-            <a href="premise4_Dream.html">Next Page</a>
-    
-        </head>
+  <!-- Story + Backgrounds -->
+  <script>
+    const storyLines = [
+      "That night unfolded like any other, calm and peaceful.",
+      "The king and queen lay in quiet embrace, the hush of Bruhaven cradling them to sleep.",
+      "But a sound stirred the king from slumber. Without waking her, he rose and stepped onto the balcony to see what had broken the silence.",
+      "What he saw shocked him — Bruhaven was burning.",
+      "He stood there, stunned, the fire reflected in his eyes, before resolve hardened within him.",
+      "He rushed back to the bedroom to tell his queen he must descend to aid his people. However…",
+      "What he saw upon re-entering the room stole the breath from his chest.",
+      "The windows were shattered, curtains torn by the wind. The bed they had just shared lay in chaos.",
+      "Her books were scattered, pages ripped and drifting like fallen leaves.",
+      "And she… she was gone. The queen of Bruhaven had been taken."
+    ];
+
+    const backgroundMap = {
+      0: "../images/villageBurn.jpg",
+      6: "../images/emptyBed.jpg"
+    };
+  </script>
+
+  <script defer src="../premise/premise-js.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/fireBalcony.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">Premise 3: Disaster</h1>
+
+    <section id="typewriter" class="typewriter-container"></section>
+
+    <!-- Interaction Buttons -->
+    <button id="goBack" class="back-button" aria-label="Go back one line">← Back</button>
+    <button id="skip" class="skip-button" aria-label="Skip to end">Skip</button>
+
+    <!-- Final Navigation -->
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="premise4_Dream.html" class="choice-button">Next Page</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+</body>
 </html>
