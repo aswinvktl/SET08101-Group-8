@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+/* === GLOBAL RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'EB Garamond', serif;
+  color: #f5e9d2;
+  background-color: black;
+  overflow: hidden;
+}
+
+/* === BACKGROUND IMAGE === */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+  z-index: -1;
+}
+
+/* === MAIN WRAPPER === */
+.scene-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* === TITLE === */
+.scene-title {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
+
+/* === TEXT AREA === */
+.typewriter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 55ch;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  margin-bottom: 3rem;
+}
+
+/* === TYPEWRITER TEXT ANIMATION === */
+.typewriter-container p.line {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.typewriter-container p.line.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === NEXT BUTTON === */
+.choices {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.choices.show {
+  display: block;
+  opacity: 1;
+}
+
+.choice-button {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: 2px solid #A78A4A;
+  color: #f5e9d2;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.choice-button:hover {
+  background-color: rgba(167, 138, 74, 0.2);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* === FOOTER === */
+.site-footer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1.5rem;
+  font-size: 0.8rem;
+  color: #d0c8b0;
+  opacity: 0.6;
+  font-style: italic;
+  z-index: 10;
+}

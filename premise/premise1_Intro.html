@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bruhaven: The Beginning</title>
-        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../css/style.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruhaven: The Beginning</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/premise-style.css" />
 
-        <script>
-            const storyLines = [
-                "Long ago, cradled in the misty mountains and ancient glens, there lay the hidden valley of Bruhaven.",
-                "A place sung of in old tales, where the wind carried magic, and the hills held secrets older than memory.",
-                "In this mystic land, life moved gently, echoing the breeze through the glens.",
-                "The people of Bruhaven lived with full hearts and open arms sharing bread, laughter, and stories beneath starry skies.",
-                "Their days were simple, but rich in every manner.",
-                "What truly made Bruhaven enchanting was a potion unlike any other, born of the valley's magical soil and crafted with care.",
-                "Glowing like the spring sun, fizzing with ancient power, they called it iron brew. It was more than a drink, it was joy in a cup, the spark that fueled their adventures."
-            ];
-        </script>
-        <script defer src="../js/choice-js.js"></script>
-    </head>
+  <!-- Story lines for typewriter effect -->
+  <script>
+    const storyLines = [
+      "Long ago, cradled in the misty mountains and ancient glens, there lay the hidden valley of Bruhaven.",
+      "A place sung of in old tales, where the wind carried magic, and the hills held secrets older than memory.",
+      "In this mystic land, life moved gently, echoing the breeze through the glens.",
+      "The people of Bruhaven lived with full hearts and open arms—sharing bread, laughter, and stories beneath starry skies.",
+      "Their days were simple, but rich in every manner.",
+      "What truly made Bruhaven enchanting was a potion unlike any other, born of the valley's magical soil and crafted with care.",
+      "Glowing like the spring sun, fizzing with ancient power, they called it Iron Brew.",
+      "It was more than a drink. It was joy in a cup. The spark that fueled their adventures."
+    ];
 
-    <body>
-        <div class="background" style="background-image: url('../images/Bruhaven.jpg');"></div>
+    const backgroundMap = {
+      0: "../images/Bruhaven.jpg",         // Wide valley
+      2: "../images/village.jpg",          // People living
+      3: "../images/starryNight.jpg",      // People stars
+      5: "../images/iron brew.jpg",        // Iron brew
+      6: "../images/iron brewing.jpg"      // Magical brew
+    };
+  </script>
 
-            <div class="textbox">
-                <h4>Part 1: The Wide Shot</h4>
-        <p>Long ago, cradled in the misty mountains and ancient glens, there lay the hidden valley of Bruhaven.
-            A place sung of in old tales, where the wind carried magic, and the hills held secrets older than memory.</p>
-        
-        <h4>Part 2: The Close-Up</h4>
-        <p>In this mystic land, life moved gently, echoing the breeze through the glens.
-            The people of Bruhaven lived with full hearts and open arms sharing bread, laughter, and stories beneath starry skies.
-            Their days were simple, but rich in every manner.</p>
+  <script defer src="../js/premise-script.js"></script>
+</head>
 
-        <h4>Part 3: Iron Brew</h4>
-        <p>What truly made Bruhaven enchanting was a potion unlike any other, born of the valley's magical soil and crafted with care.
-            Glowing like the spring sun, fizzing with ancient power, they called it iron brew. It was more than a drink, it was joy in a cup, the spark that fueled their adventures.</p>
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/Bruhaven.jpg');"></div>
 
-        <a href="premise2_Royalty.html">Next!</a>
-        </div>
-        </div>
-        </body>
+  <main class="scene-wrapper">
+    <h1 class="scene-title">Bruhaven: The Beginning</h1>
+
+    <!-- Narration lines will appear here -->
+    <section id="typewriter" class="typewriter-container"></section>
+
+    <!-- Navigation to the next premise -->
+    <div class="controls">
+      <nav class="choices show">
+        <a href="premise2_Royalty.html" class="choice-button">Next</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+</body>
 </html>
