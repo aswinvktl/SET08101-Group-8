@@ -1,37 +1,87 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Premise 2: Royalty</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premise 2: Royalty</title>
 
-        <h4>Part 1: The Queen</h4>
-        <p>She was the soul of Bruhaven, a whisper of beauty beyond the valley's green.
-            Her eyes, a brilliant blue, shimmered like a sacred loch, kissed by the moon's soft sheen.
-            Her hair, rich and brown like Highland soil, fell in soft waves, carrying the scent of wild herbs and distant rain. 
-            Lost in ancient scripts and gardens bright, she wrote words for days to come. Old songs she sang, her fingers danced on the clarsach's strings, 
-            making the valley hum. Even the wind, flowing free, would pause to hear her play.
-            At times, she trained beside the soldiers, her blade light and fast, her braid swinging with purpose.
-            For those who knew her, she was more than a queen, magic in human sway.</p>
+  <!-- Font and style -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
-            <h4>Part 2: The King</h4>
-            <p>At her side stood the King, a warrior of rare spirit, noble in heart and bound by honour.
-                Legends speak of his strength: enduring as the mountains that cradled the valley, and of a gentleness that softened even the fiercest winds.
-                He was both shield and shelter. He led not with command, but with the quiet weight of love and purpose.
-                In his gaze lived devotion. In his silence, unwavering truth.
-                
-                He adored her not with words, but through actions:
-                Tending her garden when she was busy, restoring the strings of her harp, tucking notes into the pages of her books.
-                
-                Together, they were Bruhaven's harmony.</p>
+  <!-- Story text and images -->
+  <script>
+    const storyLines = [
+      // QUEEN FOCUS
+      "She was the soul of Bruhaven, a whisper of beauty beyond the valley’s green.",
+      "Her eyes shimmered like a sacred loch kissed by the moon’s soft sheen.",
+      "Her hair, rich and brown like Highland soil, fell in soft waves, scented with wild herbs.",
+      "She read ancient scripts, wrote verses, and played old songs on the clarsach.",
+      "Even the wind paused to hear her sing.",
+      "She trained beside soldiers, her braid swinging as she moved with strength and grace.",
+      
+      // KING FOCUS
+      "At her side stood the King, a warrior with the heart of a poet.",
+      "His strength was legend, but his gentleness made him beloved.",
+      "He didn’t lead by command — he led by quiet purpose.",
+      "He showed love in the small things: restoring her harp, planting herbs, leaving her notes.",
+      "He was Bruhaven’s shield. She was its heart.",
+      "He stood in court not to rule — but to serve. All eyes watched him, and all hearts followed.",
+      
+      // TOGETHER
+      "Together, they were harmony.",
+      "They sat beneath trees in golden silence, love flowing like a song.",
+      
+      // HAGGIS
+      "And in every quiet moment, there was Haggis — never far.",
+      "He trotted through gardens, curled beside the Queen’s chair, leapt into the King’s arms.",
+      "Some say he was just a dog. Others… aren’t so sure.",
+      "Whatever he was, he was always there."
+    ];
 
-                <h4>Part 3: Haggis</h4>
-                <p>- The king and queen loved each other so dearly, they were rarely seen apart. 
-                    Whether walking the garden paths or reading beneath the willow trees, 
-                    their time together was sacred—soft, slow, and full of quiet joy. 
-                    Only one soul dared to interrupt their peace: Haggis, 
-                    the little dog with a nose for mischief and a heart of gold. 
-                    Always with them. Always watching. Was it just a companion? Or something more than fur and bark? 
-                    That, we shall one day find out…</p>
+    const backgroundMap = {
+      0: "../images/Balcony.jpg",              // Wide view of queen and castle
+      1: "../images/queenRead.jpg",            // Reading in quiet
+      3: "../images/writingQueen.jpg",         // At desk with scrolls
+      5: "../images/trainingQueen.jpg",        // Sword training
 
-                    <a href="premise3_Disaster.html">Next Page</a>
-    </head>
+      6: "../images/kingLookin.jpg",           // King watching
+      7: "../images/niceKing.jpg",             // Giving bread
+      9: "../images/noteKing.jpg",             // Leaving notes
+      10: "../images/king.jpg",                // King in court
+
+      12: "../images/royalLove.jpg",           // Together on bench
+
+      14: "../images/haggis.jpg",              // Solo haggis
+      15: "../images/HaggisPlayin.jpg"         // With cows and joy
+    };
+  </script>
+
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body>
+  <div class="background" style="background-image: url('../images/Balcony.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">Royalty</h1>
+
+    <section id="typewriter" class="typewriter-container"></section>
+
+    <div class="controls">
+      <div class="nav-buttons">
+        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
+      </div>
+
+      <nav id="choices" class="choices" aria-label="Choice navigation">
+        <a href="premise3_Disaster.html" class="choice-button">Next Page</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+</body>
 </html>
