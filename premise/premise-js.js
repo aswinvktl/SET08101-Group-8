@@ -1,9 +1,12 @@
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.querySelector(".choices");
+const backgroundEl = document.querySelector(".background");
+const backButton = document.getElementById("goBack");
 
 let currentLine = 0;
+let renderedLines = [];
 
-// === Show next line with animation ===
+// === Show next line ===
 function showLine(index) {
   if (!storyLines || index >= storyLines.length) return;
 
@@ -11,6 +14,7 @@ function showLine(index) {
   paragraph.classList.add("line");
   paragraph.textContent = storyLines[index];
   typewriterEl.appendChild(paragraph);
+  renderedLines.push(paragraph);
 
   requestAnimationFrame(() => {
     paragraph.classList.add("show");
@@ -20,7 +24,15 @@ function showLine(index) {
   updateBackground(index);
 }
 
-// === Switch background image based on index ===
+// === Remove last line ===
+function hideLastLine() {
+  if (renderedLines.length > 0) {
+    const lastLine = renderedLines.pop();
+    lastLine.remove();
+  }
+}
+
+// === Change background with fade ===
 function updateBackground(index) {
   if (typeof backgroundMap === "undefined") return;
 
@@ -33,29 +45,38 @@ function updateBackground(index) {
     }
   }
 
-  if (imageToUse) {
-    const bgDiv = document.querySelector(".background");
-    bgDiv.style.backgroundImage = `url('${imageToUse}')`;
+  if (imageToUse && backgroundEl) {
+    backgroundEl.classList.add("fade");
+    setTimeout(() => {
+      backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
+      backgroundEl.classList.remove("fade");
+    }, 500);
   }
 }
 
-// === Init: Show each line in intervals ===
+// === Initialization ===
 window.addEventListener("DOMContentLoaded", () => {
-  const delayBetweenLines = 3800;
+  showLine(currentLine);
 
-  function revealNext() {
-    showLine(currentLine);
+  document.body.addEventListener("click", () => {
     currentLine++;
-
     if (currentLine < storyLines.length) {
-      setTimeout(revealNext, delayBetweenLines);
+      showLine(currentLine);
     } else {
-      // All lines done, show Next button
-      setTimeout(() => {
-        choicesEl.classList.add("show");
-      }, 1000);
+      choicesEl.classList.add("show");
     }
-  }
+  });
 
-  revealNext();
+  // Back button
+  if (backButton) {
+    backButton.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent advancing story
+      if (currentLine > 0) {
+        hideLastLine();
+        currentLine--;
+        updateBackground(currentLine);
+        choicesEl.classList.remove("show");
+      }
+    });
+  }
 });
