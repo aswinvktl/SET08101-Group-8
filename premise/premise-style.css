@@ -142,3 +142,25 @@ html, body {
     z-index: 0;
   }
   
+  /* === Background Zoom Animation (for premise only) === */
+body {
+  animation: zoomBg 40s ease-in-out infinite alternate;
+}
+
+@keyframes zoomBg {
+  0% { background-size: 100%; }
+  100% { background-size: 105%; }
+}
+
+/* === Glow Effect for Title === */
+.scene-title {
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.6),
+    0 0 12px rgba(173,216,230,0.7);
+}
+
+/* === Accessibility Improvements === */
+button:focus {
+  outline: 2px solid #A78A4A;
+  outline-offset: 3px;
+}
