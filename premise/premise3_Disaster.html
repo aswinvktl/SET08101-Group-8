@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Premise 3: Disaster</title>
 
-  <!-- Font + Style -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../premise/premise-style.css" />
 
-  <!-- Story + Backgrounds -->
   <script>
     const storyLines = [
       "That night unfolded like any other, calm and peaceful.",
@@ -33,7 +31,7 @@
   <script defer src="../premise/premise-js.js"></script>
 </head>
 
-<body class="fade-in">
+<body>
   <div class="background" style="background-image: url('../images/villageBurn.jpg');"></div>
 
   <main class="scene-wrapper">
@@ -41,14 +39,16 @@
 
     <section id="typewriter" class="typewriter-container"></section>
 
-    <!-- Interaction Buttons -->
-    <button id="goBack" class="back-button" aria-label="Go back one line">← Back</button>
-    <button id="skip" class="skip-button" aria-label="Skip to end">Skip</button>
+    <div class="controls">
+      <div class="nav-buttons">
+        <button id="goBack" class="nav-btn" aria-label="Go back one line">← Back</button>
+        <button id="skip" class="nav-btn" aria-label="Skip to end">Skip</button>
+      </div>
 
-    <!-- Final Navigation -->
-    <nav id="choices" class="choices" aria-label="Choice navigation">
-      <a href="premise4_Dream.html" class="choice-button">Next Page</a>
-    </nav>
+      <nav id="choices" class="choices" aria-label="Choice navigation">
+        <a href="premise4_Dream.html" class="choice-button">Next Page</a>
+      </nav>
+    </div>
   </main>
 
   <footer class="site-footer">

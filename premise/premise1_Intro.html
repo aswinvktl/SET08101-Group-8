@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bruhaven: The Beginning</title>
 
-  <!-- Font + Style -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="premise-style.css" />
 
-  <!-- Story and Backgrounds -->
   <script>
     const storyLines = [
       "Long ago, cradled in the misty mountains and ancient glens, there lay the hidden valley of Bruhaven.",
@@ -34,29 +32,26 @@
   <script defer src="premise-js.js"></script>
 </head>
 
-<body class="fade-in">
-  <!-- Background Image -->
+<body>
   <div class="background" style="background-image: url('../images/Bruhaven.jpg');"></div>
 
-  <!-- Content Wrapper -->
   <main class="scene-wrapper">
     <h1 class="scene-title">Bruhaven: The Beginning</h1>
 
     <section id="typewriter" class="typewriter-container"></section>
 
-    <!-- Interaction Buttons -->
-    <div class="button-group">
-      <button id="goBack" class="nav-button" aria-label="Go back one line">← Back</button>
-      <button id="skip" class="nav-button" aria-label="Skip to end">Skip</button>
-    </div>
+    <div class="controls">
+      <div class="nav-buttons">
+        <button id="goBack" class="nav-btn" aria-label="Go back one line">← Back</button>
+        <button id="skip" class="nav-btn" aria-label="Skip to end">Skip</button>
+      </div>
 
-    <!-- Final Navigation -->
-    <nav id="choices" class="choices" aria-label="Choice navigation">
-      <a href="premise2_Royalty.html" class="choice-button">Next</a>
-    </nav>
+      <nav id="choices" class="choices" aria-label="Choice navigation">
+        <a href="premise2_Royalty.html" class="choice-button">Next</a>
+      </nav>
+    </div>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <small>All images are AI generated.</small>
   </footer>
