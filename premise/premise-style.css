@@ -164,3 +164,31 @@ button:focus {
   outline: 2px solid #A78A4A;
   outline-offset: 3px;
 }
+
+.button-group {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.nav-button {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: 2px solid #A78A4A;
+  color: #f5e9d2;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: rgba(167, 138, 74, 0.2);
+  color: #fff;
+  transform: translateY(-2px);
+}

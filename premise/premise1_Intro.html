@@ -37,7 +37,6 @@
 <body class="fade-in">
   <!-- Background Image -->
   <div class="background" style="background-image: url('../images/Bruhaven.jpg');"></div>
-  <div class="overlay"></div>
 
   <!-- Content Wrapper -->
   <main class="scene-wrapper">
@@ -46,9 +45,11 @@
     <section id="typewriter" class="typewriter-container"></section>
 
     <!-- Interaction Buttons -->
-    <button id="goBack" class="back-button" aria-label="Go back one line">← Back</button>
-    <button id="skip" class="skip-button" aria-label="Skip to end">Skip</button>
-
+    <div class="button-group">
+      <button id="goBack" class="nav-button" aria-label="Go back one line">← Back</button>
+      <button id="skip" class="nav-button" aria-label="Skip to end">Skip</button>
+    </div>
+    
     <!-- Final Navigation -->
     <nav id="choices" class="choices" aria-label="Choice navigation">
       <a href="premise2_Royalty.html" class="choice-button">Next</a>
