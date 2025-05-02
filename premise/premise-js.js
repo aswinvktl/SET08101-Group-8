@@ -63,8 +63,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   showLine(currentLine);
 
-  document.body.addEventListener("click", () => {
-    if (isSkipping) return;
+  // "Click anywhere" works ONLY if not clicking on buttons
+  document.body.addEventListener("click", (e) => {
+    const isButton = e.target.closest("button");
+    if (isSkipping || isButton) return;
 
     currentLine++;
     if (currentLine < storyLines.length) {
