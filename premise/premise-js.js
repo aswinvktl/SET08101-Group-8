@@ -8,16 +8,9 @@ let currentLine = 0;
 let renderedLines = [];
 let isSkipping = false;
 
-// ✅ USE global variables without redeclaring them
-// Assume they were defined in the HTML: window.storyLines, window.backgroundMap
-// So we just reference them safely
-const getStoryLines = () => window.storyLines || [];
-const getBackgroundMap = () => window.backgroundMap || {};
-
 // === Show a new line ===
 function showLine(index) {
-  const storyLines = getStoryLines();
-  if (!storyLines || index >= storyLines.length) return;
+  if (!Array.isArray(storyLines) || index >= storyLines.length) return;
 
   const paragraph = document.createElement("p");
   paragraph.classList.add("line");
@@ -43,8 +36,7 @@ function hideLastLine() {
 
 // === Background Transition ===
 function updateBackground(index) {
-  const backgroundMap = getBackgroundMap();
-  if (!backgroundMap || !backgroundEl) return;
+  if (typeof backgroundMap === "undefined" || !backgroundEl) return;
 
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;
@@ -67,14 +59,13 @@ function updateBackground(index) {
 
 // === Initialization ===
 window.addEventListener("DOMContentLoaded", () => {
-  const storyLines = getStoryLines();
-  if (!typewriterEl || !choicesEl || !storyLines.length) return;
+  if (!typewriterEl || !choicesEl || !Array.isArray(storyLines)) return;
 
   showLine(currentLine);
 
-  // Advance on body click
   document.body.addEventListener("click", () => {
     if (isSkipping) return;
+
     currentLine++;
     if (currentLine < storyLines.length) {
       showLine(currentLine);
@@ -83,7 +74,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Go Back
   backButton?.addEventListener("click", (e) => {
     e.stopPropagation();
     if (currentLine > 0) {
@@ -94,7 +84,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Skip All
   skipButton?.addEventListener("click", (e) => {
     e.stopPropagation();
     isSkipping = true;
