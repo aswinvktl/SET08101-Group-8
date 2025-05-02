@@ -7,27 +7,27 @@
 }
 
 html, body {
-    height: 100%;
-    width: 100%;
-    font-family: 'EB Garamond', serif;
-    color: #f5e9d2;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  
+  height: 100%;
+  width: 100%;
+  font-family: 'EB Garamond', serif;
+  color: #f5e9d2;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 /* === BACKGROUND IMAGE === */
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    transition: opacity 0.5s ease;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+}
+
 .background.fade {
   opacity: 0;
 }
@@ -47,7 +47,7 @@ html, body {
 .scene-title {
   font-size: 2.8rem;
   margin-bottom: 2rem;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 8px rgba(255,255,255,0.6), 0 0 12px rgba(173,216,230,0.7);
 }
 
 /* === TYPEWRITER TEXT === */
@@ -71,100 +71,7 @@ html, body {
   transform: translateY(0);
 }
 
-/* === BUTTONS === */
-.choice-button,
-.back-button,
-.skip-button {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: 2px solid #A78A4A;
-  color: #f5e9d2;
-  padding: 0.6rem 1.4rem;
-  margin: 0.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.choice-button:hover,
-.back-button:hover,
-.skip-button:hover {
-  background-color: rgba(167, 138, 74, 0.2);
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-.back-button {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 10;
-}
-
-.skip-button {
-  position: fixed;
-  bottom: 1rem;
-  left: 6rem;
-  z-index: 10;
-}
-
-/* === CHOICES (Next) === */
-.choices {
-  display: none;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-.choices.show {
-  display: block;
-  opacity: 1;
-}
-
-/* === FOOTER === */
-.site-footer {
-  position: fixed;
-  bottom: 1rem;
-  right: 1.5rem;
-  font-size: 0.8rem;
-  color: #d0c8b0;
-  opacity: 0.6;
-  font-style: italic;
-  z-index: 10;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.35);
-    z-index: 0;
-  }
-  
-  /* === Background Zoom Animation (for premise only) === */
-body {
-  animation: zoomBg 40s ease-in-out infinite alternate;
-}
-
-@keyframes zoomBg {
-  0% { background-size: 100%; }
-  100% { background-size: 105%; }
-}
-
-/* === Glow Effect for Title === */
-.scene-title {
-  text-shadow:
-    0 0 8px rgba(255,255,255,0.6),
-    0 0 12px rgba(173,216,230,0.7);
-}
-
-/* === Accessibility Improvements === */
-button:focus {
-  outline: 2px solid #A78A4A;
-  outline-offset: 3px;
-}
-
+/* === NAVIGATION BUTTONS === */
 .button-group {
   position: fixed;
   bottom: 1rem;
@@ -191,4 +98,64 @@ button:focus {
   background-color: rgba(167, 138, 74, 0.2);
   color: #fff;
   transform: translateY(-2px);
+}
+
+/* === CHOICE BUTTON === */
+.choice-button {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: 2px solid #A78A4A;
+  color: #f5e9d2;
+  padding: 0.6rem 1.4rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.choice-button:hover {
+  background-color: rgba(167, 138, 74, 0.2);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* === CHOICES === */
+.choices {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.choices.show {
+  display: block;
+  opacity: 1;
+}
+
+/* === FOOTER === */
+.site-footer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1.5rem;
+  font-size: 0.8rem;
+  color: #d0c8b0;
+  opacity: 0.6;
+  font-style: italic;
+  z-index: 10;
+}
+
+/* === Background Zoom Animation === */
+body {
+  animation: zoomBg 40s ease-in-out infinite alternate;
+}
+
+@keyframes zoomBg {
+  0% { background-size: 100%; }
+  100% { background-size: 105%; }
+}
+
+/* === Accessibility === */
+button:focus {
+  outline: 2px solid #A78A4A;
+  outline-offset: 3px;
 }
