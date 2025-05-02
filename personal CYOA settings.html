@@ -1,13 +1,59 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>personal CYOA settings</title>
-        <h1>SETTINGS</h1>
-        <p>Gameplay</p>
-        <p>Controls</p>
-        <p>Accesibility</p>
-        <p>Audio</p>
-        <p>Visuals</p>
-        <p>Language</p>
-        <P><a href="index.html" >Home</a></P>
-    </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings</title>
+  <link rel="stylesheet" href="settings-style.css" />
+</head>
+
+<body>
+  <main class="settings-wrapper">
+    <h1>⚙️ Settings</h1>
+
+    <section class="setting-group">
+      <h2>Gameplay</h2>
+      <p>Branch highlights: <input type="checkbox" /></p>
+    </section>
+
+    <section class="setting-group">
+      <h2>Controls</h2>
+      <p>Click-to-continue: <input type="checkbox" checked /></p>
+    </section>
+
+    <section class="setting-group">
+      <h2>Accessibility</h2>
+      <p>Font Size: 
+        <select>
+          <option value="normal">Normal</option>
+          <option value="large">Large</option>
+        </select>
+      </p>
+    </section>
+
+    <section class="setting-group">
+      <h2>Audio</h2>
+      <p>Mute Background Music: <input type="checkbox" /></p>
+    </section>
+
+    <section class="setting-group">
+      <h2>Visuals</h2>
+      <p>Dark Mode: <input type="checkbox" id="darkToggle" /></p>
+    </section>
+
+    <section class="setting-group">
+      <h2>Language</h2>
+      <p>Select Language: 
+        <select>
+          <option>English</option>
+          <option>Scots Gaelic</option>
+        </select>
+      </p>
+    </section>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </main>
+
+  <script src="settings.js" defer></script>
+</body>
+</html>
