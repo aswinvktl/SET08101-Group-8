@@ -1,27 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
-/* === GLOBAL RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* === PAGE FONT & GLOBAL SETTINGS === */
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'EB Garamond', Georgia, serif;
+  font-family: 'EB Garamond', serif;
   background-color: transparent;
   color: #f5e9d2;
-  opacity: 1;
 }
 
 body.fade-in {
   opacity: 1;
 }
 
-/* === BACKGROUND IMAGE STYLING === */
+/* === BACKGROUND === */
 .background {
   position: fixed;
   top: 0;
@@ -35,7 +32,7 @@ body.fade-in {
   backdrop-filter: blur(2px);
 }
 
-/* === SCENE CONTENT CONTAINER === */
+/* === MAIN CONTAINER === */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
@@ -43,79 +40,49 @@ body.fade-in {
   justify-content: center;
   padding: 2rem;
   min-height: 100vh;
-  max-width: 900px;
-  margin: 0 auto;
-  background: none !important;
-  box-shadow: none !important;
-  position: relative;
+  text-align: center;
   z-index: 1;
 }
 
-/* === TITLE TEXT === */
+/* === TITLE === */
 .scene-title {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
+  font-size: 2.6rem;
   color: #f5e9d2;
+  margin-bottom: 2rem;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
-/* === NARRATIVE BOX / SCROLL STYLING === */
+/* === NARRATIVE BOX === */
 .narrative-box {
-  position: relative;
-  background: rgba(24, 24, 24, 0.65);
+  background: rgba(30, 30, 30, 0.65);
   border-radius: 20px;
-  padding: 2rem 1.5rem;
-  max-width: 720px;
-  width: 95%;
-  min-height: 220px;
+  padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  max-width: 800px;
+  width: 100%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
-  margin: 2rem auto;
+  backdrop-filter: blur(5px);
+  margin-bottom: 2rem;
+  gap: 1rem;
 }
 
-/* Arrows on either side */
-.nav-left,
-.nav-right {
-  background-color: transparent;
-  border: 2px solid #A78A4A;
-  color: #f5e9d2;
-  padding: 0.4rem 1.2rem;
-  font-size: 1.5rem;
-  border-radius: 10px;
-  cursor: pointer;
-  height: auto;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.nav-left:hover,
-.nav-right:hover {
-  background-color: rgba(167, 138, 74, 0.2);
-  color: #fff;
-}
-
-/* Text inside box */
+/* === TEXT AREA === */
 .typewriter-container {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 100%;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   line-height: 1.9;
-  color: #f5e9d2;
-  text-align: justify;
-  padding: 0 0.5rem;
+  text-align: center;
 }
 
 .typewriter-container p.line {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1.5s ease, transform 1.5s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .typewriter-container p.line.show {
@@ -123,42 +90,18 @@ body.fade-in {
   transform: translateY(0);
 }
 
-/* === QUOTE STYLING === */
-.typewriter-container blockquote {
-  margin: 2rem 0;
-  padding-left: 1rem;
-  border-left: 4px solid #A78A4A;
-  color: #f5e9d2;
-  font-style: italic;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-/* === CONTROL AREA TRANSPARENCY FIX === */
-.controls,
-.nav-buttons,
-.choices {
-  background: none !important;
-  box-shadow: none !important;
-}
-
-/* === NAVIGATION BUTTONS (generic) === */
-.nav-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
+/* === ARROW BUTTONS === */
 .nav-btn {
-  background-color: transparent;
+  background: transparent;
   border: 2px solid #A78A4A;
   color: #f5e9d2;
+  font-size: 1.5rem;
   padding: 0.6rem 1.2rem;
-  border-radius: 5px;
-  font-size: 1.2rem;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
+  min-width: 50px;
+  min-height: 50px;
 }
 
 .nav-btn:hover {
@@ -166,9 +109,8 @@ body.fade-in {
   color: #fff;
 }
 
-/* === CHOICE BUTTONS === */
+/* === CHOICES === */
 .choices {
-  margin-top: 2rem;
   display: none;
   opacity: 0;
   transition: opacity 1s ease;
@@ -179,38 +121,23 @@ body.fade-in {
   opacity: 1;
 }
 
-.choice-button,
-.button-link {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 1.2rem;
-  font-weight: normal;
-  letter-spacing: 0.5px;
-  background-color: transparent;
+.choice-button {
+  font-size: 1.1rem;
+  background: transparent;
   border: 2px solid #A78A4A;
   color: #f5e9d2;
   padding: 0.8rem 1.6rem;
-  margin: 0.5rem;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
   text-decoration: none;
-  display: inline-block;
-  text-align: center;
+  margin: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.choice-button:hover,
-.button-link:hover {
+.choice-button:hover {
   background-color: rgba(167, 138, 74, 0.2);
-  color: #fff;
   transform: translateY(-2px);
-}
-
-/* === ACCESSIBILITY FOCUS === */
-a:focus,
-.button-link:focus,
-.nav-btn:focus {
-  outline: 2px dashed #A78A4A;
-  outline-offset: 4px;
+  color: white;
 }
 
 /* === FOOTER === */
