@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
-/* === RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
-/* === BASE STYLING === */
 html, body {
   height: 100%;
   width: 100%;
@@ -20,7 +19,7 @@ body.fade-in {
   opacity: 1;
 }
 
-/* === BACKGROUND IMAGE === */
+/* === Background === */
 .background {
   position: fixed;
   top: 0;
@@ -34,7 +33,7 @@ body.fade-in {
   backdrop-filter: blur(2px);
 }
 
-/* === MAIN CONTENT === */
+/* === Main container === */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
@@ -46,15 +45,14 @@ body.fade-in {
   z-index: 1;
 }
 
-/* === TITLE === */
+/* === Title === */
 .scene-title {
   font-size: 2.6rem;
-  color: #f5e9d2;
   margin-bottom: 2rem;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
-/* === NARRATIVE BOX === */
+/* === Narrative box === */
 .narrative-box {
   background: rgba(30, 30, 30, 0.65);
   border-radius: 20px;
@@ -70,12 +68,11 @@ body.fade-in {
   gap: 1rem;
 }
 
-/* === TEXT SECTION === */
+/* === Typewriter === */
 .typewriter-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   font-size: 1.4rem;
   line-height: 1.9;
   text-align: center;
@@ -86,26 +83,23 @@ body.fade-in {
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
 }
-
 .typewriter-container p.line.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* === BUTTONS (BOTH NAV & CHOICE) === */
+/* === Buttons === */
 .nav-btn,
-.choice-button,
-.button-link {
+.choice-button {
   font-family: 'EB Garamond', serif;
   font-size: 1.2rem;
-  font-weight: normal;
   background-color: rgba(24, 24, 24, 0.5);
   border: 2px solid #A78A4A;
   color: #f5e9d2;
   padding: 0.7rem 1.5rem;
-  margin: 0.5rem;
   border-radius: 10px;
   cursor: pointer;
+  margin: 0.5rem;
   transition: all 0.25s ease;
   text-decoration: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -113,29 +107,24 @@ body.fade-in {
   overflow: hidden;
 }
 
-/* === HOVER EFFECT === */
 .nav-btn:hover,
-.choice-button:hover,
-.button-link:hover {
+.choice-button:hover {
   background-color: rgba(167, 138, 74, 0.3);
-  color: #ffffff;
+  color: #fff;
   transform: scale(1.04);
   box-shadow: 0 0 12px rgba(167, 138, 74, 0.5);
 }
 
-/* === CLICK EFFECT === */
 .nav-btn:active,
-.choice-button:active,
-.button-link:active {
+.choice-button:active {
   transform: scale(0.96);
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3) inset;
   background-color: rgba(24, 24, 24, 0.7);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3) inset;
 }
 
-/* === GLOW RIPPLE ON CLICK === */
+/* Ripple */
 .nav-btn::after,
-.choice-button::after,
-.button-link::after {
+.choice-button::after {
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -144,33 +133,30 @@ body.fade-in {
   top: 0;
   left: 0;
   background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 10.01%);
-  background-size: 100% 100%;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s, transform 0.3s;
 }
 
 .nav-btn:active::after,
-.choice-button:active::after,
-.button-link:active::after {
+.choice-button:active::after {
   opacity: 1;
   transform: scale(1.5);
   transition: none;
 }
 
-/* === CHOICES BLOCK === */
+/* === Choices === */
 .choices {
   display: none;
   opacity: 0;
   transition: opacity 1s ease;
 }
-
 .choices.show {
   display: block;
   opacity: 1;
 }
 
-/* === FOOTER === */
+/* === Footer === */
 .site-footer {
   position: fixed;
   bottom: 0.5rem;
@@ -181,12 +167,4 @@ body.fade-in {
   font-style: italic;
   pointer-events: none;
   z-index: 10;
-}
-
-/* === FOCUS ACCESSIBILITY === */
-a:focus,
-.button-link:focus,
-.nav-btn:focus {
-  outline: 2px dashed #A78A4A;
-  outline-offset: 4px;
 }

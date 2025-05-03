@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Departure</title>
 
-  <!-- Font & styles -->
+  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/choice-style.css" />
 
-  <!-- Story lines -->
+  <!-- Story -->
   <script>
     const storyLines = [
       "You stood at the edge of the loch, wrapped in the queen's cloak. Your ship waited in the water, its sail stitched by her own hands.",
@@ -18,6 +18,7 @@
     ];
   </script>
 
+  <!-- Howler & Logic -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="../js/choice-js.js"></script>
 </head>
@@ -29,13 +30,9 @@
     <h1 class="scene-title">The Departure</h1>
 
     <div class="narrative-box">
-      <button id="prev" class="nav-btn nav-left" aria-label="Previous line">⬅️</button>
-
-      <section id="typewriter" class="typewriter-container">
-        <!-- Lines will be injected here -->
-      </section>
-
-      <button id="next" class="nav-btn nav-right" aria-label="Next line">➡️</button>
+      <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
     </div>
 
     <nav id="choices" class="choices" aria-label="Choice navigation">
