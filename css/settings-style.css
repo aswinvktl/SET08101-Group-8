@@ -1,69 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
 body {
+  margin: 0;
   font-family: 'EB Garamond', serif;
   background: url('../images/settings-bg.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #f5e9d2;
-  margin: 0;
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  color: white;
   min-height: 100vh;
 }
 
-.settings-wrapper {
-  background-color: rgba(0, 0, 0, 0.65);
-  padding: 2rem 3rem;
-  border-radius: 12px;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-h1 {
-  font-size: 2.4rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  text-shadow: 0 0 5px rgba(255,255,255,0.2);
-}
-
-.setting-group {
-  margin-bottom: 1.5rem;
-}
-
-.setting-group h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #d5c6a0;
-  border-bottom: 1px solid #A78A4A;
-  padding-bottom: 0.3rem;
-}
-
-.setting-group p {
-  margin: 0.5rem 0;
+.settings-header {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 1.1rem;
 }
 
-input[type="checkbox"], select {
-  margin-left: 0.5rem;
-  font-size: 1rem;
+.settings-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
 }
 
 .back-link {
-  display: inline-block;
-  margin-top: 2rem;
-  font-size: 1.2rem;
-  color: #f5e9d2;
+  cursor: pointer;
+  color: white;
   text-decoration: none;
-  border: 1px solid #A78A4A;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background-color 0.3s;
+  font-size: 1rem;
 }
 
-.back-link:hover {
-  background-color: rgba(167, 138, 74, 0.2);
-  color: #fff;
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.tile {
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  text-align: center;
+  padding: 2rem 1rem;
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.tile span {
+  display: block;
+  margin-top: 0.6rem;
+}
+
+.tile:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
 }
