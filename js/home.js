@@ -6,11 +6,11 @@ const themeMusic = new Howl({
   });
   
   const clickSound = new Howl({
-    src: ['audio/clicky.mp3'],
+    src: ['audio/clicky.mp3'], // ✅ Now valid
     volume: 0.6
   });
   
-  // === Default to sound ON if not set ===
+  // Default to sound ON if not set
   if (sessionStorage.getItem("soundOn") === null) {
     sessionStorage.setItem("soundOn", "true");
   }
@@ -19,22 +19,24 @@ const themeMusic = new Howl({
   
   // === DOM Ready ===
   window.addEventListener("DOMContentLoaded", () => {
-    // Try autoplay
+    // Try to play music immediately
     if (isSoundOn) {
-      themeMusic.play().catch(() => {
-        // If autoplay blocked, wait for user interaction
+      const id = themeMusic.play();
+  
+      // If autoplay blocked (not playing), retry on first click
+      if (!themeMusic.playing(id)) {
         document.body.addEventListener("click", tryPlayOnce, { once: true });
-      });
+      }
     }
   
-    // Add click sound to all <a> and <button>
+    // Click sound on all <a> and <button>
     document.querySelectorAll("a, button").forEach(el => {
       el.addEventListener("click", () => {
         if (isSoundOn) clickSound.play();
       });
     });
   
-    // === Mute Toggle Button ===
+    // Mute toggle
     const toggleBtn = document.createElement("button");
     toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
     toggleBtn.className = "nav-button";
@@ -58,10 +60,8 @@ const themeMusic = new Howl({
     document.body.appendChild(toggleBtn);
   });
   
-  // === Try to resume music after click if blocked ===
+  // Retry music if browser blocked autoplay
   function tryPlayOnce() {
-    if (isSoundOn) {
-      themeMusic.play();
-    }
+    if (isSoundOn) themeMusic.play();
   }
   
