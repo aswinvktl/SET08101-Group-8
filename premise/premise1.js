@@ -1,4 +1,3 @@
-// === AUDIO SETUP ===
 const bgMusic = new Howl({
   src: ['../audio/celticVillage.mp3'],
   loop: true,
@@ -15,7 +14,6 @@ if (sessionStorage.getItem("soundOn") === null) {
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === DOM ELEMENTS ===
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.getElementById("choices");
 const nextButton = document.getElementById("goNext");
@@ -59,7 +57,6 @@ function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }
 
-// === TOP BAR ===
 function setupTopControls() {
   const topBar = document.createElement("div");
   topBar.className = "top-bar";
@@ -87,27 +84,18 @@ function createButton(label, href = null) {
   return btn;
 }
 
-// === TEXT ===
 function showLine(index) {
-  if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
-
   const oldLine = typewriterEl.querySelector(".line");
   if (oldLine) {
     oldLine.classList.remove("slide-in");
     oldLine.classList.add("slide-out");
-
-    // Wait for animation, then remove
     setTimeout(() => {
-      if (oldLine && oldLine.parentNode) {
-        oldLine.remove();
-      }
-
+      if (oldLine && oldLine.parentNode) oldLine.remove();
       insertNewLine(index);
     }, 400);
   } else {
     insertNewLine(index);
   }
-
   updateBackground(index);
 }
 
@@ -115,7 +103,6 @@ function insertNewLine(index) {
   const paragraph = document.createElement("p");
   paragraph.textContent = storyLines[index];
   paragraph.classList.add("line", "slide-in");
-
   typewriterEl.appendChild(paragraph);
   paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
 }
