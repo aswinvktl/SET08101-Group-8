@@ -6,7 +6,7 @@ const themeMusic = new Howl({
   });
   
   const clickSound = new Howl({
-    src: ['audio/clicky.mp3'], // ✅ Now valid
+    src: ['audio/mouseClick.wav'], // ✅ Now valid
     volume: 0.6
   });
   
