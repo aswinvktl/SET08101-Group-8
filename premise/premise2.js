@@ -10,23 +10,25 @@ const bgMusic = new Howl({
     volume: 0.6
   });
   
+  // === Persistent Sound Setting ===
   if (sessionStorage.getItem("soundOn") === null) {
     sessionStorage.setItem("soundOn", "true");
   }
   let isSoundOn = sessionStorage.getItem("soundOn") === "true";
   
-  // === DOM Elements ===
-  const typewriterEl = document.getElementById("typewriter");
-  const choicesEl = document.querySelector(".choices");
-  const backgroundEl = document.querySelector(".background");
-  const nextBtn = document.getElementById("next");
-  const prevBtn = document.getElementById("prev");
-  
+  // === Page Logic ===
   let currentLine = 0;
   let renderedLines = [];
   
   window.addEventListener("DOMContentLoaded", () => {
-    // === MUSIC
+    // === DOM References (NOW safe to get them)
+    const typewriterEl = document.getElementById("typewriter");
+    const choicesEl = document.querySelector(".choices");
+    const backgroundEl = document.querySelector(".background");
+    const nextBtn = document.getElementById("next");
+    const prevBtn = document.getElementById("prev");
+  
+    // === Music Autoplay
     if (isSoundOn) {
       const id = bgMusic.play();
       if (!bgMusic.playing(id)) {
@@ -36,7 +38,7 @@ const bgMusic = new Howl({
   
     showLine(currentLine);
   
-    // === Navigation Buttons ===
+    // === Navigation
     nextBtn?.addEventListener("click", (e) => {
       e.stopPropagation();
       if (currentLine < storyLines.length - 1) {
@@ -53,20 +55,20 @@ const bgMusic = new Howl({
       if (currentLine > 0) {
         hideLastLine();
         currentLine--;
-        updateBackground(currentLine);
+        updateBackground(currentLine, backgroundEl);
         choicesEl.classList.remove("show");
       }
       if (isSoundOn) clickSound.play();
     });
   
-    // === Click sounds on other buttons
+    // === Click sounds for all other buttons
     document.querySelectorAll("a, button").forEach(el => {
       el.addEventListener("click", () => {
         if (isSoundOn) clickSound.play();
       });
     });
   
-    // === MUTE TOGGLE
+    // === Mute Toggle
     const toggleBtn = document.createElement("button");
     toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
     toggleBtn.className = "nav-button";
@@ -84,58 +86,56 @@ const bgMusic = new Howl({
     });
   
     document.body.appendChild(toggleBtn);
-  });
   
-  function tryPlayOnce() {
-    if (isSoundOn) bgMusic.play();
-  }
+    // === Show First Line
+    function showLine(index) {
+      if (!Array.isArray(storyLines) || index >= storyLines.length) return;
   
-  // === Show Line ===
-  function showLine(index) {
-    if (!Array.isArray(storyLines) || index >= storyLines.length) return;
+      const paragraph = document.createElement("p");
+      paragraph.classList.add("line");
+      paragraph.textContent = storyLines[index];
+      typewriterEl.appendChild(paragraph);
+      renderedLines.push(paragraph);
   
-    const paragraph = document.createElement("p");
-    paragraph.classList.add("line");
-    paragraph.textContent = storyLines[index];
-    typewriterEl.appendChild(paragraph);
-    renderedLines.push(paragraph);
+      requestAnimationFrame(() => {
+        paragraph.classList.add("show");
+        paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      });
   
-    requestAnimationFrame(() => {
-      paragraph.classList.add("show");
-      paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    });
-  
-    updateBackground(index);
-  }
-  
-  // === Remove Last Line ===
-  function hideLastLine() {
-    if (renderedLines.length > 0) {
-      const lastLine = renderedLines.pop();
-      lastLine.remove();
+      updateBackground(index, backgroundEl);
     }
-  }
   
-  // === Background Image Logic ===
-  function updateBackground(index) {
-    if (typeof backgroundMap === "undefined" || !backgroundEl) return;
-  
-    const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
-    let imageToUse = null;
-  
-    for (let key of keys) {
-      if (index >= key) {
-        imageToUse = backgroundMap[key];
-        break;
+    function hideLastLine() {
+      if (renderedLines.length > 0) {
+        const lastLine = renderedLines.pop();
+        lastLine.remove();
       }
     }
   
-    if (imageToUse) {
-      backgroundEl.classList.add("fade");
-      setTimeout(() => {
-        backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
-        backgroundEl.classList.remove("fade");
-      }, 500);
+    function updateBackground(index, backgroundEl) {
+      if (typeof backgroundMap === "undefined" || !backgroundEl) return;
+  
+      const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
+      let imageToUse = null;
+  
+      for (let key of keys) {
+        if (index >= key) {
+          imageToUse = backgroundMap[key];
+          break;
+        }
+      }
+  
+      if (imageToUse) {
+        backgroundEl.classList.add("fade");
+        setTimeout(() => {
+          backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
+          backgroundEl.classList.remove("fade");
+        }, 500);
+      }
     }
-  }
+  
+    function tryPlayOnce() {
+      if (isSoundOn) bgMusic.play();
+    }
+  });
   
