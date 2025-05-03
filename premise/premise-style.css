@@ -51,18 +51,19 @@ html, body {
 
 /* Bottom fixed text box */
 .text-box {
-  background: linear-gradient(to bottom right, rgba(12, 12, 12, 0.7), rgba(30, 30, 30, 0.6));
-  border: 2px solid rgba(255, 223, 174, 0.3);
-  border-radius: 20px;
-  padding: 2.5rem;
-  max-width: 800px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(12, 12, 12, 0.7),
+    rgba(30, 30, 30, 0.6)
+  );
+  border: 2px solid #d6a76c;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 740px;
   width: 90%;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px); /* Reduced blur */
   margin-bottom: 2rem;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  color: #f9f5e8;
-  font-size: 1.6rem;
-  line-height: 1.8;
 }
 
 
