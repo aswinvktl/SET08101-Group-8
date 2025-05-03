@@ -4,7 +4,6 @@ const bgMusic = new Howl({
   loop: true,
   volume: 0.45
 });
-
 const clickSound = new Howl({
   src: ['../audio/mouseClick.wav'],
   volume: 0.6
@@ -23,8 +22,8 @@ const prevButton = document.getElementById("prev");
 
 let currentLineIndex = 0;
 
-// === INITIALIZE ===
 window.addEventListener("DOMContentLoaded", () => {
+  // Start background music
   if (isSoundOn) {
     const id = bgMusic.play();
     if (!bgMusic.playing(id)) {
@@ -34,100 +33,92 @@ window.addEventListener("DOMContentLoaded", () => {
 
   showLine(currentLineIndex);
 
-  nextButton.addEventListener("click", () => {
+  nextButton?.addEventListener("click", () => {
     handleNext();
     if (isSoundOn) clickSound.play();
   });
 
-  prevButton.addEventListener("click", () => {
+  prevButton?.addEventListener("click", () => {
     handlePrevious();
     if (isSoundOn) clickSound.play();
   });
 
-  // Keyboard accessibility
-  [nextButton, prevButton].forEach(button => {
-    button.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        button.click();
+  [nextButton, prevButton].forEach(btn => {
+    btn?.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.click();
       }
     });
   });
 
-  // Global button click sound
   document.querySelectorAll("a, button").forEach(el => {
     el.addEventListener("click", () => {
       if (isSoundOn) clickSound.play();
     });
   });
 
-  // Mute toggle
-const toggleBtn = document.createElement("button");
-toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-toggleBtn.className = "choice-button sound-toggle";
+  // === UI Buttons: Sound, Home, Settings ===
+  const createButton = (label, href, rightOffset) => {
+    const el = href ? document.createElement("a") : document.createElement("button");
+    el.className = "choice-button top-control";
+    el.innerText = label;
+    el.style.right = rightOffset;
+    el.style.top = "1rem";
+    el.style.position = "fixed";
+    el.style.zIndex = "1000";
+    if (href) el.href = href;
+    return el;
+  };
 
-toggleBtn.addEventListener("click", () => {
-  isSoundOn = !isSoundOn;
-  sessionStorage.setItem("soundOn", isSoundOn.toString());
-  toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-  if (isSoundOn) bgMusic.play();
-  else Howler.stop();
+  const soundBtn = createButton(isSoundOn ? "🔊 Sound On" : "🔇 Sound Off", null, "1rem");
+  soundBtn.addEventListener("click", () => {
+    isSoundOn = !isSoundOn;
+    sessionStorage.setItem("soundOn", isSoundOn.toString());
+    soundBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
+    isSoundOn ? bgMusic.play() : Howler.stop();
+  });
+
+  const homeBtn = createButton("🏠 Home", "../index.html", "9rem");
+  const settingsBtn = createButton("⚙️ Settings", "../settings.html", "17rem");
+
+  document.body.append(soundBtn, homeBtn, settingsBtn);
 });
 
-document.body.appendChild(toggleBtn);
-
-
-  document.body.appendChild(toggleBtn);
-});
-
-// === AUDIO AUTOPLAY FALLBACK ===
 function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }
 
-// === BACKGROUND TRANSITION ===
 function updateBackground(index) {
   if (typeof backgroundMap === "undefined") return;
-
-  let imageToUse = null;
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
-
+  let imageToUse = null;
   for (let key of keys) {
     if (index >= key) {
       imageToUse = backgroundMap[key];
       break;
     }
   }
-
   const bgDiv = document.querySelector('.background');
   if (bgDiv && imageToUse) {
     bgDiv.style.backgroundImage = `url('${imageToUse}')`;
   }
 }
 
-// === TEXT RENDERING ===
 function showLine(index) {
   if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
-
-  // Clear previous line
   typewriterContainer.innerHTML = "";
-
   const paragraph = document.createElement("p");
   paragraph.textContent = storyLines[index];
   paragraph.classList.add("line");
   typewriterContainer.appendChild(paragraph);
-
-  if (typeof backgroundMap !== "undefined") {
-    updateBackground(index);
-  }
-
+  if (typeof backgroundMap !== "undefined") updateBackground(index);
   requestAnimationFrame(() => {
     paragraph.classList.add("show");
     paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
   });
 }
 
-// === NAVIGATION HANDLERS ===
 function handleNext() {
   if (currentLineIndex < storyLines.length - 1) {
     currentLineIndex++;
@@ -149,12 +140,9 @@ function handlePrevious() {
   }
 }
 
-// === CHOICE REVEAL LOGIC ===
 function revealChoices() {
+  choicesContainer.classList.add("show");
   choicesContainer.style.display = "block";
-  requestAnimationFrame(() => {
-    choicesContainer.classList.add("show");
-  });
   nextButton.style.display = "none";
 }
 

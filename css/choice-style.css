@@ -179,3 +179,30 @@ button:focus {
   right: 1rem;
   z-index: 1000;
 }
+/* === TOP CONTROL BUTTONS (Sound / Home / Settings) === */
+.top-control {
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(24, 24, 24, 0.5);
+  border: 2px solid #A78A4A;
+  color: #f5e9d2;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.top-control:hover {
+  background-color: rgba(167, 138, 74, 0.3);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.top-control:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.top-control:focus {
+  outline: none;
+}
