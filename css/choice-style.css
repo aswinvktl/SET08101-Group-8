@@ -60,38 +60,62 @@ body.fade-in {
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
-/* === STORY TEXT CONTAINER === */
-.typewriter-container {
+/* === NARRATIVE BOX / SCROLL STYLING === */
+.narrative-box {
+  position: relative;
+  background: rgba(24, 24, 24, 0.65);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  max-width: 720px;
+  width: 95%;
+  min-height: 220px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: justify;
-  text-align-last: center;
-  gap: 2rem;
-  max-width: 50ch;
-  margin: 0 auto;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  margin: 2rem auto;
 }
 
-.text {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 1.4rem;
-  line-height: 1.9;
-  text-align: justify;
+/* Arrows on either side */
+.nav-left,
+.nav-right {
+  background-color: transparent;
+  border: 2px solid #A78A4A;
   color: #f5e9d2;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-  margin: 0;
+  padding: 0.4rem 1.2rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  height: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.nav-left:hover,
+.nav-right:hover {
+  background-color: rgba(167, 138, 74, 0.2);
+  color: #fff;
+}
+
+/* Text inside box */
+.typewriter-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 100%;
+  font-size: 1.3rem;
+  line-height: 1.9;
+  color: #f5e9d2;
+  text-align: justify;
+  padding: 0 0.5rem;
+}
+
 .typewriter-container p.line {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(20px);
   transition: opacity 1.5s ease, transform 1.5s ease;
-  font-size: 1.4rem;
-  line-height: 1.9;
-  color: #f5e9d2;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-  margin: 0;
-  text-align: justify;
-  text-align-last: center;
 }
 
 .typewriter-container p.line.show {
@@ -118,7 +142,7 @@ body.fade-in {
   box-shadow: none !important;
 }
 
-/* === NAVIGATION BUTTONS === */
+/* === NAVIGATION BUTTONS (generic) === */
 .nav-buttons {
   display: flex;
   justify-content: center;
@@ -189,7 +213,7 @@ a:focus,
   outline-offset: 4px;
 }
 
-
+/* === FOOTER === */
 .site-footer {
   position: fixed;
   bottom: 0.5rem;
