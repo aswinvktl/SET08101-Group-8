@@ -78,7 +78,7 @@ function setupTopControls() {
 
   // Home and Settings
   const homeBtn = createButton("🏠 Home", "../index.html");
-  const settingsBtn = createButton("⚙️ Settings", "../settings.html");
+  const settingsBtn = createButton("⚙️ Settings", "../settings/cyoaSettings.html");
   
 
   topBar.append(settingsBtn, homeBtn, soundBtn);
