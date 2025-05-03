@@ -24,7 +24,7 @@ html, body {
   background-size: cover;
   background-position: center;
   z-index: -1;
-  filter: brightness(0.75); /* Brighter image */
+  filter: none; /* Brighter image */
 }
 
 .scene-wrapper {
