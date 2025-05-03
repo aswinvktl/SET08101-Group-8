@@ -10,14 +10,21 @@ const themeMusic = new Howl({
     volume: 0.6
   });
   
-  // Check saved sound preference
-  let isSoundOn = sessionStorage.getItem("soundOn") !== "false";
+  // === Default to sound ON if not set ===
+  if (sessionStorage.getItem("soundOn") === null) {
+    sessionStorage.setItem("soundOn", "true");
+  }
+  
+  let isSoundOn = sessionStorage.getItem("soundOn") === "true";
   
   // === DOM Ready ===
   window.addEventListener("DOMContentLoaded", () => {
-    // Start background music if enabled
+    // Try autoplay
     if (isSoundOn) {
-      themeMusic.play();
+      themeMusic.play().catch(() => {
+        // If autoplay blocked, wait for user interaction
+        document.body.addEventListener("click", tryPlayOnce, { once: true });
+      });
     }
   
     // Add click sound to all <a> and <button>
@@ -27,7 +34,7 @@ const themeMusic = new Howl({
       });
     });
   
-    // === Create Mute Toggle Button ===
+    // === Mute Toggle Button ===
     const toggleBtn = document.createElement("button");
     toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
     toggleBtn.className = "nav-button";
@@ -39,7 +46,7 @@ const themeMusic = new Howl({
   
     toggleBtn.addEventListener("click", () => {
       isSoundOn = !isSoundOn;
-      sessionStorage.setItem("soundOn", isSoundOn);
+      sessionStorage.setItem("soundOn", isSoundOn.toString());
       toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
       if (isSoundOn) {
         themeMusic.play();
@@ -50,4 +57,11 @@ const themeMusic = new Howl({
   
     document.body.appendChild(toggleBtn);
   });
+  
+  // === Try to resume music after click if blocked ===
+  function tryPlayOnce() {
+    if (isSoundOn) {
+      themeMusic.play();
+    }
+  }
   
