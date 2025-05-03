@@ -9,7 +9,7 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: Baskerville, "Times New Roman", serif;
-  color: #f5e9d2;
+  color: #e17b6c;
   background-color: #0c0c0c;
   overflow: hidden;
 }
@@ -42,8 +42,8 @@ html, body {
 
 .scene-title {
   font-size: 3rem;
-  color: #ffe0a3;
-  text-shadow: 0 0 10px #ffd688, 0 0 30px #b87333;
+  color: #aa7fe6;
+  text-shadow: 0 0 10px #aa7fe6, 0 0 30px #dbade7;
   position: absolute;
   top: 1.5rem;
   width: 100%;
@@ -53,7 +53,7 @@ html, body {
 .text-box {
   background: linear-gradient(
     to bottom right,
-    rgba(12, 12, 12, 0.7),
+    rgba(215, 190, 190, 0.7),
     rgba(30, 30, 30, 0.6)
   );
   border: 2px solid #d6a76c;
