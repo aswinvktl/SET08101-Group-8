@@ -62,24 +62,20 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // Mute toggle
-  const toggleBtn = document.createElement("button");
-  toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-  toggleBtn.className = "nav-button";
-  toggleBtn.style.position = "fixed";
-  toggleBtn.style.top = "1rem";
-  toggleBtn.style.right = "1rem";
-  toggleBtn.style.zIndex = "1000";
+const toggleBtn = document.createElement("button");
+toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
+toggleBtn.className = "choice-button sound-toggle";
 
-  toggleBtn.addEventListener("click", () => {
-    isSoundOn = !isSoundOn;
-    sessionStorage.setItem("soundOn", isSoundOn.toString());
-    toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-    if (isSoundOn) {
-      bgMusic.play();
-    } else {
-      Howler.stop();
-    }
-  });
+toggleBtn.addEventListener("click", () => {
+  isSoundOn = !isSoundOn;
+  sessionStorage.setItem("soundOn", isSoundOn.toString());
+  toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
+  if (isSoundOn) bgMusic.play();
+  else Howler.stop();
+});
+
+document.body.appendChild(toggleBtn);
+
 
   document.body.appendChild(toggleBtn);
 });

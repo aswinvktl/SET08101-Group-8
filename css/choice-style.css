@@ -172,3 +172,10 @@ a:focus,
 button:focus {
   outline: none;
 }
+
+.sound-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
