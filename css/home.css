@@ -10,14 +10,14 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: 'EB Garamond', serif;
-  background-color: black;
-  color: #f5e9d2;
+  background-color: #1b140d;
+  color: #f2e2c4;
   overflow: hidden;
 }
 
 /* === FADE ANIMATION === */
 body.fade-in {
-  animation: fadeIn 1.5s ease-out forwards;
+  animation: fadeIn 1.2s ease-in-out forwards;
 }
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -31,11 +31,11 @@ body.fade-in {
   width: 100%; height: 100%;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.4) contrast(1.1);
-  z-index: -2;
+  filter: brightness(0.35) contrast(1.05);
+  z-index: -1;
 }
 
-/* === MAIN LAYOUT === */
+/* === LAYOUT === */
 .scene-wrapper {
   height: 100%;
   display: flex;
@@ -44,95 +44,101 @@ body.fade-in {
   align-items: center;
   text-align: center;
   padding: 2rem;
-  position: relative;
   z-index: 1;
 }
 
-/* === TITLE STYLING === */
+/* === TITLE === */
 .scene-title {
-  font-size: 3.2rem;
-  color: #f5e9d2;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
-  letter-spacing: 1px;
-  animation: glowTitle 2s ease-out forwards;
-}
-@keyframes glowTitle {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  font-size: 3rem;
+  color: #e0c38b;
+  text-shadow: 0 0 18px rgba(255, 220, 120, 0.2);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
 }
 
 .scene-subtitle {
-  font-size: 1.6rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  color: #d0c8b0;
+  font-size: 1.4rem;
+  color: #dbc49b;
   font-style: italic;
-  opacity: 0.8;
+  margin-bottom: 2.5rem;
 }
 
-/* === TYPEWRITER-ISH STATIC TEXT === */
+/* === DESCRIPTION TEXT === */
 .typewriter-container {
-  font-size: 1.3rem;
-  max-width: 700px;
-  margin-bottom: 2rem;
-  line-height: 1.8;
-  opacity: 0.9;
-  color: #eee1c6;
+  font-size: 1.25rem;
+  max-width: 680px;
+  color: #f2e2c4;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  background: rgba(60, 45, 25, 0.5);
+  padding: 1.5rem 2rem;
+  border: 2px dashed #BFA065;
+  border-radius: 12px;
+  box-shadow: inset 0 0 8px rgba(255, 204, 120, 0.1);
 }
 
-/* === BUTTONS === */
+/* === FANTASY BUTTONS === */
 .choice-button {
-  font-size: 1.2rem;
-  padding: 0.9rem 2rem;
-  background: rgba(34, 34, 34, 0.5);
-  border: 2px solid #A78A4A;
-  color: #f5e9d2;
-  border-radius: 12px;
-  margin: 0.5rem;
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  color: #f8ebce;
+  background: linear-gradient(to bottom, #5c4423, #3a2d1b);
+  border: 2px solid #BFA065;
+  clip-path: polygon(
+    10% 0%, 90% 0%,
+    100% 25%, 100% 75%,
+    90% 100%, 10% 100%,
+    0% 75%, 0% 25%
+  );
   text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(3px);
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
 }
 
 .choice-button:hover {
-  background: rgba(167, 138, 74, 0.2);
-  color: white;
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(167, 138, 74, 0.5);
+  background: linear-gradient(to bottom, #7a5e37, #503d21);
+  color: #fff9e3;
+  transform: scale(1.06);
+  box-shadow: 0 0 15px rgba(191, 160, 101, 0.4);
 }
 
 .choice-button:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
+  box-shadow: inset 0 0 6px rgba(255, 240, 200, 0.2);
 }
 
 /* === FOOTER === */
 .site-footer {
   position: absolute;
   bottom: 1rem;
+  text-align: center;
   font-size: 0.75rem;
   opacity: 0.6;
-  color: #c9bea2;
+  color: #cbb78a;
   font-style: italic;
-  text-align: center;
   width: 100%;
 }
 
-/* === MUTE BUTTON === */
+/* === SOUND BUTTON === */
 .nav-button {
   font-family: 'EB Garamond', serif;
   font-size: 1rem;
-  background: rgba(24, 24, 24, 0.5);
-  border: 2px solid #A78A4A;
-  color: #f5e9d2;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
+  padding: 0.5rem 1.1rem;
+  border: 2px solid #BFA065;
+  border-radius: 8px;
+  background: rgba(50, 40, 25, 0.6);
+  color: #f2e2c4;
   cursor: pointer;
   transition: all 0.25s ease;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
 }
 
 .nav-button:hover {
-  background-color: rgba(167, 138, 74, 0.3);
-  color: #fff;
+  background-color: rgba(191, 160, 101, 0.3);
+  color: #fffbe6;
 }
