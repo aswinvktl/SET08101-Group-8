@@ -110,17 +110,27 @@ function createButton(label, href = null) {
 function showLine(index) {
   if (!Array.isArray(storyLines) || index >= storyLines.length) return;
 
-  const paragraph = document.createElement("p");
-  paragraph.classList.add("line", "slide-in");
-  paragraph.textContent = storyLines[index];
-  typewriterEl.appendChild(paragraph);
-  renderedLines.push(paragraph);
-
-  requestAnimationFrame(() => {
-    paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  });
+  const oldLine = typewriterEl.querySelector(".line");
+  if (oldLine) {
+    oldLine.classList.remove("slide-in");
+    oldLine.classList.add("slide-out");
+    setTimeout(() => {
+      if (oldLine && oldLine.parentNode) oldLine.remove();
+      insertNewLine(index);
+    }, 400);
+  } else {
+    insertNewLine(index);
+  }
 
   updateBackground(index);
+}
+
+function insertNewLine(index) {
+  const paragraph = document.createElement("p");
+  paragraph.textContent = storyLines[index];
+  paragraph.classList.add("line", "slide-in");
+  typewriterEl.appendChild(paragraph);
+  paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 function hideLastLine() {
