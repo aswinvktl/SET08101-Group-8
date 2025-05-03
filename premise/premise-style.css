@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
-
+/* CSS for the Premise page of the game, including background, text styles, and buttons */
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +8,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'UnifrakturCook', cursive;
+  font-family: 'Celtic', cursive;
   color: #f5e9d2;
   background-color: #0c0c0c;
   overflow: hidden;
