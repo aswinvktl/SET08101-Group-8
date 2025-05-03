@@ -54,7 +54,7 @@
     window.updateSceneBackground = updateBackground;
   </script>
 
-  <!-- Howler & JS -->
+  <!-- Howler & Logic -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="../js/choice-js.js"></script>
 </head>
@@ -64,10 +64,10 @@
 
   <main class="scene-wrapper">
     <h1 class="scene-title">The Monster</h1>
-    <section id="typewriter" class="typewriter-container"></section>
 
     <div class="narrative-box">
       <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
       <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
     </div>
 
@@ -81,7 +81,7 @@
     <small>All images are AI generated.</small>
   </footer>
 
-  <!-- Fade-out Transition Script -->
+  <!-- Fade Transition -->
   <script>
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');
