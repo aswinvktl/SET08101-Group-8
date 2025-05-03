@@ -14,10 +14,16 @@ html, body {
   font-family: 'EB Garamond', serif;
   background-color: transparent;
   color: #f5e9d2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 body.fade-in {
   opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
 }
 
 /* === BACKGROUND === */
@@ -55,7 +61,7 @@ body.fade-in {
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
-/* === NARRATIVE BOX WITH INLINE ARROWS === */
+/* === NARRATIVE BOX === */
 .narrative-box {
   display: flex;
   align-items: center;
@@ -93,32 +99,40 @@ body.fade-in {
   transform: translateY(0);
 }
 
-/* === ARROW BUTTONS INSIDE BOX === */
-.arrow-btn.inside {
-  font-size: 1.6rem;
-  padding: 0.6rem 1.2rem;
+/* === BUTTONS (ARROW + CHOICE) === */
+.arrow-btn.inside,
+.choice-button,
+.nav-button {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.2rem;
   background-color: rgba(24, 24, 24, 0.5);
   border: 2px solid #A78A4A;
-  border-radius: 10px;
   color: #f5e9d2;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.25s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  flex-shrink: 0;
 }
 
-.arrow-btn:hover {
+.arrow-btn.inside:hover,
+.choice-button:hover,
+.nav-button:hover {
   background-color: rgba(167, 138, 74, 0.3);
-  color: #fff;
   transform: scale(1.04);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(167, 138, 74, 0.5);
 }
 
-.arrow-btn:active {
+.arrow-btn.inside:active,
+.choice-button:active,
+.nav-button:active {
   transform: scale(0.96);
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* === CHOICE BUTTONS === */
+/* === CHOICES === */
 .choices {
   display: none;
   opacity: 0;
@@ -128,30 +142,6 @@ body.fade-in {
 .choices.show {
   display: block;
   opacity: 1;
-}
-
-.choice-button {
-  font-size: 1.1rem;
-  background: rgba(24, 24, 24, 0.5);
-  border: 2px solid #A78A4A;
-  color: #f5e9d2;
-  padding: 0.8rem 1.6rem;
-  border-radius: 10px;
-  text-decoration: none;
-  margin: 0.5rem;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.choice-button:hover {
-  background-color: rgba(167, 138, 74, 0.3);
-  transform: scale(1.04);
-  color: #fff;
-}
-
-.choice-button:active {
-  transform: scale(0.96);
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
 /* === FOOTER === */
@@ -167,7 +157,7 @@ body.fade-in {
   z-index: 10;
 }
 
-/* === FOCUS OUTLINE CLEANUP === */
+/* === FOCUS CLEANUP === */
 a:focus,
 button:focus {
   outline: none;
