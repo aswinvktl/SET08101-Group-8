@@ -17,15 +17,13 @@ let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.querySelector(".choices");
 const backgroundEl = document.querySelector(".background");
+const nextButton = document.getElementById("goNext");
 const backButton = document.getElementById("goBack");
-const skipButton = document.getElementById("skip");
-
-let currentLine = 0;
-let renderedLines = [];
-let isSkipping = false;
 
 const storyLines = window.storyLines;
 const backgroundMap = window.backgroundMap;
+
+let currentLine = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
   if (isSoundOn) {
@@ -37,60 +35,26 @@ window.addEventListener("DOMContentLoaded", () => {
 
   showLine(currentLine);
 
-  document.body.addEventListener("click", (e) => {
-    if (isSkipping || e.target.closest("button")) return;
-    currentLine++;
-    if (currentLine < storyLines.length) {
+  nextButton.addEventListener("click", () => {
+    if (currentLine < storyLines.length - 1) {
+      currentLine++;
       showLine(currentLine);
     } else {
       choicesEl.classList.add("show");
+      nextButton.disabled = true;
     }
+    clickSound.play();
   });
 
-  backButton?.addEventListener("click", (e) => {
-    e.stopPropagation();
+  backButton.addEventListener("click", () => {
     if (currentLine > 0) {
-      hideLastLine();
       currentLine--;
-      updateBackground(currentLine);
+      showLine(currentLine);
       choicesEl.classList.remove("show");
+      nextButton.disabled = false;
     }
+    clickSound.play();
   });
-
-  skipButton?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    isSkipping = true;
-    for (let i = currentLine; i < storyLines.length; i++) {
-      showLine(i);
-    }
-    currentLine = storyLines.length;
-    choicesEl.classList.add("show");
-  });
-
-  document.querySelectorAll("a, button").forEach(el => {
-    el.addEventListener("click", () => {
-      if (isSoundOn) clickSound.play();
-    });
-  });
-
-  const toggleBtn = document.createElement("button");
-  toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-  toggleBtn.className = "scroll-btn";
-  Object.assign(toggleBtn.style, {
-    position: "fixed",
-    top: "1rem",
-    right: "1rem",
-    zIndex: "1000"
-  });
-
-  toggleBtn.addEventListener("click", () => {
-    isSoundOn = !isSoundOn;
-    sessionStorage.setItem("soundOn", isSoundOn.toString());
-    toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-    isSoundOn ? bgMusic.play() : Howler.stop();
-  });
-
-  document.body.appendChild(toggleBtn);
 });
 
 function tryPlayOnce() {
@@ -98,33 +62,15 @@ function tryPlayOnce() {
 }
 
 function showLine(index) {
-  if (!Array.isArray(storyLines) || index >= storyLines.length) return;
+  if (!Array.isArray(storyLines)) return;
+
+  typewriterEl.innerHTML = "";
 
   const paragraph = document.createElement("p");
   paragraph.textContent = storyLines[index];
-  paragraph.classList.add("line");
-
   typewriterEl.appendChild(paragraph);
-  renderedLines.push(paragraph);
-
-  requestAnimationFrame(() => {
-    paragraph.classList.add("show");
-    paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
-
-    // Dim previous paragraphs
-    renderedLines.forEach((el, idx) => {
-      el.style.opacity = idx === index ? "1" : "0.4";
-    });
-  });
 
   updateBackground(index);
-}
-
-function hideLastLine() {
-  if (renderedLines.length > 0) {
-    const last = renderedLines.pop();
-    last.remove();
-  }
 }
 
 function updateBackground(index) {

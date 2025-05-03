@@ -1,133 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
-/* === RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* === BASE STYLING === */
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'EB Garamond', serif;
-  background-color: transparent;
+  font-family: 'UnifrakturCook', cursive;
   color: #f5e9d2;
+  background-color: #0c0c0c;
+  overflow: hidden;
 }
 
-body.fade-in {
-  opacity: 1;
-}
-
-/* === BACKGROUND === */
 .background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   background-position: center;
   z-index: -1;
-  filter: brightness(0.5);
-  backdrop-filter: blur(2px);
+  filter: brightness(0.75);
 }
 
-/* === CONTAINER === */
+/* Centered layout */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  min-height: 100vh;
+  height: 100%;
   text-align: center;
-  z-index: 1;
+  padding: 2rem;
   position: relative;
 }
 
-/* === TITLE === */
 .scene-title {
-  font-size: 2.6rem;
-  margin-bottom: 2rem;
-  color: #f5e9d2;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
-}
-
-/* === NARRATIVE BOX WITH INLINE ARROWS === */
-.narrative-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  background: rgba(30, 30, 30, 0.65);
-  border-radius: 20px;
-  padding: 2rem;
-  max-width: 900px;
+  font-size: 3rem;
+  color: #ffe0a3;
+  text-shadow: 0 0 10px #ffd688, 0 0 30px #b87333;
+  position: absolute;
+  top: 1.5rem;
   width: 100%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
+}
+
+/* Bottom fixed text box */
+.text-box {
+  background-color: rgba(10, 10, 10, 0.65);
+  border: 2px solid #d6a76c;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 740px;
+  width: 90%;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
   margin-bottom: 2rem;
 }
 
-/* === TEXT === */
+/* Animated text */
 .typewriter-container {
-  flex: 1;
+  font-size: 1.5rem;
+  line-height: 1.7;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  font-size: 1.4rem;
-  line-height: 1.9;
-  text-align: center;
+  gap: 1rem;
 }
 
-.typewriter-container p.line {
+.typewriter-container p {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(-20px);
+  animation: fly-in 0.6s ease forwards;
 }
 
-.typewriter-container p.line.show {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes fly-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* === ARROW BUTTONS INSIDE BOX === */
-.arrow-btn.inside {
-  font-size: 1.6rem;
-  padding: 0.6rem 1.2rem;
-  background-color: rgba(24, 24, 24, 0.5);
-  border: 2px solid #A78A4A;
-  border-radius: 10px;
-  color: #f5e9d2;
+/* Buttons inside the box */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.scroll-btn {
+  font-size: 1rem;
+  background: none;
+  border: 2px solid #b87333;
+  color: #ffedc2;
+  padding: 0.6rem 1.4rem;
+  border-radius: 12px 3px 12px 3px;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.arrow-btn:hover {
-  background-color: rgba(167, 138, 74, 0.3);
-  color: #fff;
-  transform: scale(1.04);
-}
-
-.arrow-btn:active {
-  transform: scale(0.96);
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
-}
-
-/* === CHOICE BUTTONS === */
-.choices {
-  display: none;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.choices.show {
-  display: block;
-  opacity: 1;
+.scroll-btn:hover {
+  background-color: rgba(255, 223, 174, 0.1);
+  transform: scale(1.05);
 }
 
 .choice-button {
@@ -138,8 +114,7 @@ body.fade-in {
   padding: 0.8rem 1.6rem;
   border-radius: 10px;
   text-decoration: none;
-  margin: 0.5rem;
-  cursor: pointer;
+  margin-top: 1rem;
   transition: all 0.25s ease;
 }
 
@@ -149,71 +124,21 @@ body.fade-in {
   color: #fff;
 }
 
-.choice-button:active {
-  transform: scale(0.96);
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+.choices {
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
-/* === FOOTER === */
+.choices.show {
+  opacity: 1;
+}
+
 .site-footer {
   position: fixed;
   bottom: 0.5rem;
   right: 1rem;
   font-size: 0.75rem;
-  color: #d0c8b0;
-  opacity: 0.6;
+  opacity: 0.5;
   font-style: italic;
-  pointer-events: none;
   z-index: 10;
-}
-
-/* === FOCUS OUTLINE CLEANUP === */
-a:focus,
-button:focus {
-  outline: none;
-}
-
-.sound-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1000;
-}
-
-/* === TOP BAR === */
-
-
-.top-bar {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  gap: 1rem;
-  z-index: 1000;
-}
-
-.top-bar .choice-button {
-  font-size: 1rem;
-  padding: 0.6rem 1.2rem;
-  background: rgba(24, 24, 24, 0.5);
-  border: 2px solid #A78A4A;
-  color: #f5e9d2;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.top-bar .choice-button:hover {
-  background-color: rgba(167, 138, 74, 0.3);
-  transform: scale(1.05);
-  color: #fff;
-}
-
-.top-bar .choice-button:active {
-  transform: scale(0.96);
-  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
