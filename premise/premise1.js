@@ -15,7 +15,7 @@ if (sessionStorage.getItem("soundOn") === null) {
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === DOM Elements ===
+// === DOM ELEMENTS ===
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.querySelector(".choices");
 const backgroundEl = document.querySelector(".background");
