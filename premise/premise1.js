@@ -5,18 +5,11 @@ const bgMusic = new Howl({
   volume: 0.4
 });
 
-const ambientChirping = new Howl({
-  src: ['../audio/chirpingBirds.mp3'],
-  loop: true,
-  volume: 0.25
-});
-
 const clickSound = new Howl({
   src: ['../audio/mouseClick.wav'],
   volume: 0.6
 });
 
-// === Persistent Sound Preference ===
 if (sessionStorage.getItem("soundOn") === null) {
   sessionStorage.setItem("soundOn", "true");
 }
@@ -33,13 +26,10 @@ let currentLine = 0;
 let renderedLines = [];
 let isSkipping = false;
 
-// === Initialization ===
 window.addEventListener("DOMContentLoaded", () => {
   // MUSIC
   if (isSoundOn) {
     const id = bgMusic.play();
-    ambientChirping.play();
-
     if (!bgMusic.playing(id)) {
       document.body.addEventListener("click", tryPlayOnce, { once: true });
     }
@@ -47,10 +37,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   showLine(currentLine);
 
-  // === Advance on click (except buttons) ===
   document.body.addEventListener("click", (e) => {
     if (isSkipping || e.target.closest("button")) return;
-
     currentLine++;
     if (currentLine < storyLines.length) {
       showLine(currentLine);
@@ -59,7 +47,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === Go Back ===
   backButton?.addEventListener("click", (e) => {
     e.stopPropagation();
     if (currentLine > 0) {
@@ -70,7 +57,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === Skip All ===
   skipButton?.addEventListener("click", (e) => {
     e.stopPropagation();
     isSkipping = true;
@@ -81,14 +67,14 @@ window.addEventListener("DOMContentLoaded", () => {
     choicesEl.classList.add("show");
   });
 
-  // === Click Sound on buttons/links ===
+  // CLICK SOUNDS
   document.querySelectorAll("a, button").forEach(el => {
     el.addEventListener("click", () => {
       if (isSoundOn) clickSound.play();
     });
   });
 
-  // === Mute Toggle Button ===
+  // MUTE TOGGLE
   const toggleBtn = document.createElement("button");
   toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
   toggleBtn.className = "nav-button";
@@ -101,27 +87,17 @@ window.addEventListener("DOMContentLoaded", () => {
     isSoundOn = !isSoundOn;
     sessionStorage.setItem("soundOn", isSoundOn.toString());
     toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-
-    if (isSoundOn) {
-      bgMusic.play();
-      ambientChirping.play();
-    } else {
-      Howler.stop();
-    }
+    if (isSoundOn) bgMusic.play();
+    else Howler.stop();
   });
 
   document.body.appendChild(toggleBtn);
 });
 
-// === Autoplay fallback ===
 function tryPlayOnce() {
-  if (isSoundOn) {
-    bgMusic.play();
-    ambientChirping.play();
-  }
+  if (isSoundOn) bgMusic.play();
 }
 
-// === Display a line ===
 function showLine(index) {
   if (!Array.isArray(storyLines) || index >= storyLines.length) return;
 
@@ -139,7 +115,6 @@ function showLine(index) {
   updateBackground(index);
 }
 
-// === Remove last line ===
 function hideLastLine() {
   if (renderedLines.length > 0) {
     const lastLine = renderedLines.pop();
@@ -147,7 +122,6 @@ function hideLastLine() {
   }
 }
 
-// === Background Transition ===
 function updateBackground(index) {
   if (typeof backgroundMap === "undefined" || !backgroundEl) return;
 
