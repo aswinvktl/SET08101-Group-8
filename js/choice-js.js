@@ -4,6 +4,7 @@ const bgMusic = new Howl({
   loop: true,
   volume: 0.45
 });
+
 const clickSound = new Howl({
   src: ['../audio/mouseClick.wav'],
   volume: 0.6
@@ -22,8 +23,8 @@ const prevButton = document.getElementById("prev");
 
 let currentLineIndex = 0;
 
+// === INITIALIZE ===
 window.addEventListener("DOMContentLoaded", () => {
-  // Sound
   if (isSoundOn) {
     const id = bgMusic.play();
     if (!bgMusic.playing(id)) {
@@ -37,20 +38,23 @@ window.addEventListener("DOMContentLoaded", () => {
     handleNext();
     if (isSoundOn) clickSound.play();
   });
+
   prevButton.addEventListener("click", () => {
     handlePrevious();
     if (isSoundOn) clickSound.play();
   });
 
+  // Keyboard accessibility
   [nextButton, prevButton].forEach(button => {
-    button.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
+    button.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
         button.click();
       }
     });
   });
 
+  // Global button click sound
   document.querySelectorAll("a, button").forEach(el => {
     el.addEventListener("click", () => {
       if (isSoundOn) clickSound.play();
@@ -70,22 +74,28 @@ window.addEventListener("DOMContentLoaded", () => {
     isSoundOn = !isSoundOn;
     sessionStorage.setItem("soundOn", isSoundOn.toString());
     toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-    if (isSoundOn) bgMusic.play();
-    else Howler.stop();
+    if (isSoundOn) {
+      bgMusic.play();
+    } else {
+      Howler.stop();
+    }
   });
 
   document.body.appendChild(toggleBtn);
 });
 
+// === AUDIO AUTOPLAY FALLBACK ===
 function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }
 
+// === BACKGROUND TRANSITION ===
 function updateBackground(index) {
   if (typeof backgroundMap === "undefined") return;
 
-  const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;
+  const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
+
   for (let key of keys) {
     if (index >= key) {
       imageToUse = backgroundMap[key];
@@ -99,9 +109,11 @@ function updateBackground(index) {
   }
 }
 
+// === TEXT RENDERING ===
 function showLine(index) {
   if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
 
+  // Clear previous line
   typewriterContainer.innerHTML = "";
 
   const paragraph = document.createElement("p");
@@ -109,7 +121,9 @@ function showLine(index) {
   paragraph.classList.add("line");
   typewriterContainer.appendChild(paragraph);
 
-  if (typeof backgroundMap !== "undefined") updateBackground(index);
+  if (typeof backgroundMap !== "undefined") {
+    updateBackground(index);
+  }
 
   requestAnimationFrame(() => {
     paragraph.classList.add("show");
@@ -117,6 +131,7 @@ function showLine(index) {
   });
 }
 
+// === NAVIGATION HANDLERS ===
 function handleNext() {
   if (currentLineIndex < storyLines.length - 1) {
     currentLineIndex++;
@@ -138,6 +153,7 @@ function handlePrevious() {
   }
 }
 
+// === CHOICE REVEAL LOGIC ===
 function revealChoices() {
   choicesContainer.style.display = "block";
   requestAnimationFrame(() => {
