@@ -15,20 +15,20 @@ if (sessionStorage.getItem("soundOn") === null) {
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === DOM Elements ===
+// === DOM ELEMENTS ===
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.getElementById("choices");
 const backgroundEl = document.querySelector(".background");
 const backButton = document.getElementById("goBack");
-const skipButton = document.getElementById("skip");
+const nextButton = document.getElementById("goNext");
 
 const storyLines = window.storyLines || [];
 const backgroundMap = window.backgroundMap || {};
+
 let currentLine = 0;
-let renderedLines = [];
-let isSkipping = false;
 
 window.addEventListener("DOMContentLoaded", () => {
+  // MUSIC
   if (isSoundOn) {
     const id = bgMusic.play();
     if (!bgMusic.playing(id)) {
@@ -39,35 +39,24 @@ window.addEventListener("DOMContentLoaded", () => {
   setupTopControls();
   showLine(currentLine);
 
-  document.body.addEventListener("click", (e) => {
-    if (isSkipping || e.target.closest("button")) return;
-    currentLine++;
-    if (currentLine < storyLines.length) {
+  nextButton?.addEventListener("click", () => {
+    if (currentLine < storyLines.length - 1) {
+      currentLine++;
       showLine(currentLine);
     } else {
+      nextButton.style.display = "none";
       choicesEl.classList.add("show");
-    }
-  });
-
-  backButton?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    if (currentLine > 0) {
-      hideLastLine();
-      currentLine--;
-      updateBackground(currentLine);
-      choicesEl.classList.remove("show");
     }
     if (isSoundOn) clickSound.play();
   });
 
-  skipButton?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    isSkipping = true;
-    for (let i = currentLine + 1; i < storyLines.length; i++) {
-      showLine(i);
+  backButton?.addEventListener("click", () => {
+    if (currentLine > 0) {
+      currentLine--;
+      showLine(currentLine);
+      nextButton.style.display = "inline-block";
+      choicesEl.classList.remove("show");
     }
-    currentLine = storyLines.length - 1;
-    choicesEl.classList.add("show");
     if (isSoundOn) clickSound.play();
   });
 
@@ -78,7 +67,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// === Setup top-right controls (Home / Settings / Sound)
+// === Top Bar Buttons ===
 function setupTopControls() {
   const topBar = document.createElement("div");
   topBar.className = "top-bar";
@@ -106,32 +95,31 @@ function createButton(label, href = null) {
   return btn;
 }
 
-function tryPlayOnce() {
-  if (isSoundOn) bgMusic.play();
-}
-
+// === Show Line with Replace ===
 function showLine(index) {
   if (!Array.isArray(storyLines) || index >= storyLines.length) return;
 
-  const paragraph = document.createElement("p");
-  paragraph.classList.add("line");
-  paragraph.textContent = storyLines[index];
-  typewriterEl.appendChild(paragraph);
-  renderedLines.push(paragraph);
-
-  requestAnimationFrame(() => {
-    paragraph.classList.add("show");
-    paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  });
+  const oldLine = typewriterEl.querySelector(".line");
+  if (oldLine) {
+    oldLine.classList.remove("slide-in");
+    oldLine.classList.add("slide-out");
+    setTimeout(() => {
+      if (oldLine && oldLine.parentNode) oldLine.remove();
+      insertNewLine(index);
+    }, 400);
+  } else {
+    insertNewLine(index);
+  }
 
   updateBackground(index);
 }
 
-function hideLastLine() {
-  if (renderedLines.length > 0) {
-    const lastLine = renderedLines.pop();
-    lastLine.remove();
-  }
+function insertNewLine(index) {
+  const paragraph = document.createElement("p");
+  paragraph.classList.add("line", "slide-in");
+  paragraph.textContent = storyLines[index];
+  typewriterEl.appendChild(paragraph);
+  paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 function updateBackground(index) {
@@ -145,11 +133,15 @@ function updateBackground(index) {
     }
   }
 
-  if (imageToUse) {
+  if (imageToUse && backgroundEl) {
     backgroundEl.classList.add("fade");
     setTimeout(() => {
       backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
       backgroundEl.classList.remove("fade");
     }, 500);
   }
+}
+
+function tryPlayOnce() {
+  if (isSoundOn) bgMusic.play();
 }
