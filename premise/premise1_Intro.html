@@ -4,31 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bruhaven: The Beginning</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="premise-style.css" />
-
-  <script>
-    const storyLines = [
-      "Long ago, cradled in the misty mountains and ancient glens, there lay the hidden valley of Bruhaven.",
-      "A place sung of in old tales, where the wind carried magic, and the hills held secrets older than memory.",
-      "In this mystic land, life moved gently, echoing the breeze through the glens.",
-      "The people of Bruhaven lived with full hearts and open arms—sharing bread, laughter, and stories beneath starry skies.",
-      "Their days were simple, but rich in every manner.",
-      "What truly made Bruhaven enchanting was a potion unlike any other, born of the valley's magical soil and crafted with care.",
-      "Glowing like the spring sun, fizzing with ancient power, they called it Iron Brew.",
-      "It was more than a drink. It was joy in a cup. The spark that fueled their adventures."
-    ];
-
-    const backgroundMap = {
-      0: "../images/Bruhaven.jpg",
-      2: "../images/village.jpg",
-      3: "../images/starryNight.jpg",
-      5: "../images/theLiquid.jpg",
-      6: "../images/ironBrewing.jpg"
-    };
-  </script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="premise1.js"></script>
 </head>
@@ -38,19 +15,16 @@
 
   <main class="scene-wrapper">
     <h1 class="scene-title">Bruhaven: The Beginning</h1>
-
     <section id="typewriter" class="typewriter-container"></section>
 
-    <div class="controls">
-      <div class="nav-buttons">
-        <button id="goBack" class="nav-btn" aria-label="Previous line">← Back</button>
-        <button id="skip" class="nav-btn" aria-label="Skip to end">Skip</button>
-      </div>
-
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="premise2_Royalty.html" class="choice-button">Next Page</a>
-      </nav>
+    <div class="nav-buttons">
+      <button id="goBack" class="scroll-btn">← Back</button>
+      <button id="skip" class="scroll-btn">Skip</button>
     </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="premise2_Royalty.html" class="weird-button">Next Page</a>
+    </nav>
   </main>
 
   <footer class="site-footer">

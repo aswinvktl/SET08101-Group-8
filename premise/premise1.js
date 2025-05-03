@@ -26,8 +26,10 @@ let currentLine = 0;
 let renderedLines = [];
 let isSkipping = false;
 
+const storyLines = window.storyLines;
+const backgroundMap = window.backgroundMap;
+
 window.addEventListener("DOMContentLoaded", () => {
-  // MUSIC
   if (isSoundOn) {
     const id = bgMusic.play();
     if (!bgMusic.playing(id)) {
@@ -67,17 +69,15 @@ window.addEventListener("DOMContentLoaded", () => {
     choicesEl.classList.add("show");
   });
 
-  // CLICK SOUNDS
   document.querySelectorAll("a, button").forEach(el => {
     el.addEventListener("click", () => {
       if (isSoundOn) clickSound.play();
     });
   });
 
-  // MUTE TOGGLE
   const toggleBtn = document.createElement("button");
   toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-  toggleBtn.className = "nav-button";
+  toggleBtn.className = "scroll-btn";
   toggleBtn.style.position = "fixed";
   toggleBtn.style.top = "1rem";
   toggleBtn.style.right = "1rem";
@@ -87,8 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
     isSoundOn = !isSoundOn;
     sessionStorage.setItem("soundOn", isSoundOn.toString());
     toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-    if (isSoundOn) bgMusic.play();
-    else Howler.stop();
+    isSoundOn ? bgMusic.play() : Howler.stop();
   });
 
   document.body.appendChild(toggleBtn);
@@ -123,7 +122,7 @@ function hideLastLine() {
 }
 
 function updateBackground(index) {
-  if (typeof backgroundMap === "undefined" || !backgroundEl) return;
+  if (!backgroundMap || !backgroundEl) return;
 
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;
