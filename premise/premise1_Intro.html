@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bruhaven: The Beginning</title>
 
+  <!-- Fantasy Font -->
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="premise-style.css" />
+
+  <!-- Story Content -->
   <script>
     window.storyLines = [
       "Long ago, cradled in the misty mountains and ancient glens, there lay the hidden valley of Bruhaven.",
@@ -18,6 +21,7 @@
       "Glowing like the spring sun, fizzing with ancient power, they called it Iron Brew.",
       "It was more than a drink. It was joy in a cup. The spark that fueled their adventures."
     ];
+
     window.backgroundMap = {
       0: "../images/Bruhaven.jpg",
       2: "../images/village.jpg",
@@ -26,18 +30,18 @@
       6: "../images/ironBrewing.jpg"
     };
   </script>
+
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="premise1.js"></script>
 </head>
+
 <body>
   <div class="background" style="background-image: url('../images/Bruhaven.jpg');"></div>
 
   <main class="scene-wrapper">
     <h1 class="scene-title">Bruhaven: The Beginning</h1>
-
-    <div class="text-box">
-      <section id="typewriter" class="typewriter-container"></section>
-    </div>
+    <section id="typewriter" class="typewriter-container"></section>
 
     <div class="nav-buttons">
       <button id="goBack" class="scroll-btn">← Back</button>
