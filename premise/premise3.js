@@ -16,7 +16,7 @@ const clickSound = new Howl({
   volume: 0.6
 });
 
-// === SOUND STATE PERSISTENCE ===
+// === SOUND STATE ===
 if (sessionStorage.getItem("soundOn") === null) {
   sessionStorage.setItem("soundOn", "true");
 }
@@ -24,19 +24,19 @@ let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
 // === DOM ELEMENTS ===
 const typewriterEl = document.getElementById("typewriter");
-const choicesEl = document.querySelector(".choices");
+const choicesEl = document.getElementById("choices");
 const backgroundEl = document.querySelector(".background");
-const backButton = document.getElementById("goBack");
-const nextButton = document.getElementById("goNext");
+const nextButton = document.getElementById("next") || document.getElementById("goNext");
+const backButton = document.getElementById("prev") || document.getElementById("goBack");
 
-// === STORY SETUP ===
+// === STORY DATA ===
 const storyLines = window.storyLines || [];
 const backgroundMap = window.backgroundMap || {};
 let currentLine = 0;
 let renderedLines = [];
 
 window.addEventListener("DOMContentLoaded", () => {
-  // === PLAY MUSIC
+  // Play music
   if (isSoundOn) {
     const id = bgMusic.play();
     fireSound.play();
@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
   setupTopControls();
   showLine(currentLine);
 
-  // === NEXT BUTTON ===
+  // Navigation buttons
   nextButton?.addEventListener("click", () => {
     if (currentLine < storyLines.length - 1) {
       currentLine++;
@@ -60,7 +60,6 @@ window.addEventListener("DOMContentLoaded", () => {
     if (isSoundOn) clickSound.play();
   });
 
-  // === BACK BUTTON ===
   backButton?.addEventListener("click", () => {
     if (currentLine > 0) {
       hideLastLine();
@@ -72,15 +71,14 @@ window.addEventListener("DOMContentLoaded", () => {
     if (isSoundOn) clickSound.play();
   });
 
-  // === CLICK SFX FOR ALL BUTTONS ===
-  document.querySelectorAll("a, button").forEach(el => {
+  document.querySelectorAll("a, button").forEach(el =>
     el.addEventListener("click", () => {
       if (isSoundOn) clickSound.play();
-    });
-  });
+    })
+  );
 });
 
-// === TOP CONTROL BAR ===
+// === TOP BAR ===
 function setupTopControls() {
   const topBar = document.createElement("div");
   topBar.className = "top-bar";
@@ -108,18 +106,17 @@ function createButton(label, href = null) {
   return btn;
 }
 
-// === STORY DISPLAY FUNCTIONS ===
+// === STORY DISPLAY ===
 function showLine(index) {
   if (!Array.isArray(storyLines) || index >= storyLines.length) return;
 
   const paragraph = document.createElement("p");
-  paragraph.classList.add("line");
+  paragraph.classList.add("line", "slide-in");
   paragraph.textContent = storyLines[index];
   typewriterEl.appendChild(paragraph);
   renderedLines.push(paragraph);
 
   requestAnimationFrame(() => {
-    paragraph.classList.add("show");
     paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
   });
 
@@ -144,7 +141,7 @@ function updateBackground(index) {
     }
   }
 
-  if (imageToUse && backgroundEl) {
+  if (imageToUse) {
     backgroundEl.classList.add("fade");
     setTimeout(() => {
       backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
