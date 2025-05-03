@@ -17,48 +17,52 @@ html, body {
 
 .background {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   z-index: -1;
-  filter: brightness(0.75); /* was 0.4 — increased to make image visible */
+  filter: brightness(0.75); /* Brighter image */
 }
 
 .scene-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end; /* Align content to bottom */
   text-align: center;
   height: 100%;
-  justify-content: center;
   padding: 2rem;
 }
 
 .scene-title {
-  font-size: 3rem;
+  font-size: 2.8rem;
   color: #ffe0a3;
   text-shadow: 0 0 10px #ffd688, 0 0 30px #b87333;
-  margin-bottom: 1rem;
+  margin-bottom: auto; /* Push title up */
+  margin-top: 1rem;
 }
 
-/* NEW - clean text container */
+/* Cinematic style text container */
 .text-box {
   background-color: rgba(0, 0, 0, 0.65);
   border: 2px solid #d6a76c;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
   max-width: 740px;
   width: 90%;
   min-height: 160px;
-  margin: 1rem 0;
+  margin: 1rem auto;
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(5px);
 }
 
+/* Text styling and animation */
 .typewriter-container {
-  font-size: 1.5rem;
-  line-height: 1.7;
+  font-size: 1.45rem;
+  line-height: 1.75;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -74,14 +78,13 @@ html, body {
   opacity: 1;
   transform: translateY(0);
   font-weight: bold;
-  color: #fff2c7;
+  color: #fff8db;
   text-shadow: 0 0 8px #e6b97c, 0 0 14px #e6b97c;
 }
 
+/* Optional nav button styling — hidden by default */
 .nav-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  display: none;
 }
 
 .scroll-btn {
@@ -100,6 +103,7 @@ html, body {
   transform: scale(1.05);
 }
 
+/* Choice button for transitions */
 .weird-button {
   font-size: 1.2rem;
   text-decoration: none;
@@ -127,6 +131,7 @@ html, body {
   opacity: 1;
 }
 
+/* Footer placement */
 .site-footer {
   position: fixed;
   bottom: 0.5rem;
