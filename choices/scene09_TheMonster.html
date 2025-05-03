@@ -1,43 +1,61 @@
-<!DOCTYPE html> <!-- MULTIPLE PICTURES -->
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Monster</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/choice-style.css">
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
+  <!-- Story -->
   <script>
     const storyLines = [
       "You arrive in silence.",
       "The ship glides through the water, as if it is being pulled.",
-      "And now you see it, The monster, the loch nesss monster.",
-      "It coils through the shallows like a river come alive vast, dark, ancient. Its body glimmers faintly, scales like stones beneath moonlight. Its eyes are as old as the mountains.",
-      "Then you see your wife, tied in magical light, its not chains, its light. You see her, but she doesn’t see you.",
-      "you freeze",
+      "And now you see it — the monster. The Loch Ness Monster.",
+      "It coils through the shallows like a river come alive — vast, dark, ancient. Its body glimmers faintly, scales like stones beneath moonlight. Its eyes are as old as the mountains.",
+      "Then you see your wife, tied in magical light. Not chains — light. You see her, but she doesn’t see you.",
+      "You freeze.",
       "Haggis growls.",
-      "Not a warning, not a bark, A signal, a big signal.",
-      "He steps to the bag and paws at it, you open the bag, the iron brew is glowing - brighter than ever",
-      "You drink it",
-      "It floods your limbs with fire strength and clarity. The ache, the grief, the years they burn away.",
-      "Then haggis growls again",
-      "”what is it boy?”",
+      "Not a warning. Not a bark. A signal — a big one.",
+      "He steps to the bag and paws at it. You open the bag — the Iron Brew is glowing, brighter than ever.",
+      "You drink it.",
+      "It floods your limbs with fire, strength, and clarity. The ache, the grief, the years — they burn away.",
+      "Then Haggis growls again.",
+      "“What is it, boy?”",
       "you whisper.",
-      "He looks at you, then at the drink and then at himself, like he's trying to talk to you.",
-      "The moon is almost turning blue, you have to act quick.",
-      "You have to decide"
+      "He looks at you, then at the drink, then at himself — like he's trying to talk to you.",
+      "The moon is almost turning blue. You have to act quickly.",
+      "You have to decide."
     ];
 
-    // 🔄 Background switch: monster scene → iron brew glow
     const backgroundMap = {
-      0: "../images/seeMonster.jpg",     // lines 0–8
-      9: "../images/glowIron.jpg"       // line 9+
+      0: "../images/seeMonster.jpg",
+      9: "../images/glowIron.jpg"
     };
+
+    let currentBackground = "";
+    function updateBackground(lineIndex) {
+      const applicableKey = Object.keys(backgroundMap)
+        .map(Number)
+        .reverse()
+        .find(k => lineIndex >= k);
+
+      const newBackground = backgroundMap[applicableKey];
+      if (newBackground && newBackground !== currentBackground) {
+        document.querySelector('.background').style.backgroundImage = `url('${newBackground}')`;
+        currentBackground = newBackground;
+      }
+    }
+
+    window.updateSceneBackground = updateBackground;
   </script>
 
+  <!-- Howler & JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-
   <script defer src="../js/choice-js.js"></script>
 </head>
 
@@ -48,27 +66,36 @@
     <h1 class="scene-title">The Monster</h1>
     <section id="typewriter" class="typewriter-container"></section>
 
-    <div class="controls">
-      <div class="nav-buttons">
-        <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
-        <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
-      </div>
-
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="../choices/scene09a.html" class="choice-button">Go fight the monster</a>
-        <a href="../choices/scene09b.html" class="choice-button">Listen to Haggis</a>
-      </nav>
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
     </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene09a.html" class="choice-button">Go fight the monster</a>
+      <a href="../choices/scene09b.html" class="choice-button">Listen to Haggis</a>
+    </nav>
   </main>
 
   <footer class="site-footer">
     <small>All images are AI generated.</small>
   </footer>
 
+  <!-- Fade-out Transition Script -->
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
     });
   </script>
 </body>
+
 </html>

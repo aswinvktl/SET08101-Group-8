@@ -1,56 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h4>The Battle</h4>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/choice-style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Battle</title>
 
-    <script>
-        const storyLines = [
-            "You nod at each other, you jump onto him and you both launch yourself to the monsters head. The bulls hooves go deep down on the creatures head, the monster growls",
-            "You fight with the monster, not an easy one, You use the red bombs and the dwarf sword and deafeat the monster",
-            "After a ferocious fight, the monster's tired it is defeated, on its last breath. Its collapses onto the shore",
-            "The Queen begins to fall and you catch her in mid-air, pulling her to safety atop the bull's back.",
-            "She gasps Looks at you smiles",
-            "You land together on the shore the monster writhing behind you, defeated, but still alive.",
-            "The Queen's bindings fade.",
-            "She steps beside you.",
-            "And now…",
-            "One final choice."
-        ];
-    </script>
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script defer src="../js/choice-js.js"></script>
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You nod at each other. You leap onto his back — and together, you launch toward the monster’s head.",
+      "The bull’s hooves slam down, driving deep into the creature’s skull. The monster roars.",
+      "You fight fiercely. It’s no easy battle.",
+      "You throw the red bomb. You strike with the dwarven sword. Blow after blow.",
+      "At last, the monster stumbles, wounded and exhausted. It collapses onto the shore.",
+      "The queen begins to fall — and you catch her mid-air, pulling her to safety atop the bull’s back.",
+      "She gasps, looks at you — and smiles.",
+      "You land together on the shore. The monster writhes behind you, defeated... but still alive.",
+      "The queen’s bindings vanish. Light shimmers away from her skin.",
+      "She steps beside you.",
+      "And now—",
+      "One final choice."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
 </head>
+
 <body class="fade-in">
-    <div class="background" style="background-image: url('../images/theFight.jpg');"></div>
-    <main class="scene-wrapper">
-        <h1 class="scene-title">The Battle</h1>
-        <section id="typewriter" class="typewriter-container"></section>
-        <div class="controls">
-            <div class="nav-buttons">
-                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
-                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
-            </div>
-            <nav id="choices" class="choices" aria-label="Choice navigation">
-                <a href="../choices/scene10a.html" class="choice-button">Kill the monsters</a>
-                <a href="../choices/scene10b.html" class="choice-button">Let her decide</a>
-            </nav>
-        </div>
-    </main>
+  <div class="background" style="background-image: url('../images/theFight.jpg');"></div>
 
-    <footer class="site-footer">
-        <small>All images are AI generated.</small>
-    </footer>
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Battle</h1>
+    <section id="typewriter" class="typewriter-container"></section>
 
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous Line">⬅️</button>
+      <button id="next" class="arrow-btn inside" aria-label="Next Line">➡️</button>
+    </div>
 
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("fade-in");
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene10a.html" class="choice-button">Kill the monster</a>
+      <a href="../choices/scene10b.html" class="choice-button">Let her decide</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
         });
-    </script>
+      }
+    });
+  </script>
 </body>
+
 </html>

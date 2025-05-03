@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The End</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/choice-style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
   <script>
     const storyLines = [
@@ -21,9 +23,7 @@
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-
   <script defer src="../js/finalPage.js"></script>
-
 </head>
 
 <body class="fade-in">
@@ -41,23 +41,21 @@
       </div>
 
       <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="../index.html" class="choice-button">GO HOME</a>
+        <a href="../index.html" class="choice-button">Go Home</a>
       </nav>
     </div>
 
-    <!-- 🎉 Final message area with buttons -->
-    <div class="end-message" style="margin-top: 3rem; text-align: center;">
+    <!-- 🎉 Final message area appears only at the end -->
+    <div class="end-message" id="endMessage" style="display: none; margin-top: 3rem; text-align: center;">
       <p style="font-size: 1.6rem; margin-bottom: 1rem;">🎉 Congratulations! You have completed the game.</p>
       <p style="font-size: 1.2rem; margin-bottom: 2rem;">Thank you for playing!</p>
 
-      <!-- Final action buttons -->
       <div>
         <a href="../index.html" class="choice-button">Play Again</a>
         <a href="../credits.html" class="choice-button">View Credits</a>
         <a href="mailto:your@email.com" class="choice-button">Give Feedback</a>
       </div>
     </div>
-
   </main>
 
   <footer class="site-footer">
@@ -70,4 +68,5 @@
     });
   </script>
 </body>
+
 </html>

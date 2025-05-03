@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A Surprise</title>
 
-  <!-- Font & styles -->
+  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/choice-style.css" />
 
-  <!-- Story lines -->
+  <!-- Story -->
   <script>
     const storyLines = [
       "You thanked everyone and started your expedition.",
@@ -37,48 +37,47 @@
     ];
   </script>
 
+  <!-- Howler & JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-
-  <!-- Logic for scene progression -->
   <script defer src="../js/choice-js.js"></script>
 </head>
 
 <body class="fade-in">
-
   <div class="background" style="background-image: url('../images/kingFoundBag.jpg');"></div>
 
   <main class="scene-wrapper">
-
     <h1 class="scene-title">A Surprise</h1>
 
-    <section id="typewriter" class="typewriter-container">
-      <!-- Story lines will be injected here -->
-    </section>
-
-    <div class="controls">
-      <div class="nav-buttons">
-        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
-        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
-      </div>
-
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="../choices/scene02a.html" class="choice-button">a. Turn left, toward the dwarves</a>
-        <a href="../choices/scene02b.html" class="choice-button">b. Turn right, toward the unknown</a>
-      </nav>
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
     </div>
 
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene02a.html" class="choice-button">Turn left, toward the dwarves</a>
+      <a href="../choices/scene02b.html" class="choice-button">Turn right, toward the unknown</a>
+    </nav>
   </main>
 
   <footer class="site-footer">
     <small>All images are AI generated.</small>
   </footer>
 
-  <!-- Fade-in page effect -->
+  <!-- Fade-out Transition Script -->
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
     });
   </script>
-
 </body>
 </html>

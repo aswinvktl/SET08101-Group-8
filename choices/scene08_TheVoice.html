@@ -1,51 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Voice</title>
-    <div class="background" style="background-image: url('../images/Music.jpg');"></div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Voice</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/choice-style.css">
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
-    <script>
-        const storyLines = [
-            "You have arrived where you have to be.",
-            "The loch is still, you steer towards the sound.",
-            "On your way, you hear something,",
-            "you ignore it,",
-            "you hear it again, Its a song, its her song, its her voice, its her.",
-            "Soft. Singing. Echoing through the trees and the water and the wind.",
-            "you can either follow the song or the sound of the monster, you look at haggis, he's confused"
-        ];
-    </script>
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You have arrived where you were meant to be.",
+      "The loch is still. You steer toward the sound.",
+      "On your way, you hear something.",
+      "You ignore it.",
+      "You hear it again. It’s a song. It’s her song. It’s her voice. It’s her.",
+      "Soft. Singing. Echoing through the trees, the water, the wind.",
+      "You can either follow the song or the sound of the monster. You look at Haggis — he's confused."
+    ];
+  </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script defer src="../js/choice-js.js"></script>
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
 </head>
+
 <body class="fade-in">
-    <main class="scene-wrapper">
-        <h1 class="scene-title">The Voice</h1>
-        <section id="typewriter" class="typewriter-container"></section>
-        <div class="controls">
-            <div class="nav-buttons">
-                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
-                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
-            </div>
-            <nav id="choices" class="choices" aria-label="Choice navigation">
-                <a href="../choices/scene08a.html" class="choice-button">Follow the song</a>
-                <a href="../choices/scene08b.html" class="choice-button">Follow the monster</a>
-            </nav>
-        </div>
-    </main>
-    <footer class="site-footer">
-        <small>All images are AI generated.</small>
-    </footer>
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("fade-in");
+  <div class="background" style="background-image: url('../images/Music.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Voice</h1>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene08a.html" class="choice-button">Follow the song</a>
+      <a href="../choices/scene08b.html" class="choice-button">Follow the monster</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
         });
-    </script>
+      }
+    });
+  </script>
 </body>
+
 </html>

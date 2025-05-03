@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Bag</title>
 
-  <!-- Fantasy font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 
-  <!-- CSS page link -->
+  <!-- Shared Styles -->
   <link rel="stylesheet" href="../css/choice-style.css" />
 
-  <!-- Story lines -->
+  <!-- Story Content -->
   <script>
     const storyLines = [
       "You took the huge leather bag; it is quite heavy. You decided to take a look inside.",
@@ -24,39 +24,37 @@
     ];
   </script>
 
+  <!-- Audio + Logic -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-  <!-- Load interactivity logic -->
   <script defer src="../js/choice-js.js"></script>
 </head>
 
 <body class="fade-in">
 
+  <!-- Background Image -->
   <div class="background" style="background-image: url('../images/kingWithBag.jpg');"></div>
 
   <main class="scene-wrapper">
-
     <h1 class="scene-title">The Bag</h1>
 
-    <section id="typewriter" class="typewriter-container"></section>
-
-    <div class="controls">
-      <div class="nav-buttons">
-        <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
-        <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
-      </div>
-
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="../choices/scene02_Dwarves.html" class="choice-button">Next Page</a>
-      </nav>
+    <!-- Inline Arrows + Text -->
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
     </div>
 
+    <!-- Choices Navigation -->
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene02_Dwarves.html" class="choice-button">Next Page</a>
+    </nav>
   </main>
 
   <footer class="site-footer">
     <small>All images are AI generated.</small>
   </footer>
 
-  <!-- Page fade-in effect -->
+  <!-- Fade-In Effect -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("fade-in");
@@ -64,5 +62,4 @@
   </script>
 
 </body>
-
 </html>

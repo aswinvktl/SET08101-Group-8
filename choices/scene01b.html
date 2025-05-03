@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leave the Bag</title>
 
-  <!-- Font & Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/choice-style.css">
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
-  <!-- Define the story lines -->
+  <!-- Story -->
   <script>
     const storyLines = [
       "You choose to leave the bag as it is very heavy.",
@@ -18,51 +19,47 @@
     ];
   </script>
 
-  <!-- Include Howler.js for sound effects -->
+  <!-- Howler & JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-  <!-- JS for scene logic -->
   <script defer src="../js/choice-js.js"></script>
 </head>
 
 <body class="fade-in">
+  <div class="background" style="background-image: url('../images/kingJourney.jpg');"></div>
 
-  <!-- Background image -->
-  <div class="background" style="background-image: url('../images/kingJourney.jpg')";></div>
-  <!-- Main container for alignment -->
   <main class="scene-wrapper">
-
-    <!-- Title -->
     <h1 class="scene-title">Leave the Bag</h1>
 
-    <!-- Story text -->
-    <section id="typewriter" class="typewriter-container">
-      <!-- Story lines will be injected here -->
-    </section>
-
-    <!-- Navigation buttons + choices -->
-    <div class="controls">
-      <div class="nav-buttons">
-        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
-        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
-      </div>
-
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="../choices/scene01a1.html" class="choice-button">Next Page</a>
-      </nav>
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
     </div>
 
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene01a1.html" class="choice-button">Next Page</a>
+    </nav>
   </main>
 
   <footer class="site-footer">
     <small>All images are AI generated.</small>
   </footer>
 
-  <!-- Fade-in page effect -->
+  <!-- Fade-out Transition Script -->
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
     });
   </script>
-
 </body>
+
 </html>

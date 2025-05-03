@@ -1,53 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>End the Monster</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/choice-style.css">
-    <script>
-        const storyLines = [
-            "You raise the sword one last time",
-            "And drive it through the creature's skull",
-            "The loch erupts in a pillar of golden light",
-            "The curse shatters",
-            "You did it, she says",
-            "But you didn't have to do it alone",
-            "Haggis, now a dog once more, trots toward you, tail wagging",
-            "You smile",
-            "Together, you sail home"
-        ];
-    </script>
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script defer src="../js/choice-js.js"></script>
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You raise the sword one last time.",
+      "And drive it through the creature’s skull.",
+      "The loch erupts in a pillar of golden light.",
+      "The curse shatters.",
+      "“You did it,” she says.",
+      "“But you didn’t have to do it alone.”",
+      "Haggis, now a dog once more, trots toward you — tail wagging.",
+      "You smile.",
+      "Together, you sail home."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
 </head>
+
 <body class="fade-in">
-    <div class="background" style="background-image: url('../images/defeatedMonster.jpg');"></div>
+  <div class="background" style="background-image: url('../images/defeatedMonster.jpg');"></div>
 
-    <main class="scene-wrapper">
-        <h1 class="scene-title">End the monster</h1>
-        <section id="typewriter" class="typewriter-container"></section>
-        <div class="controls">
-            <div class="nav-buttons">
-                <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
-                <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
-            </div>
-            <nav id="choices" class="choices" aria-label="Choice navigation">
-                <a href="../choices/EndScene.html" class="choice-button">Happy Ending</a>
-                <a href="../index.html" class="choice-button">GO HOME</a>
-            </nav>
-        </div>
-    </main>
-    <footer class="site-footer">
-        <small>All images are AI generated.</small>
-    </footer>
+  <main class="scene-wrapper">
+    <h1 class="scene-title">End the Monster</h1>
+    <section id="typewriter" class="typewriter-container"></section>
 
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("fade-in");
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/EndScene.html" class="choice-button">Happy Ending</a>
+      <a href="../index.html" class="choice-button">Go Home</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
         });
-    </script>
+      }
+    });
+  </script>
 </body>
+
 </html>

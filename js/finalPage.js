@@ -106,6 +106,7 @@ const bgMusic = new Howl({
       showLine(currentLineIndex);
     } else {
       choicesContainer.classList.add("show");
+      document.getElementById("endMessage").style.display = "block"; // ⬅️ show final menu
     }
   }
   

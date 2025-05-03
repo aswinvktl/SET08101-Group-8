@@ -1,50 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The valley of Dreams</title>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/choice-style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Valley of Dreams</title>
 
-    <script>
-        const storyLines = [
-            "You follow it, you pass a valley of magic, a valley full or colour and light, something that is a rare sight. You witness herds of unicorns, playing jumping, highland coos enjoying their time, it looks surreal.",
-            "You keep following the unicorn, Haggis barks joyfully. You haven't seen him this happy",
-            "Unicorn leads you to two standing stones, onto the edge of loch ness.",
-            "Your sword glows very much, you know the monster is nearby. You hear growls and the air smells of smoke, the same smoke from your village.",
-            "You look up, and the unicorn is gone, it got you where you wanted to be.",
-            "The night is slowly falling, but the moon is still not fully up. You have time.",
-            "Then you move forward."
-        ];
-    </script>
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script defer src="../js/choice-js.js"></script>
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You follow it. You pass a valley of magic — a place full of color and light, a rare and surreal sight.",
+      "You witness herds of unicorns playing and jumping, Highland coos enjoying their time. It feels unreal.",
+      "You keep following the unicorn. Haggis barks joyfully — you haven’t seen him this happy.",
+      "The unicorn leads you to two standing stones, right on the edge of Loch Ness.",
+      "Your sword glows brightly — you know the monster is nearby. You hear growls, and the air smells of smoke — the same smoke from your village.",
+      "You look up. The unicorn is gone. It got you where you needed to be.",
+      "The night is slowly falling, but the moon is not fully up. You still have time.",
+      "Then you move forward."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
 </head>
-<body class="fade-in">
-    <div class="background" style="background-image: url('../images/dreamValley.jpg');"></div>
-    <main class="scene-wrapper">
-        <h1 class="scene-title">The Valley of Dreams</h1>
-        <section id="typewriter" class="typewriter-container"></section>
-        <div class="controls">
-            <div class="nav-buttons">
-                <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
-                <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
-            </div>
-            <nav id="choices" class="choices" aria-label="Choice navigation">
-                <a href="../choices/scene08_TheVoice.html" class="choice-button">Next</a>
-            </nav>
-        </div>
-    </main>
-    <footer class="site-footer">
-        <small>All images are AI generated.</small>
-    </footer>
 
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("fade-in");
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/dreamValley.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Valley of Dreams</h1>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene08_TheVoice.html" class="choice-button">Next</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
         });
-    </script>
+      }
+    });
+  </script>
 </body>
+
 </html>

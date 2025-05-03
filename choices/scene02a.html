@@ -2,64 +2,67 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Dwarf Village</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Dwarf Village</title>
 
-    <!-- Fantasy font -->
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
 
-    <!-- CSS page link -->
-    <link rel="stylesheet" href="../css/choice-style.css" />
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You decide to go left. You raise the Stock and Horn, made of ebony and cow horns, and blow it gently — a coded message of peace.",
+      "The torches flare and the stone door grinds open. Dwarves appear. You offer them the shortbread (if you had it), but they welcome you warmly either way.",
+      "They feed you, offering you shelter. An old granny dwarf sits beside the fire, reciting riddles. Your eyelids grow heavy.",
+      "\"I am so simple that I can only point, yet I guide men all over the world.\"",
+      "You sleep soundly. In the morning, they gift you a basket-hilted sword, engraved with glowing runes to ward off cursed beings.",
+      "\"This shall help — or at least, give you a choice!\" says the dwarf king, waving goodbye."
+    ];
+  </script>
 
-    <!-- Story lines -->
-    <script>
-        const storyLines = [
-            "You decide to go left. You raise the Stock and Horn, made of ebony and cow horns, and blow it gently — a coded message of peace.",
-            "The torches flare and the stone door grinds open. Dwarves appear. You offer them the shortbread (if you had it), but they welcome you warmly either way.",
-            "They feed you, offering you shelter. An old granny dwarf sits beside the fire, reciting riddles. Your eyelids grow heavy.",
-            "\"I am so simple that I can only point, yet I guide men all over the world.\"",
-            "You sleep soundly. In the morning, they gift you a basket-hilted sword, engraved with glowing runes to ward off cursed beings.",
-            "\"This shall help — or at least, give you a choice!\" says the dwarf king, waving goodbye."
-        ];
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <!-- Load the interactivity logic -->
-    <script defer src="../js/choice-js.js"></script>
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
 </head>
 
 <body class="fade-in">
-    <div class="background" style="background-image: url('../images/kingAndDwarves.jpg');"></div>
+  <div class="background" style="background-image: url('../images/kingAndDwarves.jpg');"></div>
 
-    <main class="scene-wrapper">
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Dwarves</h1>
 
-        <h1 class="scene-title">The Dwarves</h1>
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
 
-        <section id="typewriter" class="typewriter-container"></section>
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene03_DruidsGlen.html" class="choice-button">Next Page</a>
+    </nav>
+  </main>
 
-        <div class="controls">
-        <div class="nav-buttons">
-          <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
-          <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
-      </div>
-            <nav id="choices" class="choices" aria-label="Choice navigation">
-                <a href="../choices/scene03_DruidsGlen.html" class="choice-button">Next Page</a>
-            </nav>
-        </div>
-    </main>
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
 
-    <footer class="site-footer">
-        <small>All images are AI generated.</small>
-    </footer>
-
-    <!-- Page fade-in effect -->
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("fade-in");
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
         });
-    </script>
-
+      }
+    });
+  </script>
 </body>
 
 </html>

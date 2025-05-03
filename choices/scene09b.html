@@ -1,31 +1,50 @@
-<!DOCTYPE html> <!-- MULTIPLE PICTURES -->
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haggis</title>
 
+  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/choice-style.css" />
 
+  <!-- Story -->
   <script>
     const storyLines = [
-      "You kneel, you tilt the bottle towards the dog, as if it was asking for some. he drinks and then - light erupts",
-      "The dog's body lifts from the deck paws outstreched",
-      "His fur glows gold and red, and his body expands",
-      "Magic",
-      "He lands with a rumble and he's no longer a dog.",
-      "A Highland Bull. eyes glowing orange. Horns hold golden fire. The guarding of old magic, the guardian of the queen."
+      "You kneel. You tilt the bottle toward the dog, as if he were asking for some. He drinks — and then, light erupts.",
+      "The dog’s body lifts from the deck, paws outstretched.",
+      "His fur glows gold and red. His body expands.",
+      "Magic.",
+      "He lands with a rumble — and he is no longer a dog.",
+      "A Highland bull. Eyes glowing orange. Horns holding golden fire. The guardian of old magic. The guardian of the queen."
     ];
 
-    // 🔄 Switch from dog drinking → full transformation
     const backgroundMap = {
       0: "../images/dogDrinkin.jpg",
       2: "../images/transformDog.jpg",
-      3: "../images/highlandBull.jpg",
+      3: "../images/highlandBull.jpg"
     };
+
+    let currentBackground = "";
+    function updateBackground(lineIndex) {
+      const applicableKey = Object.keys(backgroundMap)
+        .map(Number)
+        .reverse()
+        .find(k => lineIndex >= k);
+
+      const newBackground = backgroundMap[applicableKey];
+      if (newBackground && newBackground !== currentBackground) {
+        document.querySelector('.background').style.backgroundImage = `url('${newBackground}')`;
+        currentBackground = newBackground;
+      }
+    }
+
+    window.updateSceneBackground = updateBackground;
   </script>
 
+  <!-- Howler & JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="../js/choice-js.js"></script>
 </head>
@@ -37,26 +56,35 @@
     <h1 class="scene-title">A Strong Companion</h1>
     <section id="typewriter" class="typewriter-container"></section>
 
-    <div class="controls">
-      <div class="nav-buttons">
-        <button id="prev" class="nav-btn" aria-label="Previous Line">⬅️</button>
-        <button id="next" class="nav-btn" aria-label="Next Line">➡️</button>
-      </div>
-
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="../choices/scene10_TheBattle.html" class="choice-button">Next</a>
-      </nav>
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
     </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene10_TheBattle.html" class="choice-button">Next</a>
+    </nav>
   </main>
 
   <footer class="site-footer">
     <small>All images are AI generated.</small>
   </footer>
 
+  <!-- Fade-out Transition Script -->
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
     });
   </script>
 </body>
+
 </html>

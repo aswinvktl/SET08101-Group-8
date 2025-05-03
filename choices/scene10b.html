@@ -1,53 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/choice-style.css">
-    <script>
-        const storyLines = [
-            "I can help you, but you have to trust me, she says",
-            "You look at her, and you see the monster behind her",
-            "She nods, gets her book and rises into the air",
-            "Pages fly open and she raises both her hands and speaks a language that hasn't been spoken in a thousand years",
-            "The monster pauses, looks at her and disappears",
-            "Becomes part of light and mist, its curse is lifted by her magic",
-            "No death, no blood, only mercy",
-            "She lands gently, you embrace her, haggis jumps on top of you two",
-            "Thank you she says, Always and forever you whisper",
-            "Then you go home"
-        ];
-    </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script defer src="../js/choice-js.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Battle</title>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "“I can help you — but you have to trust me,” she says.",
+      "You look at her… and you see the monster looming behind her.",
+      "She nods, opens her book, and rises into the air.",
+      "Pages swirl open. She lifts both hands and speaks a language lost for a thousand years.",
+      "The monster pauses. It looks at her — and then begins to fade.",
+      "It becomes light. Mist. Its curse lifted by her magic.",
+      "No death. No blood. Only mercy.",
+      "She lands gently. You embrace her. Haggis leaps into your arms.",
+      "“Thank you,” she says.",
+      "“Always and forever,” you whisper.",
+      "And then… you go home."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
 </head>
 
 <body class="fade-in">
-    <div class="background" style="background-image: url('../images/magikQueen.jpg');"></div>
+  <div class="background" style="background-image: url('../images/magikQueen.jpg');"></div>
 
-    <main class="scene-wrapper">
-        <h1 class="scene-title">The Battle</h1>
-        <section id="typewriter" class="typewriter-container"></section>
-        <div class="controls">
-            <div class="nav-buttons">
-                <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
-                <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
-            </div>
-            <nav id="choices" class="choices" aria-label="Choice navigation">
-                <a href="../choices/EndScene.html" class="choice-button">Happy Ending</a>
-                <a href="../index.html" class="choice-button">GO HOME</a>
-            </nav>
-        </div>
-    </main>
-    <footer class="site-footer">
-        <small>All images are AI generated.</small>
-    </footer>
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Battle</h1>
+    <section id="typewriter" class="typewriter-container"></section>
 
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("fade-in");
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/EndScene.html" class="choice-button">Happy Ending</a>
+      <a href="../index.html" class="choice-button">Go Home</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
         });
-    </script>
+      }
+    });
+  </script>
+</body>
+
 </html>
