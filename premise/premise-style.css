@@ -172,3 +172,35 @@ a:focus,
 button:focus {
   outline: none;
 }
+.bottom-text-box {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 880px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(15, 10, 5, 0.7),
+    rgba(40, 30, 20, 0.6)
+  );
+  border: 2px solid #c2826d;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 5;
+}
+
+.bottom-text-box .typewriter-container {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  text-align: center;
+  color: #f5ede0;
+}
+
+.bottom-text-box .nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
