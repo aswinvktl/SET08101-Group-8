@@ -18,7 +18,7 @@
     ];
   </script>
 
-  <!-- Howler & Logic -->
+  <!-- Howler & JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="../js/choice-js.js"></script>
 </head>
@@ -28,22 +28,23 @@
 
   <main class="scene-wrapper">
     <h1 class="scene-title">The Departure</h1>
-  
-    <!-- Arrows outside the text box -->
-    <button id="prev" class="nav-btn arrow-btn left" aria-label="Previous line">⬅️</button>
-  
-    <div class="narrative-box">
-      <section id="typewriter" class="typewriter-container"></section>
+
+    <div class="narrative-wrapper">
+      <div class="narrative-box">
+        <section id="typewriter" class="typewriter-container"></section>
+      </div>
+
+      <div class="narrative-nav">
+        <button id="prev" class="arrow-btn" aria-label="Previous line">⬅️</button>
+        <button id="next" class="arrow-btn" aria-label="Next line">➡️</button>
+      </div>
     </div>
-  
-    <button id="next" class="nav-btn arrow-btn right" aria-label="Next line">➡️</button>
-  
+
     <nav id="choices" class="choices" aria-label="Choice navigation">
       <a href="scene01a.html" class="choice-button">Take the bag</a>
       <a href="scene01b.html" class="choice-button">Leave it behind</a>
     </nav>
   </main>
-  
 
   <footer class="site-footer">
     <small>All images are AI generated.</small>
