@@ -4,6 +4,7 @@ const bgMusic = new Howl({
   loop: true,
   volume: 0.45
 });
+
 const clickSound = new Howl({
   src: ['../audio/mouseClick.wav'],
   volume: 0.6
@@ -22,8 +23,8 @@ const prevButton = document.getElementById("prev");
 
 let currentLineIndex = 0;
 
+// === INIT ===
 window.addEventListener("DOMContentLoaded", () => {
-  // Start background music
   if (isSoundOn) {
     const id = bgMusic.play();
     if (!bgMusic.playing(id)) {
@@ -58,20 +59,16 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === UI Buttons: Sound, Home, Settings ===
-  const createButton = (label, href, rightOffset) => {
-    const el = href ? document.createElement("a") : document.createElement("button");
-    el.className = "choice-button top-control";
-    el.innerText = label;
-    el.style.right = rightOffset;
-    el.style.top = "1rem";
-    el.style.position = "fixed";
-    el.style.zIndex = "1000";
-    if (href) el.href = href;
-    return el;
-  };
+  setupTopControls();
+});
 
-  const soundBtn = createButton(isSoundOn ? "🔊 Sound On" : "🔇 Sound Off", null, "1rem");
+// === Create and insert the top control buttons (Sound, Home, Settings) ===
+function setupTopControls() {
+  const topBar = document.createElement("div");
+  topBar.className = "top-bar";
+
+  // Sound toggle
+  const soundBtn = createButton(isSoundOn ? "🔊 Sound On" : "🔇 Sound Off");
   soundBtn.addEventListener("click", () => {
     isSoundOn = !isSoundOn;
     sessionStorage.setItem("soundOn", isSoundOn.toString());
@@ -79,18 +76,31 @@ window.addEventListener("DOMContentLoaded", () => {
     isSoundOn ? bgMusic.play() : Howler.stop();
   });
 
-  const homeBtn = createButton("🏠 Home", "../index.html", "9rem");
-  const settingsBtn = createButton("⚙️ Settings", "../settings.html", "17rem");
+  // Home and Settings
+  const homeBtn = createButton("🏠 Home", "../index.html");
+  const settingsBtn = createButton("⚙️ Settings", "../settings.html");
 
-  document.body.append(soundBtn, homeBtn, settingsBtn);
-});
+  topBar.append(settingsBtn, homeBtn, soundBtn);
+  document.body.appendChild(topBar);
+}
 
+function createButton(label, href = null) {
+  const btn = href ? document.createElement("a") : document.createElement("button");
+  btn.className = "choice-button top-control";
+  btn.innerText = label;
+  if (href) btn.href = href;
+  return btn;
+}
+
+// === AUDIO AUTOPLAY FALLBACK ===
 function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }
 
+// === BACKGROUND LOGIC ===
 function updateBackground(index) {
   if (typeof backgroundMap === "undefined") return;
+
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;
   for (let key of keys) {
@@ -99,20 +109,26 @@ function updateBackground(index) {
       break;
     }
   }
+
   const bgDiv = document.querySelector('.background');
   if (bgDiv && imageToUse) {
     bgDiv.style.backgroundImage = `url('${imageToUse}')`;
   }
 }
 
+// === TEXT NAVIGATION ===
 function showLine(index) {
   if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
+
   typewriterContainer.innerHTML = "";
+
   const paragraph = document.createElement("p");
   paragraph.textContent = storyLines[index];
   paragraph.classList.add("line");
   typewriterContainer.appendChild(paragraph);
+
   if (typeof backgroundMap !== "undefined") updateBackground(index);
+
   requestAnimationFrame(() => {
     paragraph.classList.add("show");
     paragraph.scrollIntoView({ behavior: "smooth", block: "end" });

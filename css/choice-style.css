@@ -179,30 +179,41 @@ button:focus {
   right: 1rem;
   z-index: 1000;
 }
-/* === TOP CONTROL BUTTONS (Sound / Home / Settings) === */
-.top-control {
+
+/* === TOP BAR === */
+
+
+.top-bar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.top-bar .choice-button {
   font-size: 1rem;
   padding: 0.6rem 1.2rem;
   background: rgba(24, 24, 24, 0.5);
   border: 2px solid #A78A4A;
   color: #f5e9d2;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.25s ease;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.top-control:hover {
+.top-bar .choice-button:hover {
   background-color: rgba(167, 138, 74, 0.3);
-  color: #fff;
   transform: scale(1.05);
+  color: #fff;
 }
 
-.top-control:active {
+.top-bar .choice-button:active {
   transform: scale(0.96);
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
-}
-
-.top-control:focus {
-  outline: none;
 }
