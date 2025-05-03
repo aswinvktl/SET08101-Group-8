@@ -15,10 +15,6 @@ html, body {
   overflow: hidden;
 }
 
-body.fade-in {
-  opacity: 1;
-}
-
 /* === BACKGROUND === */
 .background {
   position: fixed;
@@ -33,7 +29,7 @@ body.fade-in {
   filter: brightness(0.65);
 }
 
-/* === MAIN WRAPPER === */
+/* === SCENE === */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
@@ -42,11 +38,10 @@ body.fade-in {
   padding: 2rem;
   min-height: 100vh;
   text-align: center;
-  z-index: 1;
   position: relative;
+  z-index: 1;
 }
 
-/* === TITLE === */
 .scene-title {
   font-size: 2.8rem;
   margin-bottom: 1.5rem;
@@ -54,77 +49,70 @@ body.fade-in {
   text-shadow: 0 0 12px rgba(255, 234, 180, 0.3);
 }
 
-/* === TEXT BOX === */
-.narrative-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* === BOTTOM TEXT BOX === */
+.bottom-text-box {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 880px;
   background: linear-gradient(to bottom right, rgba(15, 10, 5, 0.7), rgba(40, 30, 20, 0.6));
   border: 2px solid #c2826d;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 2rem;
-  max-width: 900px;
-  width: 100%;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
-  margin-bottom: 2rem;
+  z-index: 5;
 }
 
 /* === TEXT === */
-.typewriter-container p.line {
-  opacity: 0;
-  transform: scale(0.95);
-  animation: zoomFadeIn 0.9s ease forwards;
-}
-
-@keyframes zoomFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(1.15);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(0.98);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+.typewriter-container {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  text-align: center;
+  color: #f5ede0;
 }
 
 .typewriter-container p.line {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(25px);
+  animation: fadeUp 0.7s ease-out forwards;
 }
 
-.typewriter-container p.line.show {
-  opacity: 1;
-  transform: translateY(0);
-  color: #f6efe2;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* === ARROW BUTTONS === */
-.arrow-btn.inside {
-  font-size: 1.4rem;
-  padding: 0.6rem 1rem;
+/* === NAV BUTTONS === */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.scroll-btn {
+  font-size: 1.1rem;
   background: rgba(48, 32, 24, 0.5);
   border: 2px solid #c2826d;
   border-radius: 10px;
-  color: #e6d7c3;
+  color: #f5ede0;
+  padding: 0.6rem 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.arrow-btn:hover {
+.scroll-btn:hover {
   background-color: rgba(194, 130, 109, 0.25);
   transform: scale(1.05);
   color: #fffaf5;
 }
 
-.arrow-btn:active {
+.scroll-btn:active {
   transform: scale(0.95);
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
@@ -165,71 +153,7 @@ body.fade-in {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
-/* === FOOTER === */
-.site-footer {
-  position: fixed;
-  bottom: 0.5rem;
-  right: 1rem;
-  font-size: 0.75rem;
-  color: #c9bfb1;
-  opacity: 0.5;
-  font-style: italic;
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* === CLEANUP === */
-a:focus,
-button:focus {
-  outline: none;
-}
-.bottom-text-box {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 880px;
-  background: linear-gradient(
-    to bottom right,
-    rgba(15, 10, 5, 0.7),
-    rgba(40, 30, 20, 0.6)
-  );
-  border: 2px solid #c2826d;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  z-index: 5;
-}
-
-.bottom-text-box .typewriter-container {
-  font-size: 1.5rem;
-  line-height: 1.8;
-  text-align: center;
-  color: #f5ede0;
-}
-
-.bottom-text-box .nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-/* === Animated text line === */
-.typewriter-container p.line {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* === Top Bar === */
+/* === TOP BAR === */
 .top-bar {
   position: fixed;
   top: 1rem;
@@ -262,24 +186,21 @@ button:focus {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* New animation class */
-.typewriter-container p.zoom-fade {
-  opacity: 0;
-  transform: scale(1.15);
-  animation: zoomFadeIn 0.8s ease forwards;
+/* === FOOTER === */
+.site-footer {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: #c9bfb1;
+  opacity: 0.5;
+  font-style: italic;
+  pointer-events: none;
+  z-index: 10;
 }
 
-@keyframes zoomFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(1.15);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(0.98);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* === FOCUS CLEANUP === */
+a:focus,
+button:focus {
+  outline: none;
 }

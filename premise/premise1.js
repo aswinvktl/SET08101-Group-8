@@ -91,28 +91,33 @@ function createButton(label, href = null) {
 function showLine(index) {
   if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
 
-  // Animate old text out
-  typewriterEl.querySelectorAll('p').forEach(p => {
-    p.style.transition = "opacity 0.4s ease";
-    p.style.opacity = "0";
-  });
+  const oldLine = typewriterEl.querySelector(".line");
+  if (oldLine) {
+    oldLine.classList.remove("slide-in");
+    oldLine.classList.add("slide-out");
 
-  // Delay to allow fade-out
-  setTimeout(() => {
-    typewriterEl.innerHTML = "";
+    // Wait for animation, then remove
+    setTimeout(() => {
+      if (oldLine && oldLine.parentNode) {
+        oldLine.remove();
+      }
 
-    const paragraph = document.createElement("p");
-    paragraph.textContent = storyLines[index];
-    paragraph.classList.add("line", "zoom-fade");
-    typewriterEl.appendChild(paragraph);
+      insertNewLine(index);
+    }, 400);
+  } else {
+    insertNewLine(index);
+  }
 
-    requestAnimationFrame(() => {
-      paragraph.classList.add("show");
-      paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
-    });
+  updateBackground(index);
+}
 
-    updateBackground(index);
-  }, 200);
+function insertNewLine(index) {
+  const paragraph = document.createElement("p");
+  paragraph.textContent = storyLines[index];
+  paragraph.classList.add("line", "slide-in");
+
+  typewriterEl.appendChild(paragraph);
+  paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 function handleNext() {
