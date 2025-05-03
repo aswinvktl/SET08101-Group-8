@@ -1,6 +1,6 @@
 // === AUDIO SETUP ===
 const bgMusic = new Howl({
-    src: ['../audio/finalPage.mp3'],
+    src: ['../audio/finalPage.wav'],
     loop: true,
     volume: 0.45
   });
