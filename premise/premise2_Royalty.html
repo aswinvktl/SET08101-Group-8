@@ -12,27 +12,20 @@
   <!-- Story text and images -->
   <script>
     const storyLines = [
-      // QUEEN FOCUS
       "She was the soul of Bruhaven, a whisper of beauty beyond the valley’s green.",
       "Her eyes shimmered like a sacred loch kissed by the moon’s soft sheen.",
       "Her hair, rich and brown like Highland soil, fell in soft waves, scented with wild herbs.",
       "She read ancient scripts, wrote verses, and played old songs on the clarsach.",
       "Even the wind paused to hear her sing.",
       "She trained beside soldiers, her braid swinging as she moved with strength and grace.",
-      
-      // KING FOCUS
       "At her side stood the King, a warrior with the heart of a poet.",
       "His strength was legend, but his gentleness made him beloved.",
       "He didn’t lead by command — he led by quiet purpose.",
       "He showed love in the small things: restoring her harp, planting herbs, leaving her notes.",
       "He was Bruhaven’s shield. She was its heart.",
       "He stood in court not to rule — but to serve. All eyes watched him, and all hearts followed.",
-      
-      // TOGETHER
       "Together, they were harmony.",
       "They sat beneath trees in golden silence, love flowing like a song.",
-      
-      // HAGGIS
       "And in every quiet moment, there was Haggis — never far.",
       "He trotted through gardens, curled beside the Queen’s chair, leapt into the King’s arms.",
       "Some say he was just a dog. Others… aren’t so sure.",
@@ -40,25 +33,23 @@
     ];
 
     const backgroundMap = {
-      0: "../images/Balcony.jpg",              // Wide view of queen and castle
-      1: "../images/queenRead.jpg",            // Reading in quiet
-      3: "../images/writingQueen.jpg",         // At desk with scrolls
-      5: "../images/trainingQueen.jpg",        // Sword training
-
-      6: "../images/kingLookin.jpg",           // King watching
-      7: "../images/niceKing.jpg",             // Giving bread
-      9: "../images/noteKing.jpg",             // Leaving notes
-      10: "../images/king.jpg",                // King in court
-
-      12: "../images/royalLove.jpg",           // Together on bench
-
-      14: "../images/haggis.jpg",              // Solo haggis
-      15: "../images/HaggisPlayin.jpg"         // With cows and joy
+      0: "../images/Balcony.jpg",
+      1: "../images/queenRead.jpg",
+      3: "../images/writingQueen.jpg",
+      5: "../images/trainingQueen.jpg",
+      6: "../images/kingLookin.jpg",
+      7: "../images/niceKing.jpg",
+      9: "../images/noteKing.jpg",
+      10: "../images/king.jpg",
+      12: "../images/royalLove.jpg",
+      14: "../images/haggis.jpg",
+      15: "../images/HaggisPlayin.jpg"
     };
   </script>
-  
-  <script defer src="premise2.js"></script>
 
+  <!-- Howler and JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="premise2.js"></script>
 </head>
 
 <body>
@@ -66,7 +57,6 @@
 
   <main class="scene-wrapper">
     <h1 class="scene-title">Royalty</h1>
-
     <section id="typewriter" class="typewriter-container"></section>
 
     <div class="controls">
@@ -74,7 +64,6 @@
         <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
         <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
       </div>
-
       <nav id="choices" class="choices" aria-label="Choice navigation">
         <a href="premise3_Disaster.html" class="choice-button">Next Page</a>
       </nav>
