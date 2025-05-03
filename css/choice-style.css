@@ -20,7 +20,7 @@ body.fade-in {
   opacity: 1;
 }
 
-/* === BACKGROUND IMAGE === */
+/* === BACKGROUND === */
 .background {
   position: fixed;
   top: 0;
@@ -34,7 +34,7 @@ body.fade-in {
   backdrop-filter: blur(2px);
 }
 
-/* === MAIN CONTENT === */
+/* === CONTAINER === */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
@@ -50,25 +50,30 @@ body.fade-in {
 /* === TITLE === */
 .scene-title {
   font-size: 2.6rem;
-  color: #f5e9d2;
   margin-bottom: 2rem;
+  color: #f5e9d2;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
-/* === NARRATIVE BOX === */
+/* === NARRATIVE BOX WITH INLINE ARROWS === */
 .narrative-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   background: rgba(30, 30, 30, 0.65);
   border-radius: 20px;
   padding: 2rem;
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
   margin-bottom: 2rem;
 }
 
-/* === TEXT SECTION === */
+/* === TEXT === */
 .typewriter-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -88,73 +93,32 @@ body.fade-in {
   transform: translateY(0);
 }
 
-/* === BUTTONS (BOTH NAV & CHOICE) === */
-.nav-btn,
-.choice-button,
-.button-link {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.2rem;
-  font-weight: normal;
+/* === ARROW BUTTONS INSIDE BOX === */
+.arrow-btn.inside {
+  font-size: 1.6rem;
+  padding: 0.6rem 1.2rem;
   background-color: rgba(24, 24, 24, 0.5);
   border: 2px solid #A78A4A;
-  color: #f5e9d2;
-  padding: 0.7rem 1.5rem;
-  margin: 0.5rem;
   border-radius: 10px;
+  color: #f5e9d2;
   cursor: pointer;
   transition: all 0.25s ease;
-  text-decoration: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
+  flex-shrink: 0;
 }
 
-/* === HOVER EFFECT === */
-.nav-btn:hover,
-.choice-button:hover,
-.button-link:hover {
+.arrow-btn:hover {
   background-color: rgba(167, 138, 74, 0.3);
-  color: #ffffff;
+  color: #fff;
   transform: scale(1.04);
-  box-shadow: 0 0 12px rgba(167, 138, 74, 0.5);
 }
 
-/* === CLICK EFFECT === */
-.nav-btn:active,
-.choice-button:active,
-.button-link:active {
+.arrow-btn:active {
   transform: scale(0.96);
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3) inset;
-  background-color: rgba(24, 24, 24, 0.7);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* === GLOW RIPPLE ON CLICK === */
-.nav-btn::after,
-.choice-button::after,
-.button-link::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 10.01%);
-  background-size: 100% 100%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s, transform 0.3s;
-}
-
-.nav-btn:active::after,
-.choice-button:active::after,
-.button-link:active::after {
-  opacity: 1;
-  transform: scale(1.5);
-  transition: none;
-}
-
-/* === CHOICES BLOCK === */
+/* === CHOICE BUTTONS === */
 .choices {
   display: none;
   opacity: 0;
@@ -164,6 +128,30 @@ body.fade-in {
 .choices.show {
   display: block;
   opacity: 1;
+}
+
+.choice-button {
+  font-size: 1.1rem;
+  background: rgba(24, 24, 24, 0.5);
+  border: 2px solid #A78A4A;
+  color: #f5e9d2;
+  padding: 0.8rem 1.6rem;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.choice-button:hover {
+  background-color: rgba(167, 138, 74, 0.3);
+  transform: scale(1.04);
+  color: #fff;
+}
+
+.choice-button:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
 /* === FOOTER === */
@@ -179,30 +167,8 @@ body.fade-in {
   z-index: 10;
 }
 
-/* === FOCUS OUTLINE === */
+/* === FOCUS OUTLINE CLEANUP === */
 a:focus,
-.button-link:focus,
-.nav-btn:focus {
+button:focus {
   outline: none;
-}
-
-/* === Arrow Buttons Outside Box === */
-.arrow-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 5;
-  font-size: 2rem;
-  padding: 0.6rem 1.2rem;
-  background-color: rgba(24, 24, 24, 0.5);
-  border: 2px solid #A78A4A;
-  border-radius: 10px;
-}
-
-.arrow-btn.left {
-  left: 1rem;
-}
-
-.arrow-btn.right {
-  right: 1rem;
 }
