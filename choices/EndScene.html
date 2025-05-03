@@ -7,13 +7,11 @@
   <title>The End</title>
 
   <script src="../js/globalSettings.js" defer></script>
-
-  <script src="../js/globalSettings.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/choice-style.css" />
 
   <script>
-    const storyLines = [
+    window.storyLines = [
       "You return to Bruhaven.",
       "The fires are long gone.",
       "The valley breathes again.",
@@ -23,8 +21,11 @@
       "And the loch remembers.",
       "Forever."
     ];
+
+    window.backgroundMap = {
+      0: "../images/theENd.jpg"
+    };
   </script>
-  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="../js/finalPage.js"></script>
@@ -36,20 +37,16 @@
   <main class="scene-wrapper">
     <h1 class="scene-title">The End</h1>
 
-    <section id="typewriter" class="typewriter-container"></section>
-
-    <div class="controls">
-      <div class="nav-buttons">
-        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
-        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
-      </div>
-
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="../index.html" class="choice-button">Go Home</a>
-      </nav>
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
     </div>
 
-    <!-- 🎉 Final message area appears only at the end -->
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../index.html" class="choice-button">Go Home</a>
+    </nav>
+
     <div class="end-message" id="endMessage" style="display: none; margin-top: 3rem; text-align: center;">
       <p style="font-size: 1.6rem; margin-bottom: 1rem;">🎉 Congratulations! You have completed the game.</p>
       <p style="font-size: 1.2rem; margin-bottom: 2rem;">Thank you for playing!</p>
@@ -66,9 +63,19 @@
     <small>All images are AI generated.</small>
   </footer>
 
+  <!-- Smooth transition effect -->
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
     });
   </script>
 </body>
