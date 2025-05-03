@@ -24,14 +24,13 @@ const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.querySelector(".choices");
 const backgroundEl = document.querySelector(".background");
 const backButton = document.getElementById("goBack");
-const skipButton = document.getElementById("skip");
+const nextButton = document.getElementById("goNext");
 
 const storyLines = window.storyLines || [];
 const backgroundMap = window.backgroundMap || {};
 
 let currentLine = 0;
 let renderedLines = [];
-let isSkipping = false;
 
 window.addEventListener("DOMContentLoaded", () => {
   if (isSoundOn) {
@@ -45,15 +44,15 @@ window.addEventListener("DOMContentLoaded", () => {
   setupTopControls();
   showLine(currentLine);
 
-  document.body.addEventListener("click", (e) => {
-    if (isSkipping || e.target.closest("button")) return;
-
-    currentLine++;
-    if (currentLine < storyLines.length) {
+  nextButton?.addEventListener("click", () => {
+    if (currentLine < storyLines.length - 1) {
+      currentLine++;
       showLine(currentLine);
     } else {
+      nextButton.style.display = "none";
       choicesEl.classList.add("show");
     }
+    if (isSoundOn) clickSound.play();
   });
 
   backButton?.addEventListener("click", () => {
@@ -61,18 +60,9 @@ window.addEventListener("DOMContentLoaded", () => {
       hideLastLine();
       currentLine--;
       updateBackground(currentLine);
+      nextButton.style.display = "inline-block";
       choicesEl.classList.remove("show");
-      if (isSoundOn) clickSound.play();
     }
-  });
-
-  skipButton?.addEventListener("click", () => {
-    isSkipping = true;
-    for (let i = currentLine + 1; i < storyLines.length; i++) {
-      showLine(i);
-    }
-    currentLine = storyLines.length - 1;
-    choicesEl.classList.add("show");
     if (isSoundOn) clickSound.play();
   });
 
@@ -118,8 +108,6 @@ function createButton(label, href = null) {
 }
 
 function showLine(index) {
-  if (!Array.isArray(storyLines) || index >= storyLines.length) return;
-
   const paragraph = document.createElement("p");
   paragraph.classList.add("line");
   paragraph.textContent = storyLines[index];
