@@ -1,4 +1,5 @@
-/* CSS for the Premise page of the game, including background, text styles, and buttons */
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -8,143 +9,166 @@
 html, body {
   height: 100%;
   width: 100%;
-  font-family: Baskerville, "Times New Roman", serif;
-  color: #e17b6c;
-  background-color: #0c0c0c;
+  font-family: 'Gloock', serif;
+  background-color: #0a0a0a;
+  color: #e6d7c3;
   overflow: hidden;
 }
 
+body.fade-in {
+  opacity: 1;
+}
+
+/* === BACKGROUND === */
 .background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 0; /* changed from -1 */
+  z-index: 0;
+  filter: brightness(0.65);
 }
 
-
-
-/* Centered layout */
+/* === MAIN WRAPPER === */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  height: 100%;
-  text-align: center;
+  justify-content: center;
   padding: 2rem;
+  min-height: 100vh;
+  text-align: center;
+  z-index: 1;
   position: relative;
 }
 
+/* === TITLE === */
 .scene-title {
-  font-size: 3rem;
-  color: #aa7fe6;
-  text-shadow: 0 0 10px #aa7fe6, 0 0 30px #dbade7;
-  position: absolute;
-  top: 1.5rem;
-  width: 100%;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  color: #fbe9cc;
+  text-shadow: 0 0 12px rgba(255, 234, 180, 0.3);
 }
 
-/* Bottom fixed text box */
-.text-box {
-  background: linear-gradient(
-    to bottom right,
-    rgba(215, 190, 190, 0.7),
-    rgba(30, 30, 30, 0.6)
-  );
-  border: 2px solid #d6a76c;
-  border-radius: 16px;
+/* === TEXT BOX === */
+.narrative-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom right, rgba(15, 10, 5, 0.7), rgba(40, 30, 20, 0.6));
+  border: 2px solid #c2826d;
+  border-radius: 14px;
   padding: 2rem;
-  max-width: 740px;
-  width: 90%;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(2px); /* Reduced blur */
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
   margin-bottom: 2rem;
 }
 
-
-/* Animated text */
+/* === TEXT === */
 .typewriter-container {
-  font-size: 1.5rem;
-  line-height: 1.7;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.4rem;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  text-align: center;
 }
 
-.typewriter-container p {
+.typewriter-container p.line {
   opacity: 0;
-  transform: translateY(-20px);
-  animation: fly-in 0.6s ease forwards;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-@keyframes fly-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.typewriter-container p.line.show {
+  opacity: 1;
+  transform: translateY(0);
+  color: #f6efe2;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
 }
 
-/* Buttons inside the box */
-.nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-
-.scroll-btn {
-  font-size: 1rem;
-  background: none;
-  border: 2px solid #b87333;
-  color: #ffedc2;
-  padding: 0.6rem 1.4rem;
-  border-radius: 12px 3px 12px 3px;
+/* === ARROW BUTTONS === */
+.arrow-btn.inside {
+  font-size: 1.4rem;
+  padding: 0.6rem 1rem;
+  background: rgba(48, 32, 24, 0.5);
+  border: 2px solid #c2826d;
+  border-radius: 10px;
+  color: #e6d7c3;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.scroll-btn:hover {
-  background-color: rgba(255, 223, 174, 0.1);
+.arrow-btn:hover {
+  background-color: rgba(194, 130, 109, 0.25);
   transform: scale(1.05);
+  color: #fffaf5;
+}
+
+.arrow-btn:active {
+  transform: scale(0.95);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+/* === CHOICE BUTTONS === */
+.choices {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.choices.show {
+  display: block;
+  opacity: 1;
 }
 
 .choice-button {
   font-size: 1.1rem;
-  background: rgba(24, 24, 24, 0.5);
-  border: 2px solid #A78A4A;
+  background: rgba(30, 20, 15, 0.5);
+  border: 2px solid #c2826d;
   color: #f5e9d2;
   padding: 0.8rem 1.6rem;
   border-radius: 10px;
   text-decoration: none;
-  margin-top: 1rem;
-  transition: all 0.25s ease;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .choice-button:hover {
-  background-color: rgba(167, 138, 74, 0.3);
+  background-color: rgba(255, 234, 200, 0.2);
   transform: scale(1.04);
-  color: #fff;
+  color: #fff9ec;
 }
 
-.choices {
-  opacity: 0;
-  transition: opacity 0.8s ease;
+.choice-button:active {
+  transform: scale(0.95);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
-.choices.show {
-  opacity: 1;
-}
-
+/* === FOOTER === */
 .site-footer {
   position: fixed;
   bottom: 0.5rem;
   right: 1rem;
   font-size: 0.75rem;
+  color: #c9bfb1;
   opacity: 0.5;
   font-style: italic;
+  pointer-events: none;
   z-index: 10;
+}
+
+/* === CLEANUP === */
+a:focus,
+button:focus {
+  outline: none;
 }
