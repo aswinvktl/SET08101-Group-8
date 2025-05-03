@@ -6,14 +6,11 @@
   <title>Premise 2: Royalty</title>
 
   <script src="../js/globalSettings.js" defer></script>
-
-  <!-- Font and style -->
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="premise-style.css" />
 
-  <!-- Story text and images -->
   <script>
-    const storyLines = [
+    window.storyLines = [
       "She was the soul of Bruhaven, a whisper of beauty beyond the valley's green.",
       "Her eyes shimmered like a sacred loch kissed by the moon's soft sheen.",
       "Her hair, rich and brown like Highland soil, fell in soft waves, scented with wild herbs.",
@@ -22,19 +19,19 @@
       "She trained beside soldiers, her braid swinging as she moved with strength and grace.",
       "At her side stood the King, a warrior with the heart of a poet.",
       "His strength was legend, but his gentleness made him beloved.",
-      "He didn't lead by command — he led by quiet purpose.",
+      "He didn't lead by command, he led by quiet purpose.",
       "He showed love in the small things: restoring her harp, planting herbs, leaving her notes.",
       "He was Bruhaven's shield. She was its heart.",
-      "He stood in court not to rule — but to serve. All eyes watched him, and all hearts followed.",
+      "He stood in court not to rule but to serve. All eyes watched him, and all hearts followed.",
       "Together, they were harmony.",
       "They sat beneath trees in golden silence, love flowing like a song.",
-      "And in every quiet moment, there was Haggis — never far.",
+      "And in every quiet moment, there was Haggis, never far.",
       "He trotted through gardens, curled beside the Queen's chair, leapt into the King's arms.",
       "Some say he was just a dog. Others… aren't so sure.",
       "Whatever he was, he was always there."
     ];
 
-    const backgroundMap = {
+    window.backgroundMap = {
       0: "../images/Balcony.jpg",
       1: "../images/queenRead.jpg",
       3: "../images/writingQueen.jpg",
@@ -51,7 +48,6 @@
     };
   </script>
 
-  <!-- Howler and JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="premise2.js"></script>
 </head>
@@ -61,17 +57,18 @@
 
   <main class="scene-wrapper">
     <h1 class="scene-title">Royalty</h1>
-    <section id="typewriter" class="typewriter-container"></section>
 
-    <div class="controls">
+    <div class="bottom-text-box">
+      <section id="typewriter" class="typewriter-container"></section>
       <div class="nav-buttons">
-        <button id="prev" class="nav-btn" aria-label="Previous line">⬅️</button>
-        <button id="next" class="nav-btn" aria-label="Next line">➡️</button>
+        <button id="prev" class="scroll-btn" aria-label="Previous line">⬅️</button>
+        <button id="next" class="scroll-btn" aria-label="Next line">➡️</button>
       </div>
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="premise3_Disaster.html" class="choice-button">Next Page</a>
-      </nav>
     </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="premise3_Disaster.html" class="choice-button">Next Page</a>
+    </nav>
   </main>
 
   <footer class="site-footer">
