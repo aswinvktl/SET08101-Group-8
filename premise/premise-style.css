@@ -23,9 +23,12 @@ html, body {
   height: 100%;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   z-index: -1;
-  filter: brightness(0.75);
+  opacity: 1; /* ✅ Fully visible */
+  filter: brightness(0.85); /* ✅ Slightly dark for contrast, but not too much */
 }
+
 
 /* Centered layout */
 .scene-wrapper {
