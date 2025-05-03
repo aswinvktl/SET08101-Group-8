@@ -1,14 +1,13 @@
-// === AUDIO SETUP ===
-const ambientFire = new Howl({
+const fireSound = new Howl({
   src: ['../audio/fire.mp3'],
   loop: true,
-  volume: 0.45
+  volume: 0.35
 });
 
-const mainMusic = new Howl({
+const bgMusic = new Howl({
   src: ['../audio/danger.wav'],
   loop: true,
-  volume: 0.5
+  volume: 0.4
 });
 
 const clickSound = new Howl({
@@ -16,139 +15,104 @@ const clickSound = new Howl({
   volume: 0.6
 });
 
-// === Persistent Sound Preference ===
 if (sessionStorage.getItem("soundOn") === null) {
   sessionStorage.setItem("soundOn", "true");
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === DOM Elements ===
 const typewriterEl = document.getElementById("typewriter");
-const choicesEl = document.querySelector(".choices");
-const backgroundEl = document.querySelector(".background");
+const choicesEl = document.getElementById("choices");
+const nextButton = document.getElementById("skip");
 const backButton = document.getElementById("goBack");
-const skipButton = document.getElementById("skip");
+const backgroundEl = document.querySelector(".background");
 
+const storyLines = window.storyLines || [];
+const backgroundMap = window.backgroundMap || {};
 let currentLine = 0;
-let renderedLines = [];
 let isSkipping = false;
 
 window.addEventListener("DOMContentLoaded", () => {
-  // MUSIC
   if (isSoundOn) {
-    const musicId = mainMusic.play();
-    ambientFire.play();
-
-    if (!mainMusic.playing(musicId)) {
+    const id = bgMusic.play();
+    fireSound.play();
+    if (!bgMusic.playing(id)) {
       document.body.addEventListener("click", tryPlayOnce, { once: true });
     }
   }
 
+  setupTopControls();
   showLine(currentLine);
 
-  document.body.addEventListener("click", (e) => {
-    if (isSkipping || e.target.closest("button")) return;
-
-    currentLine++;
-    if (currentLine < storyLines.length) {
-      showLine(currentLine);
-    } else {
-      choicesEl.classList.add("show");
-    }
-  });
-
-  backButton?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    if (currentLine > 0) {
-      hideLastLine();
-      currentLine--;
-      updateBackground(currentLine);
-      choicesEl.classList.remove("show");
-    }
-    if (isSoundOn) clickSound.play();
-  });
-
-  skipButton?.addEventListener("click", (e) => {
-    e.stopPropagation();
+  nextButton?.addEventListener("click", () => {
     isSkipping = true;
-    for (let i = currentLine; i < storyLines.length; i++) {
+    for (let i = currentLine + 1; i < storyLines.length; i++) {
       showLine(i);
     }
-    currentLine = storyLines.length;
+    currentLine = storyLines.length - 1;
     choicesEl.classList.add("show");
-
-    if (isSoundOn) clickSound.play();
+    clickSound.play();
   });
 
-  // CLICK SOUND
+  backButton?.addEventListener("click", () => {
+    if (currentLine > 0) {
+      currentLine--;
+      showLine(currentLine);
+      choicesEl.classList.remove("show");
+      clickSound.play();
+    }
+  });
+
   document.querySelectorAll("a, button").forEach(el => {
     el.addEventListener("click", () => {
       if (isSoundOn) clickSound.play();
     });
   });
-
-  // MUTE TOGGLE
-  const toggleBtn = document.createElement("button");
-  toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-  toggleBtn.className = "nav-button";
-  toggleBtn.style.position = "fixed";
-  toggleBtn.style.top = "1rem";
-  toggleBtn.style.right = "1rem";
-  toggleBtn.style.zIndex = "1000";
-
-  toggleBtn.addEventListener("click", () => {
-    isSoundOn = !isSoundOn;
-    sessionStorage.setItem("soundOn", isSoundOn.toString());
-    toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-
-    if (isSoundOn) {
-      mainMusic.play();
-      ambientFire.play();
-    } else {
-      Howler.stop();
-    }
-  });
-
-  document.body.appendChild(toggleBtn);
 });
 
 function tryPlayOnce() {
   if (isSoundOn) {
-    mainMusic.play();
-    ambientFire.play();
+    bgMusic.play();
+    fireSound.play();
   }
 }
 
-// === Show Line ===
-function showLine(index) {
-  if (!Array.isArray(storyLines) || index >= storyLines.length) return;
+function setupTopControls() {
+  const topBar = document.createElement("div");
+  topBar.className = "top-bar";
 
-  const paragraph = document.createElement("p");
-  paragraph.classList.add("line");
-  paragraph.textContent = storyLines[index];
-  typewriterEl.appendChild(paragraph);
-  renderedLines.push(paragraph);
-
-  requestAnimationFrame(() => {
-    paragraph.classList.add("show");
-    paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  const soundBtn = createButton(isSoundOn ? "🔊 Sound On" : "🔇 Sound Off");
+  soundBtn.addEventListener("click", () => {
+    isSoundOn = !isSoundOn;
+    sessionStorage.setItem("soundOn", isSoundOn.toString());
+    soundBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
+    isSoundOn ? (bgMusic.play(), fireSound.play()) : Howler.stop();
   });
 
+  const homeBtn = createButton("🏠 Home", "../index.html");
+  const settingsBtn = createButton("⚙️ Settings", "../settings/cyoaSettings.html");
+
+  topBar.append(settingsBtn, homeBtn, soundBtn);
+  document.body.appendChild(topBar);
+}
+
+function createButton(label, href = null) {
+  const btn = href ? document.createElement("a") : document.createElement("button");
+  btn.className = "choice-button top-control";
+  btn.innerText = label;
+  if (href) btn.href = href;
+  return btn;
+}
+
+function showLine(index) {
+  const paragraph = document.createElement("p");
+  paragraph.classList.add("line", "slide-in");
+  paragraph.textContent = storyLines[index];
+  typewriterEl.appendChild(paragraph);
+  paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
   updateBackground(index);
 }
 
-// === Remove Last Line ===
-function hideLastLine() {
-  if (renderedLines.length > 0) {
-    const lastLine = renderedLines.pop();
-    lastLine.remove();
-  }
-}
-
-// === Background Transition ===
 function updateBackground(index) {
-  if (typeof backgroundMap === "undefined" || !backgroundEl) return;
-
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;
 
@@ -159,11 +123,7 @@ function updateBackground(index) {
     }
   }
 
-  if (imageToUse) {
-    backgroundEl.classList.add("fade");
-    setTimeout(() => {
-      backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
-      backgroundEl.classList.remove("fade");
-    }, 500);
+  if (imageToUse && backgroundEl) {
+    backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
   }
 }

@@ -6,12 +6,11 @@
   <title>Premise 3: Disaster</title>
 
   <script src="../js/globalSettings.js" defer></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../premise/premise-style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="premise-style.css" />
 
   <script>
-    const storyLines = [
+    window.storyLines = [
       "That night unfolded like any other, calm and peaceful.",
       "The king and queen lay in quiet embrace, the hush of Bruhaven cradling them to sleep.",
       "But a sound stirred the king from slumber. Without waking her, he rose and stepped onto the balcony to see what had broken the silence.",
@@ -24,13 +23,12 @@
       "And she… she was gone. The queen of Bruhaven had been taken."
     ];
 
-    const backgroundMap = {
+    window.backgroundMap = {
       0: "../images/villageBurn.jpg",
       6: "../images/emptyBed.jpg"
     };
   </script>
 
-  <!-- Howler and JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="premise3.js"></script>
 </head>
@@ -39,18 +37,19 @@
   <div class="background" style="background-image: url('../images/villageBurn.jpg');"></div>
 
   <main class="scene-wrapper">
-    <h1 class="scene-title">Premise 3: Disaster</h1>
-    <section id="typewriter" class="typewriter-container"></section>
+    <h1 class="scene-title">Disaster</h1>
 
-    <div class="controls">
+    <div class="bottom-text-box">
+      <section id="typewriter" class="typewriter-container"></section>
       <div class="nav-buttons">
-        <button id="goBack" class="nav-btn" aria-label="Previous line">← Back</button>
-        <button id="skip" class="nav-btn" aria-label="Skip to end">Skip</button>
+        <button id="goBack" class="scroll-btn" aria-label="Previous line">⬅️</button>
+        <button id="skip" class="scroll-btn" aria-label="Skip to end">⏭️</button>
       </div>
-      <nav id="choices" class="choices" aria-label="Choice navigation">
-        <a href="premise4_Dream.html" class="choice-button">Next Page</a>
-      </nav>
     </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="premise4_Dream.html" class="choice-button">Next Page</a>
+    </nav>
   </main>
 
   <footer class="site-footer">
