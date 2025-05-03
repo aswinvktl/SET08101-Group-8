@@ -79,6 +79,7 @@ function setupTopControls() {
   // Home and Settings
   const homeBtn = createButton("🏠 Home", "../index.html");
   const settingsBtn = createButton("⚙️ Settings", "../settings.html");
+  
 
   topBar.append(settingsBtn, homeBtn, soundBtn);
   document.body.appendChild(topBar);
