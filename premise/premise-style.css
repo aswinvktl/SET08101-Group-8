@@ -50,7 +50,7 @@ body.fade-in {
 .scene-title {
   font-size: 2.8rem;
   margin-bottom: 2rem;
-  color: #fbe9cc;
+  color: #f25757;
   text-shadow: 0 0 12px rgba(255, 234, 180, 0.3);
 }
 
@@ -204,3 +204,50 @@ button:focus {
   justify-content: space-between;
   margin-top: 1.5rem;
 }
+/* === Animated text line === */
+.typewriter-container p.line {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Top Bar === */
+.top-bar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.8rem;
+  z-index: 1000;
+}
+
+.top-bar .choice-button.top-control {
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  background: rgba(25, 18, 14, 0.5);
+  border: 2px solid #c2826d;
+  border-radius: 10px;
+  color: #f2e5d5;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.top-bar .choice-button.top-control:hover {
+  background-color: rgba(194, 130, 109, 0.25);
+  transform: scale(1.05);
+  color: #fffaf5;
+}
+
+.top-bar .choice-button.top-control:active {
+  transform: scale(0.95);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+

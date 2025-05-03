@@ -1,7 +1,8 @@
+// === AUDIO SETUP ===
 const bgMusic = new Howl({
   src: ['../audio/celticVillage.mp3'],
   loop: true,
-  volume: 0.4
+  volume: 0.45
 });
 
 const clickSound = new Howl({
@@ -14,14 +15,15 @@ if (sessionStorage.getItem("soundOn") === null) {
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
+// === DOM ELEMENTS ===
 const typewriterEl = document.getElementById("typewriter");
-const choicesEl = document.querySelector(".choices");
-const backgroundEl = document.querySelector(".background");
+const choicesEl = document.getElementById("choices");
 const nextButton = document.getElementById("goNext");
 const backButton = document.getElementById("goBack");
+const backgroundEl = document.querySelector(".background");
 
-const storyLines = window.storyLines;
-const backgroundMap = window.backgroundMap;
+const storyLines = window.storyLines || [];
+const backgroundMap = window.backgroundMap || {};
 
 let currentLine = 0;
 
@@ -33,27 +35,23 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  setupTopControls();
   showLine(currentLine);
 
-  nextButton.addEventListener("click", () => {
-    if (currentLine < storyLines.length - 1) {
-      currentLine++;
-      showLine(currentLine);
-    } else {
-      choicesEl.classList.add("show");
-      nextButton.disabled = true;
-    }
+  nextButton?.addEventListener("click", () => {
+    handleNext();
     clickSound.play();
   });
 
-  backButton.addEventListener("click", () => {
-    if (currentLine > 0) {
-      currentLine--;
-      showLine(currentLine);
-      choicesEl.classList.remove("show");
-      nextButton.disabled = false;
-    }
+  backButton?.addEventListener("click", () => {
+    handlePrevious();
     clickSound.play();
+  });
+
+  document.querySelectorAll("a, button").forEach(el => {
+    el.addEventListener("click", () => {
+      if (isSoundOn) clickSound.play();
+    });
   });
 });
 
@@ -61,21 +59,75 @@ function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }
 
+// === TOP BAR ===
+function setupTopControls() {
+  const topBar = document.createElement("div");
+  topBar.className = "top-bar";
+
+  // Sound toggle
+  const soundBtn = createButton(isSoundOn ? "🔊 Sound On" : "🔇 Sound Off");
+  soundBtn.addEventListener("click", () => {
+    isSoundOn = !isSoundOn;
+    sessionStorage.setItem("soundOn", isSoundOn.toString());
+    soundBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
+    isSoundOn ? bgMusic.play() : Howler.stop();
+  });
+
+  const homeBtn = createButton("🏠 Home", "../index.html");
+  const settingsBtn = createButton("⚙️ Settings", "../settings/cyoaSettings.html");
+
+  topBar.append(settingsBtn, homeBtn, soundBtn);
+  document.body.appendChild(topBar);
+}
+
+function createButton(label, href = null) {
+  const btn = href ? document.createElement("a") : document.createElement("button");
+  btn.className = "choice-button top-control";
+  btn.innerText = label;
+  if (href) btn.href = href;
+  return btn;
+}
+
+// === TEXT ===
 function showLine(index) {
-  if (!Array.isArray(storyLines)) return;
+  if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
 
   typewriterEl.innerHTML = "";
 
   const paragraph = document.createElement("p");
   paragraph.textContent = storyLines[index];
+  paragraph.classList.add("line");
+
   typewriterEl.appendChild(paragraph);
+
+  requestAnimationFrame(() => {
+    paragraph.classList.add("show");
+    paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
+  });
 
   updateBackground(index);
 }
 
-function updateBackground(index) {
-  if (!backgroundMap || !backgroundEl) return;
+function handleNext() {
+  if (currentLine < storyLines.length - 1) {
+    currentLine++;
+    showLine(currentLine);
+  } else {
+    choicesEl.classList.add("show");
+    nextButton.style.display = "none";
+  }
+}
 
+function handlePrevious() {
+  if (currentLine > 0) {
+    currentLine--;
+    showLine(currentLine);
+    nextButton.style.display = "inline-block";
+    choicesEl.classList.remove("show");
+  }
+}
+
+function updateBackground(index) {
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;
 
@@ -86,7 +138,7 @@ function updateBackground(index) {
     }
   }
 
-  if (imageToUse) {
+  if (imageToUse && backgroundEl) {
     backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
   }
 }
