@@ -23,10 +23,10 @@ html, body {
   height: 100%;
   background-size: cover;
   background-position: center;
-  z-index: -1;
-  filter: none; /* Brighter image */
+  z-index: 0;
+  filter: none;
+  opacity: 1;
 }
-
 .scene-wrapper {
   display: flex;
   flex-direction: column;
