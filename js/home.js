@@ -1,12 +1,12 @@
 // === Audio Setup ===
 const themeMusic = new Howl({
-    src: ['audio/epic_theme.mp3'],
+    src: ['audio/introSound.wav'],
     loop: true,
     volume: 0.5
   });
   
   const clickSound = new Howl({
-    src: ['audio/click.mp3'],
+    src: ['audio/click.wav'],
     volume: 0.6
   });
   
