@@ -1,29 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // DARK MODE TOGGLE
-    const darkToggle = document.getElementById("darkToggle");
-    const body = document.body;
-  
-    // Load setting
-    if (localStorage.getItem("darkMode") === "true") {
-      body.classList.add("dark-mode");
-      darkToggle.checked = true;
-    }
-  
-    darkToggle.addEventListener("change", () => {
-      if (darkToggle.checked) {
-        body.classList.add("dark-mode");
-        localStorage.setItem("darkMode", "true");
-      } else {
-        body.classList.remove("dark-mode");
-        localStorage.setItem("darkMode", "false");
-      }
-    });
-  
-    // LOG OTHER SETTINGS
-    document.querySelectorAll("input, select").forEach((el) => {
-      el.addEventListener("change", () => {
-        console.log(`${el.name || el.id || 'setting'}: ${el.value || el.checked}`);
-      });
+// settings-js.js
+
+// === AUDIO SETUP ===
+const clickSound = new Howl({
+  src: ['../audio/mouseClick.wav'],
+  volume: 0.6
+});
+
+if (sessionStorage.getItem("soundOn") === null) {
+  sessionStorage.setItem("soundOn", "true");
+}
+let isSoundOn = sessionStorage.getItem("soundOn") === "true";
+
+// === INIT ===
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("a, button").forEach(el => {
+    el.addEventListener("click", () => {
+      if (isSoundOn) clickSound.play();
     });
   });
-  
+
+  const soundToggle = document.getElementById("sound-toggle");
+  if (soundToggle) {
+    soundToggle.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
+    soundToggle.addEventListener("click", () => {
+      isSoundOn = !isSoundOn;
+      sessionStorage.setItem("soundOn", isSoundOn.toString());
+      soundToggle.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
+    });
+  }
+});

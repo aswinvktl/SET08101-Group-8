@@ -3,38 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CYOA — Aswin Podimon</title>
+  <title>Bruhaven: The Beginning</title>
 
-  <!-- Font & Style -->
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/home.css" />
+  <!-- Fantasy Font -->
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="premise-style.css" />
+
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-  <script src="js/home.js"></script>
-
+  <script defer src="premise1.js"></script>
 </head>
-
-<body class="fade-in">
-  <!-- Background Image -->
-  <div class="background" style="background-image: url('images/nessie.jpg');"></div>
+<body>
+  <div class="background" style="background-image: url('../images/Bruhaven.jpg');"></div>
 
   <main class="scene-wrapper">
-    <h1 class="scene-title">Loch Ness Monster Expedition</h1>
-    <h2 class="scene-subtitle">How far will you go for love?</h2>
+    <h1 class="scene-title">Bruhaven: The Beginning</h1>
 
-    <section class="typewriter-container">
-      <p>Are you ready to take a journey into the unknown?</p>
-      <p>Save your queen or be lost in the depths forever.</p>
-    </section>
+    <div class="text-box">
+      <div id="typewriter" class="typewriter-container"></div>
+      <div class="nav-buttons">
+        <button id="goBack" class="scroll-btn">←</button>
+        <button id="next" class="scroll-btn">→</button>
+      </div>
+    </div>
 
-    <nav class="choices show">
-      <a href="premise/premise1_Intro.html" class="choice-button">Start Journey</a>
-      <a href="personal CYOA settings.html" target="_blank" rel="noopener noreferrer" class="choice-button">Settings</a>
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="premise2_Royalty.html" class="weird-button">Next Page</a>
     </nav>
   </main>
 
   <footer class="site-footer">
-    <small>Created by Aswin Podimon · All images are AI generated.</small>
+    <small>All images are AI generated.</small>
   </footer>
 </body>
 </html>
