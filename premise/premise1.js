@@ -64,7 +64,6 @@ function setupTopControls() {
   const topBar = document.createElement("div");
   topBar.className = "top-bar";
 
-  // Sound toggle
   const soundBtn = createButton(isSoundOn ? "🔊 Sound On" : "🔇 Sound Off");
   soundBtn.addEventListener("click", () => {
     isSoundOn = !isSoundOn;
@@ -92,20 +91,28 @@ function createButton(label, href = null) {
 function showLine(index) {
   if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
 
-  typewriterEl.innerHTML = "";
-
-  const paragraph = document.createElement("p");
-  paragraph.textContent = storyLines[index];
-  paragraph.classList.add("line");
-
-  typewriterEl.appendChild(paragraph);
-
-  requestAnimationFrame(() => {
-    paragraph.classList.add("show");
-    paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
+  // Animate old text out
+  typewriterEl.querySelectorAll('p').forEach(p => {
+    p.style.transition = "opacity 0.4s ease";
+    p.style.opacity = "0";
   });
 
-  updateBackground(index);
+  // Delay to allow fade-out
+  setTimeout(() => {
+    typewriterEl.innerHTML = "";
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = storyLines[index];
+    paragraph.classList.add("line", "zoom-fade");
+    typewriterEl.appendChild(paragraph);
+
+    requestAnimationFrame(() => {
+      paragraph.classList.add("show");
+      paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
+    });
+
+    updateBackground(index);
+  }, 200);
 }
 
 function handleNext() {
