@@ -15,16 +15,15 @@ if (sessionStorage.getItem("soundOn") === null) {
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === ELEMENT REFERENCES ===
+// === DOM ELEMENTS ===
 const typewriterContainer = document.getElementById("typewriter");
 const choicesContainer = document.getElementById("choices");
 const nextButton = document.getElementById("next");
 const prevButton = document.getElementById("prev");
 
 let currentLineIndex = 0;
-const renderedLines = [];
 
-// === INITIALIZATION ===
+// === INITIALIZE ===
 window.addEventListener("DOMContentLoaded", () => {
   if (isSoundOn) {
     const id = bgMusic.play();
@@ -45,6 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (isSoundOn) clickSound.play();
   });
 
+  // Keyboard accessibility
   [nextButton, prevButton].forEach(button => {
     button.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
@@ -54,14 +54,14 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Add click sound to all buttons and links
+  // Global button click sound
   document.querySelectorAll("a, button").forEach(el => {
     el.addEventListener("click", () => {
       if (isSoundOn) clickSound.play();
     });
   });
 
-  // === MUTE TOGGLE BUTTON ===
+  // Mute toggle
   const toggleBtn = document.createElement("button");
   toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
   toggleBtn.className = "nav-button";
@@ -74,19 +74,22 @@ window.addEventListener("DOMContentLoaded", () => {
     isSoundOn = !isSoundOn;
     sessionStorage.setItem("soundOn", isSoundOn.toString());
     toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-    if (isSoundOn) bgMusic.play();
-    else Howler.stop();
+    if (isSoundOn) {
+      bgMusic.play();
+    } else {
+      Howler.stop();
+    }
   });
 
   document.body.appendChild(toggleBtn);
 });
 
-// Try autoplay after user interaction
+// === AUDIO AUTOPLAY FALLBACK ===
 function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }
 
-// === Background Switching ===
+// === BACKGROUND TRANSITION ===
 function updateBackground(index) {
   if (typeof backgroundMap === "undefined") return;
 
@@ -106,15 +109,17 @@ function updateBackground(index) {
   }
 }
 
-// === FUNCTIONS ===
+// === TEXT RENDERING ===
 function showLine(index) {
   if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
+
+  // Clear previous line
+  typewriterContainer.innerHTML = "";
 
   const paragraph = document.createElement("p");
   paragraph.textContent = storyLines[index];
   paragraph.classList.add("line");
   typewriterContainer.appendChild(paragraph);
-  renderedLines.push(paragraph);
 
   if (typeof backgroundMap !== "undefined") {
     updateBackground(index);
@@ -126,13 +131,7 @@ function showLine(index) {
   });
 }
 
-function hideLastLine() {
-  if (renderedLines.length > 0) {
-    const lastLine = renderedLines.pop();
-    lastLine.remove();
-  }
-}
-
+// === NAVIGATION HANDLERS ===
 function handleNext() {
   if (currentLineIndex < storyLines.length - 1) {
     currentLineIndex++;
@@ -146,14 +145,15 @@ function handleNext() {
 
 function handlePrevious() {
   if (currentLineIndex > 0) {
-    hideLastLine();
     currentLineIndex--;
-    hideChoices();
+    showLine(currentLineIndex);
     const endMessage = document.getElementById("end-message");
     if (endMessage) endMessage.style.display = "none";
+    hideChoices();
   }
 }
 
+// === CHOICE REVEAL LOGIC ===
 function revealChoices() {
   choicesContainer.style.display = "block";
   requestAnimationFrame(() => {
