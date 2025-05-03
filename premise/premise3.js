@@ -7,7 +7,7 @@ const fireSound = new Howl({
 const bgMusic = new Howl({
   src: ['../audio/danger.wav'],
   loop: true,
-  volume: 0.4
+  volume: 0.45
 });
 
 const clickSound = new Howl({
@@ -21,14 +21,16 @@ if (sessionStorage.getItem("soundOn") === null) {
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
 const typewriterEl = document.getElementById("typewriter");
-const choicesEl = document.getElementById("choices");
-const nextButton = document.getElementById("skip");
-const backButton = document.getElementById("goBack");
+const choicesEl = document.querySelector(".choices");
 const backgroundEl = document.querySelector(".background");
+const backButton = document.getElementById("goBack");
+const skipButton = document.getElementById("skip");
 
 const storyLines = window.storyLines || [];
 const backgroundMap = window.backgroundMap || {};
+
 let currentLine = 0;
+let renderedLines = [];
 let isSkipping = false;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -43,23 +45,35 @@ window.addEventListener("DOMContentLoaded", () => {
   setupTopControls();
   showLine(currentLine);
 
-  nextButton?.addEventListener("click", () => {
+  document.body.addEventListener("click", (e) => {
+    if (isSkipping || e.target.closest("button")) return;
+
+    currentLine++;
+    if (currentLine < storyLines.length) {
+      showLine(currentLine);
+    } else {
+      choicesEl.classList.add("show");
+    }
+  });
+
+  backButton?.addEventListener("click", () => {
+    if (currentLine > 0) {
+      hideLastLine();
+      currentLine--;
+      updateBackground(currentLine);
+      choicesEl.classList.remove("show");
+      if (isSoundOn) clickSound.play();
+    }
+  });
+
+  skipButton?.addEventListener("click", () => {
     isSkipping = true;
     for (let i = currentLine + 1; i < storyLines.length; i++) {
       showLine(i);
     }
     currentLine = storyLines.length - 1;
     choicesEl.classList.add("show");
-    clickSound.play();
-  });
-
-  backButton?.addEventListener("click", () => {
-    if (currentLine > 0) {
-      currentLine--;
-      showLine(currentLine);
-      choicesEl.classList.remove("show");
-      clickSound.play();
-    }
+    if (isSoundOn) clickSound.play();
   });
 
   document.querySelectorAll("a, button").forEach(el => {
@@ -104,12 +118,27 @@ function createButton(label, href = null) {
 }
 
 function showLine(index) {
+  if (!Array.isArray(storyLines) || index >= storyLines.length) return;
+
   const paragraph = document.createElement("p");
-  paragraph.classList.add("line", "slide-in");
+  paragraph.classList.add("line");
   paragraph.textContent = storyLines[index];
   typewriterEl.appendChild(paragraph);
-  paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  renderedLines.push(paragraph);
+
+  requestAnimationFrame(() => {
+    paragraph.classList.add("show");
+    paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  });
+
   updateBackground(index);
+}
+
+function hideLastLine() {
+  if (renderedLines.length > 0) {
+    const lastLine = renderedLines.pop();
+    lastLine.remove();
+  }
 }
 
 function updateBackground(index) {
@@ -124,6 +153,10 @@ function updateBackground(index) {
   }
 
   if (imageToUse && backgroundEl) {
-    backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
+    backgroundEl.classList.add("fade");
+    setTimeout(() => {
+      backgroundEl.style.backgroundImage = `url('${imageToUse}')`;
+      backgroundEl.classList.remove("fade");
+    }, 500);
   }
 }
