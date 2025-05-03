@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'EB Garamond', serif;
+  background-color: black;
+  color: #f5e9d2;
+  overflow: hidden;
+}
+
+/* === FADE ANIMATION === */
+body.fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === BACKGROUND === */
+.background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4) contrast(1.1);
+  z-index: -2;
+}
+
+/* === MAIN LAYOUT === */
+.scene-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* === TITLE STYLING === */
+.scene-title {
+  font-size: 3.2rem;
+  color: #f5e9d2;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+  letter-spacing: 1px;
+  animation: glowTitle 2s ease-out forwards;
+}
+@keyframes glowTitle {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.scene-subtitle {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: #d0c8b0;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* === TYPEWRITER-ISH STATIC TEXT === */
+.typewriter-container {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  color: #eee1c6;
+}
+
+/* === BUTTONS === */
+.choice-button {
+  font-size: 1.2rem;
+  padding: 0.9rem 2rem;
+  background: rgba(34, 34, 34, 0.5);
+  border: 2px solid #A78A4A;
+  color: #f5e9d2;
+  border-radius: 12px;
+  margin: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+}
+
+.choice-button:hover {
+  background: rgba(167, 138, 74, 0.2);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(167, 138, 74, 0.5);
+}
+
+.choice-button:active {
+  transform: scale(0.95);
+}
+
+/* === FOOTER === */
+.site-footer {
+  position: absolute;
+  bottom: 1rem;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  color: #c9bea2;
+  font-style: italic;
+  text-align: center;
+  width: 100%;
+}
+
+/* === MUTE BUTTON === */
+.nav-button {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  background: rgba(24, 24, 24, 0.5);
+  border: 2px solid #A78A4A;
+  color: #f5e9d2;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.nav-button:hover {
+  background-color: rgba(167, 138, 74, 0.3);
+  color: #fff;
+}
