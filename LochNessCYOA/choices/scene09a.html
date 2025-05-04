@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attack the Monster</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You ignore the dog, draw your sword, and leap toward the monster.",
+      "The monster sees you. You raise your blade and strike but not fast enough. The monster dodges.",
+      "It coils around you. It crushes you. The queen screams, “No!”",
+      "The dog whimpers. It's over. You're done.",
+      "She is eaten by the monster.",
+      "You die."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/kingDefeat.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">Attack the Monster</h1>
+    <h2 class="scene-subtitle">GAME OVER</h2>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../LochNessHome.html" class="choice-button">Go Home</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

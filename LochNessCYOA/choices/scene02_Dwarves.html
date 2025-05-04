@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dungeons of Dwarves</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You thanked everyone and started your expedition.",
+      "By evening, the ship had left the valley behind. Mist moved like ghosts across the water.",
+      "The day was coming to an end. The sails creaked softly. Suddenly, there appeared two diverging paths.",
+      "To the left lay the realm of the dwarves, whispered of in old tales.",
+      "To the right, nothing but shadow and uncertainty."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/divergingPath.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">Dungeons of Dwarves</h1>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene02a.html" class="choice-button">Enter the realm of the dwarves</a>
+      <a href="../choices/scene02b.html" class="choice-button">Take the path to the right</a>
+      <a href="../LochNessHome.html" class="choice-button">GO HOME</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

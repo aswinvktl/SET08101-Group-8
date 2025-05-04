@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Bag</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story Content -->
+  <script>
+    const storyLines = [
+      "You took the huge leather bag, it is quite heavy. You decided to take a look inside.",
+      "What you see inside surprises you.",
+      "There are bottles of Iron Brew, to quench your thirst.",
+      "Warm shortbread, to fill your belly.",
+      "An old stock-and-horn, to call for help.",
+      "Most importantly, her journal, glowing with magic."
+    ];
+  </script>
+
+  <!-- Audio + Logic -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+
+  <!-- Background Image -->
+  <div class="background" style="background-image: url('../images/kingWithBag.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Bag</h1>
+
+    <!-- Inline Arrows + Text -->
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <!-- Choices Navigation -->
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene02_Dwarves.html" class="choice-button">Next Page</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-In Effect -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
+  </script>
+
+</body>
+</html>

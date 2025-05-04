@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Gloock', serif;
+  background-color: #0a0a0a;
+  color: #e6d7c3;
+  overflow: hidden;
+}
+
+/* === BACKGROUND === */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  filter: brightness(0.65);
+}
+
+/* === SCENE === */
+.scene-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 100vh;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.scene-title {
+  position: absolute;
+  top: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  color: #f59999;
+  text-shadow: 0 0 12px rgba(255, 234, 180, 0.3);
+  z-index: 10;
+}
+
+/* === BOTTOM TEXT BOX === */
+.bottom-text-box {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 880px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(22, 18, 14, 0.85),
+    rgba(36, 30, 25, 0.8)
+  );
+  border: 2px solid #8a5a3b;
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(30, 20, 10, 0.5);
+  backdrop-filter: blur(1px);
+  z-index: 5;
+}
+
+.typewriter-container {
+  font-size: 1.4rem;
+  line-height: 1.75;
+  text-align: center;
+  color: #f4e7d5;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+/* === TEXT ANIMATION === */
+.typewriter-container p.line {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === NAV BUTTONS === */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.scroll-btn {
+  font-size: 1.1rem;
+  background: rgba(48, 32, 24, 0.5);
+  border: 2px solid #c2826d;
+  border-radius: 10px;
+  color: #f5ede0;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-btn:hover {
+  background-color: rgba(194, 130, 109, 0.25);
+  transform: scale(1.05);
+  color: #fffaf5;
+}
+
+.scroll-btn:active {
+  transform: scale(0.95);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+/* === CHOICE BUTTONS === */
+.choices {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.choices.show {
+  display: block;
+  opacity: 1;
+}
+
+.choice-button {
+  font-size: 1.1rem;
+  background: rgba(30, 20, 15, 0.5);
+  border: 2px solid #c2826d;
+  color: #f5e9d2;
+  padding: 0.8rem 1.6rem;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.choice-button:hover {
+  background-color: rgba(255, 234, 200, 0.2);
+  transform: scale(1.04);
+  color: #fff9ec;
+}
+
+.choice-button:active {
+  transform: scale(0.95);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+/* === TOP BAR === */
+.top-bar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.8rem;
+  z-index: 1000;
+}
+
+.top-bar .choice-button.top-control {
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  background: rgba(25, 18, 14, 0.5);
+  border: 2px solid #c2826d;
+  border-radius: 10px;
+  color: #f2e5d5;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.top-bar .choice-button.top-control:hover {
+  background-color: rgba(194, 130, 109, 0.25);
+  transform: scale(1.05);
+  color: #fffaf5;
+}
+
+.top-bar .choice-button.top-control:active {
+  transform: scale(0.95);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+/* === FOOTER === */
+.site-footer {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: #c9bfb1;
+  opacity: 0.5;
+  font-style: italic;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* === FOCUS CLEANUP === */
+a:focus,
+button:focus {
+  outline: none;
+}

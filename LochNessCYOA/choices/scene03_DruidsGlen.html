@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Mysterious Stop</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You glide the ship forward. The mist parts to reveal a secret forest, trees arched like a cathedral.",
+      "You look at your map, as it was glowing.",
+      "It's the Druid's glen",
+      "The Druids, you remember from your mother, the ancient priests with magic and power: there might be clues here perhaps.",
+      "The air smells odd. You see ancient ruins and rotten bones. Perhaps some rituals.",
+      "You look at her books, you see them glowing:",
+      "\"The glen listens and holds magic. If I am ever lost, I might be somewhere mystical.\"",
+      "You have to make a choice."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/InFrontOfDruid.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">A Mysterious Stop</h1>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene03a.html" class="choice-button">Explore</a>
+      <a href="../choices/scene03b.html" class="choice-button">Keep sailing</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

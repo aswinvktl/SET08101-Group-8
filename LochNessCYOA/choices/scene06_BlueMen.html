@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Blue Men of the Minch</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "The gate fades behind you.",
+      "The ship moves forward and the sun decides to rest beside the horizon.",
+      "You camp. You have some food and find a fiddle (Scottish violin) and start playing the songs.",
+      "You look at the moon tomorrow is the night when the moon turns full and blue.",
+      "You go to sleep, ready for tomorrow.",
+      "You start sailing early in the morning, even before the sun minds to show up.",
+      "The ship moves forward. You pick up some pace. You are close.",
+      "Suddenly, something happens in the water. Haggis growls and barks, not scared, just… a warning.",
+      "You reach for your sword.",
+      "Some figures rise: blue, thin, human-like beings. Their eyes have a distinct glow.",
+      "They look human. They could be. Who knows.",
+      "Their leader steps forward and speaks:",
+      "“Traveler bold, whose path is bent, the loch has judged your firmament.",
+      "Answer true, or sink like stone. Speak what's known, or sail alone.”",
+      "You remember the tales.",
+      "The Blue Men of the Minch, sea spirits who test those who pass. Tricksters. Judges.",
+      "Now they offer you riddles and knowledge.",
+      "What do you want to do?"
+    ];
+
+    const backgroundMap = {
+      0: "../images/camping.jpg",
+      5: "../images/blueMen.jpg"
+    };
+
+    // Background transition logic
+    let currentBackground = "";
+    function updateBackground(lineIndex) {
+      const applicableKey = Object.keys(backgroundMap)
+        .map(Number)
+        .reverse()
+        .find(k => lineIndex >= k);
+
+      const newBackground = backgroundMap[applicableKey];
+      if (newBackground && newBackground !== currentBackground) {
+        document.querySelector('.background').style.backgroundImage = `url('${newBackground}')`;
+        currentBackground = newBackground;
+      }
+    }
+
+    window.updateSceneBackground = updateBackground; // make available for the typewriter script
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/camping.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Blue Men of the Minch</h1>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene06a.html" class="choice-button">Solve their riddle</a>
+      <a href="../choices/scene06b.html" class="choice-button">Fight them</a>
+      <a href="../choices/scene06c.html" class="choice-button">Steer away</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

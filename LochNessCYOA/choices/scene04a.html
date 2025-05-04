@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Save Her</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You decide to leap into the water, hoping to catch up with her.",
+      "As you dive in, the water is cold and dark. You swim with all your might, but the loch is deep and treacherous.",
+      "Before you realise, you are surrounded by multiple women who look like her. It was an illusion a group of selkies, the shapeshifting seals.",
+      "You try to swim up. They attack you. You use your sword to fight them, but you are outnumbered.",
+      "You are dragged to the bottom of the loch. You're drowning. You can't breathe. You are dead."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/selkieDeathh.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">Save Her</h1>
+    <h2 class="scene-subtitle">GAME OVER</h2>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../LochNessHome.html" class="choice-button">GO HOME</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

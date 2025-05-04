@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premise 3: Disaster</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="premise-style.css" />
+
+  <script>
+    window.storyLines = [
+      "That night unfolded like any other, calm and peaceful.",
+      "The king and queen lay in quiet embrace, the hush of Bruhaven cradling them to sleep.",
+      "But a sound stirred the king from slumber...",
+      "He stepped onto the balcony—Bruhaven was burning.",
+      "He stood there, stunned, the fire reflected in his eyes.",
+      "He rushed back to the bedroom, but...",
+      "The windows were shattered. The bed chaotic.",
+      "Her books were torn, the pages scattered.",
+      "And she… she was gone. The queen of Bruhaven had been taken."
+    ];
+
+    window.backgroundMap = {
+      0: "../images/villageBurn.jpg",
+      5: "../images/emptyBed.jpg"
+    };
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="premise3.js"></script>
+</head>
+
+<body>
+  <div class="background" style="background-image: url('../images/villageBurn.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">Disaster</h1>
+
+    <div class="bottom-text-box">
+      <section id="typewriter" class="typewriter-container"></section>
+      <div class="nav-buttons">
+        <button id="goBack" class="scroll-btn" aria-label="Previous line">⬅️</button>
+        <button id="goNext" class="scroll-btn" aria-label="Next line">➡️</button>
+      </div>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="premise4_Dream.html" class="choice-button">Next Page</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+</body>
+</html>

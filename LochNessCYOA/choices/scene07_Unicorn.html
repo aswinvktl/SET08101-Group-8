@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Unicorn</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <!-- Story -->
+  <script>
+    const storyLines = [
+      "You sailed the entire day. The sun never quite shone, but it lingered behind the mist like a watchful eye.",
+      "The moon slowly starts to rise from the horizon. It’s not there yet, but it will be — soon.",
+      "And then something changed.",
+      "The air shimmered.",
+      "The loch stilled to glass.",
+      "And Haggis began to howl.",
+      "Not out of fear out of something else.",
+      "You turned, and saw light. A beam, brighter than the moon, split the mist.",
+      "From it stepped a creature of dream:",
+      "A unicorn.",
+      "\"They exist?\"you wonder. It watches you. Haggis looks happy.",
+      "You remember from the queen's journal:",
+      "“When the sky shines, and the loch reflects,",
+      "you follow the signs, they lead to the rest.”",
+      "The unicorn turns and begins to move forward. Your map glows but in a different direction.",
+      "You have to make a choice."
+    ];
+  </script>
+
+  <!-- Howler & JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/choice-js.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/unicornEntry.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Unicorn</h1>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene07b.html" class="choice-button">Follow the map</a>
+      <a href="../choices/scene07a.html" class="choice-button">Follow the unicorn</a>
+      
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+
+  <!-- Fade-out Transition Script -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

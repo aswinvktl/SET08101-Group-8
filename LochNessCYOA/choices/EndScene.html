@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The End</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/choice-style.css" />
+
+  <script>
+    window.storyLines = [
+      "You return to Bruhaven.",
+      "The fires are long gone.",
+      "The valley breathes again.",
+      "You are no longer just a King.",
+      "She is no longer just a Queen.",
+      "You are legend.",
+      "And the loch remembers.",
+      "Forever."
+    ];
+
+    window.backgroundMap = {
+      0: "../images/theENd.jpg"
+    };
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="../js/finalPage.js"></script>
+</head>
+
+<body class="fade-in">
+  <div class="background" style="background-image: url('../images/theENd.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The End</h1>
+
+    <div class="narrative-box">
+      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <section id="typewriter" class="typewriter-container"></section>
+      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../LochNessHome.html" class="choice-button">Go Home</a>
+    </nav>
+
+    <div class="end-message" id="endMessage" style="display: none; margin-top: 3rem; text-align: center;">
+      <p style="font-size: 1.6rem; margin-bottom: 1rem;">🎉 Congratulations! You have completed the game.</p>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem;">Thank you for playing!</p>
+
+      <div>
+        <a href="../LochNessHome.html" class="choice-button">Play Again</a>
+        <a href="../script.html" class="choice-button">Full Story</a>
+        <a href="../FAQ.html" class="choice-button">FAQ-Must Read</a>
+        <a href="mailto:40650180@live.napier.ac.uk" class="choice-button">Give Feedback</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated. All sound is AI generated</small>
+  </footer>
+
+  <!-- Smooth transition effect -->
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'IM Fell English SC', serif;
+  background-color: #1b140d;
+  color: #ec6767;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+/* === FADE ANIMATION === */
+body.fade-in {
+  animation: fadeIn 1.2s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === BACKGROUND === */
+.background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.35) contrast(1.05);
+  z-index: -1;
+}
+
+/* === LAYOUT === */
+.scene-wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  z-index: 1;
+}
+
+/* === TITLE === */
+.scene-title {
+  font-size: 3.75rem;
+  font-weight: 400;
+  color: #e0c38b;
+  text-shadow: 0 0 14px rgba(255, 220, 120, 0.15);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+
+.scene-subtitle {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #dbc49b;
+  font-style: italic;
+  margin-bottom: 2.8rem;
+}
+
+/* === DESCRIPTION TEXT === */
+.typewriter-container {
+  font-size: 1.2rem;
+  max-width: 680px;
+  color: #f2e2c4;
+  line-height: 1.9;
+  margin-bottom: 3rem;
+  background: rgba(60, 45, 25, 0.5);
+  padding: 1.5rem 2rem;
+  border: 2px dashed #BFA065;
+  border-radius: 12px;
+  box-shadow: inset 0 0 8px rgba(255, 204, 120, 0.1);
+}
+
+/* === HELPER LINKS === */
+.helper-links {
+  font-size: 1rem;
+  color: #f5e9d2;
+  margin: 2.5rem 0 1.5rem 0;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.helper-links a {
+  color: #d6c7aa;
+  text-decoration: underline dotted;
+  transition: color 0.3s ease;
+}
+
+.helper-links a:hover {
+  color: #fffbe6;
+}
+
+/* === BUTTONS === */
+.choice-button {
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  color: #f8ebce;
+  background: linear-gradient(to bottom, #5c4423, #3a2d1b);
+  border: 2px solid #BFA065;
+  clip-path: polygon(
+    10% 0%, 90% 0%,
+    100% 25%, 100% 75%,
+    90% 100%, 10% 100%,
+    0% 75%, 0% 25%
+  );
+  text-decoration: none;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.choice-button:hover {
+  background: linear-gradient(to bottom, #7a5e37, #503d21);
+  color: #fff9e3;
+  transform: scale(1.06);
+  box-shadow: 0 0 15px rgba(191, 160, 101, 0.4);
+}
+
+.choice-button:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 0 6px rgba(255, 240, 200, 0.2);
+}
+
+.choices {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* === FOOTER === */
+.site-footer {
+  position: absolute;
+  bottom: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  color: #cbb78a;
+  font-style: italic;
+  width: 100%;
+}
+
+/* === SOUND BUTTON === */
+.nav-button {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  padding: 0.5rem 1.1rem;
+  border: 2px solid #BFA065;
+  border-radius: 8px;
+  background: rgba(50, 40, 25, 0.6);
+  color: #f2e2c4;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.nav-button:hover {
+  background-color: rgba(191, 160, 101, 0.3);
+  color: #fffbe6;
+}

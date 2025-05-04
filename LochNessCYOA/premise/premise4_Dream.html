@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Dream</title>
+
+  <script src="../js/globalSettings.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="premise-style.css" />
+
+  <script>
+    window.storyLines = [
+      "The village lay in ashes, its once-beautiful homes reduced to black and grey ruins.",
+      "Though grief weighed heavy upon him, the king and his loyal troops moved among the broken, aiding the needy and calming the fearful.",
+      "His arms remained strong, but his heart was quietly breaking.",
+      "When night at last descended, he returned to his bed alone and sleep took him not by choice, but by sheer exhaustion.",
+      "And as the darkness deepened, an unusual dream began to stir…",
+      "A strong glow boomed within his dream.",
+      "A fairy appeared and spoke of a curse long whispered in the shadows of Bruhaven: the tale of the Loch Ness Monster.",
+      "The beast, she said, awaited a woman of rare beauty: hair as brown as chocolate, eyes as blue as the sky.",
+      "It would take her, consume her, and break its curse.",
+      "Now, that woman was his queen… his other half.",
+      "The monster had awakened. She had been taken to break its curse.",
+      "If he did not act before the rise of the full blue moon, she would be lost to it forever.",
+      "He remembered his mother's stories of the monster, a creature of legend, a beast of the loch.",
+      "The fairy warned: he must go alone. No warriors. Only his companion the little dog.",
+      "Then, with a shimmer of her hand, she drew a map into the air, glowing lines across darkness, marking the path.",
+      "Just like that, the dream began to fade.",
+      "He gasped and woke up. He felt unease… and loneliness.",
+      "But he was no longer uncertain. He would not let her vanish into legend.",
+      "He would find her. And bring her home."
+    ];
+
+    window.backgroundMap = {
+      0: "../images/ashBruhaven.jpg",
+      1: "../images/afterFire.jpg",
+      3: "../images/kingDream.jpg",
+      6: "../images/fairy.jpg",
+      8: "../images/blueLochnessMonster.jpg",
+      12: "../images/kingMom.jpg"
+    };
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script defer src="premise4.js"></script>
+</head>
+
+<body>
+  <div class="background" style="background-image: url('../images/ashBruhaven.jpg');"></div>
+
+  <main class="scene-wrapper">
+    <h1 class="scene-title">The Dream</h1>
+
+    <div class="bottom-text-box">
+      <section id="typewriter" class="typewriter-container"></section>
+      <div class="nav-buttons">
+        <button id="goBack" class="scroll-btn">⬅️</button>
+        <button id="goNext" class="scroll-btn">➡️</button>
+      </div>
+    </div>
+
+    <nav id="choices" class="choices" aria-label="Choice navigation">
+      <a href="../choices/scene01_Departure.html" class="choice-button">Let the Journey Begin</a>
+      <a href="../index.html" class="choice-button">Home</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <small>All images are AI generated.</small>
+  </footer>
+</body>
+</html>
