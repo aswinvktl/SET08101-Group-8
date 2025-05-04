@@ -77,7 +77,7 @@ function setupTopControls() {
   });
 
   // Home and Settings
-  const homeBtn = createButton("🏠 Home", "../index.html");
+  const homeBtn = createButton("🏠 Home", "../LochNessHome.html");
   const settingsBtn = createButton("⚙️ Settings", "../settings/cyoaSettings.html");
   
 

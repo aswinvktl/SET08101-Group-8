@@ -91,7 +91,7 @@ function setupTopControls() {
     isSoundOn ? (bgMusic.play(), fireSound.play()) : Howler.stop();
   });
 
-  const homeBtn = createButton("🏠 Home", "../index.html");
+  const homeBtn = createButton("🏠 Home", "../LochNessHome.html");
   const settingsBtn = createButton("⚙️ Settings", "../settings/cyoaSettings.html");
 
   topBar.append(settingsBtn, homeBtn, soundBtn);
