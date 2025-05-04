@@ -1,7 +1,7 @@
 const birds = new Howl({
   src: ['../audio/chirpingBirds.mp3'],
   loop: true,
-  volume: 0.35
+  volume: 0.25
 });
 
 const bgMusic = new Howl({
@@ -12,7 +12,7 @@ const bgMusic = new Howl({
 
 const clickSound = new Howl({
   src: ['../audio/mouseClick.wav'],
-  volume: 0.3
+  volume: 0.2
 });
 
 if (sessionStorage.getItem("soundOn") === null) {
