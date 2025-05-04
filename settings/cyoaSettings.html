@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Settings</title>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/settings-style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
-    <script defer src="../js/globalSettings.js"></script>
-    <script defer src="../js/settings-js.js"></script>
-  </head>  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/settings-style.css" />
+
+  <!-- Sound Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+
+  <!-- Global and Page Scripts -->
+  <script defer src="../js/globalSettings.js"></script>
+  <script defer src="../js/settings-js.js"></script>
+</head>
 
 <body>
   <header class="settings-header">
@@ -35,23 +43,4 @@
 
     <!-- Dark Mode -->
     <div class="tile">
-      <button id="darkmode-toggle" class="choice-button">🌙 Toggle Dark Mode</button>
-    </div>
-
-    <!-- High Contrast -->
-    <div class="tile">
-      <button id="contrast-toggle" class="choice-button">⚫ Toggle High Contrast</button>
-    </div>
-
-    <!-- Language Placeholder -->
-     
-    <div class="tile">
-      <a href="settings/language.html" class="choice-button" style="pointer-events: auto;">
-        🌍 Language Options
-      </a>
-      <p style="margin-top:0.5rem; font-size:0.85rem; opacity: 0.8;">(Coming Soon)</p>
-    </div>
-
-  </main>
-</body>
-</html>
+      <button id="darkmode-toggle" class="choice-button">🌙 Toggle Dark
