@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
 * {
@@ -9,7 +10,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'MedievalSharp', cursive;
+  font-family: 'Uncial Antiqua', serif;
   background-color: #1b140d;
   color: #ec6767;
   overflow: hidden;
@@ -37,30 +38,30 @@ body.fade-in {
 
 /* === LAYOUT === */
 .scene-wrapper {
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  padding: 4rem 2rem 2rem;
+  padding: 5rem 2rem 3rem;
   z-index: 1;
 }
 
 /* === TITLE === */
 .scene-title {
-  font-size: 3.5rem;
+  font-size: 3.75rem;
   color: #e0c38b;
   text-shadow: 0 0 18px rgba(255, 220, 120, 0.2);
-  letter-spacing: 2px;
-  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
 }
 
 .scene-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #dbc49b;
   font-style: italic;
-  margin-bottom: 3rem;
+  margin-bottom: 2.8rem;
 }
 
 /* === DESCRIPTION TEXT === */
@@ -81,13 +82,13 @@ body.fade-in {
 .helper-links {
   font-size: 1rem;
   color: #f5e9d2;
-  margin: 1.5rem 0 2rem 0;
+  margin: 2.5rem 0 1.5rem 0;
   text-align: center;
   line-height: 1.8;
 }
 
 .helper-links a {
-  color: #f5e9d2;
+  color: #d6c7aa;
   text-decoration: underline dotted;
   transition: color 0.3s ease;
 }
