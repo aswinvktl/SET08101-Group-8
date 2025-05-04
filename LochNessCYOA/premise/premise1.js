@@ -28,12 +28,12 @@ const backgroundEl = document.querySelector(".background");
 
 const storyLines = window.storyLines || [];
 const backgroundMap = window.backgroundMap || {};
-
 let currentLine = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
   if (isSoundOn) {
     const id = bgMusic.play();
+    birds.play();
     if (!bgMusic.playing(id)) {
       document.body.addEventListener("click", tryPlayOnce, { once: true });
     }
@@ -44,12 +44,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   nextButton?.addEventListener("click", () => {
     handleNext();
-    clickSound.play();
+    if (isSoundOn) clickSound.play();
   });
 
   backButton?.addEventListener("click", () => {
     handlePrevious();
-    clickSound.play();
+    if (isSoundOn) clickSound.play();
   });
 
   document.querySelectorAll("a, button").forEach(el => {
@@ -60,7 +60,10 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function tryPlayOnce() {
-  if (isSoundOn) bgMusic.play();
+  if (isSoundOn) {
+    bgMusic.play();
+    birds.play();
+  }
 }
 
 function setupTopControls() {
@@ -72,7 +75,12 @@ function setupTopControls() {
     isSoundOn = !isSoundOn;
     sessionStorage.setItem("soundOn", isSoundOn.toString());
     soundBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
-    isSoundOn ? bgMusic.play() : Howler.stop();
+    if (isSoundOn) {
+      bgMusic.play();
+      birds.play();
+    } else {
+      Howler.stop();
+    }
   });
 
   const homeBtn = createButton("🏠 Home", "../LochNessHome.html");
