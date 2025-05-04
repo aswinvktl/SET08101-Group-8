@@ -7,7 +7,7 @@ const bgMusic = new Howl({
 
 const clickSound = new Howl({
   src: ['../audio/mouseClick.wav'],
-  volume: 0.6
+  volume: 0.3
 });
 
 if (sessionStorage.getItem("soundOn") === null) {
