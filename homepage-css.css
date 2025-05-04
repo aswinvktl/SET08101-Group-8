@@ -52,3 +52,36 @@ h1 {
 .menu a:hover {
   background-color: #666;
 }
+
+.game-card {
+  width: 240px;
+  height: 300px;
+  background-color: rgba(210, 70, 70, 0.75);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-card:hover {
+  background-color: rgba(220, 100, 100, 0.85);
+  transform: scale(1.05);
+}
+
+.game-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.game-card p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
