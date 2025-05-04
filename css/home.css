@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
 * {
@@ -10,7 +10,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'IM Fell English SC', serif;
   background-color: #1b140d;
   color: #ec6767;
   overflow: hidden;
@@ -52,7 +52,7 @@ body.fade-in {
 /* === TITLE === */
 .scene-title {
   font-size: 3.75rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #e0c38b;
   text-shadow: 0 0 14px rgba(255, 220, 120, 0.15);
   letter-spacing: 0.5px;
