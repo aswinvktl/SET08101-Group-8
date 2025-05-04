@@ -44,3 +44,37 @@ body.dark-mode {
   background-color: #121212 !important;
   color: #e5e5e5 !important;
 }
+
+/* ===  TOGGLE LINKS LOOK LIKE BUTTONS === */
+a.choice-button,
+button.choice-button {
+  display: inline-block;
+  font-size: 1.1rem;
+  background: rgba(24, 24, 24, 0.5);
+  border: 2px solid #A78A4A;
+  color: #f5e9d2;
+  padding: 0.8rem 1.6rem;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 0.5rem auto;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  max-width: 200px;
+}
+
+a.choice-button:hover,
+button.choice-button:hover {
+  background-color: rgba(167, 138, 74, 0.3);
+  transform: scale(1.04);
+  color: #fff;
+}
+
+a.choice-button:active,
+button.choice-button:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
