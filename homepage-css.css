@@ -54,34 +54,57 @@ h1 {
 }
 
 .game-card {
+  position: relative;
   width: 240px;
-  height: 300px;
-  background-color: rgba(210, 70, 70, 0.75);
-  color: white;
-  padding: 1.5rem;
+  height: 320px; /* 3:4 ratio */
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  text-align: center;
-  cursor: pointer;
+  overflow: hidden;
   text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.4s ease;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  opacity: 0;
+  padding: 1.5rem;
+  text-align: center;
+  transition: opacity 0.4s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.game-card:hover {
-  background-color: rgba(220, 100, 100, 0.85);
-  transform: scale(1.05);
+.game-card:hover .card-overlay {
+  opacity: 1;
 }
 
-.game-card h3 {
-  font-size: 1.2rem;
+.game-card:hover .card-image {
+  opacity: 0.3;
+}
+
+.card-overlay h3 {
   margin-bottom: 1rem;
-  color: white;
+  font-size: 1.2rem;
 }
 
-.game-card p {
+.card-overlay p {
   font-size: 1rem;
-  opacity: 0.9;
+  opacity: 0.85;
 }
