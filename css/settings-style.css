@@ -1,63 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
-
-body {
-  margin: 0;
-  font-family: 'EB Garamond', serif;
-  background: url('../images/settings-bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  min-height: 100vh;
+/* === TEXT ONLY MODE === */
+body.text-only {
+  background: none !important;
+  background-color: #111 !important;
 }
 
-.settings-header {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.1rem;
+body.text-only .background,
+body.text-only img,
+body.text-only .visual-only {
+  display: none !important;
 }
 
-.settings-header h1 {
-  margin: 0;
-  font-size: 1.8rem;
+/* === REDUCED MOTION === */
+body.no-animations * {
+  animation: none !important;
+  transition: none !important;
 }
 
-.back-link {
-  cursor: pointer;
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
+/* === HIGH CONTRAST MODE === */
+body.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
 }
 
-.settings-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  padding: 3rem 2rem;
-  max-width: 1000px;
-  margin: auto;
+body.high-contrast a,
+body.high-contrast button,
+body.high-contrast .tile {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
 }
 
-.tile {
-  background-color: rgba(0, 0, 0, 0.55);
-  border-radius: 10px;
-  text-align: center;
-  padding: 2rem 1rem;
-  text-decoration: none;
-  color: white;
-  font-size: 1.3rem;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.tile span {
-  display: block;
-  margin-top: 0.6rem;
-}
-
-.tile:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: scale(1.05);
+/* === DARK MODE === */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #e5e5e5 !important;
 }
