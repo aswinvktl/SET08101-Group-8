@@ -40,7 +40,7 @@ body {
   background-size: cover;
   background-position: center;
   z-index: -1;
-  filter: brightness(0.75);
+  filter: brightness(0.20);
 }
 
 .menu {
