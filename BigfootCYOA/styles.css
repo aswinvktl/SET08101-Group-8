@@ -383,7 +383,7 @@
     border-radius: 4px;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, 
     rgba(17,17,17,0.6) 100%), 
-    url('/images/Good ending image.jpg');
+    url('images/Good ending image.jpg');
     background-size: cover;
     position: relative;
     color: #e0b36a;
@@ -392,7 +392,7 @@
 .services__card:nth-child(2) {
     background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, 
     rgba(17,17,17,0.6) 100%), 
-    url('/images/BadEnding.jpg');
+    url('images/BadEnding.jpg');
 }
 
 .services h2 {
