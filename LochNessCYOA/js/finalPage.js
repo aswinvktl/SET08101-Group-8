@@ -1,3 +1,4 @@
+// audio
 const bgMusic = new Howl({
   src: ['../audio/finalPage.wav'],
   loop: true,
@@ -9,11 +10,13 @@ const clickSound = new Howl({
   volume: 0.6
 });
 
+// sound toggle
 if (sessionStorage.getItem("soundOn") === null) {
   sessionStorage.setItem("soundOn", "true");
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
+// elements
 const typewriterContainer = document.getElementById("typewriter");
 const choicesContainer = document.getElementById("choices");
 const nextButton = document.getElementById("next");
@@ -21,6 +24,7 @@ const prevButton = document.getElementById("prev");
 
 let currentLineIndex = 0;
 
+// init
 window.addEventListener("DOMContentLoaded", () => {
   if (isSoundOn) {
     const id = bgMusic.play();
@@ -47,6 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // sound toggle button
   const toggleBtn = document.createElement("button");
   toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
   toggleBtn.className = "nav-button";
@@ -65,10 +70,12 @@ window.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(toggleBtn);
 });
 
+// fallback play
 function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }
 
+// show line
 function showLine(index) {
   if (!Array.isArray(storyLines) || index >= storyLines.length) return;
   typewriterContainer.innerHTML = "";
@@ -82,6 +89,7 @@ function showLine(index) {
   });
 }
 
+// next
 function handleNext() {
   if (currentLineIndex < storyLines.length - 1) {
     currentLineIndex++;
@@ -92,6 +100,7 @@ function handleNext() {
   }
 }
 
+// previous
 function handlePrevious() {
   if (currentLineIndex > 0) {
     currentLineIndex--;

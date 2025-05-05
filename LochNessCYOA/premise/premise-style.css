@@ -15,7 +15,7 @@ html, body {
   overflow: hidden;
 }
 
-/* === BACKGROUND === */
+/* background */
 .background {
   position: fixed;
   top: 0;
@@ -29,7 +29,7 @@ html, body {
   filter: brightness(0.65);
 }
 
-/* === SCENE === */
+/* scene wrapper */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
@@ -42,6 +42,7 @@ html, body {
   z-index: 1;
 }
 
+/* scene title */
 .scene-title {
   position: absolute;
   top: 2.5rem;
@@ -53,7 +54,7 @@ html, body {
   z-index: 10;
 }
 
-/* === BOTTOM TEXT BOX === */
+/* bottom text box */
 .bottom-text-box {
   position: fixed;
   bottom: 2rem;
@@ -61,11 +62,7 @@ html, body {
   transform: translateX(-50%);
   width: 90%;
   max-width: 880px;
-  background: linear-gradient(
-    to bottom right,
-    rgba(22, 18, 14, 0.85),
-    rgba(36, 30, 25, 0.8)
-  );
+  background: linear-gradient(to bottom right, rgba(22, 18, 14, 0.85), rgba(36, 30, 25, 0.8));
   border: 2px solid #8a5a3b;
   border-radius: 18px;
   padding: 2rem;
@@ -74,6 +71,7 @@ html, body {
   z-index: 5;
 }
 
+/* typewriter text */
 .typewriter-container {
   font-size: 1.4rem;
   line-height: 1.75;
@@ -82,7 +80,7 @@ html, body {
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
 }
 
-/* === TEXT ANIMATION === */
+/* text animation */
 .typewriter-container p.line {
   opacity: 0;
   transform: translateY(25px);
@@ -96,7 +94,7 @@ html, body {
   }
 }
 
-/* === NAV BUTTONS === */
+/* nav buttons */
 .nav-buttons {
   display: flex;
   justify-content: space-between;
@@ -126,7 +124,7 @@ html, body {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* === CHOICE BUTTONS === */
+/* choice buttons */
 .choices {
   display: none;
   opacity: 0;
@@ -162,7 +160,7 @@ html, body {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
-/* === TOP BAR === */
+/* top bar */
 .top-bar {
   position: fixed;
   top: 1rem;
@@ -195,7 +193,7 @@ html, body {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* === FOOTER === */
+/* footer */
 .site-footer {
   position: fixed;
   bottom: 0.5rem;
@@ -208,7 +206,7 @@ html, body {
   z-index: 10;
 }
 
-/* === FOCUS CLEANUP === */
+/* focus cleanup */
 a:focus,
 button:focus {
   outline: none;

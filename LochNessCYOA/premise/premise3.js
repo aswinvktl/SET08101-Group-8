@@ -1,4 +1,4 @@
-// === AUDIO SETUP ===
+// audio setup
 const fireSound = new Howl({
   src: ['../audio/fire.mp3'],
   loop: true,
@@ -16,27 +16,27 @@ const clickSound = new Howl({
   volume: 0.3
 });
 
-// === SOUND STATE ===
+// sound state
 if (sessionStorage.getItem("soundOn") === null) {
   sessionStorage.setItem("soundOn", "true");
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === DOM ELEMENTS ===
+// dom elements
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.getElementById("choices");
 const backgroundEl = document.querySelector(".background");
 const nextButton = document.getElementById("next") || document.getElementById("goNext");
 const backButton = document.getElementById("prev") || document.getElementById("goBack");
 
-// === STORY DATA ===
+// story data
 const storyLines = window.storyLines || [];
 const backgroundMap = window.backgroundMap || {};
 let currentLine = 0;
 let renderedLines = [];
 
+// init
 window.addEventListener("DOMContentLoaded", () => {
-  // Play music
   if (isSoundOn) {
     const id = bgMusic.play();
     fireSound.play();
@@ -48,7 +48,6 @@ window.addEventListener("DOMContentLoaded", () => {
   setupTopControls();
   showLine(currentLine);
 
-  // Navigation buttons
   nextButton?.addEventListener("click", () => {
     if (currentLine < storyLines.length - 1) {
       currentLine++;
@@ -78,7 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
   );
 });
 
-// === TOP BAR ===
+// top bar
 function setupTopControls() {
   const topBar = document.createElement("div");
   topBar.className = "top-bar";
@@ -98,6 +97,7 @@ function setupTopControls() {
   document.body.appendChild(topBar);
 }
 
+// create button
 function createButton(label, href = null) {
   const btn = href ? document.createElement("a") : document.createElement("button");
   btn.className = "choice-button top-control";
@@ -106,7 +106,7 @@ function createButton(label, href = null) {
   return btn;
 }
 
-// === STORY DISPLAY ===
+// show line
 function showLine(index) {
   if (!Array.isArray(storyLines) || index >= storyLines.length) return;
 
@@ -125,6 +125,7 @@ function showLine(index) {
   updateBackground(index);
 }
 
+// insert line
 function insertNewLine(index) {
   const paragraph = document.createElement("p");
   paragraph.textContent = storyLines[index];
@@ -133,6 +134,7 @@ function insertNewLine(index) {
   paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
+// remove last line
 function hideLastLine() {
   if (renderedLines.length > 0) {
     const lastLine = renderedLines.pop();
@@ -140,6 +142,7 @@ function hideLastLine() {
   }
 }
 
+// update background
 function updateBackground(index) {
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;
@@ -160,6 +163,7 @@ function updateBackground(index) {
   }
 }
 
+// autoplay fallback
 function tryPlayOnce() {
   if (isSoundOn) {
     bgMusic.play();

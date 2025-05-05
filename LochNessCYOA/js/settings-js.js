@@ -1,4 +1,4 @@
-// === AUDIO SETUP ===
+// audio
 const clickSound = new Howl({
   src: ['../audio/mouseClick.wav'],
   volume: 0.6
@@ -9,7 +9,7 @@ if (localStorage.getItem("soundOn") === null) {
 }
 let isSoundOn = localStorage.getItem("soundOn") === "true";
 
-// === INIT ===
+// init
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("a.choice-button").forEach(el => {
     el.addEventListener("click", () => {

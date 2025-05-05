@@ -1,3 +1,4 @@
+// audio
 const birds = new Howl({
   src: ['../audio/chirpingBirds.mp3'],
   loop: true,
@@ -20,6 +21,7 @@ if (sessionStorage.getItem("soundOn") === null) {
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
+// elements
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.getElementById("choices");
 const nextButton = document.getElementById("goNext");
@@ -30,6 +32,7 @@ const storyLines = window.storyLines || [];
 const backgroundMap = window.backgroundMap || {};
 let currentLine = 0;
 
+// init
 window.addEventListener("DOMContentLoaded", () => {
   if (isSoundOn) {
     const id = bgMusic.play();
@@ -59,6 +62,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// try play fallback
 function tryPlayOnce() {
   if (isSoundOn) {
     bgMusic.play();
@@ -66,6 +70,7 @@ function tryPlayOnce() {
   }
 }
 
+// top controls
 function setupTopControls() {
   const topBar = document.createElement("div");
   topBar.className = "top-bar";
@@ -90,6 +95,7 @@ function setupTopControls() {
   document.body.appendChild(topBar);
 }
 
+// button factory
 function createButton(label, href = null) {
   const btn = href ? document.createElement("a") : document.createElement("button");
   btn.className = "choice-button top-control";
@@ -98,6 +104,7 @@ function createButton(label, href = null) {
   return btn;
 }
 
+// show current line
 function showLine(index) {
   const oldLine = typewriterEl.querySelector(".line");
   if (oldLine) {
@@ -113,6 +120,7 @@ function showLine(index) {
   updateBackground(index);
 }
 
+// add new line
 function insertNewLine(index) {
   const paragraph = document.createElement("p");
   paragraph.textContent = storyLines[index];
@@ -121,6 +129,7 @@ function insertNewLine(index) {
   paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
+// go next
 function handleNext() {
   if (currentLine < storyLines.length - 1) {
     currentLine++;
@@ -131,6 +140,7 @@ function handleNext() {
   }
 }
 
+// go back
 function handlePrevious() {
   if (currentLine > 0) {
     currentLine--;
@@ -140,6 +150,7 @@ function handlePrevious() {
   }
 }
 
+// update background
 function updateBackground(index) {
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;

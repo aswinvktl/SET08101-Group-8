@@ -5,12 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Language Settings</title>
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
-
-  <!-- Shared Styles -->
   <link rel="stylesheet" href="../css/settings-style.css" />
   <script defer src="../js/globalSettings.js"></script>
+
+  <style>
+    .centered-tile {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .centered-tile p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .centered-tile p.note {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 
 <body>
@@ -19,14 +35,12 @@
     <h1>LANGUAGE</h1>
   </header>
 
-  <main class="settings-grid" style="text-align: center;">
-    <div class="tile" style="max-width: 600px; margin: auto;">
-      <p style="font-size: 1.2rem; line-height: 1.6;">
+  <main class="settings-grid">
+    <div class="tile centered-tile">
+      <p>
         🌍 Language options like <strong>Scottish Gaelic</strong> and <strong>Spanish</strong> will be available in a future update.
       </p>
-      <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.8;">
-        Stay tuned!
-      </p>
+      <p class="note">Stay tuned!</p>
     </div>
   </main>
 </body>

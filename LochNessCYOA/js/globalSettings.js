@@ -1,27 +1,27 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // === DARK MODE ===
+  // dark mode
   if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark-mode");
   }
 
-  // === TEXT-ONLY / VISUALS OFF ===
+  // text-only mode
   if (localStorage.getItem("textOnly") === "true") {
     document.body.classList.add("text-only");
   }
 
-  // === REDUCED MOTION ===
+  // reduced motion
   if (localStorage.getItem("animationsOff") === "true") {
     document.body.classList.add("no-animations");
   }
 
-  // === HIGH CONTRAST ===
+  // high contrast
   if (localStorage.getItem("contrastOn") === "true") {
     document.body.classList.add("high-contrast");
   }
 
-  // === SOUND ON/OFF globally (optional for reference) ===
+  // sound toggle
   window.isSoundOn = localStorage.getItem("soundOn") !== "false";
 
-  // === LANGUAGE (placeholder logic) ===
+  // language
   window.currentLang = localStorage.getItem("lang") || "en";
 });

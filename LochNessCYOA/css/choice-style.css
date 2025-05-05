@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
-/* === RESET === */
+/* reset default spacing and box model */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* === BASE STYLING === */
+/* base styles */
 html, body {
   height: 100%;
   width: 100%;
@@ -20,7 +20,7 @@ body.fade-in {
   opacity: 1;
 }
 
-/* === BACKGROUND === */
+/* full-page background image */
 .background {
   position: fixed;
   top: 0;
@@ -34,7 +34,7 @@ body.fade-in {
   backdrop-filter: blur(2px);
 }
 
-/* === CONTAINER === */
+/* main scene layout */
 .scene-wrapper {
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@ body.fade-in {
   position: relative;
 }
 
-/* === TITLE === */
+/* scene title */
 .scene-title {
   font-size: 2.6rem;
   margin-bottom: 2rem;
@@ -55,7 +55,7 @@ body.fade-in {
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
-/* === NARRATIVE BOX WITH INLINE ARROWS === */
+/* text box and arrows */
 .narrative-box {
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@ body.fade-in {
   margin-bottom: 2rem;
 }
 
-/* === TEXT === */
+/* typewriter effect area */
 .typewriter-container {
   flex: 1;
   display: flex;
@@ -93,7 +93,7 @@ body.fade-in {
   transform: translateY(0);
 }
 
-/* === ARROW BUTTONS INSIDE BOX === */
+/* navigation arrows */
 .arrow-btn.inside {
   font-size: 1.6rem;
   padding: 0.6rem 1.2rem;
@@ -118,7 +118,7 @@ body.fade-in {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* === CHOICE BUTTONS === */
+/* choices section */
 .choices {
   display: none;
   opacity: 0;
@@ -130,6 +130,7 @@ body.fade-in {
   opacity: 1;
 }
 
+/* choice buttons */
 .choice-button {
   font-size: 1.1rem;
   background: rgba(24, 24, 24, 0.5);
@@ -154,7 +155,7 @@ body.fade-in {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* === FOOTER === */
+/* small footer text */
 .site-footer {
   position: fixed;
   bottom: 0.5rem;
@@ -167,12 +168,13 @@ body.fade-in {
   z-index: 10;
 }
 
-/* === FOCUS OUTLINE CLEANUP === */
+/* remove focus outlines */
 a:focus,
 button:focus {
   outline: none;
 }
 
+/* optional sound toggle or icon area */
 .sound-toggle {
   position: fixed;
   top: 1rem;
@@ -180,9 +182,7 @@ button:focus {
   z-index: 1000;
 }
 
-/* === TOP BAR === */
-
-
+/* top navigation bar (optional) */
 .top-bar {
   position: fixed;
   top: 1rem;

@@ -1,4 +1,4 @@
-// === AUDIO SETUP ===
+// audio
 const bgMusic = new Howl({
   src: ['../audio/loop.wav'],
   loop: true,
@@ -10,12 +10,13 @@ const clickSound = new Howl({
   volume: 0.6
 });
 
+// sound toggle
 if (sessionStorage.getItem("soundOn") === null) {
   sessionStorage.setItem("soundOn", "true");
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === DOM ELEMENTS ===
+// elements
 const typewriterContainer = document.getElementById("typewriter");
 const choicesContainer = document.getElementById("choices");
 const nextButton = document.getElementById("next");
@@ -23,7 +24,7 @@ const prevButton = document.getElementById("prev");
 
 let currentLineIndex = 0;
 
-// === INIT ===
+// init
 window.addEventListener("DOMContentLoaded", () => {
   if (isSoundOn) {
     const id = bgMusic.play();
@@ -62,12 +63,11 @@ window.addEventListener("DOMContentLoaded", () => {
   setupTopControls();
 });
 
-// === Create and insert the top control buttons (Sound, Home, Settings) ===
+// top bar
 function setupTopControls() {
   const topBar = document.createElement("div");
   topBar.className = "top-bar";
 
-  // Sound toggle
   const soundBtn = createButton(isSoundOn ? "🔊 Sound On" : "🔇 Sound Off");
   soundBtn.addEventListener("click", () => {
     isSoundOn = !isSoundOn;
@@ -76,15 +76,14 @@ function setupTopControls() {
     isSoundOn ? bgMusic.play() : Howler.stop();
   });
 
-  // Home and Settings
   const homeBtn = createButton("🏠 Home", "../LochNessHome.html");
   const settingsBtn = createButton("⚙️ Settings", "../settings/cyoaSettings.html");
-  
 
   topBar.append(settingsBtn, homeBtn, soundBtn);
   document.body.appendChild(topBar);
 }
 
+// create button
 function createButton(label, href = null) {
   const btn = href ? document.createElement("a") : document.createElement("button");
   btn.className = "choice-button top-control";
@@ -93,12 +92,12 @@ function createButton(label, href = null) {
   return btn;
 }
 
-// === AUDIO AUTOPLAY FALLBACK ===
+// try play
 function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }
 
-// === BACKGROUND LOGIC ===
+// background
 function updateBackground(index) {
   if (typeof backgroundMap === "undefined") return;
 
@@ -117,7 +116,7 @@ function updateBackground(index) {
   }
 }
 
-// === TEXT NAVIGATION ===
+// show line
 function showLine(index) {
   if (!Array.isArray(storyLines) || index < 0 || index >= storyLines.length) return;
 
@@ -136,6 +135,7 @@ function showLine(index) {
   });
 }
 
+// next
 function handleNext() {
   if (currentLineIndex < storyLines.length - 1) {
     currentLineIndex++;
@@ -147,6 +147,7 @@ function handleNext() {
   }
 }
 
+// previous
 function handlePrevious() {
   if (currentLineIndex > 0) {
     currentLineIndex--;
@@ -157,12 +158,14 @@ function handlePrevious() {
   }
 }
 
+// show choices
 function revealChoices() {
   choicesContainer.classList.add("show");
   choicesContainer.style.display = "block";
   nextButton.style.display = "none";
 }
 
+// hide choices
 function hideChoices() {
   choicesContainer.classList.remove("show");
   setTimeout(() => {

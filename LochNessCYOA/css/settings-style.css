@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
-/* === RESET === */
+/* reset defaults */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* === BASE STYLING === */
+/* base styling */
 body {
   font-family: 'EB Garamond', serif;
   background: url('../images/settings-bg.jpg') no-repeat center center fixed;
@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
 }
 
-/* === SETTINGS HEADER === */
+/* settings header */
 .settings-header {
   background-color: rgba(0, 0, 0, 0.6);
   padding: 1rem 2rem;
@@ -38,7 +38,7 @@ body {
   font-size: 1rem;
 }
 
-/* === SETTINGS GRID === */
+/* layout grid */
 .settings-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -48,7 +48,7 @@ body {
   margin: auto;
 }
 
-/* === TILES === */
+/* individual tiles */
 .tile {
   background-color: rgba(0, 0, 0, 0.55);
   border-radius: 10px;
@@ -67,7 +67,7 @@ body {
   margin-top: 0.6rem;
 }
 
-/* === CHOICE BUTTON === */
+/* choice-style button */
 .choice-button {
   display: inline-block;
   font-size: 1.1rem;
@@ -97,7 +97,7 @@ body {
   box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* === TOP BAR (Optional Future Use) === */
+/* optional top bar */
 .top-bar {
   position: fixed;
   top: 1rem;
@@ -107,7 +107,7 @@ body {
   z-index: 1000;
 }
 
-/* === TEXT ONLY MODE === */
+/* text-only mode */
 body.text-only {
   background: none !important;
   background-color: #111 !important;
@@ -119,13 +119,13 @@ body.text-only .visual-only {
   display: none !important;
 }
 
-/* === REDUCED MOTION === */
+/* reduced motion */
 body.no-animations * {
   animation: none !important;
   transition: none !important;
 }
 
-/* === HIGH CONTRAST MODE === */
+/* high contrast mode */
 body.high-contrast {
   background-color: #000 !important;
   color: #fff !important;
@@ -140,7 +140,7 @@ body.high-contrast .choice-button {
   border: 2px solid #fff !important;
 }
 
-/* === DARK MODE === */
+/* dark mode */
 body.dark-mode {
   background-color: #121212 !important;
   color: #e5e5e5 !important;

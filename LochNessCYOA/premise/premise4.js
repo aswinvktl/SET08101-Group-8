@@ -1,4 +1,4 @@
-// === AUDIO SETUP ===
+// audio setup
 const bgMusic = new Howl({
   src: ['../audio/dream.wav'],
   loop: true,
@@ -15,7 +15,7 @@ if (sessionStorage.getItem("soundOn") === null) {
 }
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === DOM ELEMENTS ===
+// dom elements
 const typewriterEl = document.getElementById("typewriter");
 const choicesEl = document.getElementById("choices");
 const backgroundEl = document.querySelector(".background");
@@ -24,11 +24,10 @@ const nextButton = document.getElementById("goNext");
 
 const storyLines = window.storyLines || [];
 const backgroundMap = window.backgroundMap || {};
-
 let currentLine = 0;
 
+// init
 window.addEventListener("DOMContentLoaded", () => {
-  // MUSIC
   if (isSoundOn) {
     const id = bgMusic.play();
     if (!bgMusic.playing(id)) {
@@ -67,7 +66,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// === Top Bar Buttons ===
+// top controls
 function setupTopControls() {
   const topBar = document.createElement("div");
   topBar.className = "top-bar";
@@ -87,6 +86,7 @@ function setupTopControls() {
   document.body.appendChild(topBar);
 }
 
+// create button
 function createButton(label, href = null) {
   const btn = href ? document.createElement("a") : document.createElement("button");
   btn.className = "choice-button top-control";
@@ -95,7 +95,7 @@ function createButton(label, href = null) {
   return btn;
 }
 
-// === Show Line with Replace ===
+// show line
 function showLine(index) {
   if (!Array.isArray(storyLines) || index >= storyLines.length) return;
 
@@ -114,6 +114,7 @@ function showLine(index) {
   updateBackground(index);
 }
 
+// insert new line
 function insertNewLine(index) {
   const paragraph = document.createElement("p");
   paragraph.classList.add("line", "slide-in");
@@ -122,6 +123,7 @@ function insertNewLine(index) {
   paragraph.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
+// update background
 function updateBackground(index) {
   const keys = Object.keys(backgroundMap).map(Number).sort((a, b) => b - a);
   let imageToUse = null;
@@ -142,6 +144,7 @@ function updateBackground(index) {
   }
 }
 
+// autoplay fallback
 function tryPlayOnce() {
   if (isSoundOn) bgMusic.play();
 }

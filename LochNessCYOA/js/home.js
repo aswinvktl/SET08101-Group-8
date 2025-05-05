@@ -1,4 +1,4 @@
-// === AUDIO SETUP ===
+// audio
 const themeMusic = new Howl({
   src: ['audio/introSound.wav'],
   loop: true,
@@ -16,9 +16,8 @@ if (sessionStorage.getItem("soundOn") === null) {
 
 let isSoundOn = sessionStorage.getItem("soundOn") === "true";
 
-// === DOM READY ===
+// dom ready
 window.addEventListener("DOMContentLoaded", () => {
-  // Autoplay background music
   if (isSoundOn) {
     const id = themeMusic.play();
     if (!themeMusic.playing(id)) {
@@ -26,14 +25,13 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Click sound for buttons/links
   document.querySelectorAll("a, button").forEach(el => {
     el.addEventListener("click", () => {
       if (isSoundOn) clickSound.play();
     });
   });
 
-  // === MUTE TOGGLE BUTTON ===
+  // mute toggle
   const toggleBtn = document.createElement("button");
   toggleBtn.innerText = isSoundOn ? "🔊 Sound On" : "🔇 Sound Off";
   toggleBtn.className = "nav-button";
@@ -58,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   document.body.appendChild(toggleBtn);
 
-  // === MAIN FADE-IN ANIMATION ===
+  // fade in
   const main = document.querySelector("main");
   if (main) {
     main.style.opacity = 0;
@@ -68,7 +66,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 400);
   }
 
-  // === OPTIONAL: TYPE-IN TITLE ===
+  // type in title
   const titleEl = document.querySelector(".scene-title");
   if (titleEl) {
     const originalText = titleEl.textContent;
@@ -77,12 +75,12 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// === AUTOPLAY FALLBACK ===
+// autoplay fallback
 function tryPlayOnce() {
   if (isSoundOn) themeMusic.play();
 }
 
-// === TYPEWRITER FUNCTION ===
+// typewriter
 function typeTitle(text, element) {
   let i = 0;
   const interval = setInterval(() => {

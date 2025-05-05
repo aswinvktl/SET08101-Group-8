@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- main heading and all-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Departure</title>
-  <!-- Fonts & Styles -->
+  <!-- Global Settings -->
+  <!--fonts-->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+
+  <!--css-->
   <link rel="stylesheet" href="../css/choice-style.css" />
 
   <!-- Story -->
@@ -17,35 +20,36 @@
     ];
   </script>
 
-  <!-- Howler & JS -->
+  <!--audio-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="../js/choice-js.js"></script>
 </head>
 
+<!--body-->
 <body class="fade-in">
+  <!--background image-->
   <div class="background" style="background-image: url('../images/kingLeavingg.jpg');"></div>
-
   <main class="scene-wrapper">
     <h1 class="scene-title">The Departure</h1>
-
-    <div class="narrative-box">
+    <div class="narrative-box"> 
+      <!--buttons for the typewriter effect-->
       <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
       <section id="typewriter" class="typewriter-container"></section>
       <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
     </div>
 
+    <!--choices-->
     <nav id="choices" class="choices" aria-label="Choice navigation">
+      <!--choices for the next page-->
       <a href="scene01a.html" class="choice-button">Take the bag</a>
       <a href="scene01b.html" class="choice-button">Leave it behind</a>
     </nav>
   </main>
-
   <footer class="site-footer">
     <small>All images are AI generated.</small>
   </footer>
-
-  <!-- Fade-out Transition Script -->
   <script>
+    // Fade-out Transition Script
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');
       if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {

@@ -2,27 +2,27 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Strong Companion</title>
+  <title>a strong companion</title>
 
+  <!-- global settings and styles -->
   <script src="../js/globalSettings.js" defer></script>
-
-  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/choice-style.css" />
 
-  <!-- Story -->
   <script>
+    // story lines
     const storyLines = [
-      "You kneel. You tilt the bottle toward the dog, as if he were asking for some. He drinks and then, light erupts.",
-      "The dog's body lifts from the deck, paws outstretched.",
-      "His fur glows gold and red. His body expands.",
-      "Magic.",
-      "He lands with a rumble and he is no longer a dog.",
-      "A Highland bull. Eyes glowing orange. Horns holding golden fire. The guardian of old magic. The guardian of the queen."
+      "you kneel. you tilt the bottle toward the dog, as if he were asking for some. he drinks and then, light erupts.",
+      "the dog's body lifts from the deck, paws outstretched.",
+      "his fur glows gold and red. his body expands.",
+      "magic.",
+      "he lands with a rumble and he is no longer a dog.",
+      "a highland bull. eyes glowing orange. horns holding golden fire. the guardian of old magic. the guardian of the queen."
     ];
 
+    // background image map
     const backgroundMap = {
       0: "../images/dogDrinkin.jpg",
       2: "../images/transformDog.jpg",
@@ -30,6 +30,8 @@
     };
 
     let currentBackground = "";
+
+    // update background based on story index
     function updateBackground(lineIndex) {
       const applicableKey = Object.keys(backgroundMap)
         .map(Number)
@@ -43,37 +45,41 @@
       }
     }
 
+    // expose function globally
     window.updateSceneBackground = updateBackground;
   </script>
 
-  <!-- Howler & JS -->
+  <!-- audio support -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   <script defer src="../js/choice-js.js"></script>
 </head>
 
 <body class="fade-in">
+  <!-- background image container -->
   <div class="background" style="background-image: url('../images/dogDrinkin.jpg');"></div>
 
   <main class="scene-wrapper">
-    <h1 class="scene-title">A Strong Companion</h1>
+    <h1 class="scene-title">a strong companion</h1>
 
+    <!-- narrative and navigation -->
     <div class="narrative-box">
-      <button id="prev" class="arrow-btn inside" aria-label="Previous line">⬅️</button>
+      <button id="prev" class="arrow-btn inside" aria-label="previous line">⬅️</button>
       <section id="typewriter" class="typewriter-container"></section>
-      <button id="next" class="arrow-btn inside" aria-label="Next line">➡️</button>
+      <button id="next" class="arrow-btn inside" aria-label="next line">➡️</button>
     </div>
 
-    <nav id="choices" class="choices" aria-label="Choice navigation">
-      <a href="../choices/scene10_TheBattle.html" class="choice-button">Next</a>
+    <!-- next choice link -->
+    <nav id="choices" class="choices" aria-label="choice navigation">
+      <a href="../choices/scene10_TheBattle.html" class="choice-button">next</a>
     </nav>
   </main>
 
   <footer class="site-footer">
-    <small>All images are AI generated.</small>
+    <small>all images are ai generated.</small>
   </footer>
 
-  <!-- Fade-out Transition Script -->
   <script>
+    // add fade-out on link click
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');
       if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
